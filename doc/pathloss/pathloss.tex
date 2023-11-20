@@ -1,0 +1,42 @@
+\documentclass[12pt, a4paper, twoside]{article}
+
+\usepackage[dutch]{babel}
+\usepackage{hvaTemplate}
+\usepackage{csquotes}
+\usepackage[backend=biber, style=ieee]{biblatex}
+
+\addbibresource{references.bib}
+
+\setAuthor{\\Tycho Jöbsis (500845792)\\ Jochem Leijenhorst (500855372)\\ Illya Ustenko (500845492)}
+\extraInfo{Sensor modules}
+\setTitle{Measuring the fitting coeficient for pathloss}
+
+\graphicspath{ {img/} }
+
+\numberwithin{equation}{section}
+
+\begin{document}
+    \makeTitlepage
+    \authorsCopyright
+    \onecolumn
+    \tableofcontents
+
+    \newpage
+    \include{sections/introduction}
+    \newpage
+    \include{sections/methods}
+    \newpage
+    \include{sections/results}
+    \newpage
+    \include{sections/discussion}
+    \newpage
+    \include{sections/conclusion}
+
+    % \newpage
+    \printbibliography
+
+    \newpage
+    \appendix
+
+\end{document}
+
