@@ -1,7 +1,44 @@
-\section{Introduction}
-
+\section{Introductie}
 % what is pathloss
+% When designing wireless electronic systems, end users usually ask for the estimated range of the system. There are two ways that such an estimate can be obtained. The seemingly most simple one of these methods is to just do some measurements. This method is however not able to produce reliable estimates, unless the system has been tested in lots of different environments. The second method on the other hand is centered around equations that predict the signal degradation over distance. This method is also not a perfect prediction thus requiring a fitting coefficient.
 
-% How to calculate pathloss 
+Er wordt steeds vaker verlangt dat elektronische ontwerpen draadloos kunnen communiceren. Om er voor te zorgen dat een draadloos systeem een minimaal bereik heeft moet er rekening gehouden worden met signaal verliezen. Een van deze verliezen is path loss. 
+
+% Opdracht en hebben dus model nodig voor path loss in het JMH
+% Specificeer frequentie van interesse
+
+% How to calculate path loss 
+\subsection{Path loss}
+Path loss beschrijft de demping van elektromagnetische golven tussen een zender en een ontvanger. Om deze demping te berekenen, kunnen er verschillende modellen worden gebruikt. In het geval dat de antennes zich in free space bevinden kan \autoref{eq:receivedPowerFreeSpaceIsotropic} gebruikt worden om het ontvangen vermogen te berekenen \cite[13]{bensky2019shortRangeWirelessCommunication}. In \autoref{eq:receivedPowerFreeSpaceIsotropic} zijn \(P_t\) en \(P_r\) de zend en ontvangst vermogens, \(G_t\) en \(G_r\) zijn respectievelijk de zend- en ontvangstversterkingsfactoren van de zend- en ontvangstantennes, \(\lambda\) is de golflengte en d is de afstand tussen de zend- en ontvangstantennes. 
+\begin{equation}\label{eq:receivedPowerFreeSpaceIsotropic}
+    P_r=\frac{P_tG_tG_r\lambda^2}{\left(4\pi d\right)^2} \,\,\left[\unit{\watt}\right]
+\end{equation}
+\begin{equation}\label{eq:FreeSpacePathLoss}
+    PL_{FS}=20\log\left(\frac{4\pi d}{\lambda\sqrt{G_tG_r}}\right) \,\,\left[\unit{\decibel}\right]
+\end{equation}
+\begin{equation} \label{eq:isotropicPathLoss}
+    PL_{FS}=20\log\left(\frac{4\pi d}{\lambda}\right) \,\,\left[\unit{\decibel}\right]
+\end{equation}
+
+Het model dat beschreven wordt met \autoref{eq:FreeSpacePathLoss} gaat er van uit dat de zend- en ontvangende antennes zich free space bevinden. Dit zal echter niet het geval zijn en het model zal dus aangepast moeten worden. Om de reflecties van de grond in het model op te nemen kan het ``two ray model'' als factor aan \autoref{eq:FreeSpacePathLoss} worden toegevoegd \cite{MobileAntenaSystemsHandbookCH2,brini2019system}. 
+\begin{equation}\label{eq:twoRayModel}
+    PL_{TR}=20\log\left[\frac{1}{1+\Gamma_\bot\exp\left[j\beta \left(\sqrt{\left(h_1+h_2\right)^2+d^2}-\sqrt{\left(h_1-h_2\right)^2+d^2}\right)\right] }\right] \,\,\left[\unit{\decibel}\right]
+\end{equation}
+\begin{equation}
+    -20\log\left[2\sin\left(\frac{2\pi h_th_r}{\lambda d}\right)\right] \,\,\left[\unit{\decibel}\right]
+\end{equation}
+
+De voorgaande modellen zijn niet compleet genoeg om de situatie in een bebouwd gebied te voorspellen. Om een beter model te krijgen kan er een fittings factor worden toegevoegd aan \autoref{eq:FreeSpacePathLoss} \cite[24]{brini2019system}. \autoref{eq:fittingFactor} toont deze fittings factor waarin \(l_f\) een fittings coefficient is en \autoref{eq:pathLossModel} toont de resulterende vergelijking voor het berekenen van de verwachte path loss.
+\begin{equation} \label{eq:fittingFactor}
+    F_f=l_f\log(50d) \,\,\left[\unit{\decibel}\right]
+\end{equation}
+\begin{equation}\label{eq:pathLossModel}
+    PL=20\log\left(\frac{4\pi d}{\lambda}\right)-20\log\left[2\sin\left(\frac{2\pi h_th_r}{\lambda d}\right)\right]+l_f\log\left(50d\right)\,\,\left[\unit{\decibel}\right]
+\end{equation}
+\begin{equation}
+    PL=20\log\left(\frac{4\pi d}{\lambda\sqrt{G_tG_r}}\right)+20\log\left[\frac{1}{1+a_v\exp\left[j\beta \left(\sqrt{\left(h_1+h_2\right)^2+d^2}-\sqrt{\left(h_1-h_2\right)^2+d^2}\right)\right] }\right]+l_f\log(50d) \,\,\left[\unit{\decibel}\right]
+\end{equation}
 
 % How to calculate the pathloss fitting coefficient
+
+\subsection{Antenne gain}
