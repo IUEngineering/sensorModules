@@ -3,3 +3,46 @@
 % Show graph of received power over distance
 
 % Show other results if relevant
+\begin{figure}
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={},
+        xlabel={Distance (m)},
+        ylabel={RSS (dBm)},
+        grid=major,
+        cycle list name=color list,
+        no markers,
+        every axis plot/.append style={thick},
+        legend pos=outer north east,
+        legend style={font=\small}
+    ]
+    \addlegendimage{empty legend}
+    \addplot table [x=Distance,y=-10] {sections/data.dat};
+    \addplot table [x=Distance,y=-8] {sections/data.dat};
+    \addplot table [x=Distance,y=-6] {sections/data.dat};
+    \addplot table [x=Distance,y=-4] {sections/data.dat};
+    \addplot table [x=Distance,y=-2] {sections/data.dat};
+    \addplot table [x=Distance,y=0] {sections/data.dat};
+    \addplot table [x=Distance,y=2] {sections/data.dat};
+    \addplot table [x=Distance,y=4] {sections/data.dat};
+    \addplot table [x=Distance,y=6] {sections/data.dat};
+    \addlegendentry{\hspace{-.6cm}\textbf{TSS}}
+    \addlegendentry{-10 dBm}
+    \addlegendentry{-8 dBm}
+    \addlegendentry{-6 dBm}
+    \addlegendentry{-4 dBm}
+    \addlegendentry{-2 dBm}
+    \addlegendentry{-0 dBm}
+    \addlegendentry{-8 dBm}
+    \addlegendentry{2 dBm}
+    \addlegendentry{4 dBm}
+    \addlegendentry{6 dBm}
+    \end{axis}
+\end{tikzpicture}
+
+%TODO: Add better title?
+\caption{RSS (Received Signal Strength) vs. Afstand tussen TSS(Transmit Signal Strength)}
+\label{fig:pathLossMesurment}
+
+\end{figure}
