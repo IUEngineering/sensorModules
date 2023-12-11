@@ -1,7 +1,44 @@
+\section{Specificaties}
+De pH sensor moet met grote nauwkeurigheid de pH waarde van een stof continu kunnen meten. 
+De enige beschikbare pH sensor die dit kan doen is een ISFET.
+Hierdoor zijn de specificaties deels gebaseerd op de specificaties van een ISFET pH sensor.
+
+De sensormodule heeft een eigen accu, en moet deze op kunnen laden zonder oplaadkabel.
+
 \begin{table}[ht]
-    \begin{tabular}{|c|c|c|}
-        Nauwkeurigheid & 0.05 & pH \\ 
-        Temperatuur    & 290 - 300 & K \\
-        pH bereik      & 1 - 12 & pH
-    \end{tabular*}
+    \centering
+    \begin{tabular}{|l|c c|l|c|}
+        \hline
+        Beschrijving                 & Min & Max  & Eenheid   & Bron \\
+        \hline 
+        Gemiddeld gebruikte vermogen &     & 10   & mW        & Opdrachtgever \\
+        Afwijking                    &     & 0.05 & pH        & [ISFET SHEET] \\ 
+        Temperatuur                  & 15  & 12   & $^\circ$C & ???           \\
+        Bereik                       & 1   & 12   & pH        & [ISFET SHEET] \\
+        Metingssnelheid              & 1   &      & S/s       & [ISFET SHEET] \\
+        \hline
+    \end{tabular}
+    \caption{Systeemspecificaties.}
+    \label{tab:systemSpecs}
 \end{table}
+
+
+% BER 0.01%
+
+
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{|l|r|}
+%         \hline
+%         BER             & 0.01\%  \\
+%         Energie per bit & J/b \\
+%         SNR             & \% \\
+%         Gevoeligheid Ontvanger & \% \\
+%         Zendvermogen    & dBm \\
+%         Ez              & \\ 
+%         Data rate       & b/s\\
+%         \hline
+%     \end{tabular}
+%     \caption{Specificaties draadloze verbinding.}
+%     \label{tab:wirelessSpec}
+% \end{table}
