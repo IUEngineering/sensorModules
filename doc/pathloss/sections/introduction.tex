@@ -13,16 +13,16 @@ Path loss beschrijft de demping van elektromagnetische golven tussen een zender 
 \begin{equation}\label{eq:receivedPowerFreeSpace}
     P_r=\frac{P_tG_tG_r\lambda^2}{\left(4\pi d\right)^2} \,\,\left[\unit{\watt}\right]
 \end{equation}
-In het ontwerpen van communicatie systemen komt het vaker voor dat men wil weten wat de verzwakking van een signaal is in decibel. De verzwakking van een signaal kan berekend worden door \autoref{eq:receivedPowerFreeSpace} te herschrijven naar \autoref{eq:FreeSpacePathLoss}.
+In het ontwerpen van communicatie systemen komt het vaak voor dat men wil weten wat de verzwakking van een signaal is in decibel. De verzwakking van een signaal kan berekend worden door \autoref{eq:receivedPowerFreeSpace} te herschrijven naar \autoref{eq:FreeSpacePathLoss}.
 \begin{equation}\label{eq:FreeSpacePathLoss}
     PL_{FS}=20\log\left(\frac{4\pi d}{\lambda\sqrt{G_tG_r}}\right) \,\,\left[\unit{\decibel}\right]
 \end{equation}
-In het geval dat er antennes worden gebruikt met isotrope eigenschappen volgt \autoref{eq:isotropicPathLoss} uit \autoref{eq:FreeSpacePathLoss}. Dit is het geval omdat een antenne met isotrope eigenschappen een antenne gain van $1$ heeft \cite{bensky2019shortRangeWirelessCommunication}.
+In het geval dat er antennes worden gebruikt met isotrope eigenschappen volgt \autoref{eq:isotropicPathLoss} uit \autoref{eq:FreeSpacePathLoss}. Dit is omdat een antenne met isotrope eigenschappen een antenne versterking van $1$ heeft \cite{bensky2019shortRangeWirelessCommunication}.
 \begin{equation} \label{eq:isotropicPathLoss}
     PL_{FS}=20\log\left(\frac{4\pi d}{\lambda}\right) \,\,\left[\unit{\decibel}\right]
 \end{equation}
 
-Het path loss model dat beschreven wordt met \autoref{eq:FreeSpacePathLoss} gaat er van uit dat de zend- en ontvangende antennes zich in free space bevinden. Dit is echter niet het geval en het model van \autoref{eq:FreeSpacePathLoss} zal aangepast moeten worden om meer niet ideale effecten mee te nemen. Een niet idealiteit dat meegenomen kan worden is dat de antennes boven een vlak worden geplaatst. Via het vlak waar de antennes boven staan zal er een reflectie ontstaan. Dit is schematisch getoond in \autoref{fig:twoRayModelSchem}. Dit nieuwe model staat bekend in de literatuur als het two ray model \cite{MobileAntenaSystemsHandbookCH2}.
+Het path loss model dat beschreven wordt met \autoref{eq:FreeSpacePathLoss} gaat er van uit dat de zend- en ontvangst antennes zich in free space bevinden. Dit is echter niet het geval en het model van \autoref{eq:FreeSpacePathLoss} zal aangepast moeten worden om meer niet ideale effecten mee te nemen. Een niet idealiteit dat meegenomen kan worden is dat de antennes boven een vlak worden geplaatst. Via het vlak waar de antennes boven staan zal er een reflectie ontstaan. Dit is schematisch getoond in \autoref{fig:twoRayModelSchem}. Dit nieuwe model staat bekend in de literatuur als het two ray model \cite{MobileAntenaSystemsHandbookCH2}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{img/twoRayModel}
@@ -39,6 +39,13 @@ Om het two ray model mee te nemen met de path loss berekening moet er een factor
 \end{equation}
 
 % Ingaan op de reflectie coefficient.
+De reflectie coefficient $\Gamma_\bot$ geeft aan hoeveel vermogen wordt gereflecteerd door de grond. Met \autoref{eq:reflectionCoef}, de invalshoek $\theta$ en de permeabiliteit $\epsilon_r$ kan de reflectie coefficient $\Gamma_\bot$ worden berekend \cite{bacco2014uavs,sommer2012applicability}.
+\begin{equation}\label{eq:reflectionCoef}
+    \Gamma_\bot\left(\theta, \epsilon_r\right)=\frac{\sin\left(\theta\right)-\sqrt{\epsilon_r-\cos\left(\theta\right)^2}}{\sin\left(\theta\right)+\sqrt{\epsilon_r-\cos\left(\theta\right)^2}}
+\end{equation}
+\begin{equation}
+    \theta=\arctan\left(\frac{h_1+h_2}{d}\right)\,\,\unit{\left[rad\right]}
+\end{equation}
 
 % Ingaan op vereenvoudiging en waarom die niet gebruikt kan worden voor ons.
 In het geval $h_1+h_2\ll d$ kan \autoref{eq:twoRayModel} vereenvoudigd worden naar \autoref{eq:simplifiedEquation} \cite{brini2019system}.
