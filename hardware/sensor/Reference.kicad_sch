@@ -541,12 +541,12 @@
     (property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/BC846BDW1T1-D.PDF" (at 38.1 62.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "4" (uuid 72bee86a-f0d2-4867-89bf-d228b67b6ca2))
-    (pin "5" (uuid f90e1af8-7a1a-43d8-971f-fa81804c4d2d))
-    (pin "3" (uuid c42dd3cd-b44e-499a-9227-f061fdb96ed2))
-    (pin "1" (uuid 58baf10e-fd23-41d8-976b-eb2420037b88))
-    (pin "2" (uuid 8eaa6755-84e6-4f17-bbf8-efbbc8772f97))
-    (pin "6" (uuid a016a010-f6d7-45c8-8f00-be22400a593d))
+    (pin "4" (uuid 72bee86a-f0d2-4867-89bf-d228b67b6ca3))
+    (pin "5" (uuid f90e1af8-7a1a-43d8-971f-fa81804c4d2e))
+    (pin "3" (uuid c42dd3cd-b44e-499a-9227-f061fdb96ed3))
+    (pin "1" (uuid 58baf10e-fd23-41d8-976b-eb2420037b89))
+    (pin "2" (uuid 8eaa6755-84e6-4f17-bbf8-efbbc8772f98))
+    (pin "6" (uuid a016a010-f6d7-45c8-8f00-be22400a593e))
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/25ef8c17-2fa6-41c6-9d65-771e7f962afe"
