@@ -5,6 +5,11 @@
 \usepackage{csquotes}
 \usepackage[backend=biber, style=ieee]{biblatex}
 \usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{caption}
+\usepackage{subcaption}
+\sisetup{detect-all}
+
 
 
 \addbibresource{references.bib}
@@ -17,6 +22,15 @@
 
 \numberwithin{equation}{section}
 
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+\gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+  
 \begin{document}
     \makeTitlepage
     \authorsCopyright
@@ -28,6 +42,7 @@
     \input{sections/specifications}
     \input{sections/functioneel.tex}
     \input{sections/meten}
+    \input{sections/filter.tex}
 
 
     % \newpage

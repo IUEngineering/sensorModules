@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+    \pgfplotsset{width=\textwidth}
+    \newcommand\OMEGAC{10*2*pi}
+
+    \begin{axis}[
+        xmode=log,
+        ymode=log,
+        xlabel={$C$},
+        ylabel={$R$},
+        axis y line*=left,
+        xmin=1e-9, xmax=1e-5,
+        grid=major
+    ]
+
+    \addplot [
+        blue,
+        domain=1e-9:1e-5,
+        samples=201
+    ]
+    {1 / (\OMEGAC * x)};
+    \end{axis}
+\end{tikzpicture}
