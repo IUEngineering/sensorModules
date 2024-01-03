@@ -1,0 +1,54 @@
+\subsection{Spanningsreferentie}
+
+De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken. Deze spanningsreferentie kan op meerdere manieren gegenereerd worden.
+% TODO: Vertel misschien over andere methoden.
+Uiteindelijk is er een spanningsdeler gekozen om de spanningsreferentie te genereren. De schakeling van deze spanningsdeler is te zien in \autoref{fig:divider}.
+De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente fouten in de voedingsspanning.
+
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{0.5\textwidth}
+    \input{img/divider.pdf_tex}
+    \caption{De schakeling van de spanningsdeler die dient als spanningsreferentie.}
+    \label{fig:divider}
+\end{figure}
+
+\noindent
+De overdracht van deze spanningsdeler is te vinden in \autoref{eq:dividerTransfer}.
+\begin{equation}\label{eq:dividerTransfer}
+    H(s) = \frac{U_{ref}(s)}{U_{dd}(s)} = \frac{R_2}{R_1 + R_2 + R_2Cs}
+\end{equation}
+
+\noindent
+Het vermogen dat de spanningsdeler dissipeert, kan met \autoref{eq:dividerPower} berekend worden.
+\begin{equation}\label{eq:dividerPower}
+    P(s) = U_{dd}(s)^2\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
+\end{equation}
+Met een constante DC ingangsspanning kan dit versimpeld worden naar \autoref{eq:dividerPowerSimple}.
+\begin{equation}\label{eq:dividerPowerSimple}
+    P = \frac{U_{dd}^2}{R_1 + R_2}
+\end{equation}
+
+\noindent
+Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \autoref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
+
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{0.35\textwidth}
+    \input{img/dividerNoise.pdf_tex}
+    \caption{De omgebouwde schakeling om ruis mee te berekenen.}
+    \label{fig:dividerNoise}
+\end{figure}
+
+Voor de spectrale spanningsruisdichtheid aan de uitgang $U_{ref}$ kan \autoref{eq:dividerNoiseLaplace} worden opgesteld.
+\begin{equation}\label{eq:dividerNoiseLaplace}
+    S_{n,u_{ref}} = 4kTR_e\left(\frac{1}{1 + R_eCs}\right)^2
+\end{equation}
+Wanneer de absolute waarde van de ruis wordt genomen, kan deze over de bandbreedte geïntegreerd worden. Dit resulteert in \autoref{eq:dividerNoiseInt}.
+\begin{equation}\label{eq:dividerNoiseInt}
+    u_{n,ref}^2 = \int_{\omega_l}^{\omega_h} 4kTR_e\left(\frac{1}{\sqrt{1 + (R_eC\omega)^2}}\right)^2 d\omega
+\end{equation}
+Het integraal van deze formule komt uit op \autoref{eq:dividerNoiseIntegrated}.
+\begin{equation}\label{eq:dividerNoiseIntegrated}
+    u_{n,ref}^2 = \frac{4kT}{C}\left(\arctan(R_eC\omega_h) - \arctan(R_eC\omega_l)\right)
+\end{equation}
