@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "testpoint_519x")(type "KiCad")(uri "/home/tychoj/Documents/hva/jaar4/sensorModules/hardware/testpoint_519x.pretty")(options "")(descr ""))
+)
