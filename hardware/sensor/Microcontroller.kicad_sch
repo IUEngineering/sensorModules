@@ -5,50 +5,6 @@
   (paper "A4")
 
   (lib_symbols
-    (symbol "Connector:Conn_01x01_Pin" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "J" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "Conn_01x01_Pin" (at 0 -2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_locked" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "ki_keywords" "connector" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Generic connector, single row, 01x01, script generated" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "Connector*:*_1x??_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "Conn_01x01_Pin_1_1"
-        (polyline
-          (pts
-            (xy 1.27 0)
-            (xy 0.8636 0)
-          )
-          (stroke (width 0.1524) (type default))
-          (fill (type none))
-        )
-        (rectangle (start 0.8636 0.127) (end 0 -0.127)
-          (stroke (width 0.1524) (type default))
-          (fill (type outline))
-        )
-        (pin passive line (at 5.08 0 180) (length 3.81)
-          (name "Pin_1" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "Connector:Conn_01x10_Pin" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 12.7 0)
         (effects (font (size 1.27 1.27)))
@@ -1425,9 +1381,6 @@
   (junction (at 83.82 110.49) (diameter 0) (color 0 0 0 0)
     (uuid 84df83c8-a2c6-4422-a10d-02781bd97a84)
   )
-  (junction (at 171.45 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid 974564be-6553-40eb-8b1f-cee9d67b3073)
-  )
   (junction (at 139.7 59.69) (diameter 0) (color 0 0 0 0)
     (uuid d7c9e233-c4bb-4ed8-a725-a7d9ed720c04)
   )
@@ -1488,6 +1441,10 @@
     (stroke (width 0) (type default))
     (uuid 05b931d8-d5a6-429b-b7b1-9ed25cbcb2e4)
   )
+  (wire (pts (xy 53.34 63.5) (xy 53.34 67.31))
+    (stroke (width 0) (type default))
+    (uuid 09be91aa-e48c-4e78-adba-6f25c9d3565f)
+  )
   (wire (pts (xy 99.06 123.19) (xy 111.76 123.19))
     (stroke (width 0) (type default))
     (uuid 0e22c116-d384-44fd-b970-f541e702574b)
@@ -1517,17 +1474,13 @@
     (stroke (width 0) (type default))
     (uuid 17368bf6-fa63-429a-b444-fbb5d88101df)
   )
-  (wire (pts (xy 171.45 95.25) (xy 179.07 95.25))
+  (wire (pts (xy 157.48 95.25) (xy 179.07 95.25))
     (stroke (width 0) (type default))
     (uuid 19719808-090a-4f30-8d57-a741bf556418)
   )
   (wire (pts (xy 78.74 125.73) (xy 82.55 125.73))
     (stroke (width 0) (type default))
     (uuid 1c3be398-4b1e-43be-a101-dbf5991462b5)
-  )
-  (wire (pts (xy 171.45 92.71) (xy 171.45 95.25))
-    (stroke (width 0) (type default))
-    (uuid 2234f933-f573-409f-85e6-f755a6627683)
   )
   (wire (pts (xy 134.62 60.96) (xy 134.62 62.23))
     (stroke (width 0) (type default))
@@ -1536,6 +1489,10 @@
   (wire (pts (xy 140.97 59.69) (xy 139.7 59.69))
     (stroke (width 0) (type default))
     (uuid 28e03062-cad7-4342-a6d2-c3933868f4d2)
+  )
+  (wire (pts (xy 76.2 63.5) (xy 76.2 67.31))
+    (stroke (width 0) (type default))
+    (uuid 29b93952-15a7-4333-a446-698135f51dc4)
   )
   (wire (pts (xy 64.77 118.11) (xy 64.77 120.65))
     (stroke (width 0) (type default))
@@ -1549,7 +1506,7 @@
     (stroke (width 0) (type default))
     (uuid 2e2eb08b-218b-434d-bfa1-8a41021d3a99)
   )
-  (wire (pts (xy 62.23 49.53) (xy 66.04 49.53))
+  (wire (pts (xy 38.1 49.53) (xy 41.91 49.53))
     (stroke (width 0) (type default))
     (uuid 30cd2e83-b960-49de-bb5b-e222e2b5c6ff)
   )
@@ -1585,10 +1542,6 @@
     (stroke (width 0) (type default))
     (uuid 3a88069c-0f19-4409-be04-7594e92ae8d8)
   )
-  (wire (pts (xy 157.48 95.25) (xy 171.45 95.25))
-    (stroke (width 0) (type default))
-    (uuid 3bd4b5ba-42e7-45a5-b831-9f397668fd61)
-  )
   (wire (pts (xy 157.48 82.55) (xy 172.72 82.55))
     (stroke (width 0) (type default))
     (uuid 3d20d302-5490-4f9b-ad79-bfd84e79b8e7)
@@ -1605,7 +1558,11 @@
     (stroke (width 0) (type default))
     (uuid 457c64bd-0450-4940-9d03-000deaf2e9c9)
   )
-  (wire (pts (xy 80.01 63.5) (xy 80.01 67.31))
+  (wire (pts (xy 76.2 49.53) (xy 76.2 55.88))
+    (stroke (width 0) (type default))
+    (uuid 483046b4-b7d2-4818-9f78-d43503f7d983)
+  )
+  (wire (pts (xy 66.04 63.5) (xy 66.04 67.31))
     (stroke (width 0) (type default))
     (uuid 4eaedfac-81ac-4ecf-91fe-65d565aaabf1)
   )
@@ -1625,7 +1582,7 @@
     (stroke (width 0) (type default))
     (uuid 5fd0460b-359e-4b83-beb4-a660377b792b)
   )
-  (wire (pts (xy 80.01 49.53) (xy 80.01 55.88))
+  (wire (pts (xy 66.04 49.53) (xy 66.04 55.88))
     (stroke (width 0) (type default))
     (uuid 66647154-c112-46c5-b8f3-ebad771f9570)
   )
@@ -1645,7 +1602,7 @@
     (stroke (width 0) (type default))
     (uuid 76cdead4-7101-41e9-915b-2c43a2fed11f)
   )
-  (wire (pts (xy 66.04 63.5) (xy 66.04 67.31))
+  (wire (pts (xy 41.91 63.5) (xy 41.91 67.31))
     (stroke (width 0) (type default))
     (uuid 77289021-592d-48d0-9609-7087b0298d2b)
   )
@@ -1698,6 +1655,14 @@
     (stroke (width 0) (type default))
     (uuid 99aedb59-a9d9-44ca-abeb-82a58cf7d748)
   )
+  (wire (pts (xy 53.34 49.53) (xy 53.34 55.88))
+    (stroke (width 0) (type default))
+    (uuid 9b9363fa-e8ba-4548-abe7-7d9b523b8677)
+  )
+  (wire (pts (xy 72.39 49.53) (xy 76.2 49.53))
+    (stroke (width 0) (type default))
+    (uuid 9c17267d-ec2a-49af-a634-d8ca656d62a7)
+  )
   (wire (pts (xy 78.74 134.62) (xy 78.74 130.81))
     (stroke (width 0) (type default))
     (uuid 9d376821-6fe8-439d-ba2a-369be5c4aeda)
@@ -1718,7 +1683,7 @@
     (stroke (width 0) (type default))
     (uuid a4c9adb0-f8fc-43f4-995a-01ec5eef8e2c)
   )
-  (wire (pts (xy 76.2 49.53) (xy 80.01 49.53))
+  (wire (pts (xy 62.23 49.53) (xy 66.04 49.53))
     (stroke (width 0) (type default))
     (uuid a763bd93-f509-45d2-bbf4-ecf30880c51f)
   )
@@ -1787,7 +1752,7 @@
     (stroke (width 0) (type default))
     (uuid c298f0ef-cd58-4130-b377-67ada4d25abe)
   )
-  (wire (pts (xy 66.04 49.53) (xy 66.04 55.88))
+  (wire (pts (xy 41.91 49.53) (xy 41.91 55.88))
     (stroke (width 0) (type default))
     (uuid c2b2203c-3e3a-47d4-bf39-66bea0851d94)
   )
@@ -1802,10 +1767,6 @@
   (wire (pts (xy 109.22 93.98) (xy 109.22 100.33))
     (stroke (width 0) (type default))
     (uuid ca80b32a-d0b0-4f2b-9106-3e4035060216)
-  )
-  (wire (pts (xy 173.99 92.71) (xy 171.45 92.71))
-    (stroke (width 0) (type default))
-    (uuid cb759fea-5770-4eef-ba06-0530e38eeb35)
   )
   (wire (pts (xy 140.97 58.42) (xy 140.97 59.69))
     (stroke (width 0) (type default))
@@ -1892,6 +1853,10 @@
     (stroke (width 0) (type default))
     (uuid f06b4d40-a37a-4c26-996c-8ea3af7b53a9)
   )
+  (wire (pts (xy 49.53 49.53) (xy 53.34 49.53))
+    (stroke (width 0) (type default))
+    (uuid f1e90a7b-6014-40ff-bca9-684c6c0210da)
+  )
   (bus (pts (xy 175.26 82.55) (xy 175.26 85.09))
     (stroke (width 0) (type default))
     (uuid f3ea011d-4aa2-405b-b180-f90f472c56d5)
@@ -1926,7 +1891,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 0265609c-8cc5-4848-be39-73ecf83ca16a)
   )
-  (label "EH-ON" (at 160.02 87.63 0) (fields_autoplaced)
+  (label "EH-ON" (at 160.02 85.09 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 0da49d05-5ee6-4a1b-bb85-61f105add878)
   )
@@ -1958,7 +1923,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 3f7c6169-19ed-4e1b-81cc-e7e447d6d3bd)
   )
-  (label "PWG-Vout" (at 160.02 85.09 0) (fields_autoplaced)
+  (label "PWG-Vout" (at 160.02 87.63 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 3f7e3994-953c-4c6e-b6da-6d849ea4ff0f)
   )
@@ -1966,7 +1931,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 496f8d02-feb3-48dd-bb0a-3e33e239ca50)
   )
-  (label "PWG-LDO" (at 160.02 82.55 0) (fields_autoplaced)
+  (label "PWG-LDO" (at 160.02 90.17 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 63af9022-3dfa-46bd-9067-9ea468fee391)
   )
@@ -1974,7 +1939,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 671b6eb1-d28b-4830-9cde-bac982f2eda1)
   )
-  (label "HBO-MCU" (at 160.02 90.17 0) (fields_autoplaced)
+  (label "HBO-MCU" (at 160.02 82.55 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 9d48effe-d3fe-4339-8d94-31266841b6ae)
   )
@@ -2011,17 +1976,25 @@
     (uuid f5e6c662-d8d3-4594-b829-45fc557736d4)
   )
 
+  (hierarchical_label "V_{DD}" (shape input) (at 49.53 49.53 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 334993b5-011d-4028-b6c7-d0b893692f7c)
+  )
   (hierarchical_label "{bms-status}" (shape input) (at 180.34 78.74 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 373de71a-8aac-43fa-8951-8f61e9fcc5bf)
   )
-  (hierarchical_label "V_{DD}" (shape input) (at 76.2 49.53 180) (fields_autoplaced)
+  (hierarchical_label "V_{DD}" (shape input) (at 62.23 49.53 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 3b78d64a-3853-4778-b131-4bceb9c518d9)
   )
   (hierarchical_label "V_{DD}" (shape input) (at 168.91 120.65 90) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 4ad174c1-a951-4fd5-a1c2-e8f82c8c7058)
+  )
+  (hierarchical_label "V_{DD}" (shape input) (at 72.39 49.53 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 5244f769-bd20-41d2-990d-5a4ce4a553b5)
   )
   (hierarchical_label "V_{DD}" (shape input) (at 60.96 107.95 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
@@ -2047,7 +2020,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid b684b639-1acb-4ae1-bf29-7de8cfc55204)
   )
-  (hierarchical_label "V_{DD}" (shape input) (at 62.23 49.53 180) (fields_autoplaced)
+  (hierarchical_label "V_{DD}" (shape input) (at 38.1 49.53 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid d9e28676-fc08-47ff-9325-38143b105fd9)
   )
@@ -2167,10 +2140,41 @@
     )
   )
 
+  (symbol (lib_id "Device:C") (at 53.34 59.69 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 10791b59-b489-4ab2-90d0-28ce7c39b86b)
+    (property "Reference" "C613" (at 54.61 57.15 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "100n" (at 54.61 62.23 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder" (at 54.3052 63.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 53.34 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 6229ba3d-08ea-40ec-91cb-36671f131c6e))
+    (pin "2" (uuid 68b268b6-3fe6-4979-a974-8ea231e57e8f))
+    (instances
+      (project "sensor"
+        (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
+          (reference "C613") (unit 1)
+        )
+      )
+      (project "nrfChip"
+        (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8"
+          (reference "C?") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Device:C") (at 73.66 92.71 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 11230dd1-ec42-41ca-b5c3-5de7ef1f456b)
-    (property "Reference" "C601" (at 77.47 89.535 0)
+    (property "Reference" "C603" (at 77.47 89.535 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "0p8" (at 77.47 95.885 0)
@@ -2187,7 +2191,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C601") (unit 1)
+          (reference "C603") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2231,7 +2235,7 @@
   (symbol (lib_name "GND_4") (lib_id "power:GND") (at 64.77 144.78 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1d4d3515-5849-4601-ab0c-19b8268abdac)
-    (property "Reference" "#PWR0601" (at 64.77 151.13 0)
+    (property "Reference" "#PWR0602" (at 64.77 151.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 64.77 148.59 0)
@@ -2247,7 +2251,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0601") (unit 1)
+          (reference "#PWR0602") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2261,7 +2265,7 @@
   (symbol (lib_id "Device:C") (at 149.86 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1e55b88b-68f1-4047-9b44-1b2ca319043b)
-    (property "Reference" "C608" (at 153.67 41.9099 0)
+    (property "Reference" "C610" (at 153.67 41.9099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 153.67 44.4499 0)
@@ -2278,7 +2282,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C608") (unit 1)
+          (reference "C610") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2289,19 +2293,19 @@
     )
   )
 
-  (symbol (lib_name "GND_6") (lib_id "power:GND") (at 80.01 67.31 0) (unit 1)
+  (symbol (lib_name "GND_6") (lib_id "power:GND") (at 66.04 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 21b9589c-5ec7-401b-b8b9-243793dea859)
-    (property "Reference" "#PWR0603" (at 80.01 73.66 0)
+    (property "Reference" "#PWR0603" (at 66.04 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 80.01 72.39 0)
+    (property "Value" "GND" (at 66.04 72.39 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 80.01 67.31 0)
+    (property "Footprint" "" (at 66.04 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 80.01 67.31 0)
+    (property "Datasheet" "" (at 66.04 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 0ccac07f-cad1-4160-9c83-4e4e38c89dfe))
@@ -2322,7 +2326,7 @@
   (symbol (lib_name "GND_10") (lib_id "power:GND") (at 149.86 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2320748d-aac9-49b0-9b77-b881a3b66552)
-    (property "Reference" "#PWR0610" (at 149.86 57.15 0)
+    (property "Reference" "#PWR0613" (at 149.86 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 149.86 55.88 0)
@@ -2338,7 +2342,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0610") (unit 1)
+          (reference "#PWR0613") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2352,7 +2356,7 @@
   (symbol (lib_id "Device:C") (at 97.79 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp yes)
     (uuid 3b1e8a0f-e82c-4758-8463-e4fa5f59f233)
-    (property "Reference" "C606" (at 99.06 57.15 0)
+    (property "Reference" "C608" (at 99.06 57.15 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "DNP" (at 99.06 62.23 0)
@@ -2369,7 +2373,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C606") (unit 1)
+          (reference "C608") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2383,7 +2387,7 @@
   (symbol (lib_id "Device:C") (at 91.44 93.98 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3c3526cf-f878-4c4e-8d1c-7416370cda36)
-    (property "Reference" "C604" (at 91.44 90.17 90)
+    (property "Reference" "C606" (at 91.44 90.17 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "12p" (at 91.44 97.79 90)
@@ -2400,7 +2404,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C604") (unit 1)
+          (reference "C606") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2414,7 +2418,7 @@
   (symbol (lib_name "GND_3") (lib_id "power:GND") (at 107.95 102.87 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3d345427-d2dd-4be8-8204-f44b965d8b64)
-    (property "Reference" "#PWR0615" (at 107.95 109.22 0)
+    (property "Reference" "#PWR0611" (at 107.95 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 107.95 106.68 0)
@@ -2430,7 +2434,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0615") (unit 1)
+          (reference "#PWR0611") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2444,7 +2448,7 @@
   (symbol (lib_id "Device:C") (at 106.68 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3e87d2ee-9ff4-42dd-96cf-a792ecb0489d)
-    (property "Reference" "C607" (at 107.95 57.15 0)
+    (property "Reference" "C609" (at 107.95 57.15 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 107.95 62.23 0)
@@ -2461,7 +2465,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C607") (unit 1)
+          (reference "C609") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2475,7 +2479,7 @@
   (symbol (lib_id "Device:C") (at 88.9 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 45c3d6b9-d5a1-4201-9c18-37027c0ee600)
-    (property "Reference" "C603" (at 90.17 57.15 0)
+    (property "Reference" "C605" (at 90.17 57.15 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100p" (at 90.17 62.23 0)
@@ -2492,7 +2496,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C603") (unit 1)
+          (reference "C605") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2506,7 +2510,7 @@
   (symbol (lib_id "Device:C") (at 91.44 110.49 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 65171ae3-9276-4f58-bbe0-8b983960dc7c)
-    (property "Reference" "C605" (at 91.44 114.3 90)
+    (property "Reference" "C607" (at 91.44 114.3 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "12p" (at 91.44 116.84 90)
@@ -2523,7 +2527,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C605") (unit 1)
+          (reference "C607") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2534,19 +2538,19 @@
     )
   )
 
-  (symbol (lib_id "Device:C") (at 80.01 59.69 0) (unit 1)
+  (symbol (lib_id "Device:C") (at 66.04 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 72eacebf-799c-405c-b99e-99849379b14a)
-    (property "Reference" "C602" (at 81.28 57.15 0)
+    (property "Reference" "C602" (at 67.31 57.15 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "100n" (at 81.28 62.23 0)
+    (property "Value" "100n" (at 67.31 62.23 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder" (at 80.9752 63.5 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder" (at 67.0052 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 80.01 59.69 0)
+    (property "Datasheet" "~" (at 66.04 59.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 6a948862-85af-4bcc-b5c7-f0afaeb8a141))
@@ -2565,19 +2569,80 @@
     )
   )
 
-  (symbol (lib_id "Device:C") (at 66.04 59.69 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 91aa139a-35c1-4339-9e06-d1bfc26997f6)
-    (property "Reference" "C611" (at 67.31 57.15 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "4u7" (at 67.31 62.23 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 67.0052 63.5 0)
+  (symbol (lib_name "GND_6") (lib_id "power:GND") (at 76.2 67.31 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 747df88a-8708-4220-96a5-643f3966ea15)
+    (property "Reference" "#PWR0605" (at 76.2 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 66.04 59.69 0)
+    (property "Value" "GND" (at 76.2 72.39 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 76.2 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 76.2 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 25448e98-ab83-4ac8-8b1c-d3e75fe2e655))
+    (instances
+      (project "sensor"
+        (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
+          (reference "#PWR0605") (unit 1)
+        )
+      )
+      (project "nrfChip"
+        (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8"
+          (reference "#PWR?") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 76.2 59.69 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 90d362e0-f422-4036-b627-b0fbb7fb3eb1)
+    (property "Reference" "C604" (at 77.47 57.15 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "100n" (at 77.47 62.23 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder" (at 77.1652 63.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 76.2 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 7f83147a-7414-4ecd-87e2-58922c5435db))
+    (pin "2" (uuid f1086c02-662e-4ddd-8a09-4c97707e206f))
+    (instances
+      (project "sensor"
+        (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
+          (reference "C604") (unit 1)
+        )
+      )
+      (project "nrfChip"
+        (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8"
+          (reference "C?") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 41.91 59.69 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 91aa139a-35c1-4339-9e06-d1bfc26997f6)
+    (property "Reference" "C601" (at 43.18 57.15 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "4u7" (at 43.18 62.23 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 42.8752 63.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 41.91 59.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 0e5d2cd0-1dc8-45db-aaac-b1a672e36d89))
@@ -2585,7 +2650,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C611") (unit 1)
+          (reference "C601") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2599,7 +2664,7 @@
   (symbol (lib_id "Device:Crystal_GND24") (at 97.79 101.6 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9faacce1-e402-4961-b707-93b2d8e0a8f4)
-    (property "Reference" "Y602" (at 104.14 97.79 90)
+    (property "Reference" "Y601" (at 104.14 97.79 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Crystal_GND24" (at 96.1391 90.17 0)
@@ -2618,7 +2683,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "Y602") (unit 1)
+          (reference "Y601") (unit 1)
         )
       )
     )
@@ -2627,7 +2692,7 @@
   (symbol (lib_name "GND_5") (lib_id "power:GND") (at 73.66 99.06 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a7bd8ca0-53e2-4783-9efd-75b89e370e62)
-    (property "Reference" "#PWR0602" (at 73.66 105.41 0)
+    (property "Reference" "#PWR0604" (at 73.66 105.41 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 73.66 104.14 0)
@@ -2643,7 +2708,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0602") (unit 1)
+          (reference "#PWR0604") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2680,26 +2745,56 @@
     )
   )
 
-  (symbol (lib_name "GND_6") (lib_id "power:GND") (at 66.04 67.31 0) (unit 1)
+  (symbol (lib_name "GND_6") (lib_id "power:GND") (at 53.34 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid b4f4c555-0f8f-418a-af31-42ae77a74990)
-    (property "Reference" "#PWR0613" (at 66.04 73.66 0)
+    (uuid b1fc5bac-7384-45d6-a210-10529e9067d7)
+    (property "Reference" "#PWR0616" (at 53.34 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 66.04 72.39 0)
+    (property "Value" "GND" (at 53.34 72.39 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 66.04 67.31 0)
+    (property "Footprint" "" (at 53.34 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 66.04 67.31 0)
+    (property "Datasheet" "" (at 53.34 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 3727669d-5bdb-42f7-8833-9e0d92d55324))
+    (instances
+      (project "sensor"
+        (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
+          (reference "#PWR0616") (unit 1)
+        )
+      )
+      (project "nrfChip"
+        (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8"
+          (reference "#PWR?") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_name "GND_6") (lib_id "power:GND") (at 41.91 67.31 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid b4f4c555-0f8f-418a-af31-42ae77a74990)
+    (property "Reference" "#PWR0601" (at 41.91 73.66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 41.91 72.39 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 41.91 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 41.91 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 6b9363c9-856c-46fe-aec5-9e4224e68400))
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0613") (unit 1)
+          (reference "#PWR0601") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2713,7 +2808,7 @@
   (symbol (lib_name "GND_3") (lib_id "power:GND") (at 83.82 113.03 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bb0f84e9-cd41-429a-9ec0-24f7b3d7ff19)
-    (property "Reference" "#PWR0605" (at 83.82 119.38 0)
+    (property "Reference" "#PWR0607" (at 83.82 119.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 83.82 118.11 0)
@@ -2729,7 +2824,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0605") (unit 1)
+          (reference "#PWR0607") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2743,7 +2838,7 @@
   (symbol (lib_name "GND_8") (lib_id "power:GND") (at 97.79 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bbe06325-1604-49c5-8b2b-5edc16c706f3)
-    (property "Reference" "#PWR0607" (at 97.79 73.66 0)
+    (property "Reference" "#PWR0609" (at 97.79 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 97.79 72.39 0)
@@ -2759,7 +2854,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0607") (unit 1)
+          (reference "#PWR0609") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2773,7 +2868,7 @@
   (symbol (lib_id "Device:C") (at 198.12 54.61 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp yes)
     (uuid be7b2ab6-06d9-4e1b-8720-1427ae9e24e4)
-    (property "Reference" "C609" (at 198.12 48.26 90)
+    (property "Reference" "C611" (at 198.12 48.26 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "12p" (at 198.12 50.8 90)
@@ -2790,7 +2885,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C609") (unit 1)
+          (reference "C611") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2835,7 +2930,7 @@
   (symbol (lib_name "GND_2") (lib_id "power:GND") (at 134.62 149.86 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cd97aa3c-1ebc-4b51-bb49-1af65a6575f2)
-    (property "Reference" "#PWR0609" (at 134.62 156.21 0)
+    (property "Reference" "#PWR0612" (at 134.62 156.21 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 134.62 154.94 0)
@@ -2851,7 +2946,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0609") (unit 1)
+          (reference "#PWR0612") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2865,7 +2960,7 @@
   (symbol (lib_name "GND_1") (lib_id "power:GND") (at 168.91 148.59 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ce13491e-9e73-4f2b-8da2-ff792d2871b2)
-    (property "Reference" "#PWR0611" (at 168.91 154.94 0)
+    (property "Reference" "#PWR0614" (at 168.91 154.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 168.91 153.67 0)
@@ -2881,7 +2976,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0611") (unit 1)
+          (reference "#PWR0614") (unit 1)
         )
       )
       (project "nrfChip"
@@ -2901,7 +2996,7 @@
     (property "Value" "nRF52810-QFxx" (at 136.6394 151.13 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm" (at 134.62 157.48 0)
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm_ThermalVias" (at 134.62 157.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://infocenter.nordicsemi.com/pdf/nRF52810_PS_v1.1.pdf" (at 121.92 100.33 0)
@@ -2973,7 +3068,7 @@
   (symbol (lib_name "GND_9") (lib_id "power:GND") (at 106.68 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d1001b04-58f6-4344-97da-7c00415ee568)
-    (property "Reference" "#PWR0608" (at 106.68 73.66 0)
+    (property "Reference" "#PWR0610" (at 106.68 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 106.68 72.39 0)
@@ -2989,7 +3084,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0608") (unit 1)
+          (reference "#PWR0610") (unit 1)
         )
       )
       (project "nrfChip"
@@ -3003,7 +3098,7 @@
   (symbol (lib_name "GND_11") (lib_id "power:GND") (at 205.74 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d386314e-4374-4c7b-bce4-ab46074f815c)
-    (property "Reference" "#PWR0612" (at 205.74 78.74 0)
+    (property "Reference" "#PWR0615" (at 205.74 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 205.74 77.47 0)
@@ -3019,7 +3114,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0612") (unit 1)
+          (reference "#PWR0615") (unit 1)
         )
       )
       (project "nrfChip"
@@ -3033,7 +3128,7 @@
   (symbol (lib_id "Device:C") (at 198.12 69.85 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp yes)
     (uuid d8ea80e0-9406-49aa-90a0-b7fbba7b40bf)
-    (property "Reference" "C610" (at 198.12 73.66 90)
+    (property "Reference" "C612" (at 198.12 73.66 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "12p" (at 198.12 76.2 90)
@@ -3050,7 +3145,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "C610") (unit 1)
+          (reference "C612") (unit 1)
         )
       )
       (project "nrfChip"
@@ -3064,7 +3159,7 @@
   (symbol (lib_id "Device:Crystal") (at 184.15 62.23 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp yes) (fields_autoplaced)
     (uuid f6342295-d991-44d4-913f-de9d879adc10)
-    (property "Reference" "Y601" (at 180.34 60.96 90)
+    (property "Reference" "Y602" (at 180.34 60.96 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Crystal" (at 180.34 63.5 90)
@@ -3081,7 +3176,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "Y601") (unit 1)
+          (reference "Y602") (unit 1)
         )
       )
     )
@@ -3090,7 +3185,7 @@
   (symbol (lib_name "GND_7") (lib_id "power:GND") (at 88.9 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f7fa37c0-aad0-4085-bc79-a7a655ab1fa8)
-    (property "Reference" "#PWR0606" (at 88.9 73.66 0)
+    (property "Reference" "#PWR0608" (at 88.9 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 88.9 72.39 0)
@@ -3106,7 +3201,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0606") (unit 1)
+          (reference "#PWR0608") (unit 1)
         )
       )
       (project "nrfChip"
@@ -3120,7 +3215,7 @@
   (symbol (lib_id "power:GND") (at 78.74 134.62 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f8b2c4ce-6bf4-49e2-809e-02e9b187e17c)
-    (property "Reference" "#PWR0604" (at 78.74 140.97 0)
+    (property "Reference" "#PWR0606" (at 78.74 140.97 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 78.74 138.43 0)
@@ -3136,7 +3231,7 @@
     (instances
       (project "sensor"
         (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "#PWR0604") (unit 1)
+          (reference "#PWR0606") (unit 1)
         )
       )
       (project "nrfChip"
@@ -3173,31 +3268,6 @@
       (project "nrfChip"
         (path "/9538e4ed-27e6-4c37-b989-9859dc0d49e8"
           (reference "L?") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Connector:Conn_01x01_Pin") (at 179.07 92.71 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid fc83122e-b102-450f-a7d2-11353d96a34e)
-    (property "Reference" "J603" (at 182.88 90.17 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "LDO_{EN}" (at 182.88 92.71 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "testpoint_519x:Testpoint_519xTR" (at 179.07 92.71 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 179.07 92.71 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 25caeb53-5c36-4639-9af2-f21a0e39cbfd))
-    (instances
-      (project "sensor"
-        (path "/867f520a-eae4-4e8b-a296-c3a5e3f80a59/8cb33529-4770-4ab5-99f0-e4454c7785d9"
-          (reference "J603") (unit 1)
         )
       )
     )
