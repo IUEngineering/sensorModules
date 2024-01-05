@@ -1,8 +1,8 @@
-\subsection{Spanningsreferentie}
+\subsection{Spanningsreferentie}\label{sec:referenceVoltage}
 
 De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken. Deze spanningsreferentie kan op meerdere manieren gegenereerd worden.
 % TODO: Vertel misschien over andere methoden.
-Uiteindelijk is er een spanningsdeler gekozen om de spanningsreferentie te genereren. De schakeling van deze spanningsdeler is te zien in \autoref{fig:divider}.
+Uiteindelijk is er een spanningsdeler gekozen om de spanningsreferentie mee te implementeren. De schakeling van deze spanningsdeler is te zien in \autoref{fig:divider}.
 De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente fouten in de voedingsspanning.
 
 \begin{figure}[ht]
@@ -24,7 +24,7 @@ Het vermogen dat de spanningsdeler dissipeert, kan met \autoref{eq:dividerPower}
 \begin{equation}\label{eq:dividerPower}
     P(s) = U_{dd}(s)^2\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
 \end{equation}
-Met een constante DC ingangsspanning kan dit versimpeld worden naar \autoref{eq:dividerPowerSimple}.
+Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \autoref{eq:dividerPowerSimple}.
 \begin{equation}\label{eq:dividerPowerSimple}
     P = \frac{U_{dd}^2}{R_1 + R_2}
 \end{equation}
@@ -40,6 +40,7 @@ Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen word
     \label{fig:dividerNoise}
 \end{figure}
 
+\noindent
 Voor de spectrale spanningsruisdichtheid aan de uitgang $U_{ref}$ kan \autoref{eq:dividerNoiseLaplace} worden opgesteld.
 \begin{equation}\label{eq:dividerNoiseLaplace}
     S_{n,u_{ref}} = 4kTR_e\left(\frac{1}{1 + R_eCs}\right)^2
@@ -50,5 +51,35 @@ Wanneer de absolute waarde van de ruis wordt genomen, kan deze over de bandbreed
 \end{equation}
 Het integraal van deze formule komt uit op \autoref{eq:dividerNoiseIntegrated}.
 \begin{equation}\label{eq:dividerNoiseIntegrated}
-    u_{n,ref}^2 = \frac{4kT}{C}\left(\arctan(R_eC\omega_h) - \arctan(R_eC\omega_l)\right)
+    u_{n,ref}^2 = \frac{4kT}{C}\left[\arctan(R_eC\omega_h) - \arctan(R_eC\omega_l)\right]
 \end{equation}
+
+Zolang de spanning stabiel is hoeft de referentie geen exact gedefinieerde spanning te hebben. Dit is omdat de ADC die de waarde van de sensor gaat uitlezen deze referentiespanning ook als referentie zal gebruiken. De waarde moet echter ergens rond de 1.1V zitten, om de stroombron te laten werken.
+In \autoref{sec:currentSource} is hier meer over te lezen.
+Aangezien de ingangsspanning 1.8V is, zal de DC overdracht $1.1 / 1.8 = \frac{11}{18}$ zijn. Hieruit komt de weerstandsverhouding in \autoref{eq:dividerResistors}.
+\begin{equation}\label{eq:dividerResistors}
+    \frac{R_1}{R_2} = \frac{7}{11}
+\end{equation}
+Een hogere $R_1$ zorgt voor een lager vermogensverbruik, maar ook een hogere ruis. Dit is te zien in \autoref{fig:dividerPlots}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \input{plots/dividerNoise}
+        \caption{Spanningsruis}
+        \label{fig:dividerNoisePlot}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \input{plots/dividerPower}
+        \caption{Vermogensverbruik}
+        \label{fig:dividerPower}
+    \end{subfigure}
+    \caption{De ruis en het vermogensverbruik van de spanningsdeler, ten opzichte van de gekozen weerstandswaarde $R_1$.}
+    \label{fig:dividerPlots}
+\end{figure}
+Op $R_1 = 1\si{\mega\ohm}$ en $C = 10\si{\micro\farad}$ is de spanningsruis $u_{n,ref} = 51\si{\nano\volt}$ en het vermogensverbruik $P = 1.3\si{\micro\watt}$. De andere weerstandswaarde is dan $R_2 \approx 1.6 \si{\mega\ohm}$. Deze waardes vallen binnen de specificaties.
+
+[WELKE SPECS??]

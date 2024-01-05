@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+    \pgfplotsset{width=\textwidth}
+    \newcommand\BOLZ{1.380649e-23}
+    \newcommand\TEMP{300}
+    \newcommand\OMEGAC{15*2*pi}
+    \newcommand\RESRAT{(7/11)}
+    \newcommand\REQU{(1/(1/x + \RESRAT/x))}
+    \newcommand\CAP{0.000001}
+
+    \pgfplotsset{set layers}
+    \begin{axis}[
+        xmode=log,
+        ymode=log,
+        xlabel={$R_1 [\si{\ohm}]$},
+        ylabel={$u_{n,out} [\si{\volt}]$},
+        xmin=1e3, xmax=2e6,
+        grid=major
+    ]
+
+    \addplot [
+        red,
+        domain=1e3:2e6,
+        samples=201
+    ]
+    {sqrt((4 * \BOLZ * \TEMP / \CAP) * rad(atan(\REQU * \CAP * \OMEGAC)))};
+    \end{axis}
+\end{tikzpicture}

@@ -1,6 +1,61 @@
-\subsection{Het meten van de drempelspanning van een FET}
+\subsection{De drempelspanning van de ISFET uitlezen}
 
-In de datasheet van een FET is de drempelspanning gedefinieerd op een bepaalde stroom door de drain en de source van de FET ($I_{ds}$).
-Door deze stroom constant te houden, kan de drempelspanning gemeten worden.
+% TODO: Bronnen
+Om de pH waarde van de ISFET uit te lezen moet de drempelspanning gemeten worden. Deze is namelijk linear afhankelijk van de pH waarde.
+Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gate-source spanning te variëren kan de spanning over en de stroom door de drain en de source gelijk gehouden worden.
 
-De stroom kan constant gehouden worden door middel van een regelcircuit. 
+Er zijn meerdere mogelijke implementaties van een dergelijk regelsysteem. In \autoref{fig:measureCircuits} staan er drie.
+Elk van deze schakelingen gebruikt een nullor om de drain-source spanning van de ISFET gelijk te houden. Ook gebruikt elk van deze schakelingen een referentiespanning. De implementatie van deze referentiespanning wordt verder besproken in \autoref{sec:referenceVoltage}.
+
+De drain-source spanning $U_{ds}$ en drain-source stroom $I_{ds}$ zijn van te voren gedefinieerd. Deze zijn ook te vinden in de datasheet van de ISFET\cite{isfet}. Uit deze twee waardes kunnen de referentiespanningen en weerstandswaardes van de schakelingen gevonden worden.
+Voor de schakelingen in \autoref{fig:measureResistorSource} en \autoref{fig:measureResistorSource} is de spanningsreferentie te vinden door middel van \autoref{eq:URefSource}.
+\begin{equation}\label{eq:URefSource}
+    U_{ref,s} = U_{dd} - U_{ds}
+\end{equation}
+Voor \autoref{fig:measureResistorDrain} is de referentiespanning gelijk aan de drain-source spanning.
+\begin{equation}\label{eq:URefDrain}
+    U_{ref,d} = U_{ds}
+\end{equation}
+Voor de waarde van de weerstanden in \autoref{fig:measureResistorDrain} en \autoref{fig:measureResistorSource} kan \autoref{eq:measureResistorVal} gebruikt worden.
+\begin{equation}\label{eq:measureResistorVal}
+    R = \frac{U_{dd} - U_{ds}}{I_{ds}}
+\end{equation}
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \def\svgwidth{\textwidth}
+        \input{img/ISFETCircuitRes.pdf_tex}
+        \caption{Met een weerstand aan de source.}
+        \label{fig:measureResistorDrain}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \def\svgwidth{\textwidth}
+        \input{img/ISFETCircuitBest.pdf_tex}
+        \caption{Met een weerstand aan de drain.}
+        \label{fig:measureResistorSource}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \def\svgwidth{\textwidth}
+        \input{img/ISFETCircuit.pdf_tex}
+        \caption{Met een stroombron.}
+        \label{fig:measureCurrent}
+    \end{subfigure}
+    \caption{De uitleesschakelingen voor de ISFET.}
+    \label{fig:measureCircuits}
+\end{figure}
+
+Elk van deze schakelingen heeft voor- en nadelen.
+Bij de schakeling in \autoref{fig:measureResistorDrain} zit de source van de ISFET direct verbonden met de aarde. Dit heeft als voordeel dat de uitgang van de nullor gelijk is aan de gate-source spanning. Hierdoor hoeft de nullor lagere spanningen te genereren om de gate-source spanning van de mosfet naar de goede waarde te krijgen.
+
+\begin{equation}
+    U_{nullor} = U_{gs,d}
+\end{equation}
+\begin{equation}
+    U_{nullor} = U_{gs,s} + U_{ref,s}
+\end{equation}
