@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP LTC3330EUH#PBF
+D Power Supply Plus a DC to DC Converter 32-Pin QFN EP Tube
+K
+F https://www.analog.com/media/en/technical-documentation/data-sheets/3330fc.pdf
+$ENDCMP
+#
+#End Doc Library

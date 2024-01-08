@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP LTC4071EMS8E#PBF
+D Analog Devices LTC4071EMS8E#PBF, Lithium-Polymer, Battery System Manager 8-Pin, MSOP
+K
+F https://www.analog.com/media/en/technical-documentation/data-sheets/LTC4071.pdf
+$ENDCMP
+#
+#End Doc Library
