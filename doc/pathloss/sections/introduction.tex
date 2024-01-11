@@ -50,7 +50,7 @@ Om het two ray model mee te nemen met de path loss berekening moet er een factor
 % Ingaan op de reflectie coefficient.
 De reflectie coefficient $\Gamma_\bot$ geeft aan hoeveel vermogen wordt gereflecteerd door de grond. Met \autoref{eq:reflectionCoef}, de invalshoek $\theta$ en de permeabiliteit $\epsilon_r$ kan de reflectie coefficient $\Gamma_\bot$ worden berekend \cite{bacco2014uavs,sommer2012applicability}.
 \begin{equation}\label{eq:reflectionCoef}
-    \Gamma_\bot\left(\theta, \epsilon_r\right)=\frac{\sin\left(\theta\right)-\sqrt{\epsilon_r-\cos\left(\theta\right)^2}}{\sin\left(\theta\right)+\sqrt{\epsilon_r-\cos\left(\theta\right)^2}}
+    \Gamma_\bot\left(\theta, \epsilon_r\right)=\frac{\sin\left(\theta\right)-\sqrt{\epsilon_r-\cos^2\left(\theta\right)}}{\sin\left(\theta\right)+\sqrt{\epsilon_r-\cos^2\left(\theta\right)}}
 \end{equation}
 \begin{equation}
     \theta=\arctan\left(\frac{h_1+h_2}{d}\right)\,\,\unit{\left[rad\right]}
