@@ -13,13 +13,13 @@
         ymode=log,
         xlabel={$R_1 [\si{\ohm}]$},
         ylabel={$u_{n,out} [\si{\volt}]$},
-        xmin=1e3, xmax=2e6,
+        xmin=1e3, xmax=1e7,
         grid=major
     ]
 
     \addplot [
         red,
-        domain=1e3:2e6,
+        domain=1e3:1e7,
         samples=201
     ]
     {sqrt((4 * \BOLZ * \TEMP / \CAP) * rad(atan(\REQU * \CAP * \OMEGAC)))};

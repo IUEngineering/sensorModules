@@ -8,13 +8,13 @@
         ymode=log,
         xlabel={$R_1 [\si{\ohm}]$},
         ylabel={$P [\si{\watt}]$},
-        xmin=1e3, xmax=2e6,
+        xmin=1e3, xmax=1e7,
         grid=major
     ]
 
     \addplot [
         blue,
-        domain=1e3:2e6,
+        domain=1e3:1e7,
         samples=201
     ]
     {1.8 / (x + x/\RESRAT)};

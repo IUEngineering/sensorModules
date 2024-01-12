@@ -1,9 +1,9 @@
 \subsection{Spanningsreferentie}\label{sec:referenceVoltage}
 
-De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken. Deze spanningsreferentie kan op meerdere manieren gegenereerd worden.
+De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken.
 % TODO: Vertel misschien over andere methoden.
-Uiteindelijk is er een spanningsdeler gekozen om de spanningsreferentie mee te implementeren. De schakeling van deze spanningsdeler is te zien in \autoref{fig:divider}.
-De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente fouten in de voedingsspanning.
+Hiervoor is als implementatie een spanningsdeler gekozen. De schakeling van deze spanningsdeler is te zien in \autoref{fig:divider}.
+De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente storing in de voedingsspanning.
 
 \begin{figure}[ht]
     \centering
@@ -22,14 +22,13 @@ De overdracht van deze spanningsdeler is te vinden in \autoref{eq:dividerTransfe
 \noindent
 Het vermogen dat de spanningsdeler dissipeert, kan met \autoref{eq:dividerPower} berekend worden.
 \begin{equation}\label{eq:dividerPower}
-    P(s) = U_{dd}(s)^2\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
+    P(s) = U_{dd}^2(s)\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
 \end{equation}
 Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \autoref{eq:dividerPowerSimple}.
 \begin{equation}\label{eq:dividerPowerSimple}
     P = \frac{U_{dd}^2}{R_1 + R_2}
 \end{equation}
 
-\noindent
 Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \autoref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
 
 \begin{figure}[ht]
@@ -45,41 +44,44 @@ Voor de spectrale spanningsruisdichtheid aan de uitgang $U_{ref}$ kan \autoref{e
 \begin{equation}\label{eq:dividerNoiseLaplace}
     S_{n,u_{ref}} = 4kTR_e\left(\frac{1}{1 + R_eCs}\right)^2
 \end{equation}
-Wanneer de absolute waarde van de ruis wordt genomen, kan deze over de bandbreedte geïntegreerd worden. Dit resulteert in \autoref{eq:dividerNoiseInt}.
+Wanneer de absolute waarde van de ruis wordt genomen, kan deze over de bandbreedte geïntegreerd worden. Dit resulteert in \autoref{eq:dividerNoiseInt}, waar B de bandbreedte is.
 \begin{equation}\label{eq:dividerNoiseInt}
-    u_{n,ref}^2 = \int_{\omega_l}^{\omega_h} 4kTR_e\left(\frac{1}{\sqrt{1 + (R_eC\omega)^2}}\right)^2 d\omega
+    u_{n,ref}^2 = 4kTR_e\int_{B} \frac{1}{1 + (2\pi f R_e C)^2} df
 \end{equation}
-Het integraal van deze formule komt uit op \autoref{eq:dividerNoiseIntegrated}.
-\begin{equation}\label{eq:dividerNoiseIntegrated}
-    u_{n,ref}^2 = \frac{4kT}{C}\left[\arctan(R_eC\omega_h) - \arctan(R_eC\omega_l)\right]
+Met een oneindige bandbreedte komt deze integraal uit op \autoref{eq:dividerNoiseIntegratedInf}.
+\begin{equation}\label{eq:dividerNoiseIntegratedInf}
+    u_{n,ref}^2 = \lim_{f\rightarrow\infty}\frac{2kT}{\pi C} \arctan(2\pi f R_eC)
 \end{equation}
+Aangezien de inverse tangens $\frac{\pi}{2}$ nadert, komt dit limiet uit op \autoref{eq:dividerNoise}.
+\begin{equation}\label{eq:dividerNoise}
+    u_{n,ref}^2 = \frac{kT}{C}
+\end{equation}
+Omdat een oneindige bandbreedte gebruikt is om op \autoref{eq:dividerNoise} te komen, berekend deze de ruis in het ergste geval. De weerstandwaardes van $R_1$ en $R_2$ zijn hierbij irrelevant. Hierdoor is ruis geen bepalende factor meer tijdens het kiezen van de weerstandswaardes van de spanningsdeler, en kunnen deze volledig gebaseerd worden op vermogensverbruik.
 
-Zolang de spanning stabiel is hoeft de referentie geen exact gedefinieerde spanning te hebben. Dit is omdat de ADC die de waarde van de sensor gaat uitlezen deze referentiespanning ook als referentie zal gebruiken. De waarde moet echter ergens rond de 1.1V zitten, om de stroombron te laten werken.
-In \autoref{sec:currentSource} is hier meer over te lezen.
-Aangezien de ingangsspanning 1.8V is, zal de DC overdracht $1.1 / 1.8 = \frac{11}{18}$ zijn. Hieruit komt de weerstandsverhouding in \autoref{eq:dividerResistors}.
+De condensatorwaarde heeft wel effect op de ruis. Met een condensator van $1\si{\micro\farad}$ komt de ruis uit op $64.4\si{\nano\volt}$. Dit zorgt voor een signaal-ruis verhouding van $138\si{\decibel}$, wat meer dan genoeg is.
+
+De weerstandsverhouding kan berekend worden door middel van \autoref{eq:dividerResistors}.
 \begin{equation}\label{eq:dividerResistors}
-    \frac{R_1}{R_2} = \frac{7}{11}
+    \frac{R_1}{R_2} = \frac{U_{dd}-U_{out}}{U_{out}}
 \end{equation}
-Een hogere $R_1$ zorgt voor een lager vermogensverbruik, maar ook een hogere ruis. Dit is te zien in \autoref{fig:dividerPlots}.
+Een hogere weerstand zorgt voor een lager vermogensverbruik. Omdat de spanningsreferentie direct aangesloten zit op de ingang van een nullor, hoeft geen rekening gehouden te worden met de uitgangsimpedantie van de spanningsreferentie. Hierdoor kunnen er erg hoge waardes gekozen worden. Met een $R_1$ van $5.6\si{\mega\ohm}$ gebruikt de spanningsdeler $1.65\si{\micro\watt}$. Dit valt binnen de specificaties.
 
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \input{plots/dividerNoise}
-        \caption{Spanningsruis}
-        \label{fig:dividerNoisePlot}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \input{plots/dividerPower}
-        \caption{Vermogensverbruik}
-        \label{fig:dividerPower}
-    \end{subfigure}
-    \caption{De ruis en het vermogensverbruik van de spanningsdeler, ten opzichte van de gekozen weerstandswaarde $R_1$.}
-    \label{fig:dividerPlots}
-\end{figure}
-Op $R_1 = 1\si{\mega\ohm}$ en $C = 10\si{\micro\farad}$ is de spanningsruis $u_{n,ref} = 51\si{\nano\volt}$ en het vermogensverbruik $P = 1.3\si{\micro\watt}$. De andere weerstandswaarde is dan $R_2 \approx 1.6 \si{\mega\ohm}$. Deze waardes vallen binnen de specificaties.
+Met een $R_1$ van $5.6\si{\mega\ohm}$ kunnen de waardes in \autoref{tab:divider} afgeleid worden. Deze waardes vallen binnen de specificaties.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lll}
+    Symbool & Waarde & Eenheid \\
+    \hline
+    $R_1$       & 5.6  & $\si{\mega\ohm}$   \\
+    $R_2$       & 1.0  & $\si{\mega\ohm}$   \\
+    $C$         & 1.0  & $\si{\micro\farad}$\\
+    $P$         & 1.65 & $\si{\micro\watt}$ \\
+    $u_{n,out}$ & 64.4 & $\si{\nano\volt}$  \\
+    $SNR$       & 148  & $\si{\decibel}$
+\end{tabular}
+\caption{De gekozen waardes van de spanningsdeler, met de resulterende vermogensverbruik en ruiseigenschappen.}
+\label{tab:divider}
+\end{table}
 
 [WELKE SPECS??]
