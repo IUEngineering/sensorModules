@@ -1,11 +1,5 @@
 \section{Resultaten}
-In \autoref{fig:pathLossMesurment:RSS} is te zien wat de gemeten waardes zijn van de testopstelling die is beschreven in \autoref{sec:methods}. Hierbij is de horizontale as de afstand tussen de twee antennes, en is de verticale as het vermogen van de ontvangen signalen.
-
-% place in discussion
-%\autoref{fig:pathLossMesurment} toont dat het signaalverlies tussen de ontvangst en zendantennes niet het free space model volgt. 
-% Show graph of received power over distance
-
-% Show other results if relevant
+In \autoref{fig:pathLossMesurment} is te zien wat de gemeten waardes zijn van de testopstelling die is beschreven in \autoref{sec:methods}. Hierbij is de horizontale as de afstand tussen de twee antennes, en is de verticale as het vermogen van de ontvangen signalen. 
 \begin{figure}[ht]
     \centering
 \begin{tikzpicture}
@@ -50,13 +44,14 @@ In \autoref{fig:pathLossMesurment:RSS} is te zien wat de gemeten waardes zijn va
 
 \end{figure}
 
+Bij deze meting was het meten van het ontvangst vermogen niet het doel. Het doel van de meting was namelijk het meten van het signaalverlies tussen een zend en ontvangstantenne. Door het ontvangen signaalvermogen min het zendvermogen te berekenen is het signaalverlies te bepalen. Dit wordt getoond in \autoref{fig:pathLossMesurment:pathloss}. 
 \begin{figure}[ht]
     \centering
 \begin{tikzpicture}
     \begin{axis}[
         title={},
         xlabel={Afstand (m)},
-        ylabel={PL (dBm)},
+        ylabel={PL (dB)},
         grid=major,
         cycle list name=color list,
         no markers,
@@ -94,56 +89,4 @@ In \autoref{fig:pathLossMesurment:RSS} is te zien wat de gemeten waardes zijn va
 
 \end{figure}
 
-\begin{figure}[ht]
-    \centering
-\begin{tikzpicture}
-    \begin{axis}[
-        title={},
-        xlabel={Afstand (m)},
-        ylabel={PL (dBm)},
-        grid=major,
-        cycle list name=color list,
-        no markers,
-        every axis plot/.append style={thick},
-        legend pos=outer north east,
-        legend style={font=\small}
-    ]
-    \addlegendimage{empty legend}
-    \addplot table [x=Distance,y=-10] {sections/data3.dat};
-    % \addlegendentry{\hspace{-.6cm}\textbf{TSS}}
-    % \addlegendentry{PL}
-    \end{axis}
-\end{tikzpicture}
 
-%TODO: Add better title?
-\caption{Gemiddeld signaalverlies over afstand.}
-\label{fig:pathLossMesurment:avaragePathloss}
-
-\end{figure}
-
-\begin{figure}[ht]
-    \centering
-\begin{tikzpicture}
-    \begin{axis}[
-        title={},
-        xlabel={Afstand (m)},
-        ylabel={PL (dBm)},
-        grid=major,
-        cycle list name=color list,
-        no markers,
-        every axis plot/.append style={thick},
-        legend pos=outer north east,
-        legend style={font=\small}
-    ]
-    \addlegendimage{empty legend}
-    \addplot table [x=Distance,y=5] {sections/data4.dat};
-    % \addlegendentry{\hspace{-.6cm}\textbf{TSS}}
-    % \addlegendentry{PL}
-    \end{axis}
-\end{tikzpicture}
-
-%TODO: Add better title?
-\caption{De mediaan van het signaalverlies over afstand.}
-\label{fig:pathLossMesurment:medianPathloss}
-
-\end{figure}

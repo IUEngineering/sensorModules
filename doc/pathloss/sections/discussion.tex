@@ -2,3 +2,62 @@
 
 % Discus the results. 
 % Show what the fitting coefficient is after calculation.
+
+In \autoref{fig:pathLossMesurment:pathloss} is het te zien dat de hoeveelheid path loss die optreed niet afhankelijk lijkt te zijn van het signaal vermogen. Dit komt ook overeen met de verschillende modellen die in \autoref{sec:introduction} zijn behandeld. 
+
+
+Het is ook te zien dat de hoeveelheid path loss niet het freespace path loss model volgt. Dit lijkt ook overeen te komen met de verwachting die eerder is geschetst in \autoref{sec:introduction}.
+% \autoref{fig:pathLossMesurment} toont dat het signaalverlies tussen de ontvangst en zendantennes niet het free space model volgt.
+
+\begin{figure}[ht]
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={},
+        xlabel={Afstand (m)},
+        ylabel={PL (dB)},
+        grid=major,
+        cycle list name=color list,
+        no markers,
+        every axis plot/.append style={thick},
+        legend pos=outer north east,
+        legend style={font=\small}
+    ]
+    \addlegendimage{empty legend}
+    \addplot table [x=Distance,y=-10] {sections/data3.dat};
+    % \addlegendentry{\hspace{-.6cm}\textbf{TSS}}
+    % \addlegendentry{PL}
+    \end{axis}
+\end{tikzpicture}
+
+%TODO: Add better title?
+\caption{Gemiddeld signaalverlies over afstand.}
+\label{fig:pathLossMesurment:avaragePathloss}
+
+\end{figure}
+\begin{figure}[ht]
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={},
+        xlabel={Afstand (m)},
+        ylabel={PL (dB)},
+        grid=major,
+        cycle list name=color list,
+        no markers,
+        every axis plot/.append style={thick},
+        legend pos=outer north east,
+        legend style={font=\small}
+    ]
+    \addlegendimage{empty legend}
+    \addplot table [x=Distance,y=5] {sections/data4.dat};
+    % \addlegendentry{\hspace{-.6cm}\textbf{TSS}}
+    % \addlegendentry{PL}
+    \end{axis}
+\end{tikzpicture}
+
+%TODO: Add better title?
+\caption{De mediaan van het signaalverlies over afstand.}
+\label{fig:pathLossMesurment:medianPathloss}
+
+\end{figure}
