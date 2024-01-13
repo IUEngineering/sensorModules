@@ -24,7 +24,7 @@ Het berekenen van ontvangen vermogen kan erg nuttig zijn, op het moment dat het 
 \begin{equation}\label{eq:FreeSpacePathLoss}
     PL_{FS}=20\log\left(\frac{4\pi d}{\lambda\sqrt{G_tG_r}}\right) \,\,\left[\unit{\decibel}\right]
 \end{equation}
-In het geval er nog niet een antenne is gekozen om te gebruiken in een ontwerp zijn de antenneversterkingsfactoren nog niet bekend. Om dan toch nog een indicatie te kunnen krijgen van het signaal verlies kunnen de ontvangst en zendantennes als isotroop worden verondersteld. Een antenne met isotrope eigenschappen heeft namelijk een antenneversterkingsfactor van 1 \cite{bensky2019shortRangeWirelessCommunication}. Dit is het geval omdat een isotrope antenne in alle richtingen met evenveel vermogen zend \cite{bensky2019shortRangeWirelessCommunication}.
+Wanneer er (nog) geen antenne gekozen is om te gebruiken in een ontwerp zijn de antenneversterkingsfactoren nog niet bekend. Om dan toch nog een indicatie te kunnen krijgen van het signaal verlies kunnen de ontvangst en zendantennes als isotroop worden verondersteld. Een antenne met isotrope eigenschappen heeft namelijk een antenneversterkingsfactor van 1 \cite{bensky2019shortRangeWirelessCommunication}. Dit is omdat een isotrope antenne in alle richtingen met evenveel vermogen zend \cite{bensky2019shortRangeWirelessCommunication}.
 Als de zend en ontvangstantennes als isotroop worden verondersteld volgt uit \autoref{eq:FreeSpacePathLoss} \autoref{eq:isotropicPathLoss}.
 %In het geval dat de antennes die worden gebruikt isotrope eigenschappen\footnote{Antennes met isotrope eigenschappen zenden in alle richtingen met evenveel vermogen.} hebben volgt \autoref{eq:isotropicPathLoss} uit \autoref{eq:FreeSpacePathLoss}. Dit is omdat een antenne met isotrope eigenschappen een antenne versterking van $1$ heeft \cite{bensky2019shortRangeWirelessCommunication}.
 \begin{equation} \label{eq:isotropicPathLoss}
@@ -39,7 +39,7 @@ Het path loss model dat beschreven wordt met \autoref{eq:FreeSpacePathLoss} gaat
     \label{fig:twoRayModelSchem}
 \end{figure}
 
-Om het two ray model mee te nemen met de path loss berekening moet er een factor met het model van het free space path loss model worden vermenigvuldigd. Deze factor wordt gegeven door \autoref{eq:twoRayModel} \cite{MobileAntenaSystemsHandbookCH2,brini2019system}. In \autoref{eq:twoRayModel} zijn $h_1$ en $h_2$ de hoogtes van antennes 1 en 2, $d$ is de afstand tussen antennes 1 en 2, $\Gamma_\bot$ is de reflectie coefficient en $\beta$ is het golfgetal. het golfgetal kan berekend worden met \autoref{eq:calcWaveNumber}. 
+Om het two ray model mee te nemen in de path loss berekening moet er een factor berekend worden. Deze factor moet vervolgens met de uitkomst van het free space path loss model worden vermenigvuldigd. Deze factor wordt gegeven door \autoref{eq:twoRayModel} \cite{MobileAntenaSystemsHandbookCH2,brini2019system}. In \autoref{eq:twoRayModel} zijn $h_1$ en $h_2$ respectievelijk de hoogtes van antennes 1 en 2, $d$ is de afstand tussen antennes 1 en 2, $\Gamma_\bot$ is de reflectie coefficient en $\beta$ is het golfgetal. het golfgetal kan berekend worden met \autoref{eq:calcWaveNumber}. 
 \begin{equation}\label{eq:twoRayModel}
     PL_{TR}=20\log\left[\frac{1}{\left|1+\Gamma_\bot\exp\left[j\beta \left(\sqrt{\left(h_1+h_2\right)^2+d^2}-\sqrt{\left(h_1-h_2\right)^2+d^2}\right)\right]\right|}\right] \,\,\left[\unit{\decibel}\right]
 \end{equation}
