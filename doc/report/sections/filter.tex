@@ -1,0 +1,70 @@
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{0.3\textwidth}
+    \input{img/filter.pdf_tex}
+    \caption{Het eerste-orde filter.}
+    \label{fig:filterCircuit}
+\end{figure}
+
+\section{Filter}
+Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Hiervoor is gekozen om een eerste orde filter te gebruiken. [WAAROM???]
+De schakeling van dit filter is te zien in \autoref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \autoref{eq:cutoffFreq}.
+De spectrale ruisdichtheid aan de ingang van het filter is te vinden in \autoref{eq:filterNoiseDensity}.
+Dit kan naar de uitgang worden getransformeerd door middel van de overdrachtsfunctie (\autoref{eq:filterTransfer}), waar \autoref{eq:filterNoiseDensityOut} uitkomt.
+Als \autoref{eq:filterNoiseDensityOut} vervolgens over de bandbreedte geïntegreerd wordt resulteert dit in \autoref{eq:filterIntegrated}.
+
+\begin{equation} \label{eq:cutoffFreq}
+    2\pi f_c = \omega_c = \frac{1}{RC}
+    \tagaddtext{[\si{\radian\per\second}]}
+\end{equation}
+
+\begin{equation} \label{eq:filterNoiseDensity}
+    S_{in} = 4kTR
+    \tagaddtext{[\si{\volt\squared\per\hertz}]}
+\end{equation}
+
+\begin{equation} \label{eq:filterTransfer}
+    H(s) = \frac{1}{1+sRC}
+\end{equation}
+
+\begin{equation} \label{eq:filterNoiseDensityOut}
+    S_{out} = \left|H(s)\right|^2S_{in} = \frac{4kTR}{1+(\omega R C)^2}
+    \tagaddtext{[\si{\volt\squared\per\hertz}]}
+\end{equation}
+
+\begin{equation} \label{eq:filterIntegrated}
+    u_{n,out} = \sqrt{\int_{0}^{\omega_B} \frac{4kTR}{1+(\omega R C)^2} \, d\omega} = \sqrt{\frac{4kT}{C} \arctan(\omega_BRC)}
+    \tagaddtext{[\si{\volt}]}
+\end{equation}
+
+Op deze manier is het mogelijk om voor een gekozen condensatorwaarde $C$ en bandbreedte $\omega_B$, de weerstandswaarde $R$ en de spanningsruis $u_{n,out}$ te bepalen.
+In \autoref{fig:filterPlots} is te zien hoe de spanningsruis en de weerstandswaarde veranderen ten opzichte van de gekozen condensator. Hoe groter de condensatorwaarde, des te lager de ruis. Helaas gaat de weerstandswaarde ook naar beneden wanneer er een hogere condensatorwaarde gekozen wordt, waardoor er meer vermogen gedissipeerd wordt in de weerstand. Dit komt natuurlijk door de standaard vermogensverhouding $P = \frac{U^2}{R}$, waar hogere weerstandswaardes zorgen voor minder vermogensverlies. 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \input{plots/filterNoise}
+        \caption{Spanningsruis}
+        \label{fig:filterVoltageNoisePlot}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \input{plots/filterResistor}
+        \caption{Weerstandswaarde}
+        \label{fig:filterResistorPlot}
+    \end{subfigure}
+    \caption{De ruis en weerstandswaardes van het filter ten opzichte van de gekozen condensator, met de kantelfrequentie op 15Hz.}
+    \label{fig:filterPlots}
+\end{figure}
+
+Aangezien de pH sensor niet veel hoge frequenties zal produceren, is het mogelijk om een hogere capaciteitswaarde te kiezen.
+Bij een condensatorwaarde van $1\si{\micro\farad}$ zal dit filter op de bandbreedtefrequentie volgens \autoref{eq:filterPower} zo'n $20\si{\micro\watt}$ gebruiken.
+\begin{equation} \label{eq:filterPower}
+    P = \frac{U_{in,max}^2}{\left|R + \frac{1}{sC}\right|}
+    \tagaddtext{[\si{\watt}]}
+\end{equation}
+Omdat $20\si{\micro\watt}$ erg weinig is, en de pH waarde hoogst waarschijnlijk nooit zo snel zal veranderen als 15Hz, [ONDERBOUW OF REFEREER NAAR ONDERBOUWING] is dit een prima keuze. De ruis die het filter produceert met een capaciteit van $1\si{\micro\farad}$ is volgens \autoref{eq:filterIntegrated} $114\si{\nano\volt}$. Dit valt binnen de specificaties.
+De weerstandswaarde van het filter zal omhoog worden afgerond naar de dichtstbijzijnde E24 waarde, in dit geval is dat $11\si{\kilo\ohm}$.
+Met deze waardes is de kantelfrequentie volgens \autoref{eq:cutoffFreq} op $14.5\si{\hertz}$, wat volledig acceptabel is.

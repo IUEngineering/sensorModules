@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+    \pgfplotsset{width=\textwidth}
+    \newcommand\BOLZ{1.380649e-23}
+    \newcommand\TEMP{300}
+    \newcommand\OMEGAC{15*2*pi}
+
+    \pgfplotsset{set layers}
+    \begin{axis}[
+        xmode=log,
+        ymode=log,
+        xlabel={$C$},
+        ylabel={$u_{n,out}$},
+        axis y line*=left,
+        xmin=1e-9, xmax=1e-5,
+        grid=major
+    ]
+
+    \addplot [
+        red,
+        domain=1e-9:1e-5,
+        samples=201
+    ]
+    {sqrt((4 * \BOLZ * \TEMP / x) * rad(atan(\OMEGAC * (1 / (\OMEGAC * x)) * x)))};
+    \end{axis}
+\end{tikzpicture}

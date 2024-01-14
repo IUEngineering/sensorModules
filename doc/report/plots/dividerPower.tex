@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+    \pgfplotsset{width=\textwidth}
+    \newcommand\OMEGAC{10*2*pi}
+    \newcommand\RESRAT{(7/11)}
+
+    \begin{axis}[
+        xmode=log,
+        ymode=log,
+        xlabel={$R_1 [\si{\ohm}]$},
+        ylabel={$P [\si{\watt}]$},
+        xmin=1e3, xmax=1e7,
+        grid=major
+    ]
+
+    \addplot [
+        blue,
+        domain=1e3:1e7,
+        samples=201
+    ]
+    {1.8 / (x + x/\RESRAT)};
+    \end{axis}
+\end{tikzpicture}

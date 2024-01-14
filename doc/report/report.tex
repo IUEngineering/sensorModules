@@ -4,6 +4,14 @@
 \usepackage{hvaTemplate}
 \usepackage{csquotes}
 \usepackage[backend=biber, style=ieee]{biblatex}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\sisetup{detect-all}
+
+
 
 \addbibresource{references.bib}
 
@@ -15,6 +23,15 @@
 
 \numberwithin{equation}{section}
 
+\makeatletter
+\providecommand\add@text{}
+\newcommand\tagaddtext[1]{%
+\gdef\add@text{#1\gdef\add@text{}}}% 
+\renewcommand\tagform@[1]{%
+  \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
+}
+\makeatother
+  
 \begin{document}
     \makeTitlepage
     \authorsCopyright
@@ -22,6 +39,13 @@
     \tableofcontents
 
     \newpage
+    \input{sections/intro}
+    \input{sections/specifications}
+    \input{sections/functioneel.tex}
+    \input{sections/meten}
+    \input{sections/divider.tex}
+    \input{sections/filter.tex}
+    \input{sections/powerAndHarvest.tex}
 
 
     % \newpage
