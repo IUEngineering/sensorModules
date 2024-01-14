@@ -9,7 +9,18 @@
 
 \addbibresource{references.bib}
 
-\setAuthor{\\Tycho Jöbsis (500845792)\\ Jochem Leijenhorst (500855372)\\ Illya Ustenko (500845492)\\ Groep 7}
+% \setAuthor{\\\underline{Tycho Jöbsis (500845792)}\\ Jochem Leijenhorst (500855372)\\ Illya Ustenko (500845492)\\ Groep 7}
+\setAuthor{
+    \\Groep 7
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{ll}
+            \underline{Tycho Jöbsis} & (500845792)\\ 
+            Jochem Leijenhorst       & (500855372)\\ 
+            Illya Ustenko            & (500845492)        
+        \end{tabular}
+    \end{table}
+}
 \extraInfo{Sensor modules\\Datum metingen: 27 November 2023}
 \setTitle{De fittingscoefficient voor pathloss meten}
 
@@ -17,10 +28,21 @@
 
 \numberwithin{equation}{section}
 
+% \begin{table}[h!]
+%     \centering
+%     \begin{tabular}{l|l}
+%         \underline{Tycho Jöbsis} & (500845792)\\ 
+%         Jochem Leijenhorst       & (500855372)\\ 
+%         Illya Ustenko            & (500845492)        
+%     \end{tabular}
+% \end{table}
+
 \begin{document}
     \makeTitlepage
     \authorsCopyright
     \onecolumn
+    \input{sections/abstract}
+    \newpage
     \tableofcontents
 
     \newpage

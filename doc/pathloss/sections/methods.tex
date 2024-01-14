@@ -1,8 +1,8 @@
 \section{Meetopstelling} \label{sec:methods}
-In \autoref{sec:introduction} is een model beschreven waarmee path loss kan worden gemodelleerd. In dat model wordt er gebruik gemaakt van een fittingscoëfficiënt. Deze fittingscoëfficiënt kan echter anders zijn afhankelijk van de omgeving. Om een indicatie te krijgen van welke waarde de fittingscoëfficiënt heeft in het Jacoba Mulder Huis zal in dit hoofdstuk een testopstelling worden toegelicht waarmee geprobeerd wordt om de fittingscoëfficiënt te bepalen.
+In \autoref{sec:introduction} is een model beschreven waarmee path loss kan worden gemodelleerd. In dat model wordt er gebruik gemaakt van een fittingscoëfficiënt. Deze fittingscoëfficiënt kan echter anders zijn afhankelijk van de omgeving. Om een indicatie te krijgen van welke waarde de fittingscoëfficiënt heeft in het Jacoba Mulder Huis, zal in dit hoofdstuk een testopstelling worden toegelicht waarmee de fittingscoëfficiënt bepaald zou kunnen worden.
 
 % \subsection{Meetopstelling}
-Voor de metingen is gebruik gemaakt van de materialen die in \autoref{tab:measurement:materials} staan. Deze materialen zijn volgens ... opgesteld. Hierbij staan beide antennes op 1 meter hoogte en in eerste instantie op 1 meter afstand. Vervolgens is er met de signaal generator vanaf -10dBm in stappen van 2dBm tot 4dBm gezonden. Per zendniveau is er vervolgens met de R\&S spectrumanalyzer gemeten wat het ontvangst vermogen is. Nadat voor al de verschillende zendvermogens het ontvangst vermogen is gemeten wordt de afstand tussen de antennes vergroot met een meter.
+Voor de metingen is gebruik gemaakt van de materialen die in \autoref{tab:measurement:materials} staan. Deze materialen zijn volgens \autoref{fig:measurementSetup} opgesteld. Hierbij staan beide antennes op een hoogte van 1 meter en in eerste instantie op 1 meter afstand. Vervolgens is er met de signaal generator vanaf -10dBm in stappen van 2dBm tot 4dBm gezonden op een frequentie van 2.4GHz. Per zendniveau is er vervolgens met een spectrumanalyzer gemeten wat het ontvangst vermogen is. Nadat voor al de verschillende zendvermogens het ontvangst vermogen is gemeten, wordt de afstand tussen de antennes vergroot met een meter. 
 \begin{table}[ht]
     \centering
     \begin{tabular}{l|l|l}
@@ -20,7 +20,12 @@ Voor de metingen is gebruik gemaakt van de materialen die in \autoref{tab:measur
     \label{tab:measurement:materials}
 \end{table}
 % place figure of measurement schematic
-
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{measurementSetup}
+    \caption{De meetopstelling van dit meetrapport.}
+    \label{fig:measurementSetup}
+\end{figure}
 
 % Description of measurement setup
 

@@ -2,7 +2,7 @@
 % what is pathloss
 % When designing wireless electronic systems, end users usually ask for the estimated range of the system. There are two ways that such an estimate can be obtained. The seemingly most simple one of these methods is to just do some measurements. This method is however not able to produce reliable estimates, unless the system has been tested in lots of different environments. The second method on the other hand is centered around equations that predict the signal degradation over distance. This method is also not a perfect prediction thus requiring a fitting coefficient.
 
-Met de opkomst van IoT (Internet of Things) systemen wordt er steeds vaker verlangd dat elektronische systemen draadloos kunnen communiceren. Het benodigde draadloze bereik van een IoT apparaat is erg afhankelijk van de toepassing. In het geval van een medisch oproep systeem dat enkel binnen één kamer in een verpleeghuis hoeft te werken zal het draadloze bereik niet veel groter te zijn dan enkele tientallen meters. Echter, wanneer de toepassing in de agrarische sector valt kan een groter bereik van enkele kilometers kilometers gewenst zijn. 
+Met de opkomst van IoT (Internet of Things) systemen wordt er steeds vaker verlangd dat elektronische systemen draadloos kunnen communiceren. Het benodigde draadloze bereik van een IoT apparaat is erg afhankelijk van de toepassing. In het geval van een medisch oproep systeem dat enkel binnen één kamer in een verpleeghuis hoeft te werken zal het draadloze bereik niet veel groter hoeven te zijn dan enkele tientallen meters. Echter, wanneer de toepassing in de agrarische sector valt kan een groter bereik van enkele kilometers kilometers gewenst zijn. 
 
 Om ervoor te zorgen dat een IoT systeem niet onnodig veel energie verbruikt, is het belangrijk om ervoor te zorgen dat het draadloze communicatie bereik niet vele malen groter is dan nodig. Door signaalverliezen goed te modelleren kan er een ondergrens gevonden worden voor het minimaal benodigde zendvermogen in een draadloos communicatiesysteem.
 
@@ -41,7 +41,7 @@ Het path loss model dat beschreven wordt met \autoref{eq:FreeSpacePathLoss} gaat
 
 Om het two ray model mee te nemen in de path loss berekening moet er een factor berekend worden. Deze factor moet vervolgens met de uitkomst van het free space path loss model worden vermenigvuldigd. Deze factor wordt gegeven door \autoref{eq:twoRayModel} \cite{MobileAntenaSystemsHandbookCH2,brini2019system}. In \autoref{eq:twoRayModel} zijn $h_1$ en $h_2$ respectievelijk de hoogtes van antennes 1 en 2, $d$ is de afstand tussen antennes 1 en 2, $\Gamma_\bot$ is de reflectie coefficient en $\beta$ is het golfgetal. het golfgetal kan berekend worden met \autoref{eq:calcWaveNumber}. 
 \begin{equation}\label{eq:twoRayModel}
-    PL_{TR}=20\log\left[\frac{1}{\left|1+\Gamma_\bot\exp\left[j\beta \left(\sqrt{\left(h_1+h_2\right)^2+d^2}-\sqrt{\left(h_1-h_2\right)^2+d^2}\right)\right]\right|}\right] \,\,\left[\unit{\decibel}\right]
+    PL_{TR}=-20\log\left[\frac{1}{\left|1+\Gamma_\bot\exp\left[j\beta \left(\sqrt{\left(h_1+h_2\right)^2+d^2}-\sqrt{\left(h_1-h_2\right)^2+d^2}\right)\right]\right|}\right] \,\,\left[\unit{\decibel}\right]
 \end{equation}
 \begin{equation}\label{eq:calcWaveNumber}
     \beta=\frac{2\pi}{\lambda}
