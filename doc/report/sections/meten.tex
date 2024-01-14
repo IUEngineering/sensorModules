@@ -73,11 +73,11 @@ Omdat $U_{ds}$ en $I_{ds}$ van de ISFET niet veranderen, kan de impedantie ervan
 Vervolgens kan deze, samen met de spanningsruisbronnen $u_{n,ref}$ en $u_{n,n}$ naar de uitgang getransformeerd worden. Dit komt uit op een spanningsruisbron aan de uitgang, zoals te zien in \autoref{fig:measureNoiseMoved}. De spectrale spanningsruisdichtheid hiervan is te berekenen door middel van \autoref{eq:measureNoiseOut}.
 
 \begin{equation}\label{eq:measureNoiseOut}
-    Su_{n,out} = \left(Su_{n,ref} + Su_{n,n} + Si_{n,in}\left(Z_{fet} // R\right)^2\right) \cdot H^2(\ph)
+    S_{u_{{n,out}}} = \left(S_{u_{{n,ref}}} + S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2\right) \cdot H^2(\ph)
     \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
 \begin{equation}
-    Si_{n,in} = Si_{n,n} + Si_{n,R} + Si_{n,ds}
+    S_{i_{{n,in}}} = S_{i_{{n,n}}} + S_{i_{{n,R}}} + S_{i_{{n,ds}}}
     \tagaddtext{[\si{\ampere\squared\per\hertz}]}
     \label{eq:measureNoiseCurrentIn}
 \end{equation}
@@ -90,11 +90,11 @@ De waardes van deze ruisbronnen zijn te vinden in \autoref{tab:measureNoiseValue
     \begin{tabular}{c|l}
         Ruisbron & Waarde \\
         \hline 
-        $Su_{n,ref}$ & Zie \autoref{sec:referenceVoltage} \\
-        $Su_{n,n}$   & Implementatie nullor \\
-        $Si_{n,n}$   & Implementatie nullor \\
-        $Si_{n,R}$   & $\frac{4kT}{R}$ \\
-        $Si_{n,ds}$  & $4kT\frac{I_{ds}}{U_{ds}}$ \\
+        $S_{u_{{n,ref}}}$ & Zie \autoref{sec:referenceVoltage} \\
+        $S_{u_{{n,n}}}$   & Implementatie nullor \\
+        $S_{i_{{n,n}}}$   & Implementatie nullor \\
+        $S_{i_{{n,R}}}$   & $\frac{4kT}{R}$ \\
+        $S_{i_{{n,ds}}}$  & $4kT\frac{I_{ds}}{U_{ds}}$ \\
     \end{tabular}
     \caption{Waar de waardes van de ruisbronnen vandaan gehaald kunnen worden.}
     \label{tab:measureNoiseValues}
@@ -107,3 +107,28 @@ De waardes van deze ruisbronnen zijn te vinden in \autoref{tab:measureNoiseValue
     \caption{De meetschakeling met verschoven ruisbronnen.}
     \label{fig:measureNoiseMoved}
 \end{figure}
+
+De overdrachtsfunctie is gedefinieerd in \autoref{eq:measureTransfer}, en is een functie van de uitgangsspanning. De uitgangsspanning is een functie van de pH waarde, en is te vinden in \autoref{eq:measureOutVoltage}. Hierin is $s$ de gevoeligheid van de sensor, die gegeven wordt in $\si{\milli\volt\per\ph}$, en is $U_7$ de uitgangsspanning op pH7.
+
+\begin{equation}
+    H(\ph) = \frac{U_o(\ph)}{U_{ref}}
+    \label{eq:measureTransfer}
+\end{equation}
+
+\begin{equation}
+    U_o(\ph) = s\ph + U_7
+    \label{eq:measureOutVoltage}
+\end{equation}
+Door de hoogste uitgangsspanning $U_{o,max}$ te nemen, kan de maximale uitgangsruis berekend worden. Deze is te vinden in \autoref{eq:measureNoiseFull}.
+
+\begin{equation}\label{eq:measureNoiseFull}
+    S_{u_{{n,out}}} = \left(S_{u_{{n,ref}}} + S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2\right) \cdot \left(\frac{U_{o,max}}{U_{ref}}\right)^2
+    \tagaddtext{[\si{\volt\squared\per\hertz}]}
+\end{equation}
+
+Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsruis uitgerekend worden. Dit wordt gedaan in \autoref{eq:measureNoiseVoltage}.
+\begin{equation}\label{eq:measureNoiseVoltage}
+    u_{n,out} = \sqrt{B \cdot S_{u_{{n,out}}}}
+    \tagaddtext{[\si{\volt}]}
+\end{equation}
+
