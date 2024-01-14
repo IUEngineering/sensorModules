@@ -126,9 +126,13 @@ Door de hoogste uitgangsspanning $U_{o,max}$ te nemen, kan de maximale uitgangsr
     \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
 
-Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsruis uitgerekend worden. Dit wordt gedaan in \autoref{eq:measureNoiseVoltage}.
+Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsruis uitgerekend worden door de spectrale ruisdichtheid te vermenigvuldigen met de bandbreedte. Dit wordt gedaan in \autoref{eq:measureNoiseVoltage}.
 \begin{equation}\label{eq:measureNoiseVoltage}
     u_{n,out} = \sqrt{B \cdot S_{u_{{n,out}}}}
     \tagaddtext{[\si{\volt}]}
 \end{equation}
 
+Het vermogensverbruik van deze schakeling is gedefinieerd in \autoref{eq:measurePower}, waar $P_n$ het vermogensverbruik van de nullorimplementatie is. Volgens de 
+\begin{equation}\label{eq:measurePower}
+    P = P_n + U_{dd}I{ds}
+\end{equation}

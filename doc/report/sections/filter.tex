@@ -7,7 +7,7 @@
 \end{figure}
 
 \section{Filter}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde filter te gebruiken. [WAAROM???]
+Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde filter te gebruiken.
 De schakeling van dit filter is te zien in \autoref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \autoref{eq:cutoffFreq}.
 De spectrale ruisdichtheid aan de ingang van het filter is te vinden in \autoref{eq:filterNoiseDensity}.
 De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die van de spanningsdeler in \autoref{sec:referenceVoltage}. Deze is te berekenen met \autoref{eq:dividerNoise}.
@@ -58,12 +58,12 @@ Met de ruis van het vorige systeem komt de minimale condensatorwaarde op ongevee
     \begin{tabular}{l|l|l}
         Symbool & Waarde & Eenheid \\
         \hline
-        $C$         & 8.2   & $\si{\nano\farad}$\\
-        $R$         & 1.8   & $\si{\mega\ohm}$  \\
+        $C$         & 82    & $\si{\nano\farad}$\\
+        $R$         & 180   & $\si{\kilo\ohm}$  \\
         $f_c$       & 10.8  & $\si{\hertz}$     \\
-        $P$         & 41    & $\si{\nano\watt}$ \\
-        $u_{n,out}$ & 711   & $\si{\nano\volt}$ \\
-        NF          & 0.71  & $\si{\decibel}$   \\
+        $P$         & 408   & $\si{\nano\watt}$ \\
+        $u_{n,out}$ & 225   & $\si{\nano\volt}$ \\
+        NF          & 0.23  & $\si{\decibel}$   \\
     \end{tabular}
     \caption{De gekozen waardes van het filter, en de resulterende vermogens- en ruiseigenschappen.}
     \label{tab:filterValues}
