@@ -23,10 +23,12 @@ De overdracht van deze spanningsdeler is te vinden in \autoref{eq:dividerTransfe
 Het vermogen dat de spanningsdeler dissipeert, kan met \autoref{eq:dividerPower} berekend worden.
 \begin{equation}\label{eq:dividerPower}
     P(s) = U_{dd}^2(s)\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
+    \tagaddtext{[\si{\watt}]}
 \end{equation}
 Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \autoref{eq:dividerPowerSimple}.
 \begin{equation}\label{eq:dividerPowerSimple}
     P = \frac{U_{dd}^2}{R_1 + R_2}
+    \tagaddtext{[\si{\watt}]}
 \end{equation}
 
 Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \autoref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
@@ -80,8 +82,11 @@ Met een $R_1$ van $5.6\si{\mega\ohm}$ kunnen de waardes in \autoref{tab:divider}
     $u_{n,out}$ & 64.4 & $\si{\nano\volt}$  \\
     $SNR$       & 148  & $\si{\decibel}$
 \end{tabular}
-\caption{De gekozen waardes van de spanningsdeler, met de resulterende vermogensverbruik en ruiseigenschappen.}
+\caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
 \label{tab:divider}
 \end{table}
+
+
+
 
 [WELKE SPECS??]
