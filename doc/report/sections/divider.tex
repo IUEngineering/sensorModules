@@ -45,10 +45,12 @@ Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen word
 Voor de spectrale spanningsruisdichtheid aan de uitgang $U_{ref}$ kan \autoref{eq:dividerNoiseLaplace} worden opgesteld.
 \begin{equation}\label{eq:dividerNoiseLaplace}
     S_{n,u_{ref}} = 4kTR_e\left(\frac{1}{1 + R_eCs}\right)^2
+    \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
 Wanneer de absolute waarde van de ruis wordt genomen, kan deze over de bandbreedte geïntegreerd worden. Dit resulteert in \autoref{eq:dividerNoiseInt}, waar B de bandbreedte is.
 \begin{equation}\label{eq:dividerNoiseInt}
     u_{n,ref}^2 = 4kTR_e\int_{B} \frac{1}{1 + (2\pi f R_e C)^2} df
+    \tagaddtext{[\si{\volt\squared}]}
 \end{equation}
 Met een oneindige bandbreedte komt deze integraal uit op \autoref{eq:dividerNoiseIntegratedInf}.
 \begin{equation}\label{eq:dividerNoiseIntegratedInf}
@@ -72,7 +74,7 @@ Met een $R_1$ van $5.6\si{\mega\ohm}$ kunnen de waardes in \autoref{tab:divider}
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{lll}
+\begin{tabular}{l|l|l}
     Symbool & Waarde & Eenheid \\
     \hline
     $R_1$       & 5.6  & $\si{\mega\ohm}$   \\
@@ -80,7 +82,7 @@ Met een $R_1$ van $5.6\si{\mega\ohm}$ kunnen de waardes in \autoref{tab:divider}
     $C$         & 1.0  & $\si{\micro\farad}$\\
     $P$         & 1.65 & $\si{\micro\watt}$ \\
     $u_{n,out}$ & 64.4 & $\si{\nano\volt}$  \\
-    $SNR$       & 148  & $\si{\decibel}$
+    SNR         & 148  & $\si{\decibel}$
 \end{tabular}
 \caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
 \label{tab:divider}

@@ -7,11 +7,10 @@
 \end{figure}
 
 \section{Filter}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Hiervoor is gekozen om een eerste orde filter te gebruiken. [WAAROM???]
+Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde filter te gebruiken.
 De schakeling van dit filter is te zien in \autoref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \autoref{eq:cutoffFreq}.
 De spectrale ruisdichtheid aan de ingang van het filter is te vinden in \autoref{eq:filterNoiseDensity}.
-Dit kan naar de uitgang worden getransformeerd door middel van de overdrachtsfunctie (\autoref{eq:filterTransfer}), waar \autoref{eq:filterNoiseDensityOut} uitkomt.
-Als \autoref{eq:filterNoiseDensityOut} vervolgens over de bandbreedte geïntegreerd wordt resulteert dit in \autoref{eq:filterIntegrated}.
+De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die van de spanningsdeler in \autoref{sec:referenceVoltage}. Deze is te berekenen met \autoref{eq:dividerNoise}.
 
 % TODO: BEPAAL OVERDRACHT
 
@@ -20,53 +19,52 @@ Als \autoref{eq:filterNoiseDensityOut} vervolgens over de bandbreedte geïntegre
     \tagaddtext{[\si{\radian\per\second}]}
 \end{equation}
 
+% \begin{equation} \label{eq:filterTransfer}
+%     H(s) = \frac{1}{1+sRC}
+% \end{equation}
+
 \begin{equation} \label{eq:filterNoiseDensity}
-    S_{in} = 4kTR
+    S_{u_{in}} = 4kTR
     \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
 
-\begin{equation} \label{eq:filterTransfer}
-    H(s) = \frac{1}{1+sRC}
-\end{equation}
+% De signaal-ruis verhouding aan de uitgang van dit filter is te berekenen met \autoref{eq:filterSNR}
+% \begin{equation}\label{eq:filterSNR}
+%     \mathrm{SNR} = 20\log\left(U_{out,min}\sqrt{\frac{C}{kT}}\right)
+%     \tagaddtext{[\si{\decibel}]}
+% \end{equation}
 
-\begin{equation} \label{eq:filterNoiseDensityOut}
-    S_{out} = \left|H(s)\right|^2S_{in} = \frac{4kTR}{1+(\omega R C)^2}
-    \tagaddtext{[\si{\volt\squared\per\hertz}]}
-\end{equation}
 
-\begin{equation} \label{eq:filterIntegrated}
-    u_{n,out} = \sqrt{\int_{0}^{\omega_B} \frac{4kTR}{1+(\omega R C)^2} \, d\omega} = \sqrt{\frac{4kT}{C} \arctan(\omega_BRC)}
-    \tagaddtext{[\si{\volt}]}
-\end{equation}
-
-Op deze manier is het mogelijk om voor een gekozen condensatorwaarde $C$ en bandbreedte $\omega_B$, de weerstandswaarde $R$ en de spanningsruis $u_{n,out}$ te bepalen.
-In \autoref{fig:filterPlots} is te zien hoe de spanningsruis en de weerstandswaarde veranderen ten opzichte van de gekozen condensator. Hoe groter de condensatorwaarde, des te lager de ruis. Helaas gaat de weerstandswaarde ook naar beneden wanneer er een hogere condensatorwaarde gekozen wordt, waardoor er meer vermogen gedissipeerd wordt in de weerstand. Dit komt natuurlijk door de standaard vermogensverhouding $P = \frac{U^2}{R}$, waar hogere weerstandswaardes zorgen voor minder vermogensverlies. 
-
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \input{plots/filterNoise}
-        \caption{Spanningsruis}
-        \label{fig:filterVoltageNoisePlot}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \input{plots/filterResistor}
-        \caption{Weerstandswaarde}
-        \label{fig:filterResistorPlot}
-    \end{subfigure}
-    \caption{De ruis en weerstandswaardes van het filter ten opzichte van de gekozen condensator, met de kantelfrequentie op 15Hz.}
-    \label{fig:filterPlots}
-\end{figure}
-
-Aangezien de pH sensor niet veel hoge frequenties zal produceren, is het mogelijk om een hogere capaciteitswaarde te kiezen.
-Bij een condensatorwaarde van $1\si{\micro\farad}$ zal dit filter op de bandbreedtefrequentie volgens \autoref{eq:filterPower} zo'n $20\si{\micro\watt}$ gebruiken.
-\begin{equation} \label{eq:filterPower}
+Het vermogensverbruik van het filter is te berekenen met \autoref{eq:filterPowerLaplace}.
+\begin{equation} \label{eq:filterPowerLaplace}
     P = \frac{U_{in,max}^2}{\left|R + \frac{1}{sC}\right|}
     \tagaddtext{[\si{\watt}]}
 \end{equation}
-Omdat $20\si{\micro\watt}$ erg weinig is, en de pH waarde hoogst waarschijnlijk nooit zo snel zal veranderen als 15Hz, [ONDERBOUW OF REFEREER NAAR ONDERBOUWING] is dit een prima keuze. De ruis die het filter produceert met een capaciteit van $1\si{\micro\farad}$ is volgens \autoref{eq:filterIntegrated} $114\si{\nano\volt}$. Dit valt binnen de specificaties.
-De weerstandswaarde van het filter zal omhoog worden afgerond naar de dichtstbijzijnde E24 waarde, in dit geval is dat $11\si{\kilo\ohm}$.
-Met deze waardes is de kantelfrequentie volgens \autoref{eq:cutoffFreq} op $14.5\si{\hertz}$, wat volledig acceptabel is.
+Omdat volgens \autoref{eq:cutoffFreq} $R$ te definiëren is in $\omega_c$ en $C$, volgt hieruit \autoref{eq:filterPower}.
+\begin{equation} \label{eq:filterPower}
+    P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
+    \tagaddtext{[\si{\watt}]}
+\end{equation}
+Uit deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijk condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \autoref{eq:dividerNoise}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de ruisspanning aan de ingang van het filter.
+\begin{equation} \label{eq:filterCapMin}
+    C_{min} = \frac{kT}{u_{n,in}^2}
+    \tagaddtext{[\si{\farad}]}
+\end{equation}
+
+Met de ruis van het vorige systeem komt de minimale condensatorwaarde op ongeveer $60\si{\pico\farad}$. Hiermee moet de weerstandswaarde echter $270\si{\mega\ohm}$ zijn, wat niet praktisch is. Met een condensator van $10\si{\nano\farad}$ kunnen de waardes in \autoref{tab:filterValues} berekend worden. Deze waardes vallen binnen de specificaties.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|l|l}
+        Symbool & Waarde & Eenheid \\
+        \hline
+        $C$         & 82    & $\si{\nano\farad}$\\
+        $R$         & 180   & $\si{\kilo\ohm}$  \\
+        $f_c$       & 10.8  & $\si{\hertz}$     \\
+        $P$         & 408   & $\si{\nano\watt}$ \\
+        $u_{n,out}$ & 225   & $\si{\nano\volt}$ \\
+        NF          & 0.23  & $\si{\decibel}$   \\
+    \end{tabular}
+    \caption{De gekozen waardes van het filter, en de resulterende vermogens- en ruiseigenschappen.}
+    \label{tab:filterValues}
+\end{table}
