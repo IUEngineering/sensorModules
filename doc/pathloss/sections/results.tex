@@ -1,5 +1,92 @@
-\section{Results}
+\section{Resultaten}
+In \autoref{fig:pathLossMesurment} is te zien wat de gemeten waardes zijn van de testopstelling die is beschreven in \autoref{sec:methods}. Hierbij is de horizontale as de afstand tussen de twee antennes, en is de verticale as het vermogen van de ontvangen signalen. 
+\begin{figure}[ht]
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={},
+        xlabel={Afstand (m)},
+        ylabel={RSS (dBm)},
+        grid=major,
+        cycle list name=color list,
+        no markers,
+        every axis plot/.append style={thick},
+        legend pos=outer north east,
+        legend style={font=\small}
+    ]
+    \addlegendimage{empty legend}
+    \addplot table [x=Distance,y=-10] {sections/data.dat};
+    \addplot table [x=Distance,y=-8] {sections/data.dat};
+    \addplot table [x=Distance,y=-6] {sections/data.dat};
+    \addplot table [x=Distance,y=-4] {sections/data.dat};
+    \addplot table [x=Distance,y=-2] {sections/data.dat};
+    \addplot table [x=Distance,y=0] {sections/data.dat};
+    \addplot table [x=Distance,y=2] {sections/data.dat};
+    \addplot table [x=Distance,y=4] {sections/data.dat};
+    \addplot table [x=Distance,y=6] {sections/data.dat};
+    \addlegendentry{\hspace{-.6cm}\textbf{TSS}}
+    \addlegendentry{-10 dBm}
+    \addlegendentry{-8 dBm}
+    \addlegendentry{-6 dBm}
+    \addlegendentry{-4 dBm}
+    \addlegendentry{-2 dBm}
+    \addlegendentry{-0 dBm}
+    \addlegendentry{-8 dBm}
+    \addlegendentry{2 dBm}
+    \addlegendentry{4 dBm}
+    \addlegendentry{6 dBm}
+    \end{axis}
+\end{tikzpicture}
 
-% Show graph of received power over distance
+%TODO: Add better title?
+\caption{RSS (Received Signal Strength) over afstand.}
+\label{fig:pathLossMesurment}
 
-% Show other results if relevant
+\end{figure}
+
+Bij deze meting was het meten van het ontvangst vermogen niet het doel. Het doel van de meting was namelijk het meten van het signaalverlies tussen een zend en ontvangstantenne. Door het ontvangen signaalvermogen min het zendvermogen te berekenen is het signaalverlies te bepalen. Dit wordt getoond in \autoref{fig:pathLossMesurment:pathloss}. 
+\begin{figure}[ht]
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={},
+        xlabel={Afstand (m)},
+        ylabel={PL (dB)},
+        grid=major,
+        cycle list name=color list,
+        no markers,
+        every axis plot/.append style={thick},
+        legend pos=outer north east,
+        legend style={font=\small}
+    ]
+    \addlegendimage{empty legend}
+    \addplot table [x=Distance,y=-10] {sections/data2.dat};
+    \addplot table [x=Distance,y=-8] {sections/data2.dat};
+    \addplot table [x=Distance,y=-6] {sections/data2.dat};
+    \addplot table [x=Distance,y=-4] {sections/data2.dat};
+    \addplot table [x=Distance,y=-2] {sections/data2.dat};
+    \addplot table [x=Distance,y=0] {sections/data2.dat};
+    \addplot table [x=Distance,y=2] {sections/data2.dat};
+    \addplot table [x=Distance,y=4] {sections/data2.dat};
+    \addplot table [x=Distance,y=6] {sections/data2.dat};
+    \addlegendentry{\hspace{-.6cm}\textbf{TSS}}
+    \addlegendentry{-10 dBm}
+    \addlegendentry{-8 dBm}
+    \addlegendentry{-6 dBm}
+    \addlegendentry{-4 dBm}
+    \addlegendentry{-2 dBm}
+    \addlegendentry{-0 dBm}
+    \addlegendentry{-8 dBm}
+    \addlegendentry{2 dBm}
+    \addlegendentry{4 dBm}
+    \addlegendentry{6 dBm}
+    \end{axis}
+\end{tikzpicture}
+
+%TODO: Add better title?
+\caption{Signaalverlies over afstand.}
+\label{fig:pathLossMesurment:pathloss}
+
+\end{figure}
+
+
