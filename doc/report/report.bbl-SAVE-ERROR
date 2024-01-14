@@ -1,0 +1,84 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{isfet}{online}{}
+      \name{author}{1}{}{%
+        {{hash=0458463d5218470eba9ba384638a0ccc}{%
+           family={Microsens},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{0458463d5218470eba9ba384638a0ccc}
+      \strng{fullhash}{0458463d5218470eba9ba384638a0ccc}
+      \strng{bibnamehash}{0458463d5218470eba9ba384638a0ccc}
+      \strng{authorbibnamehash}{0458463d5218470eba9ba384638a0ccc}
+      \strng{authornamehash}{0458463d5218470eba9ba384638a0ccc}
+      \strng{authorfullhash}{0458463d5218470eba9ba384638a0ccc}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{MSFET-3330-2 pH sensor}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb http://microsens.ch/products/pdf/MSFET_3330_Datasheet.pdf
+      \endverb
+      \verb{url}
+      \verb http://microsens.ch/products/pdf/MSFET_3330_Datasheet.pdf
+      \endverb
+    \endentry
+    \entry{energyHarvesting}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=6caeae16b20a356dfea23a03c4a45fb9}{%
+           family={Paulo},
+           familyi={P\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=02429090c327e97e6fd10a1c4da69980}{%
+           family={Gaspar},
+           familyi={G\bibinitperiod},
+           given={Pedro\bibnamedelima Dinis},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {WCE,}%
+      }
+      \strng{namehash}{bb9d0e948cbc3d2a1698d9d05e21bb58}
+      \strng{fullhash}{bb9d0e948cbc3d2a1698d9d05e21bb58}
+      \strng{bibnamehash}{bb9d0e948cbc3d2a1698d9d05e21bb58}
+      \strng{authorbibnamehash}{bb9d0e948cbc3d2a1698d9d05e21bb58}
+      \strng{authornamehash}{bb9d0e948cbc3d2a1698d9d05e21bb58}
+      \strng{authorfullhash}{bb9d0e948cbc3d2a1698d9d05e21bb58}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the world congress on engineering}
+      \field{title}{Review and future trend of energy harvesting methods for portable medical devices}
+      \field{volume}{2}
+      \field{year}{2010}
+      \field{pages}{168\bibrangedash 196}
+      \range{pages}{29}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
