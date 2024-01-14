@@ -2,7 +2,7 @@
 
 % TODO: Bronnen
 Om de pH waarde van de ISFET uit te lezen moet de drempelspanning gemeten worden. Deze is namelijk linear afhankelijk van de pH waarde.
-Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gate-source spanning te variëren kan de spanning over en de stroom door de drain en de source gelijk gehouden worden.
+Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gate-source spanning te variëren kan de spanning over en de stroom door de drain en de source van de ISFET gelijk gehouden worden.
 
 Er zijn meerdere mogelijke implementaties van een dergelijk regelsysteem. In \autoref{fig:measureCircuits} staan er drie.
 Elk van deze schakelingen gebruikt een nullor om de drain-source spanning van de ISFET gelijk te houden. Ook gebruikt elk van deze schakelingen een referentiespanning. De implementatie van deze referentiespanning wordt verder besproken in \autoref{sec:referenceVoltage}.
@@ -48,11 +48,62 @@ Bij de schakeling in \autoref{fig:measureResistor} zit de source van de ISFET di
 
 \begin{equation}\label{eq:nullorVoltageDrain}
     U_{nullor,d} = U_{gs}
+    \tagaddtext{[\si{\volt}]}
 \end{equation}
 \begin{equation}\label{eq:nullorVoltageSource}
     U_{nullor,s} = U_{gs} + U_{ref,s}
+    \tagaddtext{[\si{\volt}]}
 \end{equation}
 
 De schakeling met een stroombron aan de source heeft de mogelijkheid om betere ruiseigenschappen te hebben. De stroombron kan ook een hogere impedantie hebben dan de weerstand, wat goed is volgens mij. 
 
-% b d h i q t z
+\newcommand\ph{\mathrm{pH}}
+
+De meetschakeling heeft een aantal ruisbronnen. De nullor heeft een ingangsstroom- en spanninsruisbron. Daarnaast genereert de weerstand ook thermische ruis. Deze ruisbronnen zijn te zien in \autoref{fig:measureNoise}.
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{0.6\textwidth}
+    \input{img/ISFETCircuitBestNoise.pdf_tex}
+    \caption{De ruisbronnen van de meetschakeling.}
+    \label{fig:measureNoise}
+\end{figure}
+
+De overdracht van deze schakeling is gelijk aan de uitgangsspanning gedeeld door de ingangsspanning van de nullor. Door de werking van de schakeling blijft de ingansspanning altijd gelijk en is de uitgangsspanning lineair afhankelijk van de pH waarde. Hierdoor is de overdracht $H(\ph)$ een functie van de gemeten pH waarde.
+Omdat $U_{ds}$ en $I_{ds}$ van de ISFET niet veranderen, kan de impedantie ervan gezien worden als weerstand, met een waarde van $\frac{U_{ds}}{I_{ds}}$. Hierdoor wordt er een nieuwe ruisbron $i_{n,ds}$ toegevoegd. Met deze weerstand kunnen de bronnen $i_{n,ref}$, $i_{n,R}$ en $i_{n,ds}$ worden getransformeerd naar een spanningsbron $u{n,in}$ aan de ingang van de nullor.
+Vervolgens kan deze, samen met de spanningsruisbronnen $u_{n,ref}$ en $u_{n,n}$ naar de uitgang getransformeerd worden. Dit komt uit op een spanningsruisbron aan de uitgang, zoals te zien in \autoref{fig:measureNoiseMoved}. De spectrale spanningsruisdichtheid hiervan is te berekenen door middel van \autoref{eq:measureNoiseOut}.
+
+\begin{equation}\label{eq:measureNoiseOut}
+    Su_{n,out} = \left(Su_{n,ref} + Su_{n,n} + Si_{n,in}\left(Z_{fet} // R\right)^2\right) \cdot H^2(\ph)
+    \tagaddtext{[\si{\volt\squared\per\hertz}]}
+\end{equation}
+\begin{equation}
+    Si_{n,in} = Si_{n,n} + Si_{n,R} + Si_{n,ds}
+    \tagaddtext{[\si{\ampere\squared\per\hertz}]}
+    \label{eq:measureNoiseCurrentIn}
+\end{equation}
+
+
+De waardes van deze ruisbronnen zijn te vinden in \autoref{tab:measureNoiseValues}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|l}
+        Ruisbron & Waarde \\
+        \hline 
+        $Su_{n,ref}$ & Zie \autoref{sec:referenceVoltage} \\
+        $Su_{n,n}$   & Implementatie nullor \\
+        $Si_{n,n}$   & Implementatie nullor \\
+        $Si_{n,R}$   & $\frac{4kT}{R}$ \\
+        $Si_{n,ds}$  & $4kT\frac{I_{ds}}{U_{ds}}$ \\
+    \end{tabular}
+    \caption{Waar de waardes van de ruisbronnen vandaan gehaald kunnen worden.}
+    \label{tab:measureNoiseValues}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{0.6\textwidth}
+    \input{img/ISFETCircuitBestNoiseMoved.pdf_tex}
+    \caption{De meetschakeling met verschoven ruisbronnen.}
+    \label{fig:measureNoiseMoved}
+\end{figure}
