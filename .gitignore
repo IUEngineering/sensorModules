@@ -26,6 +26,8 @@
 *.svn
 *.synctex.gz
 *.toc
+*.nav
+*.snm
 
 # Ignore feedback files
 **/feedback.md
