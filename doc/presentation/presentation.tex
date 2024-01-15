@@ -1,0 +1,67 @@
+\documentclass[compress]{beamer}
+\usetheme{Warsaw}
+
+\usepackage[dutch]{babel}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{txfonts}
+\RequirePackage{graphicx}
+% \RequirePackage[left=2cm,right=2cm,top=2.2cm,bottom=4cm]{geometry}
+% \RequirePackage[pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures,hidelinks]{hyperref}
+% \RequirePackage{listings}  % for code
+\RequirePackage{xcolor} % needs to be after listings
+
+
+\institute{HvA}
+\date{\today}
+
+\begin{document}
+
+\title{pH meten met een ISFET}
+\subtitle{Sensor modules}
+\author[Tycho Jöbsis \and Jochem Leijenhorst \and Illya Ustenko]{
+    {
+        % \section*{\hspace*{l}}
+        \begin{tabular}{ll}
+            Tycho Jöbsis        & (500845792)\tabularnewline
+            Jochem Leijenhorst  & (500855372)\tabularnewline
+            Illya Ustenko       & (500845492)        
+        \end{tabular}
+    }
+}
+
+    \begin{frame}
+        \titlepage
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Inhoudsopgave}\tableofcontents
+    \end{frame} 
+
+    \begin{frame}
+        \frametitle{Opdracht}
+    
+        Het maken van een draadloze sensor module die maximaal 10mW gebruikt.
+    
+    \end{frame}
+
+    \input{sections/pHmeten.tex}
+
+    \input{sections/systeem.tex}
+
+    \input{sections/sensorDataNaarpH.tex}
+
+    \input{sections/energie.tex}
+
+    % \section{Vragen}
+    \begin{frame}
+        \frametitle{Vragen?}
+        
+        \centering
+        Zijn er nog vragen?
+    
+    \end{frame}
+
+\end{document}
