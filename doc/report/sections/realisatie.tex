@@ -1,6 +1,7 @@
 \section{Realisatie}
 
 \input{sections/meten.tex}
+\input{sections/divider.tex}
 % Ruis van uitlees schakeling
 % Overdracht
 
@@ -24,7 +25,7 @@ Met \autoref{eq:meanSquareErrorADC} is de fout die ontstaat door de eindige reso
 \end{equation}
 
 % $\overline{e_{eff}^2}$ mag niet groter dan de helft van het ingangsruis vermogen zijn (noise figure van 1.5dB).
-In het geval van dit ontwerp is er een gegeven noise figure en is de ingangssignaal ruis verhouding en het kleinste ingangssignaal bekend. Door gebruik te maken van \autoref{eq:calcSpecifiedRmsError}.
+In het geval van dit ontwerp is er een gegeven noise figure en is de ingangssignaal ruis verhouding en het kleinste ingangssignaal bekend. %Door gebruik te maken van \autoref{eq:calcSpecifiedRmsError}.
 \begin{equation}\label{eq:calcSpecifiedRmsError}
     \overline{e_{eff}^2}=\left(10^{\frac{NF}{10}}-1\right)\left(\frac{S_{rms}}{10^{SNR+NF/20}}\right)^2
 \end{equation}
@@ -75,9 +76,9 @@ Door gebruik te maken van de formules uit \autoref{sec:ADC:numBits} en \autoref{
     \label{tab:specADC}
 \end{table}
 
-\subsection{Anti aliasing filter}
-% ruis
-% cutoff
+
+
+\input{sections/filter.tex}
 
 \subsection{Digitale signaalverwerking}
 % indien er meerdere functies zijn opdelen in meer paragrafen

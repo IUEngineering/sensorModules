@@ -3,19 +3,19 @@
 Het volledige systeem moet de volgende functionaliteiten hebben:
 
 \begin{itemize}
-    \item De sensor uitlezen
-    \item De uitgelezen data verwerken naar iets bruikbaars
-    \item De data draadloos opsturen naar een ontvanger
-    \item De batterij die gebruikt wordt om het systeem te voeden opladen d.m.v. een externe energiebron
+    \item De sensor uitlezen;
+    \item Het uitgelezen signaal omzetten naar bruikbare data;
+    \item Deze data draadloos opsturen naar een ontvanger;
+    \item De batterij die gebruikt wordt om het systeem te voeden opladen d.m.v. een externe energiebron.
 \end{itemize}
-Deze functionele blokken zijn verwerkt in het blokschema dat te zien is in \autoref{fig:toplevel}.
+Deze functionele blokken zijn verwerkt in het blokschema dat te zien is in \autoref{fig:functional}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.6\textwidth]{systeem.pdf}
-    \caption{Het volledige systeem.} 
-    \label{fig:toplevel}
-\end{figure}
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{systeem.pdf}
+%     \caption{Het volledige systeem.} 
+%     \label{fig:toplevel}
+% \end{figure}
 
 \subsection{Signaalverwerking}
 Het signaalverwerkingsblok maakt een nuttig signaal van de te meten grootheid. Een uitbreiding van dit blok is te zien in \autoref{fig:signaalverwerking}.
@@ -27,7 +27,7 @@ Van links naar rechts zijn de functies van de blokken als volgt:
     \item De waarde van $U_{GS}$ wordt omgerekend naar de pH waarde.
     \item Deze waarde wordt draadloos opgestuurd naar de ontvanger.
 \end{enumerate}
-Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het systeem te activeren en te deactiveren. Op deze manier hoeft het systeem alleen maar aan te staan wanneer het nodig is, en wordt er minder energie verbruikt. Deze activatie zal waarschijnlijk periodiek gebeuren.
+Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het systeem te activeren en te deactiveren. Op deze manier hoeft het systeem alleen maar aan te staan wanneer het nodig is, en wordt er minder energie verbruikt.
 
 \begin{figure}[ht]
     \centering
@@ -36,8 +36,9 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
     \label{fig:signaalverwerking}
 \end{figure}
 
+% TODO: TAAL
 \subsection{Spanningsregeling}
-Voor spanningsregeling zijn er meerdere componenten nodig. Zoals te zien in \autoref{fig:spanningsregeling}. Uit de energy harvesting komt er spanning of stroom die omgezet moet worden naar iets waar andere delen van het systeem iets mee kunnen. Dat betekent dat je een omvorming moet hebben. Dit omgevormde stroom kan dan de BMS in om de accu mee op te laden of direct door te gaan naar de rest van het systeem, afhankelijk van het verbruik van het systeem. 
+Voor spanningsregeling zijn er meerdere componenten nodig, zoals te zien in \autoref{fig:spanningsregeling}. Uit de energy harvesting komt er spanning of stroom die omgezet moet worden naar iets waar andere delen van het systeem iets mee kunnen. Dat betekent dat er een omvorming moet hebben. Dit omgevormde stroom kan dan de BMS in om de accu mee op te laden of direct door te gaan naar de rest van het systeem, afhankelijk van het verbruik van het systeem. 
 Het batterijregelingssysteem (BMS) zorgt ervoor dat de batterij opgeladen wordt, terwijl deze ook gebruikt wordt om het systeem te voeden.
 De BMS heeft een oplader, die het opladen van de batterij regelt. Deze oplader gaat via een beveiliging naar de batterij toe. De beveiliging zorgt ervoor dat niet te veel stroom en spanning aan de batterij geleverd wordt. De tweede beveiliging zit tussen de batterij en de rest van het systeem. Deze beveiliging zorgt ervoor dat er niet te veel stroom uit de batterij getrokken wordt, waardoor deze kapot kan gaan. De spanningsregelaar zet de spanning die uit de batterij komt om naar een spanning die gebruikt kan worden door de rest van het systeem. 
 
@@ -49,11 +50,11 @@ De BMS heeft een oplader, die het opladen van de batterij regelt. Deze oplader g
 \end{figure}
 
 \subsection{TX}
-In \autoref{fig:toplevel} is het TX blok het blok dat de data draadloos verstuurt. Dit blok zal direct ingekocht worden; Er zijn namelijk meer dan genoeg kant-en-klare oplossingen beschikbaar om de functie van dit blok te vervullen.
+In \autoref{fig:functional} is het TX blok het blok dat de data draadloos verstuurt. Dit blok zal direct ingekocht worden; Er zijn namelijk meer dan genoeg kant-en-klare oplossingen beschikbaar om de functie van dit blok te vervullen.
 
 
 \subsection{Microcontroller}
-Een gedeelte van de signaalverwerking zal gebeuren in het digitale domein. Hiervoor is een microcontroller de voor de hand liggende oplossing. Bij het kiezen van een microcontroller moet er een paar eigenschappen overwogen worden. Een aantal van deze eigenschappen zijn:
+Een gedeelte van de signaalverwerking zal gebeuren in het digitale domein. Hiervoor is een microcontroller de voor de hand liggende oplossing. Bij het kiezen van een microcontroller moet er een aantal eigenschappen overwogen worden. Een paar van deze eigenschappen zijn:
 \begin{itemize}
     \item gebruikte vermogen;
     \item mogelijke slaapstanden;

@@ -1,3 +1,9 @@
+\subsection{Filter}
+Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde filter te gebruiken.
+De schakeling van dit filter is te zien in \autoref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \autoref{eq:cutoffFreq}.
+De spectrale ruisdichtheid aan de ingang van het filter is te vinden in \autoref{eq:filterNoiseDensity}.
+De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die van de spanningsdeler in \autoref{sec:referenceVoltage}. Deze is te berekenen met \autoref{eq:dividerNoise}.
+
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.3\textwidth}
@@ -5,12 +11,6 @@
     \caption{Het eerste-orde filter.}
     \label{fig:filterCircuit}
 \end{figure}
-
-\section{Filter}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde filter te gebruiken.
-De schakeling van dit filter is te zien in \autoref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \autoref{eq:cutoffFreq}.
-De spectrale ruisdichtheid aan de ingang van het filter is te vinden in \autoref{eq:filterNoiseDensity}.
-De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die van de spanningsdeler in \autoref{sec:referenceVoltage}. Deze is te berekenen met \autoref{eq:dividerNoise}.
 
 % TODO: BEPAAL OVERDRACHT
 

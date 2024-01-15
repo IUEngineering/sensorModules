@@ -25,7 +25,7 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="5.2706954"
-     inkscape:cx="78.168053"
+     inkscape:cx="118.58018"
      inkscape:cy="40.127532"
      inkscape:window-width="1920"
      inkscape:window-height="1051"
@@ -2300,11 +2300,11 @@
          xml:space="preserve"
          style="font-size:1.05833px;line-height:1.25;font-family:sans-serif;text-align:start;text-decoration-color:#000000;text-anchor:start;fill:#000000;stroke-width:0.264583;-inkscape-stroke:none;stop-color:#000000"
          x="-101.29098"
-         y="-74.332932"
+         y="-74.602173"
          id="text2"
          transform="matrix(0,-1,-1,0,0,0)"><tspan
            sodipodi:role="line"
            id="tspan2"
            style="text-align:start;text-anchor:start;stroke-width:0.264583"
            x="-101.29098"
-           y="-74.332932">$H^2(\ph)\left((Z_{fet} // R)i_{n,in} + u_{n,in}\right)$</tspan></text></g></g></svg>
+           y="-74.602173">$u_{n,out}$</tspan></text></g></g></svg>
