@@ -31,4 +31,4 @@
         zephyr,input-positive = <NRF_SAADC_AIN0>;
         zephyr,oversampling = <8>;
     };
- };
+};

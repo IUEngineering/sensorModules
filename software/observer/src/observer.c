@@ -29,6 +29,8 @@ static struct bt_le_scan_cb scan_callbacks = {
 
 int startObserver(void) {
 
+    printk("Welcome to the Observer.\n\n");
+
     // Set the scanning parameters.
     struct bt_le_scan_param scan_param = {
         .type       = BT_LE_SCAN_TYPE_PASSIVE,
@@ -71,9 +73,11 @@ struct relevantData_t {
 };
 
 static void receivedScan(const struct bt_le_scan_recv_info *info, struct net_buf_simple *buf) {
-    static uint8_t moduleAddress[6] = {0x35, 0xc4, 0xe8, 0x8d, 0x4e, 0xf9};
+    //E3:34:4D:E3:0B:60 is adress!!!
+    
+    // static uint8_t moduleAddress[6] = {0x00, 0xdf, 0xb9, 0x9f, 0x18, 0x0b};
     // static uint8_t setModuleAddress = 0;
-    if(memcmp(info->addr->a.val, moduleAddress, 6)) return;
+    // if(memcmp(info->addr->a.val, moduleAddress, 6)) return;
 
     char address[BT_ADDR_LE_STR_LEN];
     struct relevantData_t relevantData = {0};
@@ -83,13 +87,14 @@ static void receivedScan(const struct bt_le_scan_recv_info *info, struct net_buf
 
     // if(strcmp(relevantData.name, "poezen")) return;
     // if(relevantData.name[0] == '\0') return;
-
+    if(relevantData.uriLength == 0) return;
     bt_addr_le_to_str(info->addr, address, sizeof(address));
 
     // if(!setModuleAddress && strcmp(relevantData.name, "poezen") == 0) { 
     //     memcpy(moduleAddress, info->addr->a.val, 6);
     //     setModuleAddress = 1;
     // }
+
 
     static uint8_t i = 0;
     printf("%03d: Found %s. Name is %s.\n", i++, address, relevantData.name);
