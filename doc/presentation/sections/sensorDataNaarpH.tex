@@ -1,6 +1,91 @@
 \section{Sensor data naar pH omzetten}
+
+\subsection*{Uitlezen ISFET}
+
     \begin{frame}
-        \frametitle{<title>}
+        \frametitle{Principe schakeling}
+    
+        
+    
+    \end{frame}
+    \begin{frame}
+        \frametitle{Ruis analyse}
+    
+        \begin{figure}
+            \centering
+            \def\svgwidth{0.6\textwidth}
+            \input{ISFETCircuitBestNoise.pdf_tex}
+        \end{figure}
+        \begin{equation}\label{eq:measureNoiseOut}
+            S_{u_{{n,out}}} = \left(S_{u_{{n,ref}}} + S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2\right) \cdot H^2(\ph)
+        \end{equation}
+    
+    \end{frame}
+    \begin{frame}
+        \frametitle{Energie}
+
+        $U_{dd}=3v3$
+
+        \noindent
+        $I_{ds}=50\mu$A
+    
+        \begin{equation}\label{eq:measurePower}
+            P_{statisch} = P_{n,quiescent} + U_{dd}I_{ds}
+        \end{equation}
+
+        \pause
+
+        \begin{equation}
+            P_{statisch} = P_{n,quiescent} + 165\mu\mathrm{W}
+        \end{equation}
+    
+    \end{frame}
+
+    \subsection*{ADC}
+    \begin{frame}
+        \frametitle{Eisen}
+    
+        
+    
+    \end{frame}
+    \begin{frame}
+        \frametitle{Minimum aantal bits \& sample rate}
+    
+        
+    
+    \end{frame}
+
+    \subsection*{AA filter}
+    \begin{frame}
+        \frametitle{Eisen anti aliasing filter}
+    
+        
+    
+    \end{frame}
+    \begin{frame}
+        \frametitle{Ruis \& vermogensanalyse RC filter}
+    
+        
+    
+    \end{frame}
+    \begin{frame}
+        \frametitle{Effecten van de load}
+    
+        
+    
+    \end{frame}
+
+    \subsection*{Berekenen pH}
+    \begin{frame}
+        \frametitle{Gemeten waarde omrekenen naar pH}
+    
+        
+    
+    \end{frame}
+
+    \subsection*{Demo}
+    \begin{frame}
+        \frametitle{pH metingsdemo}
     
         
     

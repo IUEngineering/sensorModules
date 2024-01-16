@@ -3,16 +3,23 @@
 
 \usepackage[dutch]{babel}
 
-\RequirePackage[utf8]{inputenc}
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{txfonts}
-\RequirePackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{txfonts}
+\usepackage{graphicx, import}
+\usepackage{csquotes}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{caption}
+\usepackage{subcaption}
 % \RequirePackage[left=2cm,right=2cm,top=2.2cm,bottom=4cm]{geometry}
 % \RequirePackage[pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures,hidelinks]{hyperref}
 % \RequirePackage{listings}  % for code
-\RequirePackage{xcolor} % needs to be after listings
+\usepackage{xcolor} % needs to be after listings
 
+\newcommand\ph{\mathrm{pH}}
 
 \institute{HvA}
 \date{\today}
@@ -42,8 +49,13 @@
 
     \begin{frame}
         \frametitle{Opdracht}
+
+        Elk ontwikkelteam gaat een eigen systeemontwerp bedenken en verder uitwerken: blokschema, circuitniveau, realisatie, en tenslotte metingen ter validatie.
     
-        Het maken van een draadloze sensor module die maximaal 10mW gebruikt.
+        % Elk ontwikkelteam bestaat uit 3 en soms 4 studenten en gaat zijn eigen systeemontwerp bedenken en verder uitwerken: blokschema, circuitniveau, realisatie, en tenslotte metingen ter validatie.
+
+        Per ontwikkelteam wordt tenminste 1 sensormodule gemaakt. De ontwikkeling en de validatie van de sensormodule en moeten tijdens de eindpresentatie overzichtelijk gestructureerd binnen de tijd worden gepresenteerd.
+
     
     \end{frame}
 
