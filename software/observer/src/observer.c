@@ -16,6 +16,8 @@
 #define MAX_NAME_LENGTH 30
 #define MAX_URI_LENGTH 252 // Let's just be safe
 
+#define SAMPLES_PER_PACKET 12
+
 static void foundDevice(const bt_addr_le_t *addr, int8_t rssi, uint8_t type, struct net_buf_simple *ad);
 static void receivedScan(const struct bt_le_scan_recv_info *info, struct net_buf_simple *buf);
 static bool dataCallback(struct bt_data *data, void *user_data);
@@ -96,12 +98,20 @@ static void receivedScan(const struct bt_le_scan_recv_info *info, struct net_buf
     // }
 
 
-    static uint8_t i = 0;
-    printf("%03d: Found %s. Name is %s.\n", i++, address, relevantData.name);
+    // printf("%03d: Found %s. Name is %s.\n", i++, address, relevantData.name);
 
     if(relevantData.uriLength) {
-        printf("URI is:\n");
-        printByteBuffer(relevantData.uri, relevantData.uriLength);
+        // printf("URI is:\n");
+        // printByteBuffer(relevantData.uri, relevantData.uriLength);
+        static uint8_t lastSampleIndex = 3;
+        if((relevantData.uri[6] & 0xc0) == lastSampleIndex) return;
+        lastSampleIndex = relevantData.uri[6] & 0xc0;
+
+        for(uint8_t i = 0; i < SAMPLES_PER_PACKET; i++) {
+            // printf("Value: %d\n", (int16_t)((relevantData.uri[2*i] & 0x3f) << 8) | relevantData.uri[2*i + 1]);
+            printf("Rec: %2x %2x: %d\n", relevantData.uri[2*i] & 0x3f, relevantData.uri[2*i+1], (int16_t)(((relevantData.uri[2*i] & 0x3f) << 8) | relevantData.uri[2*i+1]));
+        }
+        printf("\n");
     }
 }
 

@@ -23,31 +23,44 @@
 #error "No suitable devicetree overlay specified"
 #endif
 
-#define F_SAMPLE 40
+#define F_SAMPLE 45
 #define T_SAMPLE (1000 / F_SAMPLE)
 
+#define SAMPLES_IN_PACKET 12
+#define GET_SEND_WORD(ADC_DATA, INDEX) ((INDEX << 14) | ADC_DATA)
+
+#define LDO_ENABLE_PIN 11
+#define DEBUG_PIN 25
+#define LED_0_PIN_Mask (1 << 24)
+#define LED_1_PIN_Mask (1 << 25)
+#define CAL_BUTTON_PIN 26
+#define CAL_BUTTON_PIN_Mask (1 << CAL_BUTTON_PIN)
+
+
 // Advertise with interval of 2 seconds
-#define ADVERTISING_PARAMETERS BT_LE_ADV_PARAM(0, (T_SAMPLE*2), (T_SAMPLE*2 + 10), NULL)
+#define ADVERTISING_PARAMETERS BT_LE_ADV_PARAM(0, (T_SAMPLE * SAMPLES_IN_PACKET / 20), (T_SAMPLE * SAMPLES_IN_PACKET / 20 + 10), NULL)
 
 #define DEVICE_NAME CONFIG_BT_DEVICE_NAME
 #define DEVICE_NAME_LEN (sizeof(DEVICE_NAME) - 1)
 
-#define SAMPLES_IN_PACKET 8
-#define GET_SEND_WORD(ADC_DATA, INDEX) ((INDEX << 14) | ADC_DATA)
-#define LDO_ENABLE_PIN 11
-#define DEBUG_PIN 25
+#define CALIBRATED_NONE     0
+#define CALIBRATED_7        1
+#define CALIBRATED_7_AND_4  2
 
+#define EXTRAPOLATE (sample, pHA, valA, pHB, valB) (((sample - valA) * (pHB - pHA)) / (valB - valA) + pHA)
 
 /* STEP 4.2.2 - Declare the URL data to include in the scan response */
-static unsigned char phData[2 * SAMPLES_IN_PACKET] = { 0 };
+static unsigned char phData[2 * SAMPLES_IN_PACKET] = {0x17, 'f', 'l', 'o', 0x17, 'f', 'l', 'o'};
 // static unsigned char badUrl[] = { 0x17, '/', '/', 'e','x','a','m','p','l','e','.','c','o','m'};
 
+int eend = (1000 / F_SAMPLE);
 
 /* STEP 4.1.1 - Declare the advertising packet */
-static struct bt_data ad[] = {
+const static struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, BT_LE_AD_NO_BREDR),
-    BT_DATA(BT_DATA_URI, phData, (2*SAMPLES_IN_PACKET))
+    BT_DATA(BT_DATA_URI, phData, sizeof(phData))
 };
+
 
 /* STEP 4.2.1 - Declare the scan response packet */
 static const struct bt_data sd[] = {
@@ -65,7 +78,7 @@ int initAdc(void);
 int main(void)
 {
 
-    uint16_t buf;
+    int16_t buf;
     struct adc_sequence sequence = {
         .buffer = &buf,
         /* buffer size in bytes, not number of samples */
@@ -75,9 +88,15 @@ int main(void)
     NRF_GPIO->DIRSET = (1 << LDO_ENABLE_PIN) | (1 << DEBUG_PIN);
     NRF_GPIO->OUTSET = (1 << LDO_ENABLE_PIN);
 
+    NRF_GPIO->OUTSET = (1 << DEBUG_PIN);
 
-    if(initAdc()) return -1;
+
+    // NRF_GPIO->DIRCLR = CAL_BUTTON_PIN_Mask;
+    // NRF_GPIO->PIN_CNF[CAL_BUTTON_PIN] |= GPIO_PIN_CNF_PULL_Pullup;
+
+    // Init coms.
     if(initBle()) return -1;
+    if(initAdc()) return -1;
 
     
     // The ADC data is 14 bits.
@@ -88,7 +107,41 @@ int main(void)
     uint8_t sample = 0;
     uint8_t packetCount = 0;
 
-    while (1) {
+    // uint8_t calibrationState = CALIBRATED_NONE;
+    // uint8_t prevCalButtonState = 0;
+    // uint16_t calibrated7pH = 0, calibrated4pH = 0;
+
+    // printf("Calibrate 7pH please :)\n");
+
+    // // Calibration loop.
+    // while (1) {
+
+    //     adc_sequence_init_dt(&adcChan, &sequence);
+    //     adc_read(adcChan.dev, &sequence);
+
+    //     printf("ADC: %d\n", buf);
+
+    //     // Handle calibration (poorly). (don't look at this)
+    //     uint8_t calButtonState = !!(NRF_GPIO->IN & CAL_BUTTON_PIN_Mask);
+    //     if(calibrationState < CALIBRATED_7_AND_4 && calButtonState && calButtonState != prevCalButtonState) {
+    //         if(calibrationState == CALIBRATED_NONE) {
+    //             NRF_GPIO->OUTSET = LED_0_PIN_Mask;
+    //             calibrated7pH = buf;
+    //             printf("calibrated 7pH = %d\n", calibrated7pH);
+    //         }
+    //         else {
+    //             NRF_GPIO->OUTCLR = LED_0_PIN_Mask;
+    //             calibrated4pH = buf;
+    //             printf("calibrated 4pH = %d\n", calibrated7pH);
+    //         }
+    //         calibrationState++;
+    //     }
+    //     prevCalButtonState = calButtonState;
+
+    // }
+
+    // Sampling loop.
+    while(1) {
 
         adc_sequence_init_dt(&adcChan, &sequence);
         adc_read(adcChan.dev, &sequence);
@@ -96,6 +149,8 @@ int main(void)
         // Copy the 2 bytes from the adc buffer into the phData array.
         phData[2*sample] = buf >> 8;
         phData[2*sample + 1] = buf;
+
+        printf("Val: %x %x\n", phData[2*sample], phData[2*sample + 1]);
 
         sample++;
         if(sample == SAMPLES_IN_PACKET) {
@@ -110,9 +165,10 @@ int main(void)
                 phData[i * 2] |= currentBits & 0xc0;
                 currentBits <<= 2;
             }
-            bt_le_adv_update_data(ad, sizeof(ad), sd, sizeof(sd));
+            bt_le_adv_update_data(ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
             packetCount++;
             sample = 0;
+            printf("\n");
         }
         if(sample & 1) NRF_GPIO->OUTSET = 1 << DEBUG_PIN;
         else NRF_GPIO->OUTCLR = 1 << DEBUG_PIN;
