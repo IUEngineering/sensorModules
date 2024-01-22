@@ -10,7 +10,7 @@
                 Min pH              & 2             & pH        \\
                 Max pH              & 10            & pH        \\
                 Min $\Delta$ph      & 0.05          & pH        \\
-                Min SNR             & 32            & dB        \\\hline
+                Min SNR             & 34            & dB        \\\hline
                 Bandbreedte         & 10            & Hz        \\\hline
                 Max vermogen        & 10            & mW        \\\hline
                 Communicatie        & Draadloos     &           \\
@@ -40,7 +40,7 @@
         \frametitle{Functionele decompositie}
         \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{img/decompSignal.pdf}
+            \includegraphics[width=\textwidth]{img/meetGedeelte.pdf}
         \end{figure}
         \begin{figure}
             \centering
@@ -50,7 +50,26 @@
     \subsection*{Energie \& ruis}
     \begin{frame}
         \frametitle{Energie \& ruisbudget verdelen}
+
+        SNR systeem uit = 34dB
     
-        
+        \begin{table}
+            \centering
+            \begin{tabular}{l|l|l}
+                Func. blok          & Vermogen [mW] & NF [dB]   \\\hline
+                Reken $U_{GS}\rightarrow$pH & 0.6   & 3         \\
+                ADC                 & 1             & 3         \\
+                AA-filter           & 0.2           & 3         \\
+                Meet $U_{GS}$       & 0.2           &           \\\hline
+                Zenden              & 5             &           \\\hline
+                Oplader             & 0.5           &           \\
+                Beveiliging         & 0.5           &           \\
+                Spanningsregeling   & 1             &           \\ 
+            \end{tabular}
+        \end{table}
+
+        \pause
+
+        SNR Meet $U_{GS}$  $>43$dB
     
     \end{frame}

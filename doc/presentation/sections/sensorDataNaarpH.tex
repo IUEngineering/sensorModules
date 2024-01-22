@@ -5,7 +5,11 @@
     \begin{frame}
         \frametitle{Principe schakeling}
     
-        
+        \begin{figure}
+            \centering
+            \def\svgwidth{0.6\textwidth}
+            \input{ISFETCircuitBest.pdf_tex}
+        \end{figure}
     
     \end{frame}
     \begin{frame}
@@ -45,13 +49,40 @@
     \begin{frame}
         \frametitle{Eisen}
     
-        
+        \begin{table}[ht]
+    \centering
+    \begin{tabular}{l|c|l}
+        Symbol      & Waarde & Eenheid\\\hline
+        $SNR_{in}$  & 37        & dB\\
+        NF          & 3         & dB\\
+        $u_{in}$    & 2.5       & mV\\
+    \end{tabular}
+    \caption{De eisen voor het omzetten van het analoge signaal naar een digitaal signaal.}
+    \label{tab:systemSpecADC}
+\end{table}
     
     \end{frame}
     \begin{frame}
         \frametitle{Minimum aantal bits \& sample rate}
-    
+
+        \begin{equation}\label{eq:calcSpecifiedRmsError}
+            \overline{e_{eff}^2}=\left(10^{\frac{NF}{10}}-1\right)\left(\frac{S_{rms}}{10^{SNR+NF/20}}\right)^2
+        \end{equation}
+        \begin{equation}\label{eq:calcNeededQ}
+            Q=\sqrt{12\cdot\overline{e_{eff}^2}}
+        \end{equation}
+        \begin{equation}\label{eq:calcMinNumberADCbits}
+            n=\left\lceil\log_2\left(\frac{1}{Q}+1\right)\right\rceil=14
+        \end{equation}
+
+        \pause
         
+        \begin{equation}\label{eq:ADCmaxSampleError}
+            E=10^{\frac{-NF}{10}}
+        \end{equation}
+        \begin{equation}\label{eq:ADCminFs}
+            f_{s,min}\left(E\right)=\frac{\pi f_h}{E}=45
+        \end{equation}
     
     \end{frame}
 
@@ -59,19 +90,58 @@
     \begin{frame}
         \frametitle{Eisen anti aliasing filter}
     
-        
+        Dempen 22.5Hz
+
+
+        $P_{max}=200\mu$W
     
     \end{frame}
     \begin{frame}
         \frametitle{Ruis \& vermogensanalyse RC filter}
     
-        
+        \begin{equation}\label{eq:dividerNoise}
+            u_{n,out}^2 = \frac{kT}{C}
+        \end{equation}
+
+        \begin{equation} \label{eq:filterPower}
+            P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
+        \end{equation}
+
+        \pause
+
+        \begin{equation} \label{eq:filterCapMin}
+            C_{min} = \frac{kT}{u_{n,in}^2}
+        \end{equation}
+
+        \begin{equation}
+            R = \frac{1}{2\pi fC}
+        \end{equation}
+    
+    \end{frame}
+    \begin{frame}
+        \frametitle{AA filter}
+    
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{l|l|l}
+                Symbool & Waarde & Eenheid \\
+                \hline
+                $C$         & 82    & $\si{\nano\farad}$\\
+                $R$         & 180   & $\si{\kilo\ohm}$  \\
+                $f_c$       & 10.8  & $\si{\hertz}$     \\
+                $P$         & 408   & $\si{\nano\watt}$ \\
+                $u_{n,out}$ & 225   & $\si{\nano\volt}$ \\
+                NF          & 0.23  & $\si{\decibel}$   \\
+            \end{tabular}
+            \caption{De gekozen waardes van het filter, en de resulterende vermogens- en ruiseigenschappen.}
+            \label{tab:filterValues}
+        \end{table}
     
     \end{frame}
     \begin{frame}
         \frametitle{Effecten van de load}
     
-        
+        Spanningsdeler met de ADC, hierdoor wordt het ingangssignaal kleiner.
     
     \end{frame}
 
@@ -79,7 +149,13 @@
     \begin{frame}
         \frametitle{Gemeten waarde omrekenen naar pH}
     
-        
+        $\mathrm{CAL_{\mathrm{pH,H}}}=7$
+
+        $\mathrm{CAL_{\mathrm{pH,L}}}=4$
+
+        \begin{equation}
+            \mathrm{pH}=\frac{\mathrm{S}-\mathrm{CAL_{\mathrm{ADC,L}}}}{\mathrm{CAL_{\mathrm{ADC,H}}}-\mathrm{CAL_{\mathrm{ADC,L}}}}\left(\mathrm{CAL_{\mathrm{pH,H}}}-\mathrm{CAL_{\mathrm{pH,L}}}\right)+\mathrm{CAL_{\mathrm{pH,L}}}
+        \end{equation}
     
     \end{frame}
 
