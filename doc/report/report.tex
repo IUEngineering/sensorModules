@@ -2,6 +2,8 @@
 
 \usepackage[dutch]{babel}
 \usepackage{hvaTemplate}
+% \usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev,dutch]{cleveref}
 \usepackage{csquotes}
 \usepackage[backend=biber, style=ieee]{biblatex}
 \usepackage{pgfplots}
@@ -33,6 +35,8 @@
 \graphicspath{ {img/} }
 
 \numberwithin{equation}{section}
+
+\newcommand\ph{\mathrm{pH}}
 
 \makeatletter
 \providecommand\add@text{}

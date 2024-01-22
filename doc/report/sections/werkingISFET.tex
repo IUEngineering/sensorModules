@@ -1,1 +1,17 @@
 Een ISFET (Ion-Sensitive Field-Effect Transistor) is een FET die gevoelig is voor ionen. Hierdoor is het mogelijk om er pH-waardes mee te meten\cite{modeling}. Een ISFET is in principe een MOSFET zonder gate. De ISFET gedraagt zich in de eerste instantie ook als transistor. Er wordt een referentie-elektrode aan de te meten oplossing toegevoegd om de pH-waarde te kunnen meten. Deze referentie-elektrode kan gebruikt worden als de gate van de MOSFET\cite{van1987isfet}. De drempelspanning van de transistor is echter een functie van de pH-waarde van de gemeten oplossing. Een hogere pH-waarde geeft een lagere drempelspanning\cite{isfet}.
+
+De ISFET is temperatuursafhankelijk\cite{isfet}. Volgens de datasheet is de temperatuursafhankelijkheid gemiddeld $-0.2\si{\milli\volt\per\kelvin}$\cite{Microsens-MSFET}. Om hiervoor te compenseren moet tijdens het meten ook de temperatuur gemeten worden. Daarbij zal bij het kalibreren de kalibratietemperatuur opgeslagen moeten worden. Wanneer vervolgens gemeten wordt, zal de gemeten spanning door middel van het temperatuurverschil gecompenseerd moeten worden. Deze compensatie kan gedaan worden door middel van \cref{eq:tempComp}.
+
+\begin{equation}\label{eq:tempComp}
+    U_r = U_m - (T_{meting} - T_{kalibratie}) \cdot 0.2 \cdot 10^{-3}
+    \tagaddtext{[\si{\volt}]}
+\end{equation}
+Hierbij is $U_r$ de op temperatuur gecompenseerde ingangsspanning en $U_m$ de gemeten spanning.
+
+De richtingscoëfficiënt tussen de pH-waarde en de drempelspanning is constant, en varieert alleen van ISFET tot ISFET. Door deze als constant te nemen kan de pH-waarde berekend worden met een enkel kalibratiepunt.
+
+\begin{equation}\label{eq:calcPH}
+    \ph = a(U_r - U_k) + \ph_k
+    \tagaddtext{[pH]}
+\end{equation}
+Hierbij is $a$ de richtingscoëfficiënt van de ISFET in pH/V, $U_r$ de op temperatuur gecompenseerde ingangsspanning, $\ph_k$ de pH waarde tijdens de kalibratie en $U_k$ de gemeten kalibratiespanning.

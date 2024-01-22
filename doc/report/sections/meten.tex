@@ -11,14 +11,17 @@ De drain-source spanning $U_{ds}$ en drain-source stroom $I_{ds}$ zijn van te vo
 Voor de schakeling in \autoref{fig:measureCurrent} is de spanningsreferentie te vinden door middel van \autoref{eq:URefSource}.
 \begin{equation}\label{eq:URefSource}
     U_{ref,s} = U_{dd} - U_{ds}
+    \tagaddtext{[\si{\volt}]}
 \end{equation}
 Voor \autoref{fig:measureResistor} is de referentiespanning gelijk aan de drain-source spanning.
 \begin{equation}\label{eq:URefDrain}
     U_{ref,d} = U_{ds}
+    \tagaddtext{[\si{\volt}]}
 \end{equation}
 Voor de waarde van de weerstand in \autoref{fig:measureResistor} kan \autoref{eq:measureResistorVal} gebruikt worden.
 \begin{equation}\label{eq:measureResistorVal}
     R = \frac{U_{dd} - U_{ds}}{I_{ds}}
+    \tagaddtext{[\si{\ohm}]}
 \end{equation}
 
 
@@ -56,8 +59,6 @@ Bij de schakeling in \autoref{fig:measureResistor} zit de source van de ISFET di
 \end{equation}
 
 De schakeling met een stroombron aan de source heeft de mogelijkheid om betere ruiseigenschappen te hebben. De stroombron kan ook een hogere impedantie hebben dan de weerstand. Duidelijk is de schakeling in \autoref{fig:measureResistor} beter, dus zal die gebruikt worden.
-
-\newcommand\ph{\mathrm{pH}}
 
 \subsubsection{Ruis}
 
@@ -119,9 +120,9 @@ Deze overdrachtsfunctie is gedefinieerd in \autoref{eq:measureTransfer}, en is e
     \label{eq:measureTransfer}
 \end{equation}
 
-\begin{equation}
+\begin{equation}\label{eq:measureOutVoltage}
     U_o(\ph) = s\ph + U_7
-    \label{eq:measureOutVoltage}
+    \tagaddtext{[\si{\volt}]}
 \end{equation}
 Door de hoogste uitgangsspanning $U_{o,max}$ te nemen, kan de maximale uitgangsruis berekend worden. Deze is te vinden in \autoref{eq:measureNoiseFull}.
 
