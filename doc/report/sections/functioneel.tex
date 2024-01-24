@@ -4,18 +4,18 @@ Het volledige systeem moet de volgende functionaliteiten hebben:
 
 \begin{itemize}
     \item De sensor uitlezen;
-    \item Het uitgelezen signaal omzetten naar bruikbare data;
+    \item Het uitgelezen signaal omzetten naar een kloppende pH waarde;
     \item Deze data draadloos opsturen naar een ontvanger;
     \item De batterij die gebruikt wordt om het systeem te voeden opladen d.m.v. een externe energiebron.
 \end{itemize}
-Deze functionele blokken zijn verwerkt in het blokschema dat te zien is in \autoref{fig:functional}.
+Deze functionele blokken zijn verwerkt in het blokschema dat te zien is in \autoref{fig:moduleDiagram}.
 
-% \begin{figure}[ht]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{systeem.pdf}
-%     \caption{Het volledige systeem.} 
-%     \label{fig:toplevel}
-% \end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{moduleDiagram}
+    \caption{Een systeemdiagram van de sensormodule.} 
+    \label{fig:moduleDiagram}
+\end{figure}
 
 \subsection{Signaalverwerking}
 Het signaalverwerkingsblok maakt een nuttig signaal van de te meten grootheid. Een uitbreiding van dit blok is te zien in \autoref{fig:signaalverwerking}.
@@ -35,6 +35,23 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
     \caption{Het signaalverwerkende onderdeel van het systeem, onderverdeeld naar het analoge en digitale domein.}
     \label{fig:signaalverwerking}
 \end{figure}
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline     
+        Ingangen    & Oplossing met een pH waarde tussen de 2 en 10 \\
+                    & Een temperatuur tussen de fliep en floep $^\circ$C \\
+        \hline
+        Uitgangen   & Een BLE RF signaal \\
+        \hline
+        Functie     & Meet de pH waarde van een oplossing en stuurt deze op naar een basisstation.  \\
+        \hline
+    \end{tabular}
+    \caption{Specificaties van }
+    \label{tab:in en uitgangen}
+\end{table}
 
 % TODO: TAAL
 \subsection{Spanningsregeling}

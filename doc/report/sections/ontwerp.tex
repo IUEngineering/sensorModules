@@ -1,12 +1,15 @@
-\section{Ontwerp: Systeemniveau}
-\subsection{Systeemdiagram}
+\section{Ontwerp}
+Het ontwerp bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule leest de pH waarde uit van een oplossing, en verzend deze pH waarde naar het basisstation. Het basisstation ontvangt de informatie en toont deze aan de gebruiker.
+In \cref{fig:functional} is dit te zien in een systeemdiagram.
+
 \begin{figure}[ht]
     \centering
-    \includegraphics{systeem.pdf}
-    \caption[short]{Het pH sensor module systeem.}
+    \includegraphics{toplevelDiagram}
+    \caption[short]{Een diagram van het volledige systeem.}
     \label{fig:functional}
 \end{figure}
-\subsection{Sub-systeemdiagram }% op basis van systeemspecificaties
+
+
 \input{sections/functioneel.tex}
 % functionele decompositie
 % splitsing analoog en digitaal
