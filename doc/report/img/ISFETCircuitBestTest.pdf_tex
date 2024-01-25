@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{118.60720897bp}%
+    \setlength{\unitlength}{154.75589422bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.62487485)%
+  \begin{picture}(1,0.47891334)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{ISFETCircuitBestTest.pdf}}%
-    \put(0.30837875,0.5928461){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$U_{ref}$\end{tabular}}}}%
-    \put(0.10286842,0.59284573){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$U_{dd}$\end{tabular}}}}%
+    \put(0.45166282,0.45436603){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$U_{ref}$\end{tabular}}}}%
+    \put(0.29415666,0.45436575){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$U_{dd}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{ISFETCircuitBestTest.pdf}}%
-    \put(0.14355273,0.40848336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R$\end{tabular}}}}%
+    \put(0.32533772,0.3130677){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{ISFETCircuitBestTest.pdf}}%
-    \put(0.71662041,0.22866393){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scope probes\end{tabular}}}}%
+    \put(0.76350402,0.17211984){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Probe kanaal 2\\\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{ISFETCircuitBestTest.pdf}}%
+    \put(0.23655906,0.13577241){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}Probe kanaal 1\end{tabular}}}}%
   \end{picture}%
 \endgroup%
