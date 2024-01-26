@@ -1,23 +1,5 @@
 % Haskell is mijn favoriete taal
-\subsection{Functionele decompositie}
-Het volledige systeem moet de volgende functionaliteiten hebben:
 
-\begin{itemize}
-    \item De sensor uitlezen;
-    \item Het uitgelezen signaal omzetten naar een kloppende pH waarde;
-    \item Deze data draadloos opsturen naar een ontvanger;
-    \item De batterij die gebruikt wordt om het systeem te voeden opladen d.m.v. een externe energiebron.
-\end{itemize}
-Deze functionele blokken zijn verwerkt in het blokschema dat te zien is in \autoref{fig:moduleDiagram}.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.75\textwidth]{moduleDiagram}
-    \caption{Een systeemdiagram van de sensormodule.} 
-    \label{fig:moduleDiagram}
-\end{figure}
-
-\subsection{Signaalverwerking}
 Het signaalverwerkingsblok maakt een nuttig signaal van de te meten grootheid. Een uitbreiding van dit blok is te zien in \autoref{fig:signaalverwerking}.
 Van links naar rechts zijn de functies van de blokken als volgt:
 \begin{enumerate}
@@ -29,35 +11,36 @@ Van links naar rechts zijn de functies van de blokken als volgt:
 \end{enumerate}
 Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het systeem te activeren en te deactiveren. Op deze manier hoeft het systeem alleen maar aan te staan wanneer het nodig is, en wordt er minder energie verbruikt.
 
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=\textwidth]{meetGedeelte.pdf}
+%     \caption{Het signaalverwerkende onderdeel van het systeem, onderverdeeld naar het analoge en digitale domein.}
+%     \label{fig:signaalverwerking}
+% \end{figure}
+
+
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{meetGedeelte.pdf}
-    \caption{Het signaalverwerkende onderdeel van het systeem, onderverdeeld naar het analoge en digitale domein.}
-    \label{fig:signaalverwerking}
+    \includegraphics[width=0.95\textwidth]{analogeBewerkingsFunctie}
+    \caption{Het analoge gedeelte van de signaalbewerking.} 
+    \label{fig:analogeBewerkingsFunctie}
 \end{figure}
 
 
-\begin{table}[ht]
+\begin{figure}[ht]
     \centering
-    \begin{tabular}{|l|r|}
-        \hline     
-        Ingangen    & Oplossing met een pH waarde tussen de 2 en 10 \\
-                    & Een temperatuur tussen de fliep en floep $^\circ$C \\
-        \hline
-        Uitgangen   & Een BLE RF signaal \\
-        \hline
-        Functie     & Meet de pH waarde van een oplossing en stuurt deze op naar een basisstation.  \\
-        \hline
-    \end{tabular}
-    \caption{Specificaties van }
-    \label{tab:in en uitgangen}
-\end{table}
+    \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
+    \caption{Het digitale gedeelte van de signaalbewerking.} 
+    \label{fig:digitaleBewerkingsFunctie}
+\end{figure}
+
+
 
 % TODO: TAAL
 \subsection{Spanningsregeling}
-Voor spanningsregeling zijn er meerdere componenten nodig, zoals te zien in \autoref{fig:spanningsregeling}. Uit de energy harvesting komt er spanning of stroom die omgezet moet worden naar iets waar andere delen van het systeem iets mee kunnen. Dat betekent dat er een omvorming moet hebben. Dit omgevormde stroom kan dan de BMS in om de accu mee op te laden of direct door te gaan naar de rest van het systeem, afhankelijk van het verbruik van het systeem. 
-Het batterijregelingssysteem (BMS) zorgt ervoor dat de batterij opgeladen wordt, terwijl deze ook gebruikt wordt om het systeem te voeden.
-De BMS heeft een oplader, die het opladen van de batterij regelt. Deze oplader gaat via een beveiliging naar de batterij toe. De beveiliging zorgt ervoor dat niet te veel stroom en spanning aan de batterij geleverd wordt. De tweede beveiliging zit tussen de batterij en de rest van het systeem. Deze beveiliging zorgt ervoor dat er niet te veel stroom uit de batterij getrokken wordt, waardoor deze kapot kan gaan. De spanningsregelaar zet de spanning die uit de batterij komt om naar een spanning die gebruikt kan worden door de rest van het systeem. 
+Voor spanningsregeling zijn er meerdere componenten nodig, zoals te zien in \autoref{fig:spanningsregeling}. De energy harvesting produceert een spanning, die omgezet moet worden naar iets de rest van het systeem iets mee kan. Deze omgevormde spanning kan dan zowel gebruikt worden voor het opladen van de batterij, als het voeden van de rest van het systeem.
+Om de batterij op te laden is een batterijregelingssysteem (BMS) nodig. De BMS kan via een beveiliging de batterij opladen. De beveiliging limiteert de batterijspanning en -stroom. De tweede beveiliging zit tussen de batterij en de rest van het systeem. Deze beveiliging zorgt ervoor dat er niet te veel stroom uit de batterij getrokken wordt, waardoor deze kapot kan gaan. De spanningsregelaar zet de spanning die uit de batterij komt om naar een spanning die gebruikt kan worden door de rest van het systeem. 
 
 \begin{figure}[ht]
     \centering

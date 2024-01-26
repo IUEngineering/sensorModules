@@ -13,13 +13,12 @@ De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en d
     \label{fig:divider}
 \end{figure}
 
-\noindent
 De overdracht van deze spanningsdeler is te vinden in \autoref{eq:dividerTransfer}.
 \begin{equation}\label{eq:dividerTransfer}
     H(s) = \frac{U_{ref}(s)}{U_{dd}(s)} = \frac{R_2}{R_1 + R_2 + R_2Cs}
 \end{equation}
 
-\noindent
+\subsubsection{Vermogen}
 Het vermogen dat de spanningsdeler dissipeert, kan met \autoref{eq:dividerPower} berekend worden.
 \begin{equation}\label{eq:dividerPower}
     P(s) = U_{dd}^2(s)\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
@@ -31,6 +30,7 @@ Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \autoref{
     \tagaddtext{[\si{\watt}]}
 \end{equation}
 
+\subsubsection{Ruis}
 Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \autoref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
 
 \begin{figure}[ht]
@@ -60,34 +60,7 @@ Aangezien de inverse tangens $\frac{\pi}{2}$ nadert, komt dit limiet uit op \aut
 \begin{equation}\label{eq:dividerNoise}
     u_{n,ref}^2 = \frac{kT}{C}
 \end{equation}
-Omdat een oneindige bandbreedte gebruikt is om op \autoref{eq:dividerNoise} te komen, berekend deze de ruis in het ergste geval. De weerstandwaardes van $R_1$ en $R_2$ zijn hierbij irrelevant. Hierdoor is ruis geen bepalende factor meer tijdens het kiezen van de weerstandswaardes van de spanningsdeler, en kunnen deze volledig gebaseerd worden op vermogensverbruik.
-
-De condensatorwaarde heeft wel effect op de ruis. Met een condensator van $1\si{\micro\farad}$ komt de ruis uit op $64.4\si{\nano\volt}$. Dit zorgt voor een signaal-ruis verhouding van $138\si{\decibel}$, wat meer dan genoeg is.
-
-De weerstandsverhouding kan berekend worden door middel van \autoref{eq:dividerResistors}.
-\begin{equation}\label{eq:dividerResistors}
-    \frac{R_1}{R_2} = \frac{U_{dd}-U_{out}}{U_{out}}
-\end{equation}
-Een hogere weerstand zorgt voor een lager vermogensverbruik. Omdat de spanningsreferentie direct aangesloten zit op de ingang van een nullor, hoeft geen rekening gehouden te worden met de uitgangsimpedantie van de spanningsreferentie. Hierdoor kunnen er erg hoge waardes gekozen worden. Met een $R_1$ van $5.6\si{\mega\ohm}$ gebruikt de spanningsdeler $1.65\si{\micro\watt}$. Dit valt binnen de specificaties.
-
-Met een $R_1$ van $5.6\si{\mega\ohm}$ kunnen de waardes in \autoref{tab:divider} afgeleid worden. Deze waardes vallen binnen de specificaties.
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{l|l|l}
-    Symbool & Waarde & Eenheid \\
-    \hline
-    $R_1$       & 5.6  & $\si{\mega\ohm}$   \\
-    $R_2$       & 1.0  & $\si{\mega\ohm}$   \\
-    $C$         & 1.0  & $\si{\micro\farad}$\\
-    $P$         & 1.65 & $\si{\micro\watt}$ \\
-    $u_{n,out}$ & 64.4 & $\si{\nano\volt}$  \\
-    SNR         & 148  & $\si{\decibel}$
-\end{tabular}
-\caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
-\label{tab:divider}
-\end{table}
-
+Omdat een oneindige bandbreedte gebruikt is om op \autoref{eq:dividerNoise} te komen, berekend deze de ruis in het ergste geval. De weerstandswaardes van $R_1$ en $R_2$ zijn hierbij irrelevant. Hierdoor is ruis geen bepalende factor meer tijdens het kiezen van de weerstandswaardes van de spanningsdeler, en kunnen deze volledig gebaseerd worden op vermogensverbruik. Volgens \cref{eq:dividerPowerSimple} is het vermogen omgekeerd evenredig met de som van de weerstandswaardes. Daarbij zit de uitgang van de spanningsdeler direct verbonden met de ingang van een nullor. Er hoeft dus geen rekening gehouden te worden met de uitgangsimpedantie van de spanningsbron. Hierdoor is het voor het vermogensverbruik voordelig om de weerstandswaardes zo hoog mogelijk te kiezen.
 
 
 
