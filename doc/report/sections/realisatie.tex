@@ -1,9 +1,5 @@
 \section{Realisatie}
 
-
-\subsection{Nullor implementatie}
-
-
 \subsection{Spanningsreferentie}
 Zoals besproken in \cref{sec:referenceVoltage} kunnen de weerstandswaardes van de spanningsreferentie erg hoog gekozen worden. Met een $R_1$ van $5.6\si{\mega\ohm}$ gebruikt de spanningsdeler $1.65\si{\micro\watt}$.
 
@@ -53,9 +49,22 @@ Met de ruis van het voorgaande systeem kan de minimale condensatorwaarde bereken
 \end{table}
 
 
+\subsection{Nullor implementatie}
+Voor de nullor die gebruikt wordt om de ISFET uit te lezen in \cref{sec:ISFETLees} moet een implementatie gekozen worden. De uitleesschakeling mag volgens de specificaties maximaal $200 \si{\micro\watt}$  gebruiken. De constante stroom die door de weerstand en ISFET in \cref{fig:measureResistor} heen loopt, zorgt voor een constant vermogensverbruik van $165 \si{\micro\watt}$. Hierdoor mag de nullor implementatie maximaal $35 \si{\micro\watt}$ gebruiken.
+
+De uitleesschakeling moet een minimale SNR hebben van 40 dB. De maximale ruisspanning en stroom die de nullor mag genereren aan de ingang zijn te berekenen met \cref{eq:nullorImplementNoise}. Deze vergelijking is afgeleid uit \Cref{eq:measureNoiseFull}.
+\begin{equation} \label{eq:nullorImplementNoise} 
+    S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2 = \frac{S_{u_{{n,out}}}}{H^2(\ph)} - S_{u_{{n,ref}}}
+\end{equation}
+
+De LTC2064 opamp gebruikt (buiten shutdown) op 3.3 V maximaal $8.25\,\si{\micro\watt}$. Daarbij heeft deze een spectrale ruisdichtheid van $\qty{12}{\femto\ampere\hertz^{-0.5}}$ en $\qty{220}{\nano\volt\hertz^{-0.5}}$\cite{LTC2064}. Dit zit volgens \cref{eq:nullorImplementNoise} ver onder het maximum. Daarbij is zowel de ingangsafwijking als de 1/f ruis van deze opamp erg laag. Hierdoor is deze opamp gekozen voor het ontwerp.
+
 \subsection{Rf}
 
 
 \subsection{Voeding}
 % software 
 % hardware
+
+\subsection{Printplaten}
+De schakelingen voor de voeding en voor het uitlezen van de ISFET zijn opgedeeld in twee verschillende printplaten. Dit is gedaan zodat beide schakelingen apart van elkaar getest kunnen worden. De voeding printplaat regelt de energy harvesting, samen met het opladen en het ontladen van de batterij. De uitlees printplaat bevat de ISFET uitleesschakeling, samen met de \mcu, die deze meet en de gemeten waardes opstuurt. De twee printplaten zijn met elkaar verbonden door middel van pin headers.
