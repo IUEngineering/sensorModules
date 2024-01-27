@@ -9,9 +9,18 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{graphicx}
+\usepackage{xspace}
 \sisetup{detect-all}
 
+
 \pgfplotsset{compat=1.18}
+
+\DeclareMathOperator\erfc{erfc}
+\DeclareMathOperator\inverfc{inverfc}
+\newcommand\SNR{\mbox{\textit{SNR}} }
+\newcommand{\mcu}{nRF52810\xspace}
+
+\DeclareSIUnit{\belmilliwatt}{Bm}
 
 \addbibresource{references.bib}
 
@@ -21,9 +30,9 @@
     \begin{table}[h!]
         \centering
         \begin{tabular}{ll}
-            Tycho Jöbsis & (500845792)\\ 
-            Jochem Leijenhorst       & (500855372)\\ 
-            Illya Ustenko            & (500845492)        
+            Jochem Leijenhorst  & (500855372)\\ 
+            Tycho Jöbsis        & (500845792)\\ 
+            Illya Ustenko       & (500845492)        
         \end{tabular}
     \end{table}
 }
