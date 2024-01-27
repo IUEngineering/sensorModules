@@ -1,28 +1,76 @@
-\section{Ontwerp: Systeemniveau}
-\subsection{Systeemdiagram}
+\section{Ontwerp}
+Het systeem bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule leest de pH waarde uit van een oplossing, en verzend deze pH waarde naar het basisstation. Het basisstation ontvangt de informatie en toont deze aan de gebruiker.
+In \cref{fig:functional} is dit te zien in een systeemdiagram.
+
 \begin{figure}[ht]
     \centering
-    \includegraphics{systeem.pdf}
-    \caption[short]{Het pH sensor module systeem.}
+    \includegraphics{toplevelDiagram}
+    \caption[short]{Een diagram van het volledige systeem.}
     \label{fig:functional}
 \end{figure}
-% \subsection{Sub-systeemdiagram }% op basis van systeemspecificaties
-\input{sections/functioneel.tex}
-% functionele decompositie
-% splitsing analoog en digitaal
-% SNR uitgang min bepalen
-% Noise figures aan signaal verwerkings blokken toewijzen
 
-\subsection{Rf}
-\input{sections/rf.tex}
+Het sensormodule blok wederom opgedeeld worden in aparte blokken. Dit is te zien in \cref{fig:moduleDiagram}.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{moduleDiagram}
+    \caption{Een systeemdiagram van de sensormodule.} 
+    \label{fig:moduleDiagram}
+\end{figure}
+
+\subsection{Functionele decompositie}
+De sensormodule kan opgedeeld worden in 2 aparte systemen: de voeding, die verder wordt besproken in \cref{sec:voeding}, en de signaalverwerking.
+
+De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. In de komende paragrafen wordt elk van deze blokken apart besproken.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{analogeBewerkingsFunctie}
+    \caption{Het analoge gedeelte van de signaalbewerking.} 
+    \label{fig:analogeBewerkingsFunctie}
+\end{figure}
+
+
+Het digitale gedeelte bestaat uit een aantal berekeningen. Deze berekeningen zijn nodig om de gemeten spanning om te rekenen naar een pH waarde. Hiervoor zijn een aantal kalibratiewaardes nodig, zoals besproken in \cref{sec:werkingISFET}. Het digitale gedeelte heeft als ingang een temperatuursafhankelijke spanning $U_T$ en een pH-afhankelijke spanning $U_{pH}$. Dit is te zien in \cref{fig:digitaleBewerkingsFunctie}. Beide van deze spanningen zijn de ruwe ADC waardes die gemeten worden, en hebben dus de hoogst mogelijke resolutie, namelijk de resolutie van de ADC. Voor beide van deze waardes zal de eenheid `bit' gebruikt worden.
+
+Van de pH-afhankelijke spanning wordt de pH-afhankelijke kalibratiespanning afgetrokken. Vervolgens wordt hier $+\frac{pH_{kal}}{C_{pH}}$ aan toegevoegd. Op deze manier kan er zo lang mogelijk met integers gewerkt worden die dezelfde resolutie hebben als de ingangs-adc waarde. Het resultaat wordt vervolgens vermenigvuldigd met $C_{pH}$. Dit is de gevoeligheid van de sensor, in pH/bit.
+
+Van de temperatuursafhankelijke spanning $U_T$ wordt de temperatuursafhankelijke kalibratiespanning $U_{T,kal}$ afgetrokken. Vervolgens wordt dit vermenigvuldigt met constante $C_T$. $C_T$ is de temperatuursafhankelijkheid van de pH-sensor, in pH/bit. Deze waarde kan afgeleid worden met de temperatuursafhankelijkheid van de pH-sensor die in de datasheet gegeven wordt in mV/K.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
+    \caption{Het digitale gedeelte van de signaalbewerking.} 
+    \label{fig:digitaleBewerkingsFunctie}
+\end{figure}
+
+
+\input{sections/meten}
+\input{sections/divider}
+\input{sections/adc}
+\input{sections/filter}
+\input{sections/rf}
+
+
+\subsection{Voeding} \label{sec:voeding}
 \subsection{Energie budget}
 
-\subsection{Flowcharts}
-\subsection{Berekeningen}
-\subsection{Simulaties}
 
-
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{|l|r|}
+%         \hline     
+%         Ingangen    & Oplossing met een pH waarde tussen de 2 en 10 \\
+%                     & Een temperatuur tussen de fliep en floep $^\circ$C \\
+%         \hline
+%         Uitgangen   & Een BLE RF signaal \\
+%         \hline
+%         Functie     & Meet de pH waarde van een oplossing en stuurt deze op naar een basisstation.  \\
+%         \hline
+%     \end{tabular}
+%     \caption{Specificaties van }
+%     \label{tab:in en uitgangen}
+% \end{table}
 
 
 % TODO: Moet gereformateerd zodat het past in dit formaat.

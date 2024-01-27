@@ -1,7 +1,9 @@
 \subsection{Filter}
 Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde filter te gebruiken.
 De schakeling van dit filter is te zien in \autoref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \autoref{eq:cutoffFreq}.
-De spectrale ruisdichtheid aan de ingang van het filter is te vinden in \autoref{eq:filterNoiseDensity}.
+
+\subsubsection{Ruis}
+De spectrale ruisdichtheid aan de ingang van het filter is te berekenen met \autoref{eq:filterNoiseDensity}.
 De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die van de spanningsdeler in \autoref{sec:referenceVoltage}. Deze is te berekenen met \autoref{eq:dividerNoise}.
 
 \begin{figure}[ht]
@@ -34,7 +36,7 @@ De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die va
 %     \tagaddtext{[\si{\decibel}]}
 % \end{equation}
 
-
+\subsubsection{Vermogen}
 Het vermogensverbruik van het filter is te berekenen met \autoref{eq:filterPowerLaplace}.
 \begin{equation} \label{eq:filterPowerLaplace}
     P = \frac{U_{in,max}^2}{\left|R + \frac{1}{sC}\right|}
@@ -50,21 +52,3 @@ Uit deze formule is te zien dat het vermogensverbruik lineair evenredig is met d
     C_{min} = \frac{kT}{u_{n,in}^2}
     \tagaddtext{[\si{\farad}]}
 \end{equation}
-
-Met de ruis van het vorige systeem komt de minimale condensatorwaarde op ongeveer $60\si{\pico\farad}$. Hiermee moet de weerstandswaarde echter $270\si{\mega\ohm}$ zijn, wat niet praktisch is. Met een condensator van $10\si{\nano\farad}$ kunnen de waardes in \autoref{tab:filterValues} berekend worden. Deze waardes vallen binnen de specificaties.
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{l|l|l}
-        Symbool & Waarde & Eenheid \\
-        \hline
-        $C$         & 82    & $\si{\nano\farad}$\\
-        $R$         & 180   & $\si{\kilo\ohm}$  \\
-        $f_c$       & 10.8  & $\si{\hertz}$     \\
-        $P$         & 408   & $\si{\nano\watt}$ \\
-        $u_{n,out}$ & 225   & $\si{\nano\volt}$ \\
-        NF          & 0.23  & $\si{\decibel}$   \\
-    \end{tabular}
-    \caption{De gekozen waardes van het filter, en de resulterende vermogens- en ruiseigenschappen.}
-    \label{tab:filterValues}
-\end{table}

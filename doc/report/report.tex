@@ -2,6 +2,8 @@
 
 \usepackage[dutch]{babel}
 \usepackage{hvaTemplate}
+% \usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev,dutch]{cleveref}
 \usepackage{csquotes}
 \usepackage[backend=biber, style=ieee]{biblatex}
 \usepackage{pgfplots}
@@ -10,6 +12,7 @@
 \usepackage{subcaption}
 \usepackage{graphicx}
 \usepackage{xspace}
+\usepackage{makecell}
 \sisetup{detect-all}
 
 
@@ -19,6 +22,8 @@
 \DeclareMathOperator\inverfc{inverfc}
 \newcommand\SNR{\mbox{\textit{SNR}} }
 \newcommand{\mcu}{nRF52810\xspace}
+\newcommand\ph{\mathrm{pH}}
+
 
 \DeclareSIUnit{\belmilliwatt}{Bm}
 
@@ -42,6 +47,8 @@
 \graphicspath{ {img/} }
 
 \numberwithin{equation}{section}
+
+\DeclareSIUnit{\pH}{pH}
 
 \makeatletter
 \providecommand\add@text{}

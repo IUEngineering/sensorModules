@@ -1,7 +1,42 @@
 \section{Testen}
+Om de sensormodule te testen zijn een aantal materialen nodig. Deze materialen zijn gespecificeerd in \cref{tab:testMaterialen}.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|l|l}
+        Apparaat         & Serienummer & Beschrijving \\
+        \hline
+        MSREF1           & 23/RS03     & Referentie elektrode       \\
+        MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
+        TBS 1072B-EDU    & C030387     & Oscilloscoop               \\
+        ISFETLezer       & 1           & ISFET uitlees schakeling   \\
+        Harvester        & 1           & BMS en energy harvester    \\    
+        \hline
+    \end{tabular}
+    \caption{Materialen die zijn gebruikt voor de tests}
+    \label{tab:testMaterialen}
+\end{table}
 
-\subsection{Test plan 1}
+Om het ISFET uitleessysteem te testen moet eerst alles aangesloten worden. De ISFET uitlees PCB wordt verbonden met de energie PCB, zodat de uitleesschakeling een voeding heeft.
+De probe van kanaal 1 van de oscilloscoop wordt verbonden met de drain van de ISFET. De probe van kanaal 2 wordt verbonden met de uitgang van de opamp. De ISFET wordt samen met de referentieelektrode in een bufferoplossing gestopt. Hiermee kan gemeten worden of de uitgang van de schakeling stabiel is. De opstelling is in \cref{fig:test ISFET circuit best} schematisch te zien.
 
-\subsection{Resultaten 1}
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{0.75\textwidth}
+    \input{img/ISFETCircuitBestTest.pdf_tex}
+    \caption{De locatie van de scope probes in de schakeling om te testen of de uitgang stabiel is.}
+    \label{fig:test ISFET circuit best}
+\end{figure}
 
-\subsection{Conclusie 1}
+
+\subsection{Resultaten}
+
+De eerste test resulteerde in een oscillerend signaal. De uitgang van de opamp gaf een signaal dat elke [tijd]ms pulseerde.
+De reden hiervoor is hoogst waarschijnlijk dat de ISFET niet snel genoeg reageert op de spanningsverandering tussen de gate (de referentie elektrode) en de source. Wanneer de opamp uitgang laag is, waardoor de gate-source spanning op de ISFET 0V wordt, komt de drain-source spanning van de ISFET namelijk erg langzaam omhoog. Wanneer deze spanning boven de referentiespanning komt, gaat de uitgang van de opamp omhoog, waarna de drain-source spanning van de ISFET pas later erg snel daalt. Dit zorgt voor een oscillerende werking.
+
+
+\subsection{Discussie}
+Er zijn hier een aantal mogelijke oplossingen voor.
+
+Eén mogelijke oplossing is een integrator plaatsen tussen de uitgang van de opamp en de gate van de ISFET. Deze integrator is dan zo ingesteld dat de maximale helling van de uitgang minder stijl is dan de helling van de drain-source spanning van de ISFET bij een gate-source spanning van 0V. Zo kan de ISFET de opamp bijhouden, waardoor de negatieve feedback gaat werken.
+
+Een andere mogelijke oplossing is een RC-filter te plaatsen tussen de drain van de ISFET en de niet-inverterende ingang van de opamp. Dit zorgt ervoor dat de opamp trager gaat werken, waardoor de ISFET de opamp bij kan houden.
