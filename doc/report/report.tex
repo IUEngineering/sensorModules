@@ -9,9 +9,18 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{graphicx}
+\usepackage{xspace}
 \sisetup{detect-all}
 
+
 \pgfplotsset{compat=1.18}
+
+\DeclareMathOperator\erfc{erfc}
+\DeclareMathOperator\inverfc{inverfc}
+\newcommand\SNR{\mbox{\textit{SNR}} }
+\newcommand{\mcu}{nRF52810\xspace}
+
+\DeclareSIUnit{\belmilliwatt}{Bm}
 
 \addbibresource{references.bib}
 
