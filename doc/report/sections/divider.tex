@@ -2,7 +2,7 @@
 
 De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken.
 % TODO: Vertel misschien over andere methoden.
-Hiervoor is als implementatie een spanningsdeler gekozen. De schakeling van deze spanningsdeler is te zien in \autoref{fig:divider}.
+Hiervoor is als implementatie een spanningsdeler gekozen. De schakeling van deze spanningsdeler is te zien in \cref{fig:divider}.
 De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente storing in de voedingsspanning.
 
 \begin{figure}[ht]
@@ -13,25 +13,25 @@ De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en d
     \label{fig:divider}
 \end{figure}
 
-De overdracht van deze spanningsdeler is te vinden in \autoref{eq:dividerTransfer}.
+De overdracht van deze spanningsdeler is te vinden in \cref{eq:dividerTransfer}.
 \begin{equation}\label{eq:dividerTransfer}
     H(s) = \frac{U_{ref}(s)}{U_{dd}(s)} = \frac{R_2}{R_1 + R_2 + R_2Cs}
 \end{equation}
 
 \subsubsection{Vermogen}
-Het vermogen dat de spanningsdeler dissipeert, kan met \autoref{eq:dividerPower} berekend worden.
+Het vermogen dat de spanningsdeler dissipeert, kan met \cref{eq:dividerPower} berekend worden.
 \begin{equation}\label{eq:dividerPower}
     P(s) = U_{dd}^2(s)\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
     \tagaddtext{[\si{\watt}]}
 \end{equation}
-Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \autoref{eq:dividerPowerSimple}.
+Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \cref{eq:dividerPowerSimple}.
 \begin{equation}\label{eq:dividerPowerSimple}
     P = \frac{U_{dd}^2}{R_1 + R_2}
     \tagaddtext{[\si{\watt}]}
 \end{equation}
 
 \subsubsection{Ruis}
-Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \autoref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
+Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \cref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
 
 \begin{figure}[ht]
     \centering
@@ -42,25 +42,25 @@ Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen word
 \end{figure}
 
 \noindent
-Voor de spectrale spanningsruisdichtheid aan de uitgang $U_{ref}$ kan \autoref{eq:dividerNoiseLaplace} worden opgesteld.
+Voor de spectrale spanningsruisdichtheid aan de uitgang $U_{ref}$ kan \cref{eq:dividerNoiseLaplace} worden opgesteld.
 \begin{equation}\label{eq:dividerNoiseLaplace}
     S_{n,u_{ref}} = 4kTR_e\left(\frac{1}{1 + R_eCs}\right)^2
     \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
-Wanneer de absolute waarde van de ruis wordt genomen, kan deze over de bandbreedte geïntegreerd worden. Dit resulteert in \autoref{eq:dividerNoiseInt}, waar B de bandbreedte is.
+Wanneer de absolute waarde van de ruis wordt genomen, kan deze over de bandbreedte geïntegreerd worden. Dit resulteert in \cref{eq:dividerNoiseInt}, waar B de bandbreedte is.
 \begin{equation}\label{eq:dividerNoiseInt}
     u_{n,ref}^2 = 4kTR_e\int_{B} \frac{1}{1 + (2\pi f R_e C)^2} df
     \tagaddtext{[\si{\volt\squared}]}
 \end{equation}
-Met een oneindige bandbreedte komt deze integraal uit op \autoref{eq:dividerNoiseIntegratedInf}.
+Met een oneindige bandbreedte komt deze integraal uit op \cref{eq:dividerNoiseIntegratedInf}.
 \begin{equation}\label{eq:dividerNoiseIntegratedInf}
     u_{n,ref}^2 = \lim_{f\rightarrow\infty}\frac{2kT}{\pi C} \arctan(2\pi f R_eC)
 \end{equation}
-Aangezien de inverse tangens $\frac{\pi}{2}$ nadert, komt dit limiet uit op \autoref{eq:dividerNoise}.
+Aangezien de inverse tangens $\frac{\pi}{2}$ nadert, komt dit limiet uit op \cref{eq:dividerNoise}.
 \begin{equation}\label{eq:dividerNoise}
     u_{n,ref}^2 = \frac{kT}{C}
 \end{equation}
-Omdat een oneindige bandbreedte gebruikt is om op \autoref{eq:dividerNoise} te komen, berekend deze de ruis in het ergste geval. De weerstandswaardes van $R_1$ en $R_2$ zijn hierbij irrelevant. Hierdoor is ruis geen bepalende factor meer tijdens het kiezen van de weerstandswaardes van de spanningsdeler, en kunnen deze volledig gebaseerd worden op vermogensverbruik. Volgens \cref{eq:dividerPowerSimple} is het vermogen omgekeerd evenredig met de som van de weerstandswaardes. Daarbij zit de uitgang van de spanningsdeler direct verbonden met de ingang van een nullor. Er hoeft dus geen rekening gehouden te worden met de uitgangsimpedantie van de spanningsbron. Hierdoor is het voor het vermogensverbruik voordelig om de weerstandswaardes zo hoog mogelijk te kiezen.
+Omdat een oneindige bandbreedte gebruikt is om op \cref{eq:dividerNoise} te komen, berekend deze de ruis in het ergste geval. De weerstandswaardes van $R_1$ en $R_2$ zijn hierbij irrelevant. Hierdoor is ruis geen bepalende factor meer tijdens het kiezen van de weerstandswaardes van de spanningsdeler, en kunnen deze volledig gebaseerd worden op vermogensverbruik. Volgens \cref{eq:dividerPowerSimple} is het vermogen omgekeerd evenredig met de som van de weerstandswaardes. Daarbij zit de uitgang van de spanningsdeler direct verbonden met de ingang van een nullor. Er hoeft dus geen rekening gehouden te worden met de uitgangsimpedantie van de spanningsbron. Hierdoor is het voor het vermogensverbruik voordelig om de weerstandswaardes zo hoog mogelijk te kiezen.
 
 
 

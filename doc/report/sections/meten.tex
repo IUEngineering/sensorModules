@@ -4,21 +4,21 @@
 Om de pH waarde van de ISFET uit te lezen moet de drempelspanning gemeten worden. Deze is namelijk linear afhankelijk van de pH waarde.
 Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gate-source spanning te variëren kan de spanning over en de stroom door de drain en de source van de ISFET gelijk gehouden worden.
 
-Er zijn meerdere mogelijke implementaties van een dergelijk regelsysteem. Twee hiervan zijn afgebeeld in \autoref{fig:measureCircuits}.
-Elk van deze schakelingen gebruikt een nullor om de drain-source spanning van de ISFET gelijk te houden. Ook gebruikt elk van deze schakelingen een referentiespanning. De implementatie van deze referentiespanning wordt verder besproken in \autoref{sec:referenceVoltage}.
+Er zijn meerdere mogelijke implementaties van een dergelijk regelsysteem. Twee hiervan zijn afgebeeld in \cref{fig:measureCircuits}.
+Elk van deze schakelingen gebruikt een nullor om de drain-source spanning van de ISFET gelijk te houden. Ook gebruikt elk van deze schakelingen een referentiespanning. De implementatie van deze referentiespanning wordt verder besproken in \cref{sec:referenceVoltage}.
 
 De drain-source spanning $U_{ds}$ en drain-source stroom $I_{ds}$ zijn van te voren gedefinieerd. Deze zijn ook te vinden in de datasheet van de ISFET\cite{isfet}. Uit deze twee waardes kunnen de referentiespanningen en weerstandswaardes van de schakelingen gevonden worden.
-Voor de schakeling in \autoref{fig:measureCurrent} is de spanningsreferentie te vinden door middel van \autoref{eq:URefSource}.
+Voor de schakeling in \cref{fig:measureCurrent} is de spanningsreferentie te vinden door middel van \cref{eq:URefSource}.
 \begin{equation}\label{eq:URefSource}
     U_{ref,s} = U_{dd} - U_{ds}
     \tagaddtext{[\si{\volt}]}
 \end{equation}
-Voor \autoref{fig:measureResistor} is de referentiespanning gelijk aan de drain-source spanning.
+Voor \cref{fig:measureResistor} is de referentiespanning gelijk aan de drain-source spanning.
 \begin{equation}\label{eq:URefDrain}
     U_{ref,d} = U_{ds}
     \tagaddtext{[\si{\volt}]}
 \end{equation}
-Voor de waarde van de weerstand in \autoref{fig:measureResistor} kan \autoref{eq:measureResistorVal} gebruikt worden.
+Voor de waarde van de weerstand in \cref{fig:measureResistor} kan \cref{eq:measureResistorVal} gebruikt worden.
 \begin{equation}\label{eq:measureResistorVal}
     R = \frac{U_{dd} - U_{ds}}{I_{ds}}
     \tagaddtext{[\si{\ohm}]}
@@ -47,7 +47,7 @@ Voor de waarde van de weerstand in \autoref{fig:measureResistor} kan \autoref{eq
 \end{figure}
 
 Beide schakelingen hebben voor- en nadelen.
-Bij de schakeling in \autoref{fig:measureResistor} zit de source van de ISFET direct verbonden met de ground. Dit heeft als voordeel dat de uitgang van de nullor gelijk is aan de gate-source spanning. Hierdoor hoeft de nullor lagere spanningen te genereren om de gate-source spanning van de ISFET naar de goede waarde te krijgen. De spanning die de nullor moet genereren in het geval van een drain weerstand is te vinden door middel van \autoref{eq:nullorVoltageDrain}. In het geval van een stroombron aan de source is dat \autoref{eq:nullorVoltageSource}.
+Bij de schakeling in \cref{fig:measureResistor} zit de source van de ISFET direct verbonden met de ground. Dit heeft als voordeel dat de uitgang van de nullor gelijk is aan de gate-source spanning. Hierdoor hoeft de nullor lagere spanningen te genereren om de gate-source spanning van de ISFET naar de goede waarde te krijgen. De spanning die de nullor moet genereren in het geval van een drain weerstand is te vinden door middel van \cref{eq:nullorVoltageDrain}. In het geval van een stroombron aan de source is dat \cref{eq:nullorVoltageSource}.
 
 \begin{equation}\label{eq:nullorVoltageDrain}
     U_{nullor,d} = U_{gs}
@@ -58,11 +58,11 @@ Bij de schakeling in \autoref{fig:measureResistor} zit de source van de ISFET di
     \tagaddtext{[\si{\volt}]}
 \end{equation}
 
-De schakeling met een stroombron aan de source heeft de mogelijkheid om betere ruiseigenschappen te hebben. De stroombron kan ook een hogere impedantie hebben dan de weerstand. Duidelijk is de schakeling in \autoref{fig:measureResistor} beter, dus zal die gebruikt worden.
+De schakeling met een stroombron aan de source heeft de mogelijkheid om betere ruiseigenschappen te hebben. De stroombron kan ook een hogere impedantie hebben dan de weerstand. Duidelijk is de schakeling in \cref{fig:measureResistor} beter, dus zal die gebruikt worden.
 
 \subsubsection{Ruis}
 
-De meetschakeling heeft een aantal ruisbronnen. De nullor heeft een ingangsstroom- en spanninsruisbron. Daarnaast genereert de weerstand ook thermische ruis. Deze ruisbronnen zijn te zien in \autoref{fig:measureNoise}.
+De meetschakeling heeft een aantal ruisbronnen. De nullor heeft een ingangsstroom- en spanninsruisbron. Daarnaast genereert de weerstand ook thermische ruis. Deze ruisbronnen zijn te zien in \cref{fig:measureNoise}.
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.6\textwidth}
@@ -73,7 +73,7 @@ De meetschakeling heeft een aantal ruisbronnen. De nullor heeft een ingangsstroo
 
 
 Omdat $U_{ds}$ en $I_{ds}$ van de ISFET niet veranderen, kan de impedantie ervan gezien worden als weerstand, met een waarde van $\frac{U_{ds}}{I_{ds}}$. Hierdoor wordt er een nieuwe ruisbron $i_{n,ds}$ toegevoegd. Met deze weerstand kunnen de bronnen $i_{n,ref}$, $i_{n,R}$ en $i_{n,ds}$ worden getransformeerd naar een spanningsbron $u_{n,in}$ aan de ingang van de nullor.
-Vervolgens kan deze, samen met de spanningsruisbronnen $u_{n,ref}$ en $u_{n,n}$ naar de uitgang getransformeerd worden. Dit komt uit op een spanningsruisbron aan de uitgang, zoals te zien in \autoref{fig:measureNoiseMoved}. De spectrale spanningsruisdichtheid hiervan is te berekenen door middel van \autoref{eq:measureNoiseOut}.
+Vervolgens kan deze, samen met de spanningsruisbronnen $u_{n,ref}$ en $u_{n,n}$ naar de uitgang getransformeerd worden. Dit komt uit op een spanningsruisbron aan de uitgang, zoals te zien in \cref{fig:measureNoiseMoved}. De spectrale spanningsruisdichtheid hiervan is te berekenen door middel van \cref{eq:measureNoiseOut}.
 
 \begin{equation}\label{eq:measureNoiseOut}
     S_{u_{{n,out}}} = \left(S_{u_{{n,ref}}} + S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2\right) \cdot H^2(\ph)
@@ -86,14 +86,14 @@ Vervolgens kan deze, samen met de spanningsruisbronnen $u_{n,ref}$ en $u_{n,n}$ 
 \end{equation}
 
 
-De definities van deze ruisbronnen zijn te vinden in \autoref{tab:measureNoiseValues}.
+De definities van deze ruisbronnen zijn te vinden in \cref{tab:measureNoiseValues}.
 
 \begin{table}[ht]
     \centering
     \begin{tabular}{c|l}
         Ruisbron & Waarde \\
         \hline 
-        $S_{u_{{n,ref}}}$ & Zie \autoref{sec:referenceVoltage} \\
+        $S_{u_{{n,ref}}}$ & Zie \cref{sec:referenceVoltage} \\
         $S_{u_{{n,n}}}$   & Implementatie nullor \\
         $S_{i_{{n,n}}}$   & Implementatie nullor \\
         $S_{i_{{n,R}}}$   & $\frac{4kT}{R}$ \\
@@ -113,7 +113,7 @@ De definities van deze ruisbronnen zijn te vinden in \autoref{tab:measureNoiseVa
 
 De overdracht van deze schakeling is gelijk aan de uitgangsspanning gedeeld door de ingangsspanning van de nullor. Door de werking van de schakeling blijft de ingansspanning altijd gelijk en is de uitgangsspanning lineair afhankelijk van de pH waarde. Hierdoor is de overdracht $H(\ph)$ een functie van de gemeten pH waarde.
 
-Deze overdrachtsfunctie is gedefinieerd in \autoref{eq:measureTransfer}, en is een functie van de uitgangsspanning. De uitgangsspanning is een functie van de pH waarde, en is te vinden in \autoref{eq:measureOutVoltage}. Hierin is $s$ de gevoeligheid van de sensor, die gegeven wordt in $\si{\milli\volt\per\ph}$, en is $U_7$ de uitgangsspanning op pH7.
+Deze overdrachtsfunctie is gedefinieerd in \cref{eq:measureTransfer}, en is een functie van de uitgangsspanning. De uitgangsspanning is een functie van de pH waarde, en is te vinden in \cref{eq:measureOutVoltage}. Hierin is $s$ de gevoeligheid van de sensor, die gegeven wordt in $\si{\milli\volt\per\ph}$, en is $U_7$ de uitgangsspanning op pH7.
 
 \begin{equation}
     H(\ph) = \frac{U_o(\ph)}{U_{ref}}
@@ -124,21 +124,21 @@ Deze overdrachtsfunctie is gedefinieerd in \autoref{eq:measureTransfer}, en is e
     U_o(\ph) = s\ph + U_7
     \tagaddtext{[\si{\volt}]}
 \end{equation}
-Door de hoogste uitgangsspanning $U_{o,max}$ te nemen, kan de maximale uitgangsruis berekend worden. Deze is te vinden in \autoref{eq:measureNoiseFull}.
+Door de hoogste uitgangsspanning $U_{o,max}$ te nemen, kan de maximale uitgangsruis berekend worden. Deze is te vinden in \cref{eq:measureNoiseFull}.
 
 \begin{equation}\label{eq:measureNoiseFull}
     S_{u_{{n,out}}} = \left(S_{u_{{n,ref}}} + S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2\right) \cdot \left(\frac{U_{o,max}}{U_{ref}}\right)^2
     \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
 
-Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsruis uitgerekend worden door de spectrale ruisdichtheid te vermenigvuldigen met de bandbreedte. Dit wordt gedaan in \autoref{eq:measureNoiseVoltage}.
+Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsruis uitgerekend worden door de spectrale ruisdichtheid te vermenigvuldigen met de bandbreedte. Dit wordt gedaan in \cref{eq:measureNoiseVoltage}.
 \begin{equation}\label{eq:measureNoiseVoltage}
     u_{n,out} = \sqrt{B \cdot S_{u_{{n,out}}}}
     \tagaddtext{[\si{\volt}]}
 \end{equation}
 
 \subsubsection{Vermogen}
-Het vermogensverbruik van deze schakeling is gedefinieerd in \autoref{eq:measurePower}, waar $P_n$ het vermogensverbruik van de nullor implementatie is. 
+Het vermogensverbruik van deze schakeling is gedefinieerd in \cref{eq:measurePower}, waar $P_n$ het vermogensverbruik van de nullor implementatie is. 
 \begin{equation}\label{eq:measurePower}
     P = P_n + U_{dd}I{ds}
 \end{equation}

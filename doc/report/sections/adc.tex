@@ -4,12 +4,12 @@
 De ADC zet een analoog signaal om in een digitaal signaal. Hierbij heeft de ADC maar een zekere resolutie. Deze resolutie is afhankelijk van het aantal bits dat de ADC heeft. Een andere oorzaak van fouten bij de ADC is de sample frequentie. Als deze niet hoog genoeg is zal er ook een fout optreden.
 
 \subsubsection{Number of bits} \label{sec:ADC:numBits}
-De resolutie van een ADC kan worden uitgerekend met \autoref{eq:adcRes}, waarbij n het aantal bits van de ADC is.
+De resolutie van een ADC kan worden uitgerekend met \cref{eq:adcRes}, waarbij n het aantal bits van de ADC is.
 \begin{equation}\label{eq:adcRes}
     Q=\frac{1}{2^n-1}
 \end{equation}
 
-Met \autoref{eq:meanSquareErrorADC} is de fout die ontstaat door de eindige resolutie van de ADC te berekenen \cite{MJHcalcADC}. In het geval er uit specificaties een maximale $\overline{e_{eff}^2}$ kan worden gehaald kan met \autoref{eq:calcNeededQ} de minimale resolutie worden berekend.
+Met \cref{eq:meanSquareErrorADC} is de fout die ontstaat door de eindige resolutie van de ADC te berekenen \cite{MJHcalcADC}. In het geval er uit specificaties een maximale $\overline{e_{eff}^2}$ kan worden gehaald kan met \cref{eq:calcNeededQ} de minimale resolutie worden berekend.
 \begin{equation}\label{eq:meanSquareErrorADC} 
     \overline{e_{eff}^2}=\frac{Q^2}{12}
 \end{equation}
@@ -18,23 +18,23 @@ Met \autoref{eq:meanSquareErrorADC} is de fout die ontstaat door de eindige reso
 \end{equation}
 
 % $\overline{e_{eff}^2}$ mag niet groter dan de helft van het ingangsruis vermogen zijn (noise figure van 1.5dB).
-In het geval van dit ontwerp is er een gegeven noise figure en is de ingangssignaal ruis verhouding en het kleinste ingangssignaal bekend. %Door gebruik te maken van \autoref{eq:calcSpecifiedRmsError}.
+In het geval van dit ontwerp is er een gegeven noise figure en is de ingangssignaal ruis verhouding en het kleinste ingangssignaal bekend. %Door gebruik te maken van \cref{eq:calcSpecifiedRmsError}.
 \begin{equation}\label{eq:calcSpecifiedRmsError}
     \overline{e_{eff}^2}=\left(10^{\frac{NF}{10}}-1\right)\left(\frac{S_{rms}}{10^{SNR+NF/20}}\right)^2
 \end{equation}
 
-Door gebruik te maken van \autoref{eq:adcRes}, \autoref{eq:meanSquareErrorADC} en \autoref{eq:calcSpecifiedRmsError}, kan het minimum aantal bits van een ADC berekend worden met \autoref{eq:calcMinNumberADCbits}.
+Door gebruik te maken van \cref{eq:adcRes}, \cref{eq:meanSquareErrorADC} en \cref{eq:calcSpecifiedRmsError}, kan het minimum aantal bits van een ADC berekend worden met \cref{eq:calcMinNumberADCbits}.
 \begin{equation}\label{eq:calcMinNumberADCbits}
     n=\left\lceil\log_2\left(\frac{1}{Q}+1\right)\right\rceil
 \end{equation}
 
 \subsubsection{Sample frequentie}\label{sec:ADC:sampleFreq}
 % min sample rate
-De maximale sample rate voor een gegeven ADC is afhankelijk van het aantal bits van de ADC en de hoogste te meten signaal frequentie. De hoogste sample rate zal dan ook geen fouten meer introduceren \cite{MJHcalcADC}. De formule om de hoogste sample rate mee te berekenen is gegeven door \autoref{eq:ADCmaxFs}.
+De maximale sample rate voor een gegeven ADC is afhankelijk van het aantal bits van de ADC en de hoogste te meten signaal frequentie. De hoogste sample rate zal dan ook geen fouten meer introduceren \cite{MJHcalcADC}. De formule om de hoogste sample rate mee te berekenen is gegeven door \cref{eq:ADCmaxFs}.
 \begin{equation}\label{eq:ADCmaxFs}
     f_{s,max}\left(n\right)=2^n\pi f_h
 \end{equation}
-In veel gevallen is de hoogste sample rate niet van interesse omdat die zo hoog ligt dat het een puur theoretisch getal is. Om een minimale sample frequentie te berekenen moet er eerst een toe te stane fout bepaald worden. Deze fout kan door middel van een noise figure gespecificeerd worden. Met een bekende noise figure kan door gebruik te maken van \autoref{eq:ADCmaxSampleError} is er een factor uit te rekenen die gebruikt kan worden in \autoref{eq:ADCminFs} om de minimale sample frequentie uit te rekenen.
+In veel gevallen is de hoogste sample rate niet van interesse omdat die zo hoog ligt dat het een puur theoretisch getal is. Om een minimale sample frequentie te berekenen moet er eerst een toe te stane fout bepaald worden. Deze fout kan door middel van een noise figure gespecificeerd worden. Met een bekende noise figure kan door gebruik te maken van \cref{eq:ADCmaxSampleError} is er een factor uit te rekenen die gebruikt kan worden in \cref{eq:ADCminFs} om de minimale sample frequentie uit te rekenen.
 \begin{equation}\label{eq:ADCmaxSampleError}
     E=10^{\frac{-NF}{10}}
 \end{equation}
@@ -43,7 +43,7 @@ In veel gevallen is de hoogste sample rate niet van interesse omdat die zo hoog 
 \end{equation}
 
 \subsubsection{Specificaties van de benodigde ADC}
-De specificaties van de ADC die nodig is voor dit project kunnen pas bepaald worden op het moment dat de eisen bepaald zijn. Deze kunnen afgeleid worden uit de specificaties van het ADC blok. In \autoref{tab:systemSpecADC} zijn deze specificaties herhaald.
+De specificaties van de ADC die nodig is voor dit project kunnen pas bepaald worden op het moment dat de eisen bepaald zijn. Deze kunnen afgeleid worden uit de specificaties van het ADC blok. In \cref{tab:systemSpecADC} zijn deze specificaties herhaald.
 \begin{table}[ht]
     \centering
     \begin{tabular}{l|c|l}
@@ -55,7 +55,7 @@ De specificaties van de ADC die nodig is voor dit project kunnen pas bepaald wor
     \caption{De eisen voor het omzetten van het analoge signaal naar een digitaal signaal.}
     \label{tab:systemSpecADC}
 \end{table}
-Door gebruik te maken van de formules uit \cref{sec:ADC:numBits} en \autoref{sec:ADC:sampleFreq} kunnen de specificaties die in \autoref{tab:specADC} staan worden berekend. Dit is in het geval het noise figure van 3dB wordt gesplitst in twee noise figures van 1.5dB. Deze noise figures worden dan gebruikt voor de sample frequentie en het berekenen van het minimum aantal bits.
+Door gebruik te maken van de formules uit \cref{sec:ADC:numBits} en \cref{sec:ADC:sampleFreq} kunnen de specificaties die in \cref{tab:specADC} staan worden berekend. Dit is in het geval het noise figure van 3dB wordt gesplitst in twee noise figures van 1.5dB. Deze noise figures worden dan gebruikt voor de sample frequentie en het berekenen van het minimum aantal bits.
 \begin{table}[ht]
     \centering
     \begin{tabular}{l|c|l}

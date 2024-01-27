@@ -1,10 +1,10 @@
 \subsection{Filter}
 Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde filter te gebruiken.
-De schakeling van dit filter is te zien in \autoref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \autoref{eq:cutoffFreq}.
+De schakeling van dit filter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie het filter ligt aan de waardes van $C$ en $R$, volgens \cref{eq:cutoffFreq}.
 
 \subsubsection{Ruis}
-De spectrale ruisdichtheid aan de ingang van het filter is te berekenen met \autoref{eq:filterNoiseDensity}.
-De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die van de spanningsdeler in \autoref{sec:referenceVoltage}. Deze is te berekenen met \autoref{eq:dividerNoise}.
+De spectrale ruisdichtheid aan de ingang van het filter is te berekenen met \cref{eq:filterNoiseDensity}.
+De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die van de spanningsdeler in \cref{sec:referenceVoltage}. Deze is te berekenen met \cref{eq:dividerNoise}.
 
 \begin{figure}[ht]
     \centering
@@ -30,24 +30,24 @@ De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die va
     \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
 
-% De signaal-ruis verhouding aan de uitgang van dit filter is te berekenen met \autoref{eq:filterSNR}
+% De signaal-ruis verhouding aan de uitgang van dit filter is te berekenen met \cref{eq:filterSNR}
 % \begin{equation}\label{eq:filterSNR}
 %     \mathrm{SNR} = 20\log\left(U_{out,min}\sqrt{\frac{C}{kT}}\right)
 %     \tagaddtext{[\si{\decibel}]}
 % \end{equation}
 
 \subsubsection{Vermogen}
-Het vermogensverbruik van het filter is te berekenen met \autoref{eq:filterPowerLaplace}.
+Het vermogensverbruik van het filter is te berekenen met \cref{eq:filterPowerLaplace}.
 \begin{equation} \label{eq:filterPowerLaplace}
     P = \frac{U_{in,max}^2}{\left|R + \frac{1}{sC}\right|}
     \tagaddtext{[\si{\watt}]}
 \end{equation}
-Omdat volgens \autoref{eq:cutoffFreq} $R$ te definiëren is in $\omega_c$ en $C$, volgt hieruit \autoref{eq:filterPower}.
+Omdat volgens \cref{eq:cutoffFreq} $R$ te definiëren is in $\omega_c$ en $C$, volgt hieruit \cref{eq:filterPower}.
 \begin{equation} \label{eq:filterPower}
     P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
     \tagaddtext{[\si{\watt}]}
 \end{equation}
-Uit deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijk condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \autoref{eq:dividerNoise}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de ruisspanning aan de ingang van het filter.
+Uit deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijk condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \cref{eq:dividerNoise}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de ruisspanning aan de ingang van het filter.
 \begin{equation} \label{eq:filterCapMin}
     C_{min} = \frac{kT}{u_{n,in}^2}
     \tagaddtext{[\si{\farad}]}

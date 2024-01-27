@@ -3,7 +3,7 @@
 % Discus the results. 
 % Show what the fitting coefficient is after calculation.
 
-In \autoref{fig:pathLossMesurment:pathloss} is het te zien dat de hoeveelheid path loss die optreed niet afhankelijk lijkt te zijn van het signaal vermogen. Dit komt ook overeen met de verschillende modellen die in \autoref{sec:introduction} zijn behandeld. Om een beter beeld te krijgen van het signaalverlies is in \autoref{fig:pathLossMesurment:avaragePathloss} de gemiddelde path loss getoond en in \autoref{fig:pathLossMesurment:medianPathloss} de  mediane path loss.
+In \cref{fig:pathLossMesurment:pathloss} is het te zien dat de hoeveelheid path loss die optreed niet afhankelijk lijkt te zijn van het signaal vermogen. Dit komt ook overeen met de verschillende modellen die in \cref{sec:introduction} zijn behandeld. Om een beter beeld te krijgen van het signaalverlies is in \cref{fig:pathLossMesurment:avaragePathloss} de gemiddelde path loss getoond en in \cref{fig:pathLossMesurment:medianPathloss} de  mediane path loss.
 \begin{figure}[ht]
     \centering
 \begin{tikzpicture}
@@ -57,7 +57,7 @@ In \autoref{fig:pathLossMesurment:pathloss} is het te zien dat de hoeveelheid pa
 
 \end{figure}
 
-Om te controleren of de gemeten data overeen komt met de modellen uit \autoref{sec:introduction}, is in \autoref{fig:modelPredictions} de verwachting van verschillende modellen geplot. Hierbij is voor $\epsilon_r$ een waarde van 3.4 gebruikt. Deze $\epsilon_r$ komt overeen met de $\epsilon_r$ van beton bestaande uit kleine korrels \cite{zhekov2020dielectric}.
+Om te controleren of de gemeten data overeen komt met de modellen uit \cref{sec:introduction}, is in \cref{fig:modelPredictions} de verwachting van verschillende modellen geplot. Hierbij is voor $\epsilon_r$ een waarde van 3.4 gebruikt. Deze $\epsilon_r$ komt overeen met de $\epsilon_r$ van beton bestaande uit kleine korrels \cite{zhekov2020dielectric}.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{twoRayModelPlot}
@@ -65,7 +65,7 @@ Om te controleren of de gemeten data overeen komt met de modellen uit \autoref{s
     \label{fig:modelPredictions}
 \end{figure}
 
-Om uit de meetdata informatie te halen over de fittingscoëfficiënt wordt \autoref{eq:calcfittingsCoef} gebruikt. In \autoref{fig:pathLossMesurment:fittingscoef} is te zien wat de fittingscoëfficiënt is voor de gemeten path loss waardes. De gemiddelde fittingscoëfficiënt van de metingen komt uit op 7.71 en de mediane fittingscoëfficiënt komt uit op 7.80.
+Om uit de meetdata informatie te halen over de fittingscoëfficiënt wordt \cref{eq:calcfittingsCoef} gebruikt. In \cref{fig:pathLossMesurment:fittingscoef} is te zien wat de fittingscoëfficiënt is voor de gemeten path loss waardes. De gemiddelde fittingscoëfficiënt van de metingen komt uit op 7.71 en de mediane fittingscoëfficiënt komt uit op 7.80.
 \begin{equation} \label{eq:calcfittingsCoef}
     l_f=\frac{PL-PL_{FS}-PL_{TR}}{\log\left(50d\right)}
 \end{equation}

@@ -1,6 +1,6 @@
 % Haskell is mijn favoriete taal
 
-Het signaalverwerkingsblok maakt een nuttig signaal van de te meten grootheid. Een uitbreiding van dit blok is te zien in \autoref{fig:signaalverwerking}.
+Het signaalverwerkingsblok maakt een nuttig signaal van de te meten grootheid. Een uitbreiding van dit blok is te zien in \cref{fig:signaalverwerking}.
 Van links naar rechts zijn de functies van de blokken als volgt:
 \begin{enumerate}
     \item De grootheid, de pH waarde, wordt gemeten. Dit wordt gedaan door de gate-source spanning $U_{GS}$ van de ISFET te meten.
@@ -39,7 +39,7 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
 
 % TODO: TAAL
 \subsection{Spanningsregeling}
-Voor spanningsregeling zijn er meerdere componenten nodig, zoals te zien in \autoref{fig:spanningsregeling}. De energy harvesting produceert een spanning, die omgezet moet worden naar iets de rest van het systeem iets mee kan. Deze omgevormde spanning kan dan zowel gebruikt worden voor het opladen van de batterij, als het voeden van de rest van het systeem.
+Voor spanningsregeling zijn er meerdere componenten nodig, zoals te zien in \cref{fig:spanningsregeling}. De energy harvesting produceert een spanning, die omgezet moet worden naar iets de rest van het systeem iets mee kan. Deze omgevormde spanning kan dan zowel gebruikt worden voor het opladen van de batterij, als het voeden van de rest van het systeem.
 Om de batterij op te laden is een batterijregelingssysteem (BMS) nodig. De BMS kan via een beveiliging de batterij opladen. De beveiliging limiteert de batterijspanning en -stroom. De tweede beveiliging zit tussen de batterij en de rest van het systeem. Deze beveiliging zorgt ervoor dat er niet te veel stroom uit de batterij getrokken wordt, waardoor deze kapot kan gaan. De spanningsregelaar zet de spanning die uit de batterij komt om naar een spanning die gebruikt kan worden door de rest van het systeem. 
 
 \begin{figure}[ht]
@@ -50,7 +50,7 @@ Om de batterij op te laden is een batterijregelingssysteem (BMS) nodig. De BMS k
 \end{figure}
 
 \subsection{TX}
-In \autoref{fig:functional} is het TX blok het blok dat de data draadloos verstuurt. Dit blok zal direct ingekocht worden; Er zijn namelijk meer dan genoeg kant-en-klare oplossingen beschikbaar om de functie van dit blok te vervullen.
+In \cref{fig:functional} is het TX blok het blok dat de data draadloos verstuurt. Dit blok zal direct ingekocht worden; Er zijn namelijk meer dan genoeg kant-en-klare oplossingen beschikbaar om de functie van dit blok te vervullen.
 
 
 \subsection{Microcontroller}
