@@ -1,24 +1,37 @@
 \section{Systeem specificaties}\label{sec:systemSpecifications}
-De pH sensor moet met grote nauwkeurigheid de pH waarde van een stof continu kunnen meten. 
-De enige beschikbare pH sensor die dit kan doen is een ISFET.
-Hierdoor zijn de specificaties deels gebaseerd op de specificaties van een ISFET pH sensor.
 
-De sensormodule heeft een eigen accu, en moet deze op kunnen laden zonder oplaadkabel.
+% inleiden
+Dit hoofdstuk zal ingaan op de systeem specificaties van de pH sensormodule. Hierbij zal ingegaan worden op wat de pH signalen zijn die worden verwacht, in welke omgeving de sensormodule moet werken en hoelang de tests kunnen duren.
+
+% pH signaal
+Voor dit onderzoek zijn pH schommelingen tot op \qty{0.05}{\pH} van interesse. Deze schommelingen kunnen optreden met een maximale frequentie van \qty{8}{\hertz}. Over het algemeen zal het water een pH waarde hebben tussen de pH 4 en de pH8. Om er voor te zorgen dat er iets van marge in het pH meetbereik zit, zal de sensormodule een bereik van pH 2 tot pH 10 moeten kunnen meten. De onderzoekers hebben aangegeven dat het uitgangssignaal van de pH sensormodule een minimale signaal ruis verhouding (SNR) van \qty{36}{\decibel} moet hebben.
+
+% basisstation
+Het basisstation dat gebruikt zal worden bij het onderzoek is al ontwikkeld. Dit basisstation maakt gebruik van BLE voor de draadloze communicatie. De BLE implementatie van dit basisstation maakt gebruik van de \mcu voor de \qty{2.4}{\giga\hertz} BLE transceiver. 
+
+% onderzoekslocatie/afstanden beschrijving
+Voor dit onderzoek zullen de onderzoekers meerdere basins maken waarin chemische reacties plaatsvinden. Deze basins zullen voor het initiële onderzoek klein worden gehouden. Indien de resultaten van het onderzoek gunstig zijn is het mogelijk dat er op grotere schaal getest gaat worden. Tijdens dit initiële onderzoek zal de afstand tussen de pH sensormodules en het basisstation niet groter zijn dan \qty{10}{\meter}. Vanuit de onderzoekers is er gevraagd om er voor te zorgen dat de draadloze communicatie tussen de sensormodules en het basisstation 99.999\% betrouwbaar is. Hier volgt een bit error ratio (BER) eis van $1\times 10^{-5}$ uit.
+
+% test periodes (tijd)
+De onderzoekers hebben aangegeven dat de onderzoeken maximaal twee dagen (48 uur) duren. Het is van belang dat tijdens deze 48 uur de sensormodules niet uit het water hoeven te worden gehaald om opgeladen te worden. 
+
+
+In \cref{tab:systemSpecs} zijn alle specificaties die hierboven zijn beschreven onder elkaar geplaatst.
 
 \begin{table}[ht]
     \centering
     \begin{tabular}{|l|c c|l|c|}
         \hline
-        Beschrijving                 & Min & Max  & Eenheid   & Bron \\
+        Beschrijving                    & Min               & Max   & Eenheid           \\
         \hline 
-        Gemiddeld gebruikte vermogen &          & 10    & mW        & Opdrachtgever \\
-        Afwijking                    &          & 0.05  & pH        & \cite{isfet} \\ 
-      % Temperatuur                  &          &       & $^\circ$C & ???           \\
-        Bereik                       & 2        & 10    & pH        & \cite{isfet} \\
-      % Metingssnelheid              & 1        &       & S/s       & \cite{isfet} \\
-        Bandbreedte                  & 10       &       & Hz        & Opdrachtgever\\
-        $\mathrm{SNR}_{uit}$         & 36       & 36    & dBm       &  \\
-        rf betrouwbaarheid           & 99.999   &       & \%        & \\
+        Afwijking                       &                   & 0.05  & pH                \\ 
+        Bereik                          & 2                 & 10    & pH                \\
+        Bandbreedte                     & 10                &       & Hz                \\
+        $\mathrm{SNR}_{uit}$            & 36                &       & \qty{}{\decibel}  \\
+        Rf afstand                      &                   & 10    & \qty{}{\meter}    \\
+        Rf BER                          & $1\times10^{-5}$  &       & \%                \\
+        Minimale tijd op accu           & 48                &       & \qty{}{\hour}     \\
+        Gemiddeld gebruikte vermogen    &                   & 10    & mW                \\
         \hline
     \end{tabular}
     \caption{Systeemspecificaties.}
@@ -30,20 +43,30 @@ ontvangst systeem heeft \mcu als rf ontvanger.
 
 % BER 0.01%
 
+% Lijst met alle specificaties
+% De pH sensormodule voor het onderzoek tot op \qty{0.05}{\pH} nauwkeurig de pH van water kunnen meten. Bij een aantal tests die gedaan zullen worden in dit onderzoek kan de pH met maximaal \qty{8}{\hertz} oscilleren. 
+
+% Het bestaande basisstation maakt gebruik van Bluetooth Low Energy (BLE).  
+
+% De pH sensor moet met grote nauwkeurigheid de pH waarde van een stof continu kunnen meten. 
+% De enige beschikbare pH sensor die dit kan doen is een ISFET.
+% Hierdoor zijn de specificaties deels gebaseerd op de specificaties van een ISFET pH sensor.
+
+% De sensormodule heeft een eigen accu, en moet deze op kunnen laden zonder oplaadkabel.
 
 % \begin{table}[ht]
-%     \centering
-%     \begin{tabular}{|l|r|}
-%         \hline
-%         BER             & 0.01\%  \\
-%         Energie per bit & J/b \\
-%         SNR             & \% \\
-%         Gevoeligheid Ontvanger & \% \\
-%         Zendvermogen    & dBm \\
-%         Ez              & \\ 
-%         Data rate       & b/s\\
-%         \hline
-%     \end{tabular}
-%     \caption{Specificaties draadloze verbinding.}
-%     \label{tab:wirelessSpec}
-% \end{table}
+    %     \centering
+    %     \begin{tabular}{|l|r|}
+        %         \hline
+        %         BER             & 0.01\%  \\
+        %         Energie per bit & J/b \\
+        %         SNR             & \% \\
+        %         Gevoeligheid Ontvanger & \% \\
+        %         Zendvermogen    & dBm \\
+        %         Ez              & \\ 
+        %         Data rate       & b/s\\
+        %         \hline
+        %     \end{tabular}
+        %     \caption{Specificaties draadloze verbinding.}
+        %     \label{tab:wirelessSpec}
+        % \end{table}
