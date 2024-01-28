@@ -1,25 +1,4 @@
 \subsection{Rf} \label{sec:ontwerp:Rf}
-
-% In ... is aangegeven dat het systeem draadloos moet kunnen communiceren. Deze draadloze communicatie moet er voor zorgen dat de gemeten pH waarden door een extern systeem ontvangen kunnen worden. Bij het ontwerpen van systemen met draadloze communicatie moeten een aantal aspecten mee worden genomen. Een aantal van deze aspecten zijn:
-% \begin{itemize}
-%     \item Wetgeving
-%     \item Bit Error Ratio (BER)
-%     \item Modulatie 
-%     \item Bereik
-% \end{itemize}
-
-% wetgeving
-% \subsubsection{Wetgeving}
-% De wetgeving waar dit systeem aan moet voldoen is de wetgeving van de Nederlandse overheid. Omdat dit prototype alleen maar zal worden gebruikt in Nederland. De wetgeving van Nederland stelt vier belangrijke eisen aan de draadloze communicatie van systemen. De frequentie waarop wordt gezonden, de bandbreedte, het zendvermogen en hoeveel procent van de tijd er op de band mag worden gezonden. 
-
-% Het is in Nederland niet toegestaan om op elke frequentie te zenden. Nederland heeft het frequentie spectrum opgedeeld in verschillende blokken. Een aantal van deze blokken kunnen vergunningsvrij worden gebruikt. Een van deze blokken zit op 2.4GHz \cite{RegelingVrijstellingTelecommunicatie2016}. 
-
-% Ber
-% De BER geeft aan hoeveel bits correct worden ontvangen ten opzichte van de hoeveelheid verkeerd ontvangen bits. Afhankelijk van de applicatie is een minimale BER gewenst. Volgens ... is de minimaal gewenste betrouwbaarheid voor deze toepassing 99.999\% \cite{brini2019system}.
-
-
-% BLE maakt gebruik van GFSK
-
 In hoofdstuk \ref{sec:systemSpecifications} is aangegeven dat het ontvangst systeem gebruik maakt van een \mcu. Om te kunnen berekenen wat het minimale zendvermogen van de sensormodule moet zijn, moet de noise figure (NF) van de \mcu worden bepaald. De NF van de \mcu wordt gebruikt om de ontvangstgevoeligheid te bepalen. Deze ontvangstgevoeligheid wordt gebruikt om het minimale zendvermogen te berekenen.
 
 In de datasheet van de \mcu is de ontvangst gevoeligheid gegeven. Bij een datasnelheid van 1Mbps, een bit error ratio (BER) van  $1 \times 10^{-3}$ en gaussian frequency shift keying (GFSK) modulatie, is de ontvangstgevoeligheid van de \mcu -96 dBm \cite{dsNrf52810}.
@@ -38,7 +17,7 @@ Met een bekende $SNR_{min}$ is het mogelijk om de NF van de \mcu te berekenen me
 \end{equation}
 
 % Met BER/Pe ontvangersgevoeligheid berekenen 
-\Cref{eq:calcReceiverSensitivity} kan gebruikt worden om de ontvangst gevoeligheid te berekenen van de ontvanger. Omdat de NF van de \mcu berekend is, is het nu mogelijk om de ontvangstgevoeligheid van de \mcu te berekenen voor een gegeven BER. In ... is een minimale BER van $10\times10^-5$ voor de draadloze communicatie gespecificeerd. In de datasheet staat dat de \mcu gebruik maakt van GFSK modulatie \cite{dsNrf52810}. Het is hiermee mogelijk om de minimale ontvangst \SNR te berekenen voor een BER van $10\times10^{-5}$. Hiermee komt de minimale ontvangst \SNR uit op 12.6 dB.
+\Cref{eq:calcReceiverSensitivity} kan gebruikt worden om de ontvangst gevoeligheid te berekenen van de ontvanger. Omdat de NF van de \mcu berekend is, is het nu mogelijk om de ontvangstgevoeligheid van de \mcu te berekenen voor een gegeven BER. In hoofdstuk \ref{sec:systemSpecifications} is een minimale BER van $10\times10^-5$ voor de draadloze communicatie gespecificeerd. In de datasheet staat dat de \mcu gebruik maakt van GFSK modulatie \cite{dsNrf52810}. Het is hiermee mogelijk om de minimale ontvangst \SNR te berekenen voor een BER van $10\times10^{-5}$. Hiermee komt de minimale ontvangst \SNR uit op 12.6 dB.
 
 Wanneer er  bij het berekenen van de ontvangst gevoeligheid naast de thermische ruis ook het achtergrond vermogen van andere zenders wordt meegenomen, moet bij $N_0$ een constante ($\Delta N)$ worden opgeteld. $\Delta N$ is afhankelijk van de omgeving van de sensormodule. De sensormodule die in dit project wordt ontworpen moet in een industriële omgeving kunnen werken. Uit \cite{kumar2020spectrum} is te halen dat in een dergelijke omgeving een $\Delta N$ van $-105\,\,\si{\deci\belmilliwatt\,\hertz^{-1}}$ een redelijke waarde is. Uit \cref{eq:calcReceiverSensitivity} volgt dat de ontvangstgevoeligheid \qty{-57}{\deci\belmilliwatt} wordt ingeval van een bandbreedte van $\SI{1}{\mega\hertz}$. Met een bandbreedte van $\SI{2}{\mega\hertz}$ is de ontvangstgevoeligheid \qty{-54}{\deci\belmilliwatt}.
 \begin{equation}\label{eq:calcReceiverSensitivity}
