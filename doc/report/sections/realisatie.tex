@@ -31,8 +31,35 @@ Een voorbeeld hiervan is de nRF52810. Deze microcontroller heeft 14 bit (met ove
 % rf implementatie, is industrie standaard, rtos support??, 
 
 \subsection{ADC}
-De ADC die in de \mcu  zit ingebouwd voldoet aan de specificaties in \cref{tab:specADC,tab:systemSpecADC}\cite{nrf52810}. Het is dus niet nodig om een externe ADC te gebruiken. 
+De specificaties van de ADC die nodig is voor dit project kunnen berekend worden op basis van de specificaties voor het ADC blok. Deze specificaties staan in ... beschreven en worden herhaald in \cref{tab:systemSpecADC}.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|c|l}
+        Symbol      & Waarde & Eenheid\\\hline
+        $SNR_{in}$  & 37        & dB\\
+        NF          & 3         & dB\\
+        $u_{in}$    & 2.5       & mV\\
+    \end{tabular}
+    \caption{De eisen voor het omzetten van het analoge signaal naar een digitaal signaal.}
+    \label{tab:systemSpecADC}
+\end{table}
 
+Door gebruik te maken van de formules uit \cref{sec:ADC:numBits} en \cref{sec:ADC:sampleFreq} kunnen de specificaties voor de benodigde ADC berekend worden. De resultaten hiervan zijn in  \cref{tab:specADC} geplaatst. 
+
+Bij het berekenen van deze specificaties is er van uit gegaan dat het totale noise figure 1 op 1 is verdeeld tussen de resolutie en de bemonsteringsfrequentie. 
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|c|l}
+        Symbol      & Waarde    & Eenheid\\\hline
+        n           & 14        & bits\\
+        $f_{s,min}$ & 45        & Hz\\
+        $f_{s,max}$ & 515       & kHz\\
+    \end{tabular}
+    \caption{De eisen voor het omzetten van het analoge signaal naar een digitaal signaal.}
+    \label{tab:specADC}
+\end{table}
+
+Het blijkt het geval te zijn dat de ADC die in de \mcu  zit, voldoet aan de specificaties die in \cref{tab:specADC,tab:systemSpecADC} staan \cite{nrf52810}. Dit zorgt er voor dat het niet nodig is om een externe ADC te gebruiken.
 
 \subsection{Filter}
 Het laagdoorlaatfilter dat voor de ADC zit, heeft een weerstand en een condensator die van een waarde voorzien moeten worden.
