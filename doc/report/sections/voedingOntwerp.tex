@@ -21,6 +21,30 @@ Voor energy harvesting is er een piezo element gekozen. Een piezo element kan ge
 
 
 
-
-
 \subsection{Energie budget}
+Voor het energiebudget zijn de waardes uit \cref{tab:energieBudgetEstimatie} gekozen. De waardes in \cref{tab:energieBudgetEstimatie} zijn boven de theoretisch berekend minium gebruik voor het systeem bepaald maar onder de 10 mW.
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|l}
+        Func. blok          & Vermogen [mW] \\
+        \hline                              
+        Reken $U_{GS}\rightarrow$pH & 0.6   \\
+        ADC                 & 1             \\
+        AA-filter           & 0.2           \\
+        Meet $U_{GS}$       & 0.2           \\
+        Zenden              & 5             \\
+        Oplader             & 0.5           \\
+        Beveiliging         & 0.5           \\
+        Spanningsregeling   & 1             \\ 
+        \hline
+        \hline
+        Totaal              & 9
+        
+    \end{tabular}
+    \caption{Energie budget}
+    \label{tab:energieBudgetEstimatie}
+\end{table}
+
+
