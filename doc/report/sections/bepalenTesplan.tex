@@ -1,5 +1,5 @@
 \section{Testen}
-Om de sensormodule te testen zijn een aantal materialen nodig. Deze materialen zijn gespecificeerd in \cref{tab:testMaterialen}.
+Het is belangrijk dat bepaalde eigenschappen van de gemaakte sensormodule goed getest worden. In dit hoofdstuk worden drie tests beschreven die zijn gedaan om te bepalen of de sensormodule goed functioneert. Hiervoor zijn er bepaalde materialen nodig. Deze materialen zijn gespecificeerd in \cref{tab:testMaterialen}.
 \begin{table}[ht]
     \centering
     \begin{tabular}{l|l|l}
@@ -8,8 +8,8 @@ Om de sensormodule te testen zijn een aantal materialen nodig. Deze materialen z
         MSREF1           & 23/RS03     & Referentie elektrode       \\
         MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
         Tektronix MSO 46 & C019070     & Oscilloscoop               \\
-        ISFETLezer       & 1           & ISFET uitlees schakeling   \\
-        Harvester        & 1           & BMS en energy harvester    \\    
+        uitlees PCB      & 1           & ISFET uitlees schakeling   \\
+        voeding PCB      & 1           & BMS en energy harvester    \\    
         \hline
     \end{tabular}
     \caption{Materialen die zijn gebruikt voor de tests}
@@ -19,7 +19,7 @@ Om de sensormodule te testen zijn een aantal materialen nodig. Deze materialen z
 \subsection{Test 1}
 De eerste test is bedoelt om te controleren of de uitgang van de opamp stabiel is. Dit is een belangrijke test om uit te voeren. Als de uitgang namelijk niet stabiel is, zal de spanning die de ADC uitleest niet goed overeen komen met de drempelspanning van de ISFET.
 
-Om de test uit te voeren wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling een voeding heeft. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de uitgang van de opamp. De probe van kanaal 2 wordt verbonden met de drain van de ISFET. De ISFET wordt samen met de referentieelektrode in een pH7 bufferoplossing gestopt. De opstelling is in \cref{fig:test ISFET circuit best} schematisch te zien.
+Om de test uit te voeren wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling een voeding heeft. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de uitgang van de opamp. De probe van kanaal 2 wordt verbonden met de drain van de ISFET. De ISFET wordt samen met de referentieelektrode in een pH 7 bufferoplossing gestopt. De opstelling is in \cref{fig:test ISFET circuit best} schematisch te zien.
 
 \begin{figure}[ht]
     \centering
@@ -30,7 +30,7 @@ Om de test uit te voeren wordt de uitlees PCB verbonden met de voeding PCB, zoda
 \end{figure}
 
 
-\subsubsection{Resultaten}
+\subsubsection{Resultaten} \label{sec:stabilityTestResults}
 
 De eerste test resulteerde in een oscillerend signaal. De uitgang van de opamp gaf een signaal dat elke \qty{6.8}{\milli\second} pulseerde. Dit is te zien in \cref{fig:resultUgsUds}.
 Een mogelijke reden hiervoor is dat de ISFET niet snel genoeg reageert op spanningsveranderingen tussen de gate (de referentie elektrode) en de source. Wanneer de opamp uitgang laag is, waardoor de gate-source spanning op de ISFET 0 V wordt, komt de drain-source spanning van de ISFET namelijk erg langzaam omhoog. Wanneer deze spanning boven de referentiespanning komt, gaat de uitgang van de opamp omhoog, waarna de drain-source spanning van de ISFET erg snel begint te dalen. Echter, wanneer de drain-source spanning vervolgens de referentiespanning bereikt, reageert de opamp hier merkwaardig genoeg niet direct op. De ingang van de opamp lijkt een hysterese werking te hebben. Dit zorgt voor een oscillerende werking. Ditzelfde resultaat kwam uit een andere test met een andere opmamp (de MCP6002).
@@ -59,10 +59,10 @@ Er zal een aantal tests gedaan moeten worden om te vinden hoe de ISFET precies r
 \subsection{Test 2} 
 De volgende test is bedoelt om te testen of het uitgangssignaal verandert op basis van de pH waarde. 
 
-Om te beginnen wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling gevoed wordt. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de ingang van de ADC. De probe van kanaal 2 wordt verbonden met de uitgang van de opamp. Vervolgens worden de ISFET en referentieelektrode in een pH7 bufferoplossing gestopt. De golfvorm die de oscilloscoop geeft kan nu worden opgeslagen. De meting wordt herhaalt met de ISFET en referentieelektrode in een pH4 bufferoplossing.
+Om te beginnen wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling gevoed wordt. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de ingang van de ADC. De probe van kanaal 2 wordt verbonden met de uitgang van de opamp. Vervolgens worden de ISFET en referentieelektrode in een pH 7 bufferoplossing gestopt. De golfvorm die de oscilloscoop geeft kan nu worden opgeslagen. De meting wordt herhaalt met de ISFET en referentieelektrode in een pH 4 bufferoplossing.
 
 \subsubsection{Resultaten}
-De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duidelijk is de amplitude van de uitgang van de opamp hoger op pH7 vergeleken met pH4.
+De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duidelijk is de amplitude van de uitgang van de opamp hoger op pH 7 vergeleken met pH 4.
 
 \begin{figure}[ht]
     \centering
@@ -70,7 +70,7 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
         \centering
         \def\svgwidth{\textwidth}
         \includegraphics[width=\textwidth]{testpH7.png}
-        \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH7.}
+        \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH 7.}
         \label{fig:resultpH7}
     \end{subfigure}
     \hfill
@@ -78,10 +78,10 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
         \centering
         \def\svgwidth{\textwidth}
         \includegraphics[width=\textwidth]{testpH4.png}
-        \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH4.}
+        \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH 4.}
         \label{fig:resultpH4}
     \end{subfigure}
-    \caption{De uitgang van de meetschakeling op pH4 en pH7. Beide metingen hebben dezelfde schaal.}
+    \caption{De uitgang van de meetschakeling op pH 4 en pH 7. Beide metingen hebben dezelfde schaal.}
     \label{fig:resultspHMeasure}
 \end{figure}
 
