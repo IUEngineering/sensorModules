@@ -29,7 +29,7 @@ Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{ta
 Het digitale gedeelte van het energieverbruik kan opgedeeld worden in 3 onderdelen: de ADC, de digitale signaalverwerking (\cref{fig:digitaleBewerkingsFunctie}) en het draadloos versturen van data. Het is mogelijk om elk van deze onderdelen met aparte componenten te implementeren. Er zijn echter ook componenten beschikbaar die al over elk van deze functionaliteiten beschikken.
 
 Een voorbeeld van een dergelijk component is de nRF52810. Deze microcontroller beschikt over meerdere 14 bit ADC kanalen\footnote{De ADC kanalen zijn alleen 14 bit met oversampling.} en een ingebouwde 2.4GHz Bluetooth transceiver. 
-Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een ingebouwde RTC, wat nuttig is voor het periodiek samplen en versturen van pH waardes. In deze slaapstand wordt er zo'n \qty{1.5}{\micro\ampere} gebruikt. Met een voedingsspanning van \qty{3.3}{\volt} komt dit uit op een vermogensverbruik van \qty{4.95}{\micro\watt}. Daarbij heeft de microcontroller ook de mogelijkheid om onderdelen van het geheugen uit te zetten, wat tot meer energiebesparing kan leiden\cite{nrf52810}.
+Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een ingebouwde RTC, wat nuttig is voor het periodiek samplen en versturen van pH waardes. In deze slaapstand wordt er zo'n \qty{1.5}{\micro\ampere} gebruikt. Met een voedingsspanning van \qty{3.3}{\volt} komt dit uit op een vermogensverbruik van \qty{4.95}{\micro\watt}. Daarbij heeft de microcontroller ook de mogelijkheid om onderdelen van het geheugen uit te zetten, wat tot meer energiebesparing kan leiden \cite{nrf52810}.
 
 
 \subsection{ADC}
@@ -102,12 +102,12 @@ In \cref{sec:ontwerp:Rf} is ingegaan op het minimum zendvermogen dat nodig is. D
 Bij de implementatie van het rf zenden, is het belangrijk om de rf uitgangsimpedantie van de \mcu te matchen met de antenne impedantie. Dit is belangrijk om een zo klein mogelijke hoeveelheid aan energie te verspillen aan reflecties \cite{FundamentalsofAppliedElectromagnetics}. In de datasheet van de \mcu staat al beschreven hoe de rf uitgang gematcht kan worden aan \qty{50}{\ohm} \cite{dsNrf52810}. De impedantie matching wordt gedaan op basis van een L-type matching netwerk. Hierbij staat er een spoel in serie met de antenne en een condensator parallel aan de rf uitgang van de \mcu \cite{dsNrf52810}.
 \subsection{Batterij en bescherming}
 
-Voor de gekozen LiPO batterij technologie is er bescherming nodig. De batterij moet beschermt worden zodat de spanning niet boven de 4.2 V en niet onder de 2.7 V komt. Dit kan op meerdere manieren gedaan worden. In de implementatie van de sensor module is er gekozen voor een simple LTC4071 batterij bescherming IC. Als de spanning van de batterij boven de 4.2 V komt, gebruikt de LTC4071 een 50mA shunt om de ingang stroom naar hitte om te zetten. Wanneer de batterijspanning onder de 2.7 V komt, zet de IC de uitgang uit, om te voorkomen dat de batterijspanning lager wordt.
+Voor de gekozen LiPO batterij technologie is er bescherming nodig. De spanning mag niet boven de 4.2 V of onder de 2.7 V komen. Dit kan op meerdere manieren gedaan worden. In de implementatie van de sensor module is er gekozen voor een LTC4071 batterij bescherming IC. Wanneer de spanning van de batterij boven de 4.2 V komt, gebruikt de LTC4071 een 50mA shunt om de ingang stroom naar hitte om te zetten. Wanneer de batterijspanning onder de 2.7 V komt, zet de IC de uitgang uit, om te voorkomen dat de batterijspanning verder daalt.
 
 \subsection{Voeding}
-Voor de voeding is er gekozen voor een LTC3330 van Analog Devices. Dit is een zogenaamde PMIC (Power Management Integrated Circuit). De LTC3330 PMIC heeft een aantal nuttige eigenschappen en voldoet aan de specs van \cref{tab:systemSpecs}:
+Voor de voeding is er gekozen voor een LTC3330 van Analog Devices. Dit is een zogenaamde `power management integrated circuit' (PMIC). Deze PMIC voldoet aan de specs van \cref{tab:systemSpecs}, en heeft een aantal nuttige eigenschappen:
 \begin{itemize}
-    \item Ingebouwde ideale diodes voor piezo AC-DC omzetting
+    \item Ingebouwde ideale diodes voor AC-DC omzetting
     \item Een buck-boost converter
     \item Een low dropout regulator (LDO)
     \item Mogelijkheid om de LDO uit te zetten

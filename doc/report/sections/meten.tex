@@ -7,7 +7,7 @@ Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gat
 Er zijn meerdere mogelijke implementaties van een dergelijk regelsysteem. Twee hiervan zijn afgebeeld in \cref{fig:measureCircuits}.
 Elk van deze schakelingen gebruikt een nullor om de drain-source spanning van de ISFET gelijk te houden. Ook gebruikt elk van deze schakelingen een referentiespanning. De implementatie van deze referentiespanning wordt verder besproken in \cref{sec:referenceVoltage}.
 
-De drain-source spanning $U_{ds}$ en drain-source stroom $I_{ds}$ zijn van te voren gedefinieerd. Deze zijn ook te vinden in de datasheet van de ISFET\cite{isfet}. Uit deze twee waardes kunnen de referentiespanningen en weerstandswaardes van de schakelingen gevonden worden.
+De drain-source spanning $U_{ds}$ en drain-source stroom $I_{ds}$ zijn van te voren gedefinieerd. Deze zijn ook te vinden in de datasheet van de ISFET \cite{isfet}. Uit deze twee waardes kunnen de referentiespanningen en weerstandswaardes van de schakelingen gevonden worden.
 Voor de schakeling in \cref{fig:measureCurrent} is de spanningsreferentie te vinden door middel van \cref{eq:URefSource}.
 \begin{equation}\label{eq:URefSource}
     U_{ref,s} = U_{dd} - U_{ds}
@@ -113,7 +113,7 @@ De definities van deze ruisbronnen zijn te vinden in \cref{tab:measureNoiseValue
 
 De overdracht van deze schakeling is gelijk aan de uitgangsspanning gedeeld door de ingangsspanning van de nullor. Door de werking van de schakeling blijft de ingansspanning altijd gelijk en is de uitgangsspanning lineair afhankelijk van de pH waarde. Hierdoor is de overdracht $H(\ph)$ een functie van de gemeten pH waarde.
 
-Deze overdrachtsfunctie is gedefinieerd in \cref{eq:measureTransfer}, en is een functie van de uitgangsspanning. De uitgangsspanning is een functie van de pH waarde, en is te vinden in \cref{eq:measureOutVoltage}. Hierin is $s$ de gevoeligheid van de sensor, die gegeven wordt in $\si{\milli\volt\per\ph}$, en is $U_7$ de uitgangsspanning op pH7.
+Deze overdrachtsfunctie is gedefinieerd in \cref{eq:measureTransfer}, en is een functie van de uitgangsspanning. De uitgangsspanning is een functie van de pH waarde, en is te vinden in \cref{eq:measureOutVoltage}. Hierin is $s$ de gevoeligheid van de sensor, die gegeven wordt in $\si{\milli\volt\per\ph}$, en is $U_7$ de uitgangsspanning op pH 7.
 
 \begin{equation}
     H(\ph) = \frac{U_o(\ph)}{U_{ref}}
