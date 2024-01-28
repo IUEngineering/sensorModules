@@ -1,4 +1,4 @@
-\section{Systeem specificaties}
+\section{Systeem specificaties}\label{sec:systemSpecifications}
 De pH sensor moet met grote nauwkeurigheid de pH waarde van een stof continu kunnen meten. 
 De enige beschikbare pH sensor die dit kan doen is een ISFET.
 Hierdoor zijn de specificaties deels gebaseerd op de specificaties van een ISFET pH sensor.
@@ -11,18 +11,21 @@ De sensormodule heeft een eigen accu, en moet deze op kunnen laden zonder oplaad
         \hline
         Beschrijving                 & Min & Max  & Eenheid   & Bron \\
         \hline 
-        Gemiddeld gebruikte vermogen &     & 10   & mW        & Opdrachtgever \\
-        Afwijking                    &     & 0.05 & pH        & \cite{isfet} \\ 
-        % Temperatuur                  &     &      & $^\circ$C & ???           \\
-        Bereik                       & 2   & 10   & pH        & \cite{isfet} \\
-        % Metingssnelheid              & 1   &      & S/s       & \cite{isfet} \\
-        Bandbreedte                  & 10  &      & Hz        & Opdrachtgever\\
-        $\mathrm{SNR}_{uit}$         & 36  & 36   & dBm       &  \\
+        Gemiddeld gebruikte vermogen &          & 10    & mW        & Opdrachtgever \\
+        Afwijking                    &          & 0.05  & pH        & \cite{isfet} \\ 
+      % Temperatuur                  &          &       & $^\circ$C & ???           \\
+        Bereik                       & 2        & 10    & pH        & \cite{isfet} \\
+      % Metingssnelheid              & 1        &       & S/s       & \cite{isfet} \\
+        Bandbreedte                  & 10       &       & Hz        & Opdrachtgever\\
+        $\mathrm{SNR}_{uit}$         & 36       & 36    & dBm       &  \\
+        rf betrouwbaarheid           & 99.999   &       & \%        & \\
         \hline
     \end{tabular}
     \caption{Systeemspecificaties.}
     \label{tab:systemSpecs}
 \end{table}
+
+ontvangst systeem heeft \mcu als rf ontvanger.
 
 
 % BER 0.01%
