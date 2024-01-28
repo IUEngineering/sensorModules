@@ -10,14 +10,17 @@ In dit hoofdstuk komen er een aantal tests aanbod. deze tests zullen worden gebr
         MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
         Tektronix MSO 46 & C019070     & Oscilloscoop               \\
         ISFETLezer       & 1           & ISFET uitlees schakeling   \\
-        Harvester        & 1           & BMS en energy harvester    \\    
+        Harvester        & 1           & BMS en energy harvester    \\
+        Keithley DMM6500 & 04458071    & Multimeter spanningsmeting \\
+        Keithley DMM6500 & 04458625    & Multimeter stroommeting    \\
+
         \hline
     \end{tabular}
     \caption{Materialen die zijn gebruikt voor de tests}
     \label{tab:testMaterialen}
 \end{table}
 
-\subsection{Test 1}
+\subsection{Stabiliteitstest}
 De eerste test is bedoelt om te controleren of de uitgang van de opamp stabiel is. Dit is een belangrijke test om uit te voeren. Als de uitgang namelijk niet stabiel is, zal de spanning die de ADC uitleest niet goed overeen komen met de drempelspanning van de ISFET.
 
 Om de test uit te voeren wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling een voeding heeft. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de uitgang van de opamp. De probe van kanaal 2 wordt verbonden met de drain van de ISFET. De ISFET wordt samen met de referentieelektrode in een pH7 bufferoplossing gestopt. De opstelling is in \cref{fig:test ISFET circuit best} schematisch te zien.
@@ -57,7 +60,7 @@ Een andere mogelijke oplossing is een RC-filter te plaatsen tussen de drain van 
 Er zal een aantal tests gedaan moeten worden om te vinden hoe de ISFET precies reageert op een verandering van de gate-source spanning, en hoe dit verschilt van een reguliere MOSFET. Zo kan een beter model opgesteld worden van de ISFET, waar dan vervolgens een betere uitleesschakeling mee ontworpen kan worden.
 
 
-\subsection{Test 2} 
+\subsection{pH waarde test} 
 De volgende test is bedoelt om te testen of het uitgangssignaal verandert op basis van de pH waarde. 
 
 Om te beginnen wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling gevoed wordt. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de ingang van de ADC. De probe van kanaal 2 wordt verbonden met de uitgang van de opamp. Vervolgens worden de ISFET en referentieelektrode in een pH7 bufferoplossing gestopt. De golfvorm die de oscilloscoop geeft kan nu worden opgeslagen. De meting wordt herhaalt met de ISFET en referentieelektrode in een pH4 bufferoplossing.
@@ -88,3 +91,38 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
 
 \subsubsection{Discussie}
 Een verandering van pH waarde heeft duidelijk een effect op het uitgangssignaal. Er kan echter nog weinig gezegd worden over de lineariteit van de uitgang op basis van de pH waarde. Hiervoor zou de uitgang eerst stabiel gemaakt moeten worden.
+
+
+
+\subsection{Vermogen test}
+Deze test is bedoelt om een controle te doen of het hele systeem minder dan 10 mW aan vermogen gebruikt. Dit is gedaan door de batterij spanning te meten en de stroom die uit de batterij richting het gehele systeem gaat. Daarvoor zijn 2 Keithley mutlimeters gebruikt. Een ingesteld op stroom meting modus en geplaatst zodat de batterij stroom door de multimeter gaat. De andere Keithley multimeter om spanning over de batterij klemmen te meten. 
+
+\subsubsection{Resultaten}
+De spanning is gemeten op 3.82 V, tijdens de loop van de test was deze constant. De stroom verbruik is tijdens het normaal functioneren van het systeem gemeten tussen 1.3 mA en 2.5 mA. Uit de stroommeting multimeter kon een file geëxporteerd worden. Deze file is geplot en vermenigvuldigd met 3.82V, daarnaast is er een gemiddelde genomen van alle waardes om de gemiddelde vermogen te kunnen zien. Die is uitgekomen op 6.81 mW. In \cref{fig:vermogenMeting} zijn de vermogens meting resultaten te zien.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{vermogensMeting.pdf}
+    \caption{Vermogen meting van systeem}
+    \label{fig:vermogenMeting}
+\end{figure}
+
+\subsubsection{Discussie}
+Uit de metingen is duidelijk te zien dat het hele systeem minder vermogen verbruikt dan de maximale 10 mW die genoemd is in de \cref{sec:systemSpecifications}. 
+
+
+\subsection{Energy harvesting test}
+Voor de energy harvesting test is er een meetopstelling gebruikt waarbij de stroom van en naar de accu gemeten wordt. Daarna is de piezo element aangesloten op de energy harvesting bordtje. Dit element is door middel van een magneet aan de tip van de piezo element aan een boormachine kop vastgemaakt. Dit zorgde ervoor dat tijdens het draaien van de boormachine de piezo element ook vibreerde. Bij deze test is alleen Harvester aanwezig en is de ISFETLezer niet aangesloten.
+
+\subsubsection{Resultaten}
+Uit de meting is er een datafile gekomen die daarna omgezet is naar mW door de waardes uit de stroom meet multimeter kwamen te vermenigvuldigen met de spanning van de accu die gemeten is met de spanning multimeter. Te zien in \cref{fig:vermogenPlot}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{vermogen_tijd_plot.pdf}
+    \caption{Vermogen meting energy harvesting}
+    \label{fig:vermogenPlot}
+\end{figure}
+
+\subsubsection{Discussie}
+Uit de \cref{fig:vermogenPlot} is er te zien dat de stroom verbruik van de accu naar 0 mW gaat zodra de piezo genoeg beweging heeft. Dit bewijst dat de energy harvesting werkt en op lange termijn de accu leven zal verlengen.
