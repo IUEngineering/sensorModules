@@ -33,8 +33,35 @@ Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een 
 
 
 \subsection{ADC}
-De ADC die in de \mcu  zit ingebouwd voldoet aan de specificaties in \cref{tab:specADC,tab:systemSpecADC}\cite{nrf52810}. Het is dus niet nodig om een externe ADC te gebruiken. 
+De specificaties van de ADC die nodig is voor dit project kunnen berekend worden op basis van de specificaties voor het ADC blok. Deze specificaties staan in ... beschreven en worden herhaald in \cref{tab:systemSpecADC}.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|c|l}
+        Symbol      & Waarde & Eenheid\\\hline
+        $SNR_{in}$  & 37        & dB\\
+        NF          & 3         & dB\\
+        $u_{in}$    & 2.5       & mV\\
+    \end{tabular}
+    \caption{De eisen voor het omzetten van het analoge signaal naar een digitaal signaal.}
+    \label{tab:systemSpecADC}
+\end{table}
 
+Door gebruik te maken van de formules uit \cref{sec:ADC:numBits} en \cref{sec:ADC:sampleFreq} kunnen de specificaties voor de benodigde ADC berekend worden. De resultaten hiervan zijn in  \cref{tab:specADC} geplaatst. 
+
+Bij het berekenen van deze specificaties is er van uit gegaan dat het totale noise figure 1 op 1 is verdeeld tussen de resolutie en de bemonsteringsfrequentie. 
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|c|l}
+        Symbol      & Waarde    & Eenheid\\\hline
+        n           & 14        & bits\\
+        $f_{s,min}$ & 45        & Hz\\
+        $f_{s,max}$ & 515       & kHz\\
+    \end{tabular}
+    \caption{De eisen voor het omzetten van het analoge signaal naar een digitaal signaal.}
+    \label{tab:specADC}
+\end{table}
+
+Het blijkt het geval te zijn dat de ADC die in de \mcu  zit, voldoet aan de specificaties die in \cref{tab:specADC,tab:systemSpecADC} staan \cite{nrf52810}. Dit zorgt er voor dat het niet nodig is om een externe ADC te gebruiken.
 
 \subsection{Filter}
 Het laagdoorlaatfilter dat voor de ADC zit, heeft een weerstand en een condensator die van een waarde voorzien moeten worden.
@@ -56,6 +83,8 @@ Met de ruis van het voorgaande systeem kan de minimale condensatorwaarde bereken
     \label{tab:filterValues}
 \end{table}
 
+Nu de waardes van het filter bekend zijn moet gecontroleerd worden of de ADC nog steeds aan de specificaties voldoet. De reden dat het nodig is om dit te controleren is omdat het filter passief is geïmplementeerd. Door de passieve implementatie ontstaat er een spanningsdeler. Deze spanningsdeler wordt gevormd door de ingangsimpedantie van de ADC en de weerstandswaarde van het anti aliasing filter. Het blijkt uit \cref{eq:calcMinNumberADCbits} echter dat de eisen voor de ADC niet veranderen en dat de interne ADC van de \mcu nog steeds gebruikt kan worden.
+
 
 \subsection{Nullor implementatie}
 Voor de nullor die gebruikt wordt om de ISFET uit te lezen in \cref{sec:ISFETLees} moet een implementatie gekozen worden. De uitleesschakeling mag volgens de specificaties maximaal \qty{200}{\micro\watt}  gebruiken. De constante stroom die door de weerstand en ISFET in \cref{fig:measureResistor} heen loopt, zorgt voor een constant vermogensverbruik van \qty{165}{\micro\watt}. Hierdoor mag de nullor implementatie maximaal \qty{35}{\micro\watt} gebruiken. Het maximale dynamische vermogen dat deze nullor implementatie aan de uitgang zal moeten kunnen leveren, is gelijk aan het maximale vermogen dat het filter kan dissiperen. Er blijft dan afgerond nog \qty{34}{\micro\watt} aan statisch vermogen over. Dit resulteert in een maximale quiescent stroom van \qty{10.3}{\micro\ampere}.
@@ -68,9 +97,31 @@ De uitleesschakeling moet een minimale SNR hebben van 40 dB. De maximale ruisspa
 De LTC2064 opamp heeft (buiten shutdown) een quiescent stroom van \qty{2.5}{\micro\ampere}, wat op 3.3 V resulteert in een vermogen van \qty{8.25}{\micro\watt}. Daarbij heeft deze een spectrale ruisdichtheid van \qty{12}{\femto\ampere\hertz^{-0.5}} en $\qty{220}{\nano\volt\hertz^{-0.5}}$\cite{LTC2064}. Dit zit volgens \cref{eq:nullorImplementNoise} ver onder het maximum. Daarbij is zowel de ingangsafwijking als de 1/f ruis van deze opamp erg laag. Hierdoor is deze opamp gekozen voor het ontwerp.
 
 \subsection{Rf}
+In \cref{sec:ontwerp:Rf} is ingegaan op het minimum zendvermogen dat nodig is. Dit minimum vermogen is \qty{7.1}{\micro\watt}. Het is belangrijk om op te merken dat dit enkel het minimum vermogen is dat in het rf signaal zit. Het genereren van dit rf signaal kan mogelijk meer energie kosten. Bij het kiezen van de microcontroller is de \mcu gekozen, onder andere omdat er een \qty{2.4}{\giga\hertz} transceiver in zit. Uit de datasheet van de \mcu is te halen dat deze transceiver \qty{4.6}{\milli\ampere} aan stroom trekt, indien er draadloos wordt gezonden met \qty{0}{\deci\belmilliwatt} en een datasnelheid van \qty{1}{\mega\hertz} \cite{dsNrf52810}. Door \cref{eq:calcPperPacket,eq:calcRfAvaragePower} te gebruiken is een gemiddeld rf vermogen van \qty{45}{\micro\watt} te berekenen. \qty{45}{\micro\watt} zit onder het energie budget dat beschikbaar is voor het draadloos zenden.
 
+Bij de implementatie van het rf zenden, is het belangrijk om de rf uitgangsimpedantie van de \mcu te matchen met de antenne impedantie. Dit is belangrijk om een zo klein mogelijke hoeveelheid aan energie te verspillen aan reflecties \cite{FundamentalsofAppliedElectromagnetics}. In de datasheet van de \mcu staat al beschreven hoe de rf uitgang gematcht kan worden aan \qty{50}{\ohm} \cite{dsNrf52810}. De impedantie matching wordt gedaan op basis van een L-type matching netwerk. Hierbij staat er een spoel in serie met de antenne en een condensator parallel aan de rf uitgang van de \mcu \cite{dsNrf52810}.
+\subsection{Batterij en bescherming}
+
+Voor de gekozen LiPO batterij technologie is er bescherming nodig. De batterij moet beschermt worden zodat de spanning niet boven de 4.2 V en niet onder de 2.7 V komt. Dit kan op meerdere manieren gedaan worden. In de implementatie van de sensor module is er gekozen voor een simple LTC4071 batterij bescherming IC. Als de spanning van de batterij boven de 4.2 V komt, gebruikt de LTC4071 een 50mA shunt om de ingang stroom naar hitte om te zetten. Wanneer de batterijspanning onder de 2.7 V komt, zet de IC de uitgang uit, om te voorkomen dat de batterijspanning lager wordt.
 
 \subsection{Voeding}
+Voor de voeding is er gekozen voor een LTC3330 van Analog Devices. Dit is een zogenaamde PMIC (Power Management Integrated Circuit). De LTC3330 PMIC heeft een aantal nuttige eigenschappen en voldoet aan de specs van \cref{tab:systemSpecs}:
+\begin{itemize}
+    \item Ingebouwde ideale diodes voor piezo AC-DC omzetting
+    \item Een buck-boost converter
+    \item Een low dropout regulator (LDO)
+    \item Mogelijkheid om de LDO uit te zetten
+    \item Lage 750 nA quiescent current
+\end{itemize}
+
+De gekozen PMIC is een IC die is ontworpen voor energy harvesting en low power modules. De stroom die uit de energy harvesting komt wordt als eerste gelijkgericht door een ideale diode gelijkrichter. Dit zorgt voor minimaal energie verlies. Daarna bepaalt de LTC3330 of de rest van het systeem de stroom nodig heeft of dat de energie opgeslagen moet worden in de accu. De PMIC heeft 2 spanning omzet methodes ingebouwd. Een buck-boost converter en een LDO die aan en uit kan. De LDO wordt gevoed door de buck-boost. 
+
+\begin{figure}
+    \centering
+
+    \label{}
+\end{figure}
+
 % software 
 % hardware
 
