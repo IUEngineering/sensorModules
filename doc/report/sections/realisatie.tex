@@ -1,4 +1,5 @@
 \section{Realisatie}
+In \cref{sec:ontwerp} is voor elk onderdeel van het systeem besproken wat de eisen zijn van dat onderdeel. Dit hoofdstuk gaat in op de implementatie van elk van deze systeemonderdelen.
 
 \subsection{Spanningsreferentie}
 Zoals besproken in \cref{sec:referenceVoltage} kunnen de weerstandswaardes van de spanningsreferentie erg hoog gekozen worden. Met een $R_1$ van \qty{5.6}{\mega\ohm} gebruikt de spanningsdeler \qty{1.65}{\micro\watt}.
@@ -23,12 +24,13 @@ Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{ta
 \label{tab:divider}
 \end{table}
 
+
 \subsection{Microcontroller}
-Het is erg belangrijk om een energiezuinige microcontroller te kiezen. Het digitale gedeelte van het energieverbruik kan opgedeeld worden in 3 onderdelen: de ADC, de digitale signaalverwerking (\cref{fig:digitaleBewerkingsFunctie}) en het draadloos versturen van data. Het is mogelijk om elk van deze onderdelen met een apart component te doen. Er zijn echter ook componenten beschikbaar die elk van deze functionaliteiten zelf al bevatten.
+Het digitale gedeelte van het energieverbruik kan opgedeeld worden in 3 onderdelen: de ADC, de digitale signaalverwerking (\cref{fig:digitaleBewerkingsFunctie}) en het draadloos versturen van data. Het is mogelijk om elk van deze onderdelen met aparte componenten te implementeren. Er zijn echter ook componenten beschikbaar die al over elk van deze functionaliteiten beschikken.
 
-Een voorbeeld hiervan is de nRF52810. Deze microcontroller heeft 14 bit (met oversampling) ADC kanalen en een ingebouwde 2.4GHz Bluetooth transceiver. 
+Een voorbeeld van een dergelijk component is de nRF52810. Deze microcontroller beschikt over meerdere 14 bit ADC kanalen\footnote{De ADC kanalen zijn alleen 14 bit met oversampling.} en een ingebouwde 2.4GHz Bluetooth transceiver. 
+Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een ingebouwde RTC, wat nuttig is voor het periodiek samplen en versturen van pH waardes. In deze slaapstand wordt er zo'n \qty{1.5}{\micro\ampere} gebruikt. Met een voedingsspanning van \qty{3.3}{\volt} komt dit uit op een vermogensverbruik van \qty{4.95}{\micro\watt}. Daarbij heeft de microcontroller ook de mogelijkheid om onderdelen van het geheugen uit te zetten, wat tot meer energiebesparing kan leiden\cite{nrf52810}.
 
-% rf implementatie, is industrie standaard, rtos support??, 
 
 \subsection{ADC}
 De ADC die in de \mcu  zit ingebouwd voldoet aan de specificaties in \cref{tab:specADC,tab:systemSpecADC}\cite{nrf52810}. Het is dus niet nodig om een externe ADC te gebruiken. 
@@ -73,7 +75,7 @@ De LTC2064 opamp heeft (buiten shutdown) een quiescent stroom van \qty{2.5}{\mic
 % hardware
 
 \subsection{Printplaten}
-De schakelingen voor de voeding en voor het uitlezen van de ISFET zijn opgedeeld in twee verschillende printplaten. Dit is gedaan zodat beide schakelingen apart van elkaar getest kunnen worden. De uitlees printplaat (\cref{fig:sensorPCB}) bevat de ISFET uitleesschakeling, samen met de \mcu, die de gemeten pH waarde verzendt. De voeding printplaat (\cref{fig:powerPCB}) regelt de energy harvesting, samen met het veilig opladen en het ontladen van de batterij. De twee printplaten zijn met elkaar verbonden door middel van pin headers. Beide schakelingen zijn te zien \cref{fig:PCBs}.
+De schakelingen voor de voeding en voor het uitlezen van de ISFET zijn opgedeeld in twee verschillende printplaten. Dit is gedaan zodat beide schakelingen apart van elkaar getest kunnen worden. De uitlees PCB is te zien in \cref{fig:sensorPCB}. Deze PCB bevat de ISFET uitleesschakeling en de \mcu, die de gemeten pH waarde naar het basisstation opstuurt. De voeding printplaat is te zien in \cref{fig:powerPCB}. Deze PCB regelt de energy harvesting, samen met het veilig opladen en het ontladen van de batterij. De twee printplaten zijn met elkaar verbonden door middel van pin headers. Beide schakelingen zijn te zien \cref{fig:PCBs}.
 
 Beide PCB's hebben op elk belangrijk signaal een testpunt zitten. Op deze manier kan er eenvoudig gemeten worden.
 
@@ -83,7 +85,7 @@ Beide PCB's hebben op elk belangrijk signaal een testpunt zitten. Op deze manier
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sensorBord}
-        \caption{De ISFET uitlezer PCB.} 
+        \caption{De ISFET uitlezende PCB.} 
         \label{fig:sensorPCB}
     \end{subfigure}
     \hfill
