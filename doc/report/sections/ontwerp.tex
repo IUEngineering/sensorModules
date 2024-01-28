@@ -1,5 +1,5 @@
 \section{Ontwerp}\label{sec:ontwerp}
-Het systeem bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule leest de pH waarde uit van een oplossing, en verzend deze pH waarde naar het basisstation. Het basisstation ontvangt de informatie en toont deze aan de gebruiker.
+Het systeem bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule meet de pH waarde van een oplossing, en verzend deze naar het basisstation. Het basisstation ontvangt de informatie en slaat deze informatie op.
 In \cref{fig:functional} is dit te zien in een systeemdiagram.
 
 \begin{figure}[ht]
@@ -9,7 +9,7 @@ In \cref{fig:functional} is dit te zien in een systeemdiagram.
     \label{fig:functional}
 \end{figure}
 
-Het sensormodule blok wederom opgedeeld worden in aparte blokken. Dit is te zien in \cref{fig:moduleDiagram}.
+Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te zien in \cref{fig:moduleDiagram}.
 
 \begin{figure}[ht]
     \centering
@@ -33,9 +33,9 @@ De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelt
 
 Het digitale gedeelte bestaat uit een aantal berekeningen. Deze berekeningen zijn nodig om de gemeten spanning om te rekenen naar een pH waarde. Hiervoor zijn een aantal kalibratiewaardes nodig, zoals besproken in \cref{sec:werkingISFET}. Het digitale gedeelte heeft als ingang een temperatuursafhankelijke spanning $U_T$ en een pH-afhankelijke spanning $U_{pH}$. Dit is te zien in \cref{fig:digitaleBewerkingsFunctie}. Beide van deze spanningen zijn de ruwe ADC waardes die gemeten worden, en hebben dus de hoogst mogelijke resolutie, namelijk de resolutie van de ADC. Voor beide van deze waardes zal de eenheid `bit' gebruikt worden.
 
-Van de pH-afhankelijke spanning wordt de pH-afhankelijke kalibratiespanning afgetrokken. Vervolgens wordt hier $+\frac{pH_{kal}}{C_{pH}}$ aan toegevoegd. Op deze manier kan er zo lang mogelijk met integers gewerkt worden die dezelfde resolutie hebben als de ingangs-adc waarde. Het resultaat wordt vervolgens vermenigvuldigd met $C_{pH}$. Dit is de gevoeligheid van de sensor, in pH/bit.
+Om op de uiteindelijk pH waarde te komen, wordt van de pH-afhankelijke spanning de pH-afhankelijke kalibratiespanning afgetrokken. Vervolgens wordt hier $\frac{pH_{kal}}{C_{pH}}$ bij opgeteld. Op deze manier kan er zo lang mogelijk met integers gewerkt worden die dezelfde resolutie hebben als de ingangs-ADC waarde. Het resultaat wordt vervolgens vermenigvuldigd met $C_{pH}$. Dit is de gevoeligheid van de sensor, in pH/bit.
 
-Van de temperatuursafhankelijke spanning $U_T$ wordt de temperatuursafhankelijke kalibratiespanning $U_{T,kal}$ afgetrokken. Vervolgens wordt dit vermenigvuldigt met constante $C_T$. $C_T$ is de temperatuursafhankelijkheid van de pH-sensor, in pH/bit. Deze waarde kan afgeleid worden met de temperatuursafhankelijkheid van de pH-sensor die in de datasheet gegeven wordt in mV/K.
+Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhankelijke spanning $U_T$ de temperatuursafhankelijke kalibratiespanning $U_{T,kal}$ afgetrokken. Vervolgens wordt dit vermenigvuldigt met constante $C_T$. $C_T$ is de temperatuursafhankelijkheid van de pH-sensor, in pH/bit. Deze waarde kan afgeleid worden met de temperatuursafhankelijkheid van de pH-sensor die in de datasheet gegeven wordt in mV/K \cite{isfet}.
 
 \begin{figure}[ht]
     \centering
@@ -45,13 +45,13 @@ Van de temperatuursafhankelijke spanning $U_T$ wordt de temperatuursafhankelijke
 \end{figure}
 
 
-\include{sections/meten}
-\include{sections/divider}
-\include{sections/adc}
-\include{sections/filter}
-\include{sections/rf}
-\include{sections/voedingOntwerp}
-\include{sections/energieBudget}
+\input{sections/meten}
+\input{sections/divider}
+\input{sections/adc}
+\input{sections/filter}
+\input{sections/rf}
+\input{sections/voedingOntwerp}
+\input{sections/energieBudget}
 
 
 
