@@ -63,25 +63,41 @@
     
     \end{frame}
     \begin{frame}
-        \frametitle{Minimum aantal bits \& sample rate}
+        \frametitle{Minimum aantal bits}
+        \centering
 
+        De toelaatbare fout ten gevolge van de eindige resolutie van de ADC
         \begin{equation}\label{eq:calcSpecifiedRmsError}
-            \overline{e_{eff}^2}=\left(10^{\frac{NF}{10}}-1\right)\left(\frac{S_{rms}}{10^{SNR+NF/20}}\right)^2
+            \overline{e_{eff}^2}=\left(10^{\frac{NF}{10}}-1\right)\left(\frac{S_{rms}}{10^{\left(SNR+NF\right)/20}}\right)^2
         \end{equation}
+        \pause
+
+        Berekenen minimum benodigde ADC resolutie
         \begin{equation}\label{eq:calcNeededQ}
             Q=\sqrt{12\cdot\overline{e_{eff}^2}}
         \end{equation}
+        \pause
+
+        Berekenen minimum aantal bits van de ADC op basis van de minimaal benodigde ADC resolutie 
         \begin{equation}\label{eq:calcMinNumberADCbits}
             n=\left\lceil\log_2\left(\frac{1}{Q}+1\right)\right\rceil=14
         \end{equation}
+    
+    \end{frame}
 
-        \pause
+    \begin{frame}
+        \frametitle{Sample frequentie}
+        \centering
         
+        Toelaatbare fout
         \begin{equation}\label{eq:ADCmaxSampleError}
             E=10^{\frac{-NF}{10}}
         \end{equation}
+        \pause
+
+        Minimale sample frequentie berekenen
         \begin{equation}\label{eq:ADCminFs}
-            f_{s,min}\left(E\right)=\frac{\pi f_h}{E}=45
+            f_{s,min}=\frac{\pi f_h}{E}=45
         \end{equation}
     
     \end{frame}
@@ -89,11 +105,19 @@
     \subsection*{AA filter}
     \begin{frame}
         \frametitle{Eisen anti aliasing filter}
-    
+        
+        \centering
+
         Dempen 22.5Hz
 
 
         $P_{max}=200\mu$W
+
+
+        $NF=3\si{\decibel}$
+
+        %TODO! Voeg hier een afbeelding van een RC filter
+        [Voeg hier een afbeelding van een RC filter]
     
     \end{frame}
     \begin{frame}
@@ -148,21 +172,14 @@
     \subsection*{Berekenen pH}
     \begin{frame}
         \frametitle{Gemeten waarde omrekenen naar pH}
-    
-        $\mathrm{CAL_{\mathrm{pH,H}}}=7$
-
-        $\mathrm{CAL_{\mathrm{pH,L}}}=4$
-
-        \begin{equation}
-            \mathrm{pH}=\frac{\mathrm{S}-\mathrm{CAL_{\mathrm{ADC,L}}}}{\mathrm{CAL_{\mathrm{ADC,H}}}-\mathrm{CAL_{\mathrm{ADC,L}}}}\left(\mathrm{CAL_{\mathrm{pH,H}}}-\mathrm{CAL_{\mathrm{pH,L}}}\right)+\mathrm{CAL_{\mathrm{pH,L}}}
-        \end{equation}
-    
-    \end{frame}
-
-    \subsection*{Demo}
-    \begin{frame}
-        \frametitle{pH metingsdemo}
-    
         
+        %TODO jochem doe werk/voeg dingen toe
+        % $\mathrm{CAL_{\mathrm{pH,H}}}=7$
+
+        % $\mathrm{CAL_{\mathrm{pH,L}}}=4$
+
+        % \begin{equation}
+        %     \mathrm{pH}=\frac{\mathrm{S}-\mathrm{CAL_{\mathrm{ADC,L}}}}{\mathrm{CAL_{\mathrm{ADC,H}}}-\mathrm{CAL_{\mathrm{ADC,L}}}}\left(\mathrm{CAL_{\mathrm{pH,H}}}-\mathrm{CAL_{\mathrm{pH,L}}}\right)+\mathrm{CAL_{\mathrm{pH,L}}}
+        % \end{equation}
     
     \end{frame}
