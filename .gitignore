@@ -32,6 +32,10 @@
 # Ignore feedback files
 **/feedback.md
 
+# do not ignore image files
+!**/**/ISFETCircuitBest.pdf
+!**/**/ISFETCircuitBestNoise.pdf
+
 # Ignore C compile bs
 *.elf
 *.hex
