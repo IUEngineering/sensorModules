@@ -17,11 +17,14 @@
         \frametitle{Piëzo-elektrisch element}
     
         Zet mechanische trillingen om in elektrische energie.
+        \begin{itemize}
+            \item 
+        \end{itemize}
         \begin{figure}[h]
-            \raggedright
-            \includegraphics[scale=0.2]{img/peizo.png}
+            \raggedleft
+            \includegraphics[scale=0.15]{img/peizo.png}
         \end{figure}
-
+        
 
     
     \end{frame}
@@ -31,23 +34,25 @@
         \frametitle{Batterij}
         Gekozen voor Lithium-ion technologie
         \begin{itemize}
-            \item Spanning 
-            \begin{itemize}
-                \item maximum: 4.2 V 
-                \item minimum: 2.7 V
-            \end{itemize}
+            \item Multicomp LIR2450
             \item 
+            \begin{tabular}{|l|c c c|}
+                \hline
+                 & min & nom & max \\ \hline
+                Spanning    & 2.7 V   & 3.6 V   & 4.2 V\\ \hline
+                Capaciteit  & 110 mAh & 120 mAh &      \\ \hline
+            \end{tabular}            
         \end{itemize}
         \begin{figure}[h]
             \raggedleft
-            \includegraphics[scale=0.15]{img/batterij.png}
+            \includegraphics[scale=0.3]{img/batterij.png}
         \end{figure}
     \end{frame}
         
 
     \begin{frame}
         \frametitle{BMS}
-        
+        Eisen voor BMS
         \begin{itemize}
             \item Lage stroom verbruik
             \item Beveiligt voor:
@@ -55,6 +60,7 @@
                     \item Over laden
                     \item Over ontladen
                 \end{itemize}
+            \item Kan de stroom aan van het systeem
             
         \end{itemize}
         
@@ -74,6 +80,11 @@
                     \item 3.2 V Lithium Polymeer (LiPo)
                 \end{itemize}
             \item Bij overspanning, 50 mA shunt naar GND
+            \item Stroom uitgang
+                \begin{itemize}
+                    \item $\pm 60$ mA continu 
+                    \item 400 mA kleine pulse van $<$10ms
+                \end{itemize}
         \end{itemize}
 
     \end{frame}
