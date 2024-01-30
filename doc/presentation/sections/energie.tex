@@ -1,6 +1,8 @@
 \section{Energie}
 \begin{frame}
     \frametitle{Energie}
+
+    energie budget bs bs bs
 \end{frame}
     \subsection{Energy Harvesting}
     \begin{frame}
@@ -16,17 +18,26 @@
     \begin{frame}
         \frametitle{Piëzo-elektrisch element}
     
-        Zet mechanische trillingen om in elektrische energie.
+        Zet mechanische trillingen om in elektrische energie.\\
+        Gekozen piëzo element:
         \begin{itemize}
-            \item 
+            \item Mide Technology PPA-1021 
+            \item Maximum 4.5 mW 
         \end{itemize}
         \begin{figure}[h]
             \raggedleft
-            \includegraphics[scale=0.15]{img/peizo.png}
+            \includegraphics[scale=0.2]{img/peizo.png}
         \end{figure}
-        
 
-    
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Resultaten Energy Harvesting}
+        Pieken van 1.2 mW.
+        \begin{figure}[h]
+            \raggedright
+            \includegraphics[scale=0.40]{img/resultaten_piezo.pdf}
+        \end{figure}
     \end{frame}
 
     \subsection{Batterij}
@@ -89,7 +100,34 @@
 
     \end{frame}
 
-    \subsection{PMIC}
+    \subsection{Spanning omzetting}
+
+    \begin{frame}
+        \frametitle{PMIC}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.6]{img/energie_systeem.pdf}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Energieverbruik energie system}
+        \begin{tabular}{|l|c|}
+        \hline
+            & Vermogen \\ \hline
+            Buck-boost & 0.13 mW* \\ \hline
+            Buck-boost + LDO  & 0.38 mW*\\ \hline
+        \end{tabular} \\       
+        *LTC4071 verbruik zit bij de metingen\\
+        metingen gedaan zonder load.
+        \vspace{1cm}
+
+            \centering
+            Uit specificaties max verbruik energiesysteem 1 mW.\\ 
+            $0.38$ mW $< 1$ mW\\
+            Dus energie deel voldoet aan max verbruik specificaties. 
+
+    \end{frame}
 
     % \begin{frame}
     %     \frametitle{Demo}
