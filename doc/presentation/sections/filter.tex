@@ -1,5 +1,16 @@
 
 \begin{frame}
+    \frametitle{Anti aliasing filter}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{aaFilterBlock}
+    \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
     \frametitle{Eisen anti aliasing filter}
     
     \centering
@@ -27,23 +38,33 @@
 \begin{frame}
     \frametitle{Ruis \& vermogensanalyse RC filter}
 
-    \begin{equation}\label{eq:dividerNoise}
-        u_{n,out}^2 = \frac{kT}{C}
-    \end{equation}
+    \pause
 
-    \begin{equation} \label{eq:filterPower}
+    \begin{equation*}\label{eq:dividerNoise}
+        u_{n,out}^2 = \frac{kT}{C}
+    \end{equation*}
+
+    \begin{equation*} \label{eq:filterPower}
         P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
-    \end{equation}
+    \end{equation*}
 
     \pause
 
-    \begin{equation} \label{eq:filterCapMin}
+    \begin{equation*} \label{eq:filterCapMin}
         C_{min} = \frac{kT}{u_{n,in}^2}
-    \end{equation}
+    \end{equation*}
 
-    \begin{equation}
+    \begin{equation*}
         R = \frac{1}{2\pi fC}
-    \end{equation}
+    \end{equation*}
+
+    \pause[1]
+
+    \begin{figure}
+        \centering
+        \def\svgwidth{0.4\textwidth}
+        \input{img/filter.pdf_tex}
+    \end{figure}
 
 \end{frame}
 \begin{frame}

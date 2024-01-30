@@ -1,0 +1,67 @@
+\begin{frame}
+    \frametitle{Ontvangstgevoeligheid}
+
+    \begin{table}
+        \centering
+        \begin{tabular}{l|c}
+            Eigenschap & Waarde \\\hline
+            BER & $1\times10^{-5}$ \\
+            $\Delta N$ & -105 dBm \\
+            Noise Figure & 12.6 dB \\
+            Modulatie & GFSK \\
+        \end{tabular}
+        \caption{Eigenschappen van de ontvanger op het basisstation.}
+    \end{table}
+
+    \pause 
+
+    $S_{or}=-57$ dBm bij B = \qty{1}{\mega\hertz}
+
+    $S_{or}=-54$ dBm bij B = \qty{2}{\mega\hertz}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Minimum zendvermogen}
+
+    \begin{table}
+        \centering
+        \begin{tabular}{l|c}
+            Eigenschap & Waarde \\\hline
+            Afstand & \qty{10}{\meter} \\
+            Hoogte & \qty{1}{\meter} \\
+        \end{tabular}
+        \caption{Antenne plaatsing.}
+    \end{table}
+
+    Path loss = 53.2 dB
+
+    \pause
+
+    $\Rightarrow$
+
+    $P_{z}=-4$dBm bij B = \qty{1}{\mega\hertz}
+
+    $P_{z}=-1$dBm bij B = \qty{2}{\mega\hertz}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Energie en gemiddeld vermogen}
+
+    Energie kosten per verzonden pakket:
+    \begin{equation*}
+        E_{z,p}=\frac{l}{DR}P_z
+    \end{equation*}
+
+    \pause
+
+    $E_{z,p}=$\qty{117.8}{\nano\joule} bij B = \qty{1}{\mega\hertz}
+
+    $E_{z,p}=$\qty{117.6}{\nano\joule} bij B = \qty{2}{\mega\hertz}
+
+    \pause
+
+    \vspace{1cm}
+    $\overline{P_z}=E_{z,p}f_s$ $\Rightarrow$ \qty{7.1}{\micro\watt} in geval van een bandbreedte van \qty{2}{\mega\hertz}
+
+\end{frame}
