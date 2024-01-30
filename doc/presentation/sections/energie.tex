@@ -1,9 +1,30 @@
 \section{Energie}
 \begin{frame}
-    \frametitle{Energie}
-
-    energie budget bs bs bs
+    \frametitle{Energie budget}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{l|l}
+            Func. blok          & Vermogen [mW] \\
+            \hline                              
+            Reken $U_{GS}\rightarrow$pH & 0.6   \\
+            ADC                 & 1             \\
+            AA-filter           & 0.2           \\
+            Meet $U_{GS}$       & 0.2           \\
+            Zenden              & 5             \\
+            Oplader             & 0.5           \\
+            Beveiliging         & 0.5           \\
+            Spanningsregeling   & 1             \\ 
+            \hline
+            \hline
+            Totaal              & 9
+            
+        \end{tabular}
+        \label{tab:energieBudgetEstimatie}
+    \end{table}
+    
 \end{frame}
+
+
     \subsection{Energy Harvesting}
     \begin{frame}
         \frametitle{Energy Harvesting}
@@ -22,7 +43,7 @@
         Gekozen piëzo element:
         \begin{itemize}
             \item Mide Technology PPA-1021 
-            \item Maximum 4.5 mW 
+            \item Maximum 4.5 mW
         \end{itemize}
         \begin{figure}[h]
             \raggedleft
@@ -68,8 +89,8 @@
             \item Lage stroom verbruik
             \item Beveiligt voor:
                 \begin{itemize}
-                    \item Over laden
-                    \item Over ontladen
+                    \item Onderspanning
+                    \item Overspanning
                 \end{itemize}
             \item Kan de stroom aan van het systeem
             
@@ -83,12 +104,11 @@
         \frametitle{LTC4071}
         \begin{itemize}
             \item 550 nA tijdens werking
-            \item $<$0.1 nA na 'Low battery disconnect'
             \item Max spanning 4.2 V
-            \item 'Low battery disconnect' instelbaar
+            \item $<$0.1 nA na `Low battery disconnect'
+            \item `Low battery disconnect' instelbaar
                 \begin{itemize}
                     \item 2.7 V Lithium Ion (Li-ion)
-                    \item 3.2 V Lithium Polymeer (LiPo)
                 \end{itemize}
             \item Bij overspanning, 50 mA shunt naar GND
             \item Stroom uitgang
@@ -118,14 +138,28 @@
             Buck-boost & 0.13 mW* \\ \hline
             Buck-boost + LDO  & 0.38 mW*\\ \hline
         \end{tabular} \\       
-        *LTC4071 verbruik zit bij de metingen\\
-        metingen gedaan zonder load.
+        *LTC4071 verbruik zit bij de metingen.\\
+        Metingen zijn gedaan zonder load.
         \vspace{1cm}
 
             \centering
-            Uit specificaties max verbruik energiesysteem 1 mW.\\ 
+            Uit specificaties max verbruik spanningsregeling 1 mW.\\ 
             $0.38$ mW $< 1$ mW\\
-            Dus energie deel voldoet aan max verbruik specificaties. 
+            Dus spanningsregeling deel voldoet aan max verbruik specificaties. 
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Energieverbruik gehele systeem}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.35]{img/vermogensMeting.pdf}
+        \end{figure}
+        \centering
+        Max verbruik gehele systeem is 9 mW volgens de specs.
+        Gebruik gehele systeem is 6.84 mW\\
+        6.84 mW $<$ 9 mW\\
+        Dus systeem voldoet aan de opgestelde specificaties.
 
     \end{frame}
 
