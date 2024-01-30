@@ -1,4 +1,18 @@
 \section{Energie}
+\begin{frame}
+    \frametitle{Energie}
+\end{frame}
+    \subsection{Energy Harvesting}
+    \begin{frame}
+        \frametitle{Energy Harvesting}
+        \begin{itemize}
+            \item $>$0 mW harvesting
+            \item Kan indoor gebruikt worden
+        \end{itemize}
+
+    \end{frame}
+
+
     \begin{frame}
         \frametitle{Piëzo-elektrisch element}
     
@@ -7,22 +21,65 @@
             \raggedright
             \includegraphics[scale=0.2]{img/peizo.png}
         \end{figure}
+
+
+    
+    \end{frame}
+
+    \subsection{Batterij}
+    \begin{frame}
+        \frametitle{Batterij}
+        Gekozen voor Lithium-ion technologie
+        \begin{itemize}
+            \item Spanning 
+            \begin{itemize}
+                \item maximum: 4.2 V 
+                \item minimum: 2.7 V
+            \end{itemize}
+            \item 
+        \end{itemize}
+        \begin{figure}[h]
+            \raggedleft
+            \includegraphics[scale=0.15]{img/batterij.png}
+        \end{figure}
+    \end{frame}
         
 
-
-    \end{frame}
     \begin{frame}
         \frametitle{BMS}
-    
-        Beveiligt voor:
+        
         \begin{itemize}
-            \item Over laden
-            \item Over ontladen
-
+            \item Lage stroom verbruik
+            \item Beveiligt voor:
+                \begin{itemize}
+                    \item Over laden
+                    \item Over ontladen
+                \end{itemize}
             
         \end{itemize}
+        
+        
     
     \end{frame}
+
+    \begin{frame}
+        \frametitle{LTC4071}
+        \begin{itemize}
+            \item 550 nA tijdens werking
+            \item $<$0.1 nA na 'Low battery disconnect'
+            \item Max spanning 4.2 V
+            \item 'Low battery disconnect' instelbaar
+                \begin{itemize}
+                    \item 2.7 V Lithium Ion (Li-ion)
+                    \item 3.2 V Lithium Polymeer (LiPo)
+                \end{itemize}
+            \item Bij overspanning, 50 mA shunt naar GND
+        \end{itemize}
+
+    \end{frame}
+
+    \subsection{PMIC}
+
     % \begin{frame}
     %     \frametitle{Demo}
     
