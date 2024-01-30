@@ -1,0 +1,40 @@
+\begin{frame}
+    \frametitle{Uitleesschakeling}
+    
+    \only<1>{
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{pHBlokje}
+        \end{figure}
+    }
+
+    \only<2>{
+        \begin{figure}
+            \centering
+            \def\svgwidth{0.6\textwidth}
+            \input{ISFETCircuitBest.pdf_tex}
+        \end{figure}
+    }
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Energie}
+
+    \begin{wrapfigure}{r}{0.5\textwidth}
+        \centering
+        \def\svgwidth{0.5\textwidth}
+        \input{ISFETCircuitBest.pdf_tex}
+    \end{wrapfigure}
+    
+    $P_{statisch} = P_{n,quiescent} + U_{dd}I_{ds}$
+    \pause
+    \vspace{1cm}
+
+    $U_{dd}=3v3$
+
+    $I_{ds}=50\mu$
+    \pause
+
+    $P_{statisch} = P_{n,quiescent} + 165\mu\mathrm{W}$
+\end{frame}

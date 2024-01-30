@@ -1,0 +1,68 @@
+
+\begin{frame}
+    \frametitle{Eisen anti aliasing filter}
+    
+    \centering
+    \vspace{1cm}
+
+    Dempen 22.5Hz
+
+
+    $P_{max}=200\mu$W
+
+
+    $NF=3\si{\decibel}$
+    \vspace{2cm}
+
+
+    \pause
+
+    \begin{figure}
+        \centering
+        \def\svgwidth{0.4\textwidth}
+        \input{img/filter.pdf_tex}
+    \end{figure}
+
+\end{frame}
+\begin{frame}
+    \frametitle{Ruis \& vermogensanalyse RC filter}
+
+    \begin{equation}\label{eq:dividerNoise}
+        u_{n,out}^2 = \frac{kT}{C}
+    \end{equation}
+
+    \begin{equation} \label{eq:filterPower}
+        P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
+    \end{equation}
+
+    \pause
+
+    \begin{equation} \label{eq:filterCapMin}
+        C_{min} = \frac{kT}{u_{n,in}^2}
+    \end{equation}
+
+    \begin{equation}
+        R = \frac{1}{2\pi fC}
+    \end{equation}
+
+\end{frame}
+\begin{frame}
+    \frametitle{AA filter}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{l|l|l}
+            Symbool & Waarde & Eenheid \\
+            \hline
+            $C$         & 82    & $\si{\nano\farad}$\\
+            $R$         & 180   & $\si{\kilo\ohm}$  \\
+            $f_c$       & 10.8  & $\si{\hertz}$     \\
+            $P$         & 408   & $\si{\nano\watt}$ \\
+            $u_{n,out}$ & 225   & $\si{\nano\volt}$ \\
+            NF          & 0.23  & $\si{\decibel}$   \\
+        \end{tabular}
+        \caption{De gekozen waardes van het filter, en de resulterende vermogens- en ruiseigenschappen.}
+        \label{tab:filterValues}
+    \end{table}
+
+\end{frame}
