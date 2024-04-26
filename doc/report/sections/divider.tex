@@ -5,7 +5,7 @@ De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken.
 Hiervoor is als implementatie een spanningsdeler gekozen. De schakeling van deze spanningsdeler is te zien in \cref{fig:divider}.
 De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente storing in de voedingsspanning.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.5\textwidth}
     \input{img/divider.pdf_tex}
@@ -33,7 +33,7 @@ Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \cref{eq:
 \subsubsection{Ruis}
 Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \cref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.35\textwidth}
     \input{img/dividerNoise.pdf_tex}

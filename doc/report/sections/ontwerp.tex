@@ -2,7 +2,7 @@
 Het systeem bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule meet de pH waarde van een oplossing, en verzend deze naar het basisstation. Het basisstation ontvangt de informatie en slaat deze informatie op.
 In \cref{fig:functional} is dit te zien in een systeemdiagram.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{toplevelDiagram}
     \caption[short]{Een diagram van het volledige systeem.}
@@ -11,10 +11,10 @@ In \cref{fig:functional} is dit te zien in een systeemdiagram.
 
 Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te zien in \cref{fig:moduleDiagram}.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.75\textwidth]{moduleDiagram}
-    \caption{Een systeemdiagram van de sensormodule.} 
+    \caption{Een systeemdiagram van de sensormodule.}
     \label{fig:moduleDiagram}
 \end{figure}
 
@@ -23,10 +23,10 @@ De sensormodule kan opgedeeld worden in 2 aparte systemen: de voeding, die verde
 
 De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. In de komende paragrafen wordt elk van deze blokken apart besproken.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{analogeBewerkingsFunctie}
-    \caption{Het analoge gedeelte van de signaalbewerking.} 
+    \caption{Het analoge gedeelte van de signaalbewerking.}
     \label{fig:analogeBewerkingsFunctie}
 \end{figure}
 
@@ -37,10 +37,10 @@ Om op de uiteindelijk pH waarde te komen, wordt van de pH-afhankelijke spanning 
 
 Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhankelijke spanning $U_T$ de temperatuursafhankelijke kalibratiespanning $U_{T,kal}$ afgetrokken. Vervolgens wordt dit vermenigvuldigt met constante $C_T$. $C_T$ is de temperatuursafhankelijkheid van de pH-sensor, in pH/bit. Deze waarde kan afgeleid worden met de temperatuursafhankelijkheid van de pH-sensor die in de datasheet gegeven wordt in mV/K \cite{isfet}.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
-    \caption{Het digitale gedeelte van de signaalbewerking.} 
+    \caption{Het digitale gedeelte van de signaalbewerking.}
     \label{fig:digitaleBewerkingsFunctie}
 \end{figure}
 
@@ -58,10 +58,10 @@ Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhanke
 
 
 
-% \begin{table}[ht]
+% \begin{table}[!htbp]
 %     \centering
 %     \begin{tabular}{|l|r|}
-%         \hline     
+%         \hline
 %         Ingangen    & Oplossing met een pH waarde tussen de 2 en 10 \\
 %                     & Een temperatuur tussen de fliep en floep $^\circ$C \\
 %         \hline

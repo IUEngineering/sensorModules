@@ -2,7 +2,7 @@
 
 Het is belangrijk dat bepaalde eigenschappen van de gemaakte sensormodule goed getest worden. In dit hoofdstuk worden vier tests beschreven die zijn gedaan om te bepalen of de sensormodule goed functioneert. Hiervoor zijn er bepaalde materialen nodig. Voor de eerste twee tests zijn de materialen uit \cref{tab:testMaterialen} gebruikt. De andere tests gebruiken de materialen uit \cref{tab:testMaterialen2}.
 
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|l|l}
         Apparaat         & Serienummer & Beschrijving \\
@@ -11,7 +11,7 @@ Het is belangrijk dat bepaalde eigenschappen van de gemaakte sensormodule goed g
         MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
         Tektronix MSO 46 & C019070     & Oscilloscoop               \\
         uitlees PCB      & 1           & ISFET uitlees schakeling   \\
-        voeding PCB      & 1           & BMS en energy harvester    \\    
+        voeding PCB      & 1           & BMS en energy harvester    \\
         \hline
     \end{tabular}
     \caption{Materialen die zijn gebruikt voor de tests}
@@ -23,7 +23,7 @@ De eerste test is bedoelt om te controleren of de uitgang van de opamp stabiel i
 
 Om de test uit te voeren wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling een voeding heeft. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de uitgang van de opamp. De probe van kanaal 2 wordt verbonden met de drain van de ISFET. De ISFET wordt samen met de referentieelektrode in een pH 7 bufferoplossing gestopt. De opstelling is in \cref{fig:test ISFET circuit best} schematisch te zien.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.75\textwidth}
     \input{img/ISFETCircuitBestTest.pdf_tex}
@@ -40,13 +40,13 @@ Wanneer de opamp uitgang laag is, waardoor de gate-source spanning op de ISFET 0
 Op de drain-source spanning is ook een tweede oscillatie met een hogere frequentie zichtbaar.
 
 
-% Een mogelijke reden hiervoor is dat de ISFET niet snel genoeg reageert op spanningsveranderingen tussen de gate (de referentie elektrode) en de source. 
+% Een mogelijke reden hiervoor is dat de ISFET niet snel genoeg reageert op spanningsveranderingen tussen de gate (de referentie elektrode) en de source.
 
-% 
+%
 
 % Dit wordt waarschijnlijk veroorzaakt door de interne chopping van de gekozen opamp.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.75\textwidth}
     \includegraphics[width=0.8\textwidth]{testUgsUds.png}
@@ -64,17 +64,17 @@ Een andere mogelijke oplossing is een RC-filter te plaatsen tussen de drain van 
 Er zal een aantal tests gedaan moeten worden om te vinden hoe de ISFET precies reageert op een verandering van de gate-source spanning, en hoe dit verschilt van een reguliere MOSFET. Zo kan een beter model opgesteld worden van de ISFET, waar dan vervolgens een betere uitleesschakeling mee ontworpen kan worden.
 
 
-\subsection{pH waarde test} 
-De volgende test is bedoelt om te testen of het uitgangssignaal verandert op basis van de pH waarde. 
+\subsection{pH waarde test}
+De volgende test is bedoelt om te testen of het uitgangssignaal verandert op basis van de pH waarde.
 
 Om te beginnen wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling gevoed wordt. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de ingang van de ADC. De probe van kanaal 2 wordt verbonden met de uitgang van de opamp. Vervolgens worden de ISFET en referentieelektrode in een pH 7 bufferoplossing gestopt. De golfvorm die de oscilloscoop geeft kan nu worden opgeslagen. De meting wordt herhaalt met de ISFET en referentieelektrode in een pH 4 bufferoplossing.
 
 \subsubsection{Resultaten}
 De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duidelijk is de amplitude van de uitgang van de opamp hoger op pH 7 vergeleken met pH 4.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
-    \begin{subfigure}[b]{0.475\textwidth}
+    \begin{subfigure}[b]{0.75\textwidth}
         \centering
         \def\svgwidth{\textwidth}
         \includegraphics[width=\textwidth]{testpH7.png}
@@ -82,7 +82,7 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
         \label{fig:resultpH7}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}
+    \begin{subfigure}[b]{0.75\textwidth}
         \centering
         \def\svgwidth{\textwidth}
         \includegraphics[width=\textwidth]{testpH4.png}
@@ -97,7 +97,7 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
 Een verandering van pH waarde heeft duidelijk een effect op het uitgangssignaal. Er kan echter nog weinig gezegd worden over de lineariteit van de uitgang op basis van de pH waarde. Hiervoor zou de uitgang eerst stabiel gemaakt moeten worden.
 
 
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|l|l}
         Apparaat         & Serienummer & Beschrijving \\
@@ -105,7 +105,7 @@ Een verandering van pH waarde heeft duidelijk een effect op het uitgangssignaal.
         MSREF1           & 23/RS03     & Referentie elektrode       \\
         MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
         uitlees PCB      & 1           & ISFET uitlees schakeling   \\
-        voeding PCB      & 1           & BMS en energy harvester    \\    
+        voeding PCB      & 1           & BMS en energy harvester    \\
         Keithley DMM6500 & 04458071    & Multimeter spanningsmeting \\
         Keithley DMM6500 & 04458625    & Multimeter stroommeting    \\
         \hline
@@ -116,12 +116,12 @@ Een verandering van pH waarde heeft duidelijk een effect op het uitgangssignaal.
 
 
 \subsection{Vermogen test}
-Deze test is bedoelt om te controleren of het volledige systeem minder dan 10 mW aan vermogen gebruikt. Dit is gedaan door de batterij spanning te meten en de stroom die uit de batterij richting het gehele systeem gaat. Daarvoor zijn 2 Keithley mutlimeters gebruikt. Eén ingesteld op stroom meting modus en geplaatst zodat de batterijstroom door de multimeter gaat. De andere Keithley multimeter is ingesteld om spanning over de batterij klemmen te meten. 
+Deze test is bedoelt om te controleren of het volledige systeem minder dan 10 mW aan vermogen gebruikt. Dit is gedaan door de batterij spanning te meten en de stroom die uit de batterij richting het gehele systeem gaat. Daarvoor zijn 2 Keithley mutlimeters gebruikt. Eén ingesteld op stroom meting modus en geplaatst zodat de batterijstroom door de multimeter gaat. De andere Keithley multimeter is ingesteld om spanning over de batterij klemmen te meten.
 
 \subsubsection{Resultaten}
-De gemeten batterijspanning was 3.82 V, tijdens de loop van de test was deze constant. Het stroomverbruik is tijdens het normaal functioneren van het systeem gemeten tussen 1.3 mA en 2.5 mA. De gemeten stroomwaardes zijn vermenigvuldigd met 3.82V en vervolgens geplot. Deze plot is te zien in \cref{fig:vermogenMeting}. Daarnaast is er een gemiddelde genomen van alle samples om het gemiddelde vermogen te kunnen berekenen. Het gemiddelde vermogen is uitgekomen op 6.81 mW. 
+De gemeten batterijspanning was 3.82 V, tijdens de loop van de test was deze constant. Het stroomverbruik is tijdens het normaal functioneren van het systeem gemeten tussen 1.3 mA en 2.5 mA. De gemeten stroomwaardes zijn vermenigvuldigd met 3.82V en vervolgens geplot. Deze plot is te zien in \cref{fig:vermogenMeting}. Daarnaast is er een gemiddelde genomen van alle samples om het gemiddelde vermogen te kunnen berekenen. Het gemiddelde vermogen is uitgekomen op 6.81 mW.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{img/vermogensMeting.pdf}
     \caption{Vermogen meting van systeem}
@@ -129,7 +129,7 @@ De gemeten batterijspanning was 3.82 V, tijdens de loop van de test was deze con
 \end{figure}
 
 \subsubsection{Discussie}
-Uit de metingen is duidelijk te zien dat het hele systeem minder vermogen verbruikt dan de maximale 10 mW die genoemd is in de \cref{sec:systemSpecifications}. 
+Uit de metingen is duidelijk te zien dat het hele systeem minder vermogen verbruikt dan de maximale 10 mW die genoemd is in de \cref{sec:systemSpecifications}.
 
 
 \subsection{Energy harvesting test}
@@ -138,7 +138,7 @@ Voor de energy harvesting test is er een meetopstelling gebruikt waarbij de stro
 \subsubsection{Resultaten}
 De meting is geëxporteerd en omgezet naar mW, door de gemeten stroom te vermenigvuldigen met de batterijspanning. Dit is zien in \cref{fig:vermogenPlot}.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{vermogen_tijd_plot.pdf}
     \caption{Vermogen meting energy harvesting}

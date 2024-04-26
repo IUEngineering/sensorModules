@@ -8,7 +8,7 @@ Volgens \cref{eq:dividerNoise} heeft de condensatorwaarde wel effect op de ruis.
 
 Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{tab:divider}.
 
-\begin{table}[ht]
+\begin{table}[!htbp]
 \centering
 \begin{tabular}{l|l|l}
     Symbool & Waarde & Eenheid \\
@@ -28,13 +28,13 @@ Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{ta
 \subsection{Microcontroller}
 Het digitale gedeelte van het energieverbruik kan opgedeeld worden in 3 onderdelen: de ADC, de digitale signaalverwerking (\cref{fig:digitaleBewerkingsFunctie}) en het draadloos versturen van data. Het is mogelijk om elk van deze onderdelen met aparte componenten te implementeren. Er zijn echter ook componenten beschikbaar die al over elk van deze functionaliteiten beschikken.
 
-Een voorbeeld van een dergelijk component is de nRF52810. Deze microcontroller beschikt over meerdere 14 bit ADC kanalen\footnote{De ADC kanalen zijn alleen 14 bit met oversampling.} en een ingebouwde 2.4GHz Bluetooth transceiver. 
+Een voorbeeld van een dergelijk component is de nRF52810. Deze microcontroller beschikt over meerdere 14 bit ADC kanalen\footnote{De ADC kanalen zijn alleen 14 bit met oversampling.} en een ingebouwde 2.4GHz Bluetooth transceiver.
 Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een ingebouwde RTC, wat nuttig is voor het periodiek samplen en versturen van pH waardes. In deze slaapstand wordt er zo'n \qty{1.5}{\micro\ampere} gebruikt. Met een voedingsspanning van \qty{3.3}{\volt} komt dit uit op een vermogensverbruik van \qty{4.95}{\micro\watt}. Daarbij heeft de microcontroller ook de mogelijkheid om onderdelen van het geheugen uit te zetten, wat tot meer energiebesparing kan leiden \cite{nrf52810}.
 
 
 \subsection{ADC}
 De specificaties van de ADC die nodig is voor dit project kunnen berekend worden op basis van de specificaties voor het ADC blok. Deze specificaties staan in \cref{tab:systemSpecADC} samengevat.
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|c|l}
         Symbol      & Waarde & Eenheid\\\hline
@@ -46,10 +46,10 @@ De specificaties van de ADC die nodig is voor dit project kunnen berekend worden
     \label{tab:systemSpecADC}
 \end{table}
 
-Door gebruik te maken van de formules uit \cref{sec:ADC:numBits,sec:ADC:sampleFreq} kunnen de specificaties voor de benodigde ADC berekend worden. De resultaten hiervan zijn in  \cref{tab:specADC} geplaatst. 
+Door gebruik te maken van de formules uit \cref{sec:ADC:numBits,sec:ADC:sampleFreq} kunnen de specificaties voor de benodigde ADC berekend worden. De resultaten hiervan zijn in  \cref{tab:specADC} geplaatst.
 
-Bij het berekenen van deze specificaties is er van uit gegaan dat het totale noise figure 1 op 1 is verdeeld tussen de resolutie en de bemonsteringsfrequentie. 
-\begin{table}[ht]
+Bij het berekenen van deze specificaties is er van uit gegaan dat het totale noise figure 1 op 1 is verdeeld tussen de resolutie en de bemonsteringsfrequentie.
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|c|l}
         Symbol      & Waarde    & Eenheid\\\hline
@@ -67,7 +67,7 @@ Het blijkt het geval te zijn dat de ingebouwde ADC die in de \mcu  zit, voldoet 
 Het laagdoorlaatfilter dat voor de ADC zit, heeft een weerstand en een condensator die van een waarde voorzien moeten worden.
 Met de ruis van het voorgaande systeem kan de minimale condensatorwaarde berekend worden door middel van \cref{eq:filterCapMin}. Deze komt uit op ongeveer \qty{60}{\pico\farad}. Hiermee moet de weerstandswaarde echter \qty{270}{\mega\ohm} zijn, wat niet praktisch is. Met een condensator van \qty{10}{\nano\farad} kunnen de waardes in \cref{tab:filterValues} berekend worden. Deze waardes vallen binnen de specificaties.
 
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|l|l}
         Symbool & Waarde & Eenheid \\
@@ -90,7 +90,7 @@ Nu de waardes van het filter bekend zijn moet gecontroleerd worden of de ADC nog
 Voor de nullor die gebruikt wordt om de ISFET uit te lezen in \cref{sec:ISFETLees} moet een implementatie gekozen worden. De uitleesschakeling mag volgens de specificaties maximaal \qty{200}{\micro\watt}  gebruiken. De constante stroom die door de weerstand en ISFET in \cref{fig:measureResistor} heen loopt, zorgt voor een constant vermogensverbruik van \qty{165}{\micro\watt}. Hierdoor mag de nullor implementatie maximaal \qty{35}{\micro\watt} gebruiken. Het maximale dynamische vermogen dat deze nullor implementatie aan de uitgang zal moeten kunnen leveren, is gelijk aan het maximale vermogen dat het filter kan dissiperen. Er blijft dan afgerond nog \qty{34}{\micro\watt} aan statisch vermogen over. Dit resulteert in een maximale quiescent stroom van \qty{10.3}{\micro\ampere}.
 
 De uitleesschakeling moet een minimale SNR hebben van 40 dB. De maximale ruisspanning en stroom die de nullor mag genereren aan de ingang zijn te berekenen met \cref{eq:nullorImplementNoise}. Deze vergelijking is afgeleid uit \Cref{eq:measureNoiseFull}.
-\begin{equation} \label{eq:nullorImplementNoise} 
+\begin{equation} \label{eq:nullorImplementNoise}
     S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2 = \frac{S_{u_{{n,out}}}}{H^2(\ph)} - S_{u_{{n,ref}}}
 \end{equation}
 
@@ -114,7 +114,7 @@ Voor de voeding is er gekozen voor een LTC3330 van Analog Devices. Dit is een zo
     \item Lage 750 nA quiescent current
 \end{itemize}
 
-De gekozen PMIC is een IC die is ontworpen voor energy harvesting en low power modules. De uitgang van de energy harvesting wordt als eerste gelijkgericht door een ideale diode gelijkrichter. Dit zorgt voor minimaal energie verlies. Hierna bepaalt de LTC3330 of de rest van het systeem de stroom nodig heeft of dat de energie opgeslagen moet worden in de accu. De PMIC heeft 2 spanning omzet methodes ingebouwd. Een buck-boost converter en een LDO die aan en uit kan. De LDO wordt gevoed door de buck-boost. 
+De gekozen PMIC is een IC die is ontworpen voor energy harvesting en low power modules. De uitgang van de energy harvesting wordt als eerste gelijkgericht door een ideale diode gelijkrichter. Dit zorgt voor minimaal energie verlies. Hierna bepaalt de LTC3330 of de rest van het systeem de stroom nodig heeft of dat de energie opgeslagen moet worden in de accu. De PMIC heeft 2 spanning omzet methodes ingebouwd. Een buck-boost converter en een LDO die aan en uit kan. De LDO wordt gevoed door de buck-boost.
 
 \begin{figure}
     \centering
@@ -122,7 +122,7 @@ De gekozen PMIC is een IC die is ontworpen voor energy harvesting en low power m
     \label{}
 \end{figure}
 
-% software 
+% software
 % hardware
 
 \subsection{Printplaten}
@@ -131,19 +131,19 @@ De schakelingen voor de voeding en voor het uitlezen van de ISFET zijn opgedeeld
 Beide PCB's hebben op elk belangrijk signaal een testpunt. Op deze manier kan er eenvoudig gemeten worden.
 
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sensorBord}
-        \caption{De ISFET uitlezende PCB.} 
+        \caption{De ISFET uitlezende PCB.}
         \label{fig:sensorPCB}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.60\textwidth}
         \centering
         \includegraphics[width=\textwidth]{powerandharvest}
-        \caption{De voeding en harvesting PCB.} 
+        \caption{De voeding en harvesting PCB.}
         \label{fig:powerPCB}
     \end{subfigure}
     \caption{De gemaakte PCB's.}
