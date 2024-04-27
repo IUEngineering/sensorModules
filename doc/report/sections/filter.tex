@@ -1,6 +1,37 @@
 \subsection{Filter}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde laagdoorlaatfilter te gebruiken.
-De schakeling van dit filter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie van het filter ligt aan de waardes van $C$ en $R$, volgens \cref{eq:cutoffFreq}.
+Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter moet de signalen die voor aliasing kunnen zorgen voldoende dempen. Voldoende dempen houdt in dat het stoorsignaal de zelfde orde grote heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt. 
+\subsubsection{Orde bepalen}
+De orde van het filter en de kantelfrequentie bepalen hoeveel demping er op een zekere frequentie plaatsvindt. De demping van een nde orde Butterworth filter op frequentie $f_s$ en met het kantel punt op $f_c$ kan met \cref{eq:dampingOfTheFilter} berekend worden \cite{electronicFilterDesignHandbook}.
+\begin{equation} \label{eq:dampingOfTheFilter}
+    D_{dB}=10\log\left(1+\left(\frac{f_s}{f_c}\right)^{2n}\right)
+\end{equation}
+
+In het geval een Butterworth filter gebruikt wordt om een anti aliasing filter te implementeren moet de maximaal toelaatbare demping voor de hoogste signaal frequentie van interesse worden bepaalt. Daarnaast moet de minimale demping van de stop band worden gespecificeerd. Het is dan mogelijk om met \cref{eq:minOrderOfAAfilter} de minimale orde van het anti aliasing filter te berekenen.
+Wanneer er bewust gebruik wordt gemaakt van aliasing moet er een banddoorlaatfilter worden gebruikt. In dit verslag zal hier echter niet op in worden gegaan. 
+
+Om te bepalen welke orde een laag/hoog filter nodig heeft is het belangrijk om te weten hoeveel het filter de hoogste signaal frequentie van interesse mag dempen. De hoogste signaal frequentie van interesse wordt gegeven door $f_h$ in Hz en de maximale demping in dB die op deze frequentie mag optreden wordt gegeven door $D_D$. Ook moet bekend zijn wat de minimale demping in dB gegeven door $D_D$ op de hoogst toelaatbare frequentie moet zijn, deze frequentie wordt gegeven door $f_D$.
+\begin{equation} \label{eq:minOrderOfAAfilter}
+    n=\left\lceil\frac{1}{2}\ln\left(\frac{10^{D_D/10}-1}{10^{D_h/10}-1}\right)\frac{1}{\ln\left(\frac{f_D}{f_h}\right)}\right\rceil
+    \tagaddtext{[order]}
+\end{equation}
+
+Omdat de minimale orde van het filter berekend kan worden, kan uitgerekend worden wat de minimale en maximale kantel frequentie van het filter is door \cref{eq:boundriesFc} te gebruiken. Bij het implementeren van het filter kan de kantelfrequentie hoger dan wel lager worden vanwege spreiding in de component waardes. Doordat de afwijking van componenten zowel omhoog als omlaag kunnen gaan is het niet mogelijk om te voorspellen of de afwijking van de kantelfrequentie voornamelijk omhoog dan wel omlaag zal gaan. Om hier rekening mee te houden is het aan te raden om de kantelfrequentie halverwege deze twee limieten te kiezen. Deze frequentie is uit te rekenen met \cref{eq:calcCutoffFreqFilter}. Door gebruik te maken van \cref{eq:calcAllowedCutofFreqDeviation} is het mogelijk om uit te rekenen hoeveel de kantelfrequentie mag afwijken van de berekende kantelfrequentie met \cref{eq:calcCutoffFreqFilter}.
+\begin{equation}\label{eq:boundriesFc}
+    \frac{f_h}{\left(10^{D_h/10}-1\right)^{2n}}\leqslant f_c\leqslant\frac{f_D}{\left(10^{D_D/10}-1\right)^{2n}}
+    \tagaddtext{[\si{\hertz}]}
+\end{equation}
+\begin{equation}\label{eq:calcCutoffFreqFilter}
+    f_c=\frac{1}{2}\left(\frac{f_h}{\left(10^{D_h/10}-1\right)^{\frac{1}{2n}}}+\frac{f_D}{\left(10^{D_D/10}-1\right)^{\frac{1}{2n}}}\right)
+    \tagaddtext{[\si{\hertz}]}
+\end{equation}
+\begin{equation}\label{eq:calcAllowedCutofFreqDeviation}
+    \epsilon_{f_c}=\frac{1}{2}\left(\frac{f_D}{\left(10^{D_D/10}-1\right)^{\frac{1}{2n}}}-\frac{f_h}{\left(10^{D_h/10}-1\right)^{\frac{1}{2n}}}\right)
+    \tagaddtext{[\si{\hertz}]}
+\end{equation}
+
+\subsubsection{Eerste orde}
+Wanneer er een eerste orde passief laagdoorlaatfilter wordt gebruikt is het mogelijk om een aantal eigenschappen verder uit te werken.
+De schakeling van een eerste orde passief laagdoorlaatfilter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie van een eerste orde passief laagdoorlaatfilter afhankelijk van de $C$ en $R$, volgens \cref{eq:cutoffFreq}.
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.3\textwidth}
@@ -51,3 +82,34 @@ In deze formule is te zien dat het vermogensverbruik lineair evenredig is met de
     C_{min} = \frac{kT}{u_{n,in}^2}
     \tagaddtext{[\si{\farad}]}
 \end{equation}
+
+\subsubsection{Specificaties}
+% In ... is 
+In de voorgaande paragrafen is in gegaan op hoe specificaties voor discriminatie in het frequentie domain de eigenschappen van een filter vaststellen. Hieronder staan deze specificaties:
+\begin{itemize}
+    \item $f_h$, de hoogste signaalfrequentie van interesse
+    \item $D_h$, de maximale demping in dB op de hoogste signaalfrequentie van interesse
+    \item $f_D$, de frequentie waarop er een minimale demping moet zijn bereikt
+    \item $D_D$, de minimale demping in dB op $f_D$
+    \item $\overline{u_{n,in}}$, de uitgangsgerefereerde ruis van het voorgaande systeem
+    \item $NF$, dit geeft aan hoeveel ruis het filter mag produceren afhankelijk van $\overline{u_{n,in}}$
+\end{itemize}
+
+De eisen die aan het filter worden gesteld kunnen gehaald worden uit de systeemspecificaties in combinatie met het systeemdiagram. In \cref{tab:prelimenarySpecsAAfilter} staan de resulterende specificaties voor het anti aliasing laagdoorlaatfilter.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        Specificatie & Waarde & Eenheid \\\hline
+        $f_h$ & 10 & $[\si{\hertz}]$\\
+        $D_f$ & 3   & $[\mathrm{dB}]$ \\
+        $f_d$ &  & $[\si{\hertz}]$ \\
+        $D_D$ & 37   & $[\mathrm{dB}]$ \\
+        $\overline{u_{n,in}}$ & & $[\si{\volt^2}]$\\
+        $NF$ & 3 & $[\mathrm{dB}]$
+    \end{tabular}
+    \caption{De tot nu toe bekende specificaties voor het anti aliasing laagdoorlaatfilter.}
+    \label{tab:prelimenarySpecsAAfilter}
+\end{table}
+
+De uitgangsgerefereerde ruis van de ISFET uitleesschakeling is afhankelijk van de implementatie. Hier zal in ... op worden ingegaan. 
+De specificatie van $f_d$ is afhankelijk van de benodigde ADC sample frequentie. Deze wordt in ... bepaalt.
