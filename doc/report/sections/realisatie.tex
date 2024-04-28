@@ -64,18 +64,19 @@ Bij het berekenen van deze specificaties is er van uit gegaan dat het totale noi
 Het blijkt het geval te zijn dat de ingebouwde ADC die in de \mcu  zit, voldoet aan de specificaties die in \cref{tab:specADC,tab:systemSpecADC} staan \cite{nrf52810}. Dit zorgt er voor dat het niet nodig is om een externe ADC te gebruiken.
 
 \subsection{Filter}
-Het laagdoorlaatfilter dat voor de ADC zit, heeft als functie om aliasing te voorkomen. Aliasing treedt op vanaf de helft van de sample frequentie van de ADC. In \cref{sec:selectingADCandReqs} is uitgerekend dat de minimale sample frequentie 45 Hz is. Hieruit volgt dat er vanaf 22.5 Hz aliasing optreedt. In \cref{sec:energyBudgets} is aangegeven dat de te verwachten ingangssignaal ruis verhouding 40 dB is. Om de aliasing tot een acceptabel niveau te onderdrukken moeten signalen vanaf 22.5 Hz met minimaal 40 dB worden gedempt. Als laatste mag de implementatie van het filter niet meer dan 200 $\si{\micro\watt}$ verbruiken. In ... staan alle specificaties voor het anti aliasing filter samengevat.
+Het laagdoorlaatfilter dat voor de ADC zit, heeft als functie om aliasing te voorkomen. Aliasing treedt op vanaf de helft van de sample frequentie van de ADC. In \cref{sec:selectingADCandReqs} is uitgerekend dat de minimale sample frequentie 45 Hz is. Hieruit volgt dat er vanaf 22.5 Hz aliasing optreedt. In \cref{sec:energyBudgets} is aangegeven dat de te verwachten ingangssignaal ruis verhouding 40 dB is. Om de aliasing tot een acceptabel niveau te onderdrukken moeten signalen vanaf 22.5 Hz met minimaal 40 dB worden gedempt. Als laatste mag de implementatie van het filter niet meer dan 200 $\si{\micro\watt}$ verbruiken. In \cref{tab:specsAAfilter} staan alle specificaties voor het anti aliasing filter samengevat.
 \begin{table}[ht]
     \centering
     \begin{tabular}{c|c|c}
         Specificatie & Waarde & Eenheid \\\hline
-        $f_h$ & 10   & $[\si{\hertz}]$\\
-        $D_f$ & 3    & $[\mathrm{dB}]$ \\
-        $f_d$ & 22.5 & $[\si{\hertz}]$ \\
-        $D_D$ & 40   & $[\mathrm{dB}]$ \\
-        $\overline{u_{n,in}}$ & & $[\si{\volt^2}]$\\
-        $NF$  & 3    & $[\mathrm{dB}]$ \\
-        $P$   & 200  & $\si{\micro\watt}$ \\
+        $f_h$       & 10   & $[\si{\hertz}]$ \\
+        $D_f$       & 3    & $[\mathrm{dB}]$ \\
+        $f_d$       & 22.5 & $[\si{\hertz}]$ \\
+        $D_D$       & 40   & $[\mathrm{dB}]$ \\
+        $NF$        & 3    & $[\mathrm{dB}]$ \\
+        $u_{in,min}$& 1.94 & $[\si{\milli\volt}]$  \\
+        $\overline{u_{n,in}}$ & 378 & $[\si{\pico\volt^2}]$\\
+        $P$         & 200  & $\si{\micro\watt}$ \\
     \end{tabular}
     \caption{De specificaties voor het anti aliasing laagdoorlaatfilter.}
     \label{tab:specsAAfilter}
