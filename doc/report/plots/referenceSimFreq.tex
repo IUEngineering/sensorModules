@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+    \tikzset{
+        small dot/.style={fill=black,circle,scale=0.3},
+    }
+
+    \begin{axis}[
+        xmode=log,
+        xlabel={$f$ [\unit{\hertz}]},
+        ylabel={$H(f)$ [\unit{\decibel}]},
+        grid=major
+    ]
+        \addplot [
+            mark=none,
+            line width=0.5mm
+        ] table[x=freq,y=out] {sim/referenceSimFreq.dat};
+        % \addplot [
+        %     red,
+        %     mark=*
+        % ] coordinates {(0.18714337, -19.391)};
+        \node [small dot,pin=0:{kantelpunt}] at (0.18714337, -19.391) {};
+    \end{axis}
+\end{tikzpicture}

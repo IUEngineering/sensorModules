@@ -64,6 +64,36 @@ Aangezien de inverse tangens $\frac{\pi}{2}$ nadert, komt dit limiet uit op \cre
 \end{equation}
 Omdat een oneindige bandbreedte gebruikt is om op \cref{eq:dividerNoise} te komen, berekend deze de ruis in het ergste geval. De weerstandswaardes van $R_1$ en $R_2$ zijn hierbij irrelevant. Hierdoor is ruis geen bepalende factor meer tijdens het kiezen van de weerstandswaardes van de spanningsdeler, en kunnen deze volledig gebaseerd worden op vermogensverbruik. Volgens \cref{eq:dividerPowerSimple} is het vermogen omgekeerd evenredig met de som van de weerstandswaardes. Daarbij zit de uitgang van de spanningsdeler direct verbonden met de ingang van een nullor. Er hoeft dus geen rekening gehouden te worden met de uitgangsimpedantie van de spanningsbron. Hierdoor is het voor het vermogensverbruik voordelig om de weerstandswaardes zo hoog mogelijk te kiezen.
 
+\subsubsection{Simulatie}
+
+Om te verifiëren dat de spanningsreferentie goed werkt, is er een aantal simulaties uitgevoerd.
+
+In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hier is $H(f)$ de overdracht van $U_{dd}$ naar
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimFreq.tex}
+    \caption{Het resultaat van een AC simulatie van de spanningsreferentie.}
+    \label{fig:referenceSimFreq}
+\end{figure}
 
 
-% [WELKE SPECS??]
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimTrans.tex}
+    \caption{Het resultaat van een transient simulatie van de spanningsreferentie.}
+    \label{fig:referenceSimTrans}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimNoise.tex}
+    \caption{Het resultaat van een ruissimulatie van de spanningsreferentie.}
+    \label{fig:referenceSimNoise}
+\end{figure}
+
+% 64nV aan ruis

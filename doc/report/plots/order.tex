@@ -1,0 +1,74 @@
+% Order is mijn favoriete kat
+\definecolor{IMBBlue}{HTML}{648FFF}
+\definecolor{IMBPurple}{HTML}{785EF0}
+\definecolor{IMBPink}{HTML}{DC267F}
+\definecolor{IMBOrange}{HTML}{FE6100}
+\definecolor{IMBYellow}{HTML}{FFB000}
+
+\begin{tikzpicture}
+    \tikzset{
+        small dot/.style={fill=black,circle,scale=0.3},
+    }
+    \newcommand\constFH{10}
+    \newcommand\constDH{3}
+    \newcommand\constFD{22.5}
+    \newcommand\constDD{40}
+
+    \newcommand\funcError {
+        ((
+            \constFD / (
+                (10 ^ (\constDD / 10) - 1) ^ (1 / (2*x))
+            )
+            - \constFH /
+            (
+                (10 ^ (\constDH / 10) - 1) ^ (1 / (2*x))
+            )
+        ) / 2)
+    }
+    \newcommand\funcFreq {
+        ((
+            \constFH / (
+                (10 ^ (\constDH / 10) - 1) ^ (1 / (2*x))
+            )
+            + \constFD /
+            (
+                (10 ^ (\constDD / 10) - 1) ^ (1 / (2*x))
+            )
+        ) / 2)
+    }
+
+    \begin{axis}[
+        xlabel={werkt},
+        ylabel={dit},
+        ymin=-110,
+        ymax=40,
+        xmin=0,
+        xmax=18,
+        grid=major
+    ]
+        \addplot [
+            mark=none,
+            % red,
+            line width=0.5mm,
+            domain=0:18,
+            samples=201,
+            IMBBlue
+        ] {\funcError};
+        \addplot [
+            mark=none,
+            line width=0.5mm,
+            domain=0:18,
+            samples=201,
+            IMBOrange
+        ] {\funcFreq};
+        \addplot [
+            mark=none,
+            line width=0.5mm,
+            domain=0.05:18,
+            samples=201,
+            IMBPurple
+        ] {100 * \funcError / \funcFreq};
+
+        % \node [small dot,pin=0:{kantelpunt}] at (0.18714337, -19.391) {};
+    \end{axis}
+\end{tikzpicture}

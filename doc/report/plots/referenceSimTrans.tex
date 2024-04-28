@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+
+    \begin{axis}[
+        xlabel={$t$ [\unit{\second}]},
+        ylabel={$H(f)$ [\unit{\decibel}]},
+        grid=major
+    ]
+    \addplot [
+        mark=none,
+        line width=0.5mm
+    ] table[x=time,y=out] {sim/referenceSimTrans.dat};
+    \end{axis}
+\end{tikzpicture}
+
