@@ -43,7 +43,7 @@ Het vermogensverbruik van het filter is te berekenen met \cref{eq:filterPowerLap
 \end{equation}
 Omdat volgens \cref{eq:cutoffFreq} $R$ te definiëren is in $\omega_c$ en $C$, volgt hieruit \cref{eq:filterPower}.
 \begin{equation} \label{eq:filterPower}
-    P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
+    P = \frac{1}{2}\omega_cCU_{in,max}^2
     \tagaddtext{[\si{\watt}]}
 \end{equation}
 In deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijke condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \cref{eq:filterCapMin}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de ruisspanning aan de ingang van het filter.
