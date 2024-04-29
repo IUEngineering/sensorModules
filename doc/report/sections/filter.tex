@@ -30,6 +30,29 @@ Omdat de minimale orde van het filter berekend kan worden, kan uitgerekend worde
     \tagaddtext{[\si{\hertz}]}
 \end{equation}
 
+\begin{figure}[!htbp]
+    \centering
+    \input{plots/filterorder.tex}
+    \caption{Eigenschappen van de kantelfrequentie ten gevolge van de orde van het filter.}
+    \label{fig:fcEigenschappenTengevolgeVanN}
+\end{figure}
+% kantelfrequentie + limiet n -> infty
+Zoals eerder aangegeven kan met \cref{eq:calcCutoffFreqFilter} de benodigde kantelfrequentie voor een filter worden berekend. \Cref{eq:calcCutoffFreqFilter} houdt er geen rekening mee of de filter orde hoog genoeg is en berekend enkel het gemiddelde van de benodigde kantelfrequentie van $f_h$ met $D_h$ en $f_D$ met $D_D$. In \cref{fig:fcEigenschappenTengevolgeVanN}\footnote{Er is voor deze grafiek gebruik gemaakt van de filter specificaties van het te ontwerpen filter in dit project.} is te zien dat \cref{eq:calcCutoffFreqFilter} naar een waarde toegaat wanneer n naar oneindig gaat. \Cref{eq:limietCutoffFreqNtoInfty} toont het resultaat van $\lim_{n\rightarrow\infty}f_c\left(n\right)$. Dit laat zien dat wanneer er een filter wordt gebruikt met een orde die naar oneindig gaat de kantelfrequentie het gemiddelde wordt van $f_h$ en $f_D$.
+\begin{equation}\label{eq:limietCutoffFreqNtoInfty}
+    f_{c,n\infty}=\frac{f_h+f_D}{2}
+\end{equation}
+De maximale afwijking van de kantelfrequentie van een filter is ook afhankelijk van de orde van het filter. \Cref{eq:maxErrorFc} kan worden gevonden, door: $\lim_{n\rightarrow\infty}\epsilon_{f_c}\left(n\right)$ op te lossen. Een andere manier op \cref{eq:maxErrorFc} te beredeneren is dat met een oneindig hoge filter orde de dempingseis oneindig snel kan worden behaald. Dit beteknt dat de kantelfrequentie niet voor/op $f_h$ maar wel voor/op $f_D$ moet uitkomen. \Cref{eq:maxErrorFc} kan worden gebruikt om te controleren of het mogelijk is om aan de filter eisen van de kantelfrequentie te voldoen.
+\begin{equation}\label{eq:maxErrorFc}
+    \epsilon_{f_c,n\infty}=\frac{f_D-f_h}{2}
+\end{equation}
+% afwijking + limiet n -> infty
+% bla bla
+
+% procentuele afwijking
+% negatief
+% limiet n -> infty
+
+
 \subsubsection{Eerste orde}
 Wanneer er een eerste orde passief laagdoorlaatfilter wordt gebruikt is het mogelijk om een aantal eigenschappen verder uit te werken.
 De schakeling van een eerste orde passief laagdoorlaatfilter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie van een eerste orde passief laagdoorlaatfilter afhankelijk van de $C$ en $R$, volgens \cref{eq:cutoffFreq}.
