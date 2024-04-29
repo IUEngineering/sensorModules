@@ -1,5 +1,17 @@
 \subsection{Filter}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde laagdoorlaatfilter te gebruiken.
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{signaalblokjes/filterInSchema.pdf}
+    \caption{Waar het filter zich bevind in het signaalverwerkingsblok van \cref{fig:analogeBewerkingsFunctie}.}
+    \label{fig:filterInSchema}
+\end{figure}
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.4\textwidth]{signaalblokjes/aaFilterBlock}
+    \caption{Het filter blok.}
+    \label{fig:filterBlock}
+\end{figure}
+Tussen de ADC en de uitleesschakeling van de sensor zit een filter; zie \cref{fig:filterInSchema,fig:filterBlock}. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde laagdoorlaatfilter te gebruiken.
 De schakeling van dit filter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie van het filter ligt aan de waardes van $C$ en $R$, volgens \cref{eq:cutoffFreq}.
 \begin{figure}[!htbp]
     \centering
