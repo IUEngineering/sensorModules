@@ -1,13 +1,14 @@
 \subsection{Filter}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter moet de signalen die voor aliasing kunnen zorgen voldoende dempen. Voldoende dempen houdt in dat het stoorsignaal de zelfde orde grote heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt. 
-\subsubsection{Orde bepalen}
+Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter moet de signalen die voor aliasing kunnen zorgen voldoende dempen. Voldoende dempen houdt in dat het stoorsignaal de zelfde orde grote heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
+
+\subsubsection{Orde bepalen} \label{sec:DetermineAAorder}
 De orde van het filter en de kantelfrequentie bepalen hoeveel demping er op een zekere frequentie plaatsvindt. De demping van een nde orde Butterworth filter op frequentie $f_s$ en met het kantel punt op $f_c$ kan met \cref{eq:dampingOfTheFilter} berekend worden \cite{electronicFilterDesignHandbook}.
 \begin{equation} \label{eq:dampingOfTheFilter}
     D_{dB}=10\log\left(1+\left(\frac{f_s}{f_c}\right)^{2n}\right)
 \end{equation}
 
 In het geval een Butterworth filter gebruikt wordt om een anti aliasing filter te implementeren moet de maximaal toelaatbare demping voor de hoogste signaal frequentie van interesse worden bepaalt. Daarnaast moet de minimale demping van de stop band worden gespecificeerd. Het is dan mogelijk om met \cref{eq:minOrderOfAAfilter} de minimale orde van het anti aliasing filter te berekenen.
-Wanneer er bewust gebruik wordt gemaakt van aliasing moet er een banddoorlaatfilter worden gebruikt. In dit verslag zal hier echter niet op in worden gegaan. 
+Wanneer er bewust gebruik wordt gemaakt van aliasing moet er een banddoorlaatfilter worden gebruikt. In dit verslag zal hier echter niet op in worden gegaan.
 
 Om te bepalen welke orde een laag/hoog filter nodig heeft is het belangrijk om te weten hoeveel het filter de hoogste signaal frequentie van interesse mag dempen. De hoogste signaal frequentie van interesse wordt gegeven door $f_h$ in Hz en de maximale demping in dB die op deze frequentie mag optreden wordt gegeven door $D_D$. Ook moet bekend zijn wat de minimale demping in dB gegeven door $D_D$ op de hoogst toelaatbare frequentie moet zijn, deze frequentie wordt gegeven door $f_D$.
 \begin{equation} \label{eq:minOrderOfAAfilter}
@@ -77,15 +78,15 @@ Omdat volgens \cref{eq:cutoffFreq} $R$ te definiëren is in $\omega_c$ en $C$, v
     P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
     \tagaddtext{[\si{\watt}]}
 \end{equation}
-In deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijke condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \cref{eq:filterCapMin}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de ruisspanning aan de ingang van het filter.
+In deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijke condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \cref{eq:filterCapMin}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de RMS ruisspanning aan de ingang van het filter.
 \begin{equation} \label{eq:filterCapMin}
-    C_{min} = \frac{kT}{u_{n,in}^2}
+    C_{min} = \frac{kT}{u_{n,in}^2\left(10^{NF/10}-1\right)}
     \tagaddtext{[\si{\farad}]}
 \end{equation}
 
 \subsubsection{Specificaties}
-% In ... is 
-In de voorgaande paragrafen is in gegaan op hoe specificaties voor discriminatie in het frequentie domain de eigenschappen van een filter vaststellen. Hieronder staan deze specificaties:
+% In ... is
+In de voorgaande paragrafen is in gegaan op hoe specificaties voor discriminatie in het frequentie domain de eigenschappen van een filter kunnen worden berekend. Hieronder staan deze specificaties:
 \begin{itemize}
     \item $f_h$, de hoogste signaalfrequentie van interesse
     \item $D_h$, de maximale demping in dB op de hoogste signaalfrequentie van interesse
@@ -111,5 +112,5 @@ De eisen die aan het filter worden gesteld kunnen gehaald worden uit de systeems
     \label{tab:prelimenarySpecsAAfilter}
 \end{table}
 
-De uitgangsgerefereerde ruis van de ISFET uitleesschakeling is afhankelijk van de implementatie. Hier zal in ... op worden ingegaan. 
+De uitgangsgerefereerde ruis van de ISFET uitleesschakeling is afhankelijk van de implementatie. Hier zal in ... op worden ingegaan.
 De specificatie van $f_d$ is afhankelijk van de benodigde ADC sample frequentie. Deze wordt in ... bepaalt.
