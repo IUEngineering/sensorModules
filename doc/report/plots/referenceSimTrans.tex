@@ -1,14 +1,23 @@
 \begin{tikzpicture}
+    \tikzset{
+        small dot/.style={fill=black,circle,scale=0.4},
+    }
 
     \begin{axis}[
         xlabel={$t$ [\unit{\second}]},
-        ylabel={$H(f)$ [\unit{\decibel}]},
-        grid=major
+        ylabel={$U_{ref}$ [\unit{\volt}]},
+        ytick       ={0,0.05,0.1,0.15},
+        yticklabels ={0,0.05,0.1,0.15},
+        % grid=major,
+        height=6cm,
     ]
-    \addplot [
-        mark=none,
-        line width=0.5mm
-    ] table[x=time,y=out] {sim/referenceSimTrans.dat};
+        \addplot [
+            mark=none,
+            line width=0.5mm
+        ] table[x=time,y=out] {sim/referenceSimTrans.dat};
+        \node [small dot,pin=0:{Voeding wordt geactiveerd}] at (1,0) {};
     \end{axis}
+
+
 \end{tikzpicture}
 
