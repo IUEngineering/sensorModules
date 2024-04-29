@@ -38,36 +38,48 @@
     }
 
     \begin{axis}[
-        xlabel={werkt},
-        ylabel={dit},
-        ymin=-110,
-        ymax=40,
-        xmin=0,
-        xmax=18,
-        grid=major
+        scale only axis,
+        xmin=0, xmax=18,
+        ymin=-16, ymax=16,
+        axis y line*=left,
+        grid=major,
+        xlabel=Orde,
+        ylabel style = {align=left},
+        ylabel={\ref{plt:order:orange} Kantelfrequentie [\unit{\hertz}] \\ \ref{plt:order:blue} Toegestane afwijking [\unit{\hertz}]},
     ]
         \addplot [
             mark=none,
-            % red,
             line width=0.5mm,
             domain=0:18,
             samples=201,
             IMBBlue
-        ] {\funcError};
+        ] {\funcError}; \label{plt:order:blue}
         \addplot [
             mark=none,
             line width=0.5mm,
             domain=0:18,
             samples=201,
             IMBOrange
-        ] {\funcFreq};
+        ] {\funcFreq}; \label{plt:order:orange}
+    \end{axis}
+
+    \begin{axis}[
+        scale only axis,
+        xmin=0, xmax=18,
+        ymin=-112, ymax=112,
+        ytick = {-105,-70,-35,0,35,70,105},
+        axis y line*=right,
+        axis x line=none,
+        ylabel style = {align=right},
+        ylabel={\ref{plt:order:yellow} Toegestane procentuele afwijking [\%]},
+    ]
         \addplot [
             mark=none,
             line width=0.5mm,
             domain=0.05:18,
             samples=201,
-            IMBPurple
-        ] {100 * \funcError / \funcFreq};
+            IMBYellow
+        ] {100 * \funcError / \funcFreq}; \label{plt:order:yellow}
 
         % \node [small dot,pin=0:{kantelpunt}] at (0.18714337, -19.391) {};
     \end{axis}
