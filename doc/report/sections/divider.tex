@@ -1,7 +1,12 @@
 \subsection{Spanningsreferentie}\label{sec:referenceVoltage}
+De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken. Deze spanningsreferentie is onderdeel van de uitleesschakeling van de pH sensor, en bevindt zich dus in hetzelfde blok als de uitleesschakeling zelf. Dit is te zien in \cref{fig:referenceInSchema}
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{signaalblokjes/pHInSchema.pdf}
+    \caption{Het onderdeel van \cref{fig:analogeBewerkingsFunctie} waar de spanningsreferentie zich in bevindt.}
+    \label{fig:referenceInSchema}
+\end{figure}
 
-De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken.
-% TODO: Vertel misschien over andere methoden.
 Hiervoor is als implementatie een spanningsdeler gekozen. De schakeling van deze spanningsdeler is te zien in \cref{fig:divider}.
 De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente storing in de voedingsspanning.
 

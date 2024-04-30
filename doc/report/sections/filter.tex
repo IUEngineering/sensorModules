@@ -1,21 +1,17 @@
 \subsection{Filter}
-
+Zoals te zien is in \cref{fig:filterInSchema} zit er tussen de versterking van het signaal en de ADC een filter. Dit filter moet de signalen die voor aliasing kunnen zorgen voldoende dempen. Voldoende dempen houdt in dat het stoorsignaal de zelfde ordegrootte heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.6\textwidth]{signaalblokjes/filterInSchema.pdf}
-    \caption{Waar het filter zich bevind in het signaalverwerkingsblok van \cref{fig:analogeBewerkingsFunctie}.}
+    \includegraphics[width=0.95\textwidth]{signaalblokjes/filterInSchema.pdf}
+    \caption{Waar het filter zich bevind in het blokschema van de signaalverwerking in \cref{fig:analogeBewerkingsFunctie}.}
     \label{fig:filterInSchema}
 \end{figure}
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.4\textwidth]{signaalblokjes/aaFilterBlock}
-    \caption{Het filter blok.}
-    \label{fig:filterBlock}
-\end{figure}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter; zie \cref{fig:filterInSchema,fig:filterBlock}. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde laagdoorlaatfilter te gebruiken.
-De schakeling van dit filter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie van het filter ligt aan de waardes van $C$ en $R$, volgens \cref{eq:cutoffFreq}.
-
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter moet de signalen die voor aliasing kunnen zorgen voldoende dempen. Voldoende dempen houdt in dat het stoorsignaal de zelfde orde grote heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
+% \begin{figure}[!htbp]
+%     \centering
+%     \includegraphics[width=0.4\textwidth]{signaalblokjes/aaFilterBlock}
+%     \caption{Het filter blok.}
+%     \label{fig:filterBlock}
+% \end{figure}
 
 \subsubsection{Orde bepalen} \label{sec:DetermineAAorder}
 De orde van het filter en de kantelfrequentie bepalen hoeveel demping er op een zekere frequentie plaatsvindt. De demping van een nde orde Butterworth filter op frequentie $f_s$ en met het kantel punt op $f_c$ kan met \cref{eq:dampingOfTheFilter} berekend worden \cite{electronicFilterDesignHandbook}.
