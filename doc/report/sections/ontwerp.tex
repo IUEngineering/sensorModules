@@ -18,7 +18,7 @@ Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te 
     \label{fig:moduleDiagram}
 \end{figure}
 
-\subsection{Functionele decompositie}
+\subsection{Functionele decompositie} \label{sec:functioneleDecompositie}
 De sensormodule kan opgedeeld worden in 2 aparte systemen: de voeding, die verder wordt besproken in \cref{sec:voeding}, en de signaalverwerking.
 
 De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. In de komende paragrafen wordt elk van deze blokken apart besproken.
@@ -44,6 +44,14 @@ Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhanke
     \label{fig:digitaleBewerkingsFunctie}
 \end{figure}
 
+
+\subsection{Ruisverdeling}
+In hoofdstuk \ref{sec:systemSpecifications} is er een ruisspecificatie voor de uitgang van dit systeem gegeven. Daarna is in \cref{sec:functioneleDecompositie} gekeken naar welke basissignaalbewerkingsfuncties er moeten worden geïmplementeerd. Een overzicht van de te implementeren basissignaalbewerkingsfuncties is te zien in \cref{fig:analogeBewerkingsFunctie,fig:digitaleBewerkingsFunctie}. Bij de verdeling van het ruisbudget is ook onderscheid gemaakt tussen de analogesignaalbewerkingsfuncties en de digitalesignaalbewerkingsfuncties.
+
+Alle digitalesignaalbewerkingsfuncties mogen gezamelijk maximaal 1dB aan ruis produceren. De optelling van de uitangen van $C_{pH}$ en $C_T$ in \cref{fig:digitaleBewerkingsFunctie} is de enige digitalesignaalbewerkingsfunctie waarbij de ruisvloer van het pH signaal wordt vergroot.
+
+Wanneer de digitalesignaalbewerkingsfuncties gezamelijk een ruisgetal van \qty{1}{\decibel} hebben moet de \SNR van het signaal na de ADC minimaal \qty{34}{\decibel} zijn. In de specificaties van het systeem is namelijk aangegeven dat de \SNR aan de uitgang van het systeem minimaal \qty{\SNRout}{\decibel} moet zijn. Voor de overgebleven analogesignaalbewerkingsfuncties uit \cref{fig:analogeBewerkingsFunctie}, is er een ruisgetal van \qty{3}{\decibel} gekozen. Dit houdt in dat elk van deze analogesignaalbewerkingsfuncties zelf evenveel ingangsgerelateerde ruis mogen produceren als de ruis die ze op de ingang van het analogesignaalbewerkingsfunctie blok ontvangen.
+% Om op een hoogniveau aannemelijk te kunnen maken dat de systeemruiseis gehaald kan worden als elke signaalbewerkingsfunctie zo is geïmplementeerd dat deze aan zijn specificatie voldoet
 
 \input{sections/meten}
 \input{sections/divider}
