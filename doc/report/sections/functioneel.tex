@@ -11,7 +11,7 @@ Van links naar rechts zijn de functies van de blokken als volgt:
 \end{enumerate}
 Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het systeem te activeren en te deactiveren. Op deze manier hoeft het systeem alleen maar aan te staan wanneer het nodig is, en wordt er minder energie verbruikt.
 
-% \begin{figure}[ht]
+% \begin{figure}[!htbp]
 %     \centering
 %     \includegraphics[width=\textwidth]{meetGedeelte.pdf}
 %     \caption{Het signaalverwerkende onderdeel van het systeem, onderverdeeld naar het analoge en digitale domein.}
@@ -20,18 +20,18 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
 
 
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{analogeBewerkingsFunctie}
-    \caption{Het analoge gedeelte van de signaalbewerking.} 
+    \caption{Het analoge gedeelte van de signaalbewerking.}
     \label{fig:analogeBewerkingsFunctie}
 \end{figure}
 
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
-    \caption{Het digitale gedeelte van de signaalbewerking.} 
+    \caption{Het digitale gedeelte van de signaalbewerking.}
     \label{fig:digitaleBewerkingsFunctie}
 \end{figure}
 
@@ -40,9 +40,9 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
 % TODO: TAAL
 \subsection{Spanningsregeling}
 Voor spanningsregeling zijn er meerdere componenten nodig, zoals te zien in \cref{fig:spanningsregeling}. De energy harvesting produceert een spanning, die omgezet moet worden naar iets de rest van het systeem iets mee kan. Deze omgevormde spanning kan dan zowel gebruikt worden voor het opladen van de batterij, als het voeden van de rest van het systeem.
-Om de batterij op te laden is een batterijregelingssysteem (BMS) nodig. De BMS kan via een beveiliging de batterij opladen. De beveiliging limiteert de batterijspanning en -stroom. De tweede beveiliging zit tussen de batterij en de rest van het systeem. Deze beveiliging zorgt ervoor dat er niet te veel stroom uit de batterij getrokken wordt, waardoor deze kapot kan gaan. De spanningsregelaar zet de spanning die uit de batterij komt om naar een spanning die gebruikt kan worden door de rest van het systeem. 
+Om de batterij op te laden is een batterijregelingssysteem (BMS) nodig. De BMS kan via een beveiliging de batterij opladen. De beveiliging limiteert de batterijspanning en -stroom. De tweede beveiliging zit tussen de batterij en de rest van het systeem. Deze beveiliging zorgt ervoor dat er niet te veel stroom uit de batterij getrokken wordt, waardoor deze kapot kan gaan. De spanningsregelaar zet de spanning die uit de batterij komt om naar een spanning die gebruikt kan worden door de rest van het systeem.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.7\textwidth]{spanningsRegeling3.drawio.pdf}
     \caption{Het Spanningsregeling van het systeem.}

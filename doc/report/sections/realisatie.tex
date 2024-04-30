@@ -8,21 +8,53 @@ Volgens \cref{eq:dividerNoise} heeft de condensatorwaarde wel effect op de ruis.
 
 Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{tab:divider}.
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{l|l|l}
-    Symbool & Waarde & Eenheid \\
-    \hline
-    $R_1$       & 5.6  & $\si{\mega\ohm}$   \\
-    $R_2$       & 1.0  & $\si{\mega\ohm}$   \\
-    $C$         & 1.0  & $\si{\micro\farad}$\\
-    $P$         & 1.65 & $\si{\micro\watt}$ \\
-    $u_{n,out}$ & 64.4 & $\si{\nano\volt}$  \\
-    SNR         & 138  & $\si{\decibel}$
-\end{tabular}
-\caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
-\label{tab:divider}
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|l|l}
+        Symbool & Waarde & Eenheid \\
+        \hline
+        $R_1$       & 5.6  & $\si{\mega\ohm}$   \\
+        $R_2$       & 1.0  & $\si{\mega\ohm}$   \\
+        $C$         & 1.0  & $\si{\micro\farad}$\\
+        $P$         & 1.65 & $\si{\micro\watt}$ \\
+        $u_{n,out}$ & 64.4 & $\si{\nano\volt}$  \\
+        SNR         & 138  & $\si{\decibel}$
+    \end{tabular}
+    \caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
+    \label{tab:divider}
 \end{table}
+
+\subsubsection{Simulatie}
+Om te verifiëren dat de spanningsreferentie goed werkt, is er een aantal simulaties uitgevoerd.
+In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hier is $H(f)$ de overdracht van de voeding naar de uitgang van de spanningsdeler. De overdracht begint op \qty{-16.4}{\decibel}, aangezien dat de overdracht van de schakeling is op \qty{0}{\hertz}.
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimFreq.tex}
+    \caption{Het resultaat van een AC simulatie van de spanningsreferentie.}
+    \label{fig:referenceSimFreq}
+\end{figure}
+
+In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te zien. Deze simulatie laat zien dat het 5 seconden duurt voordat de spanningsreferentie de gewenste spanning van \qty{0.15}{\volt} bereikt.
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimTrans.tex}
+    \caption{Het resultaat van een transient simulatie van de spanningsreferentie.}
+    \label{fig:referenceSimTrans}
+    % \label{fig:referenceSimCis}
+\end{figure}
+
+In \cref{fig:referenceSimNoise} is het resultaat van een ruissimulatie te zien. Hier mag tycho iets over vertellen veel plezier tycho!%TODO: dat
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimNoise.tex}
+    \caption{Het resultaat van een ruissimulatie van de spanningsreferentie.}
+    \label{fig:referenceSimNoise}
+\end{figure}
+
 
 \subsection{Nullor implementatie}
 Voor de nullor die gebruikt wordt om de ISFET uit te lezen in \cref{sec:ISFETLees} moet een implementatie gekozen worden. De uitleesschakeling mag volgens de specificaties maximaal \qty{200}{\micro\watt}  gebruiken. De constante stroom die door de weerstand en ISFET in \cref{fig:measureResistor} heen loopt, zorgt voor een constant vermogensverbruik van \qty{165}{\micro\watt}. Hierdoor mag de nullor implementatie maximaal \qty{35}{\micro\watt} gebruiken. Het maximale dynamische vermogen dat deze nullor implementatie aan de uitgang zal moeten kunnen leveren, is gelijk aan het maximale vermogen dat het filter kan dissiperen. Er blijft dan afgerond nog \qty{34}{\micro\watt} aan statisch vermogen over. Dit resulteert in een maximale quiescent stroom van \qty{10.3}{\micro\ampere}.
@@ -36,7 +68,7 @@ De LTC2064 opamp heeft (buiten shutdown) een quiescent stroom van \qty{2.5}{\mic
 
 \subsection{ADC} \label{sec:selectingADCandReqs}
 De specificaties van de ADC die nodig is voor dit project kunnen berekend worden op basis van de specificaties voor het ADC blok. Deze specificaties staan in \cref{tab:systemSpecADC} samengevat.
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|c|l}
         Symbol      & Waarde & Eenheid\\\hline
@@ -51,7 +83,7 @@ De specificaties van de ADC die nodig is voor dit project kunnen berekend worden
 Door gebruik te maken van de formules uit \cref{sec:ADC:numBits,sec:ADC:sampleFreq} kunnen de specificaties voor de benodigde ADC berekend worden. De resultaten hiervan zijn in  \cref{tab:specADC} geplaatst.
 
 Bij het berekenen van deze specificaties is er van uit gegaan dat het totale noise figure 1 op 1 is verdeeld tussen de resolutie en de bemonsteringsfrequentie.
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|c|l}
         Symbol      & Waarde    & Eenheid\\\hline
@@ -115,7 +147,7 @@ Hieruit volgt dat de condensator minimaal \qty{11}{\pico\farad} moet zijn. De be
 
 Voor de implementatie van het RC laagdoorlaatfilter is gekozen voor een capaciteit van \qty{100}{\nano\farad}. In \cref{tab:filterValues} staan de daaruit volgende eigenschappen van het RC filter.
 
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|l|l}
         Symbool & Waarde & Eenheid \\
@@ -177,7 +209,7 @@ De schakelingen voor de voeding en voor het uitlezen van de ISFET zijn opgedeeld
 Beide PCB's hebben op elk belangrijk signaal een testpunt. Op deze manier kan er eenvoudig gemeten worden.
 
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering

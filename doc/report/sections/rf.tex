@@ -3,7 +3,7 @@ In hoofdstuk \ref{sec:systemSpecifications} is aangegeven dat het ontvangst syst
 
 In de datasheet van de \mcu is de ontvangst gevoeligheid gegeven. Bij een datasnelheid van 1 Mbit/s, een bit error ratio (BER) van  $1 \times 10^{-3}$ en gaussian frequency shift keying (GFSK) modulatie, is de ontvangstgevoeligheid van de \mcu$\,$-96 dBm \cite{nrf52810}.
 
-Om de NF van de \mcu te berekenen moet eerst de minimaal benodigde SNR worden berekend. De minimaal benodigde SNR is het gevolg van een gespecificeerde BER en kan worden berekend met \cref{eq:minSNRbasedonPe}. $P_E$ is gelijk aan de BER in het geval er een significante hoeveelheid bit errors hebben plaatsgevonden \cite{BERtoPe}. De $\SNR_{min}$ van de \mcu komt uit op 5.17 dB. 
+Om de NF van de \mcu te berekenen moet eerst de minimaal benodigde SNR worden berekend. De minimaal benodigde SNR is het gevolg van een gespecificeerde BER en kan worden berekend met \cref{eq:minSNRbasedonPe}. $P_E$ is gelijk aan de BER in het geval er een significante hoeveelheid bit errors hebben plaatsgevonden \cite{BERtoPe}. De $\SNR_{min}$ van de \mcu komt uit op 5.17 dB.
 \begin{equation}\label{eq:minSNRbasedonPe}
     SNR_{min}=\sqrt{2}\inverfc\left(2P_E\right)
     \tagaddtext{[\si{\decibel}]}
@@ -16,7 +16,7 @@ Met een bekende $SNR_{min}$ is het mogelijk om de NF van de \mcu te berekenen me
     \tagaddtext{[\si{\decibel}]}
 \end{equation}
 
-% Met BER/Pe ontvangersgevoeligheid berekenen 
+% Met BER/Pe ontvangersgevoeligheid berekenen
 \Cref{eq:calcReceiverSensitivity} kan gebruikt worden om de ontvangst gevoeligheid te berekenen van de ontvanger. Omdat de NF van de \mcu berekend is, is het nu mogelijk om de ontvangstgevoeligheid van de \mcu te berekenen voor een gegeven BER. In hoofdstuk \ref{sec:systemSpecifications} is een minimale BER van $1\times10^{-5}$ voor de draadloze communicatie gespecificeerd. In de datasheet staat dat de \mcu gebruik maakt van GFSK modulatie \cite{nrf52810}. Het is hiermee mogelijk om de minimale ontvangst \SNR te berekenen voor een BER van $1\times10^{-5}$. Deze komt uit op 12.6 dB.
 
 Wanneer er  bij het berekenen van de ontvangst gevoeligheid naast de thermische ruis ook het achtergrond vermogen van andere zenders wordt meegenomen, moet bij $N_0$ een constante ($\Delta N)$ worden opgeteld. $\Delta N$ is afhankelijk van de omgeving van de sensormodule. De sensormodule die in dit project wordt ontworpen moet in een industriële omgeving kunnen werken. Uit \cite{kumar2020spectrum} is te halen dat in een dergelijke omgeving een $\Delta N$ van $-105\,\,\si{\deci\belmilliwatt\,\hertz^{-1}}$ een redelijke waarde is. Uit \cref{eq:calcReceiverSensitivity} volgt dat de ontvangstgevoeligheid \qty{-57}{\deci\belmilliwatt} wordt ingeval van een bandbreedte van $\SI{1}{\mega\hertz}$. Met een bandbreedte van $\SI{2}{\mega\hertz}$ is de ontvangstgevoeligheid \qty{-54}{\deci\belmilliwatt}.
@@ -25,11 +25,11 @@ Wanneer er  bij het berekenen van de ontvangst gevoeligheid naast de thermische 
     \tagaddtext{[\si{\deci\belmilliwatt}]}
 \end{equation}
 
-% Minimaal zendvermogen berekenen 
+% Minimaal zendvermogen berekenen
 Om het minimale zendvermogen te bepalen moet ook berekend worden hoeveel signaalverlies er optreed door path loss. Hiervoor moet de afstand tussen de antennes bekend zijn. Daarnaast moet ook de hoogte van beide antennes ten opzichte van de grond bekend zijn. Met het meest complete path loss model uit \cite{determineFittingsCoef}
-\footnote{Bron \cite{determineFittingsCoef} is in \cref{ap:determineFittingsCoef} te zien.} 
+\footnote{Bron \cite{determineFittingsCoef} is in \cref{ap:determineFittingsCoef} te zien.}
 is op basis van de gegevens uit \cref{tab:gegevensCalcPathLoss} berekend dat er 53.2 dB aan path loss optreed.
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|l}
         Hoogte antenne 1                    & $\qty{1  }{\meter}$               \\\hline
@@ -45,7 +45,7 @@ is op basis van de gegevens uit \cref{tab:gegevensCalcPathLoss} berekend dat er 
     \label{tab:gegevensCalcPathLoss}
 \end{table}
 % \begin{itemize}
-%     \item Hoogte antenne 1, 1 meter is 
+%     \item Hoogte antenne 1, 1 meter is
 %     \item Hoogte antenne 2, 1 meter is
 %     \item Gain antenne 1,  2.5 dBi is
 %     \item Gain antenne 2,  2.5 dBi is

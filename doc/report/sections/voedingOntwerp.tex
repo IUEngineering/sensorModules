@@ -6,19 +6,19 @@ In onderzoek \cite{BatteryComparison} is te zien dat Lithium-Polymeer batterijen
 Vanuit de opdrachtdefinitie is er gekozen voor een piëzo element. Deze piëzo kan mechanische trillingen omzetten naar elekrsiche spanning. Deze spanning kan gebruikt worden om de accu op te laden of de vermogen gebruik van de module te verminderen. De peizo element kan beide indoor en outdoor gebruikt worden.
 
 
-\subsection{Voeding} \label{sec:voeding} 
+\subsection{Voeding} \label{sec:voeding}
 
-%!! TODO: energy harvesting, spanning, batterij laden, beveiliging, stroom. 
+%!! TODO: energy harvesting, spanning, batterij laden, beveiliging, stroom.
 
-De voedingsspanning is gekozen vanuit de maximale spanning die nodig is voor de ISFET sensor\cite{isfet}. Hieruit volgt een maximale systeemspanning van 3.3 V. 
+De voedingsspanning is gekozen vanuit de maximale spanning die nodig is voor de ISFET sensor\cite{isfet}. Hieruit volgt een maximale systeemspanning van 3.3 V.
 
 
 Zoals te lezen in \cref{sec:battery} is er gekozen voor LiPo batterij technologie. De batterij heeft een beveiliging voor beide op- en ontladen nodig. De celspanning moet omgezet worden naar systeemspanning van 3.3 V. Dit wordt op 2 manieren gedaan, met een DC-DC buck-boost converter en een low dropout regelaar(LDO). De buck-boost is efficiënter dan de LDO. Een voordeel van de LDO is dat de spanningsrimpel veel lager is dan bij een buck-boost. Daarom wordt de LDO gebruikt voor het voeden van de analoge uitleesschakeling. De buck-boost gaat naar het digitale deel. Als een microcontroller goed ontkoppeld is dan maakt het spanningsrimpel niet uit voor de werking van de microcontroller. Daardoor is de hogere rimpel spanning van de buck-boost niet een probleem voor de microcontroller. De voeding is schematisch te zien in \cref{fig:voedingSchematisch}.
 
 Voor energy harvesting is er een piezo element gekozen. Een piezo element kan gezien worden als een AC bron. Deze AC bron moet omgezet worden naar DC die door het systeem gebruikt kan worden om de batterij mee op te laden. De AC bron wordt met een gelijkrichter naar DC omgezet. Deze DC spanning is niet hetzelfde als de systeemspanning dus die moet omgezet worden naar een spanning die de batterij in gaat, zodat de batterij kan opladen.
 
-\begin{figure}[ht]
-    \centering 
+\begin{figure}[!htbp]
+    \centering
     \includegraphics{voedingSchematisch.pdf}
     \caption{Voeding schematisch}
     \label{fig:voedingSchematisch}
@@ -30,11 +30,11 @@ Voor energy harvesting is er een piezo element gekozen. Een piezo element kan ge
 Voor het energiebudget zijn de waardes uit \cref{tab:energieBudgetEstimatie} gekozen. De waardes in \cref{tab:energieBudgetEstimatie} zijn boven de theoretisch berekend minium gebruik voor het systeem bepaald maar onder de 10 mW.
 
 
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{l|l}
         Func. blok          & Vermogen [mW] \\
-        \hline                              
+        \hline
         Reken $U_{GS}\rightarrow$pH & 0.6   \\
         ADC                 & 1             \\
         AA-filter           & 0.2           \\
@@ -42,11 +42,11 @@ Voor het energiebudget zijn de waardes uit \cref{tab:energieBudgetEstimatie} gek
         Zenden              & 5             \\
         Oplader             & 0.5           \\
         Beveiliging         & 0.5           \\
-        Spanningsregeling   & 1             \\ 
+        Spanningsregeling   & 1             \\
         \hline
         \hline
         Totaal              & 9
-        
+
     \end{tabular}
     \caption{Energie budget}
     \label{tab:energieBudgetEstimatie}
