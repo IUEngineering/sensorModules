@@ -1,5 +1,13 @@
 \subsection{De drempelspanning van de ISFET uitlezen} \label{sec:ISFETLees}
 
+De pH sensor is het onderdeel van het systeem die de pH waarde van de te meten oplossing uitleest. Dit onderdeel zit voor de versterker, zoals uitgebeeld in \cref{fig:pHInSchema}.
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{signaalblokjes/pHInSchema.pdf}
+    \caption{Het onderdeel van \cref{fig:analogeBewerkingsFunctie} waar dit hoofdstuk over gaat.}
+    \label{fig:pHInSchema}
+\end{figure}
+
 % TODO: Bronnen
 Om de pH waarde van de ISFET uit te lezen moet de drempelspanning gemeten worden. Deze is namelijk linear afhankelijk van de pH waarde \cite{iontjes}.
 Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gate-source spanning te variëren kunnen $U_{ds}$ en $I_{ds}$ van de ISFET constant gehouden worden.
@@ -144,3 +152,6 @@ Het vermogensverbruik van deze schakeling is gedefinieerd in \cref{eq:measurePow
     P = P_n + U_{dd}I_{ds}
 \end{equation}
 
+
+\subsubsection{Versterker}
+Aangezien de uitgang van de ISFET een meetbare spanning produceert (\qty{1.8}{\volt} tot \qty{2.2}{\volt} volgens \cite{isfet}) zal er geen versterker nodig zijn om de pH waarde te kunnen meten. Wel zou een level-shifter gebruikt kunnen worden in combinatie met een versterker om zo het volledige bereik van de ADC te gebruiken. Dit voegt echter meer ruis en complexiteit toe aan het systeem, waardoor er in deze iteratie voor is gekozen om dit niet te doen.
