@@ -1,5 +1,13 @@
 \subsection{Rf} \label{sec:ontwerp:Rf}
-In hoofdstuk \ref{sec:systemSpecifications} is aangegeven dat het ontvangst systeem gebruik maakt van een \mcu. Om te kunnen berekenen wat het minimale zendvermogen van de sensormodule moet zijn, moet de noise figure (NF) van de \mcu worden bepaald. De NF van de \mcu wordt gebruikt om de ontvangstgevoeligheid te bepalen. Deze ontvangstgevoeligheid wordt gebruikt om het minimale zendvermogen te berekenen.
+Nadat de pH waarde gemeten is, moet deze worden opgestuurd door middel van een draadloze verbinding. Dit word gedaan door het RF blok. Het RF blok bevindt zich, zoals te zien in \cref{fig:RFInSchema}, na de digitale signaalverwerking, en is het laatste blok in het systeem van de sensormodule.
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{signaalblokjes/RFInSchema}
+    \caption{Waar de RF zich bevind in het blokschema van de signaalverwerking in \cref{fig:analogeBewerkingsFunctie}.}
+    \label{fig:RFInSchema}
+\end{figure}
+
+In \cref{sec:systemSpecifications} is aangegeven dat het ontvangst systeem gebruik maakt van een \mcu. Om te kunnen berekenen wat het minimale zendvermogen van de sensormodule moet zijn, moet de noise figure (NF) van de \mcu worden bepaald. De NF van de \mcu wordt gebruikt om de ontvangstgevoeligheid te bepalen. Deze ontvangstgevoeligheid wordt gebruikt om het minimale zendvermogen te berekenen.
 
 In de datasheet van de \mcu is de ontvangst gevoeligheid gegeven. Bij een datasnelheid van 1 Mbit/s, een bit error ratio (BER) van  $1 \times 10^{-3}$ en gaussian frequency shift keying (GFSK) modulatie, is de ontvangstgevoeligheid van de \mcu$\,$-96 dBm \cite{nrf52810}.
 
