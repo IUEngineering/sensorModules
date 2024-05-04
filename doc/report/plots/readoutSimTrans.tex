@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+    \tikzset{
+        small dot/.style={fill=black,circle,scale=0.4},
+    }
+
+    \begin{axis}[
+        ylabel={$U_{out}$ [\unit{\volt}]},
+        xlabel={$U_{t}$ [\unit{\milli\volt}] - \qty{1.8}{\volt}},
+        grid=major,
+        height=6cm,
+    ]
+        \addplot [
+            mark=none,
+            line width=0.5mm,
+        ] table[x=thresh,y=out] {sim/readoutSimTrans.dat};
+        % \node [small dot,pin=0:{Voeding wordt geactiveerd}] at (1,0) {};
+    \end{axis}
+    readoutSimTrans.dat
+
+\end{tikzpicture}
+

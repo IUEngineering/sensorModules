@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        xmode=log,
+        xlabel={$f$ [\unit{\hertz}]},
+        ylabel={$\sqrt{S_{u,n}} \,\,\,\, \left[\unit{\nano\volt}/\sqrt{\unit{\hertz}}\right]$},
+        grid=major,
+        height=6cm
+    ]
+    \addplot [
+        mark=none,
+        line width=0.5mm,
+        y filter/.code={\pgfmathparse{#1*1e9}\pgfmathresult}
+    ] table[x=freq,y=noise] {sim/filterSimNoise.dat};
+    \end{axis}
+\end{tikzpicture}
+

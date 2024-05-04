@@ -66,6 +66,15 @@ De uitleesschakeling moet een minimale SNR hebben van 40 dB. De maximale ruisspa
 
 De LTC2064 opamp heeft (buiten shutdown) een quiescent stroom van \qty{2.5}{\micro\ampere}, wat op \qty{3.3}{\volt} resulteert in een vermogen van \qty{8.25}{\micro\watt}. Daarbij heeft deze een spectrale ruisdichtheid van \qty{12}{\femto\ampere\hertz^{-0.5}} en $\qty{220}{\nano\volt\hertz^{-0.5}}$\cite{LTC2064}. Dit zit volgens \cref{eq:nullorImplementNoise} ver onder het maximum. Daarnaast is zowel de ingangsafwijking als de 1/f ruis van deze opamp erg laag. Hierdoor is deze opamp gekozen voor het ontwerp.
 
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/readoutSimTrans}
+    \caption{Het resultaat van meerdere transient simulaties op de uitleesschakeling. De uitgangsspanning van de schakeling is geplot op basis van de ingestelde drempelspanning van de FET.}
+    \label{fig:readoutSimTrans}
+\end{figure}
+
 \subsection{ADC} \label{sec:selectingADCandReqs}
 De specificaties van de ADC die nodig is voor dit project kunnen berekend worden op basis van de specificaties voor het ADC blok. Deze specificaties staan in \cref{tab:systemSpecADC} samengevat.
 \begin{table}[!htbp]
@@ -131,10 +140,10 @@ Met de specificaties in \cref{tab:specsAAfilter} is met \cref{eq:minOrderOfAAfil
     \caption{De specificaties voor de kantelfrequentie voor zesde tot en met tiende orde filters.}
     \label{tab:AA3dBspecs}
 \end{table}
-\Cref{tab:AA3dBspecs} laat zien dat het mogelijk een goede keuze kan zijn om een hogere orde dan de minimale zesde orde te kiezen. Een rede hiervoor kan zijn dat er rekening gehouden wordt met de nauwkeurigheid van componenten. Het is te zien dat het ophogen van de filter orde invers proportioneel is aan, de toename van de toegestane afwijking van de kantelfrequentie\footnote{Zie \cref{sec:DetermineAAorder}.}.
+\Cref{tab:AA3dBspecs} laat zien dat het mogelijk een goede keuze kan zijn om een hogere orde dan de minimale zesde orde te kiezen. Een rede hiervoor kan zijn dat er rekening gehouden wordt met de onnauwkeurigheid van componenten. Het is te zien dat het ophogen van de filter orde invers proportioneel is aan de toename van de toegestane afwijking van de kantelfrequentie\footnote{Zie \cref{sec:DetermineAAorder}.}.
 
 \subsubsection{Filter implementeren}
-Tijdens het ontwerpen van het pH meetsysteem is er foutief aangenomen dat een eerste orde filter zou volstaan. Dit is de rede dat in de eerste versie van dit prototype een eerste orde laagdoorlaatfilter is gebruikt. Er is wel rekening gehouden met de ruis en vermogenseisen.
+Tijdens het ontwerpen van het pH meetsysteem is er foutief aangenomen dat een eerste orde filter zou voldoen. Dit is de rede dat in de eerste versie van dit prototype een eerste orde laagdoorlaatfilter is gebruikt. Er is wel rekening gehouden met de ruis en vermogenseisen.
 
 Het eerste orde laagdoorlaatfilter bestaat uit een weerstand en een condensator die beiden van een waarde voorzien moeten worden. De minimale condensator waarde kan berekend worden op basis van de ruis van het voorgaande systeem met \cref{eq:filterCapMin}.
 % Met de ruis van het voorgaande systeem kan de minimale condensatorwaarde berekend worden door middel van \cref{eq:filterCapMin}.
@@ -166,13 +175,34 @@ Voor de implementatie van het RC laagdoorlaatfilter is gekozen voor een capacite
 
 Nu de waardes van het filter bekend zijn moet gecontroleerd worden of de ADC nog steeds aan de specificaties voldoet. Het is nodig om dit te controleren omdat het filter passief is geïmplementeerd. Door de passieve implementatie ontstaat er een spanningsdeler. Deze spanningsdeler wordt gevormd door de ingangsimpedantie van de ADC en de weerstandswaarde van het anti-aliasing filter. Uit \cref{eq:calcMinNumberADCbits} blijkt echter dat de eisen voor de ADC niet veranderen en dat de interne ADC van de \mcu nog steeds gebruikt kan worden.
 
+
+\subsubsection{Simulatie}
+Het filter is op meerdere manieren gesimuleerd. \Cref{fig:filterSimFreq} toont een AC simulatie van het filter. Hierin is te zien dat het kantelpunt inderdaad op ongeveer \qty{10.8}{\hertz} ligt
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/filterSimFreq}
+    \caption{Het resultaat van een AC simulatie van het filter.}
+    \label{fig:filterSimFreq}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/filterSimNoise}
+    \caption{Het resultaat van een ruis simulatie van het filter.}
+    \label{fig:filterSimNoise}
+\end{figure}
+
+
 \subsection{Rf}
 In \cref{sec:ontwerp:Rf} is ingegaan op het minimum zendvermogen dat nodig is. Dit minimum vermogen is \qty{7.1}{\micro\watt}. Het is belangrijk om op te merken dat dit enkel het minimum vermogen is dat in het rf signaal zit. Het genereren van dit rf signaal kan mogelijk meer energie kosten. Bij het kiezen van de microcontroller is de \mcu gekozen, onder andere omdat er een \qty{2.4}{\giga\hertz} transceiver in zit. Uit de datasheet van de \mcu is te halen dat deze transceiver \qty{4.6}{\milli\ampere} aan stroom trekt, indien er draadloos wordt gezonden met \qty{0}{\deci\belmilliwatt} en een datasnelheid van \qty{1}{\mega\hertz} \cite{nrf52810}. Door \cref{eq:calcPperPacket,eq:calcRfAvaragePower} te gebruiken is een gemiddeld rf vermogen van \qty{45}{\micro\watt} te berekenen. \qty{45}{\micro\watt} zit onder het energie budget dat beschikbaar is voor het draadloos zenden.
 
 Bij de implementatie van het rf zenden, is het belangrijk om de rf uitgangsimpedantie van de \mcu te matchen met de antenne impedantie. Dit is belangrijk om een zo klein mogelijke hoeveelheid aan energie te verspillen aan reflecties \cite{FundamentalsofAppliedElectromagnetics}. In de datasheet van de \mcu staat al beschreven hoe de rf uitgang gematcht kan worden aan \qty{50}{\ohm} \cite{nrf52810}. Deze impedantie matching wordt gedaan op basis van een L-type matching netwerk. Hierbij staat er een spoel in serie met de antenne en een condensator parallel aan de rf uitgang van de \mcu \cite{nrf52810}.
 
 \subsection{Microcontroller}
-Het digitale gedeelte van het energieverbruik kan opgedeeld worden in 3 onderdelen: de ADC, de digitale signaalverwerking (\cref{fig:digitaleBewerkingsFunctie}) en het draadloos versturen van data. Het is mogelijk om elk van deze onderdelen met aparte componenten te implementeren. Er zijn echter ook componenten beschikbaar die al over elk van deze functionaliteiten beschikken.
+Het digitale gedeelte van de implementatie kan opgedeeld worden in 3 onderdelen: de ADC, de digitale signaalverwerking (\cref{fig:digitaleBewerkingsFunctie}) en het draadloos versturen van data. Het is mogelijk om elk van deze onderdelen met aparte componenten te implementeren. Er zijn echter ook componenten beschikbaar die al over elk van deze functionaliteiten beschikken.
 
 Een voorbeeld van een dergelijk component is de nRF52810. Deze microcontroller beschikt over meerdere 14 bit ADC kanalen\footnote{De ADC kanalen zijn alleen 14 bit met oversampling.} en een ingebouwde 2.4GHz Bluetooth transceiver.
 Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een ingebouwde RTC, wat nuttig is voor het periodiek samplen en versturen van pH waardes. In deze slaapstand wordt er zo'n \qty{1.5}{\micro\ampere} gebruikt. Met een voedingsspanning van \qty{3.3}{\volt} komt dit uit op een vermogensverbruik van \qty{4.95}{\micro\watt}. Daarbij heeft de microcontroller ook de mogelijkheid om onderdelen van het geheugen uit te zetten, wat tot meer energiebesparing kan leiden \cite{nrf52810}.
