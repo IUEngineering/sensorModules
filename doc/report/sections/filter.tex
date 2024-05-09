@@ -1,17 +1,20 @@
 \subsection{Filter}
-Zoals te zien is in \cref{fig:filterInSchema} zit er tussen de versterking van het signaal en de ADC een filter. Dit filter moet de signalen die voor aliasing kunnen zorgen voldoende dempen. Voldoende dempen houdt in dat het stoorsignaal de zelfde ordegrootte heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
+Zoals te zien is in \cref{fig:filterInSchema} zit er tussen de versterking van het signaal en de ADC een filter. Zoals te zien is in \cref{fig:filterBlok}, neemt het filter een pH-afhankelijke spanning als ingang. De uitgang is een gefilterde pH-afhankelijke spanning, waarin de signalen die voor aliasing kunnen zorgen voldoende gedempt zijn. Voldoende dempen houdt in dat het stoorsignaal de zelfde ordegrootte heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{signaalblokjes/filterInSchema.pdf}
+    \includegraphics[width=0.95\textwidth]{signaalverwerking_filter.pdf}
     \caption{Waar het filter zich bevind in het blokschema van de signaalverwerking in \cref{fig:analogeBewerkingsFunctie}.}
     \label{fig:filterInSchema}
 \end{figure}
-% \begin{figure}[!htbp]
-%     \centering
-%     \includegraphics[width=0.4\textwidth]{signaalblokjes/aaFilterBlock}
-%     \caption{Het filter blok.}
-%     \label{fig:filterBlock}
-% \end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \def\svgwidth{0.4\textwidth}
+    \input{img/filterBlok.pdf_tex}
+    \caption{Het filter blok.}
+    \label{fig:filterBlok}
+\end{figure}
+
 
 \subsubsection{Orde bepalen} \label{sec:DetermineAAorder}
 De orde van het filter en de kantelfrequentie bepalen hoeveel demping er op een zekere frequentie plaatsvindt. De demping van een nde orde Butterworth filter op frequentie $f_s$ en met het kantel punt op $f_c$ kan met \cref{eq:dampingOfTheFilter} berekend worden \cite{electronicFilterDesignHandbook}.

@@ -3,9 +3,19 @@
 De pH sensor is het onderdeel van het systeem die de pH waarde van de te meten oplossing uitleest. Dit onderdeel zit voor de versterker, zoals uitgebeeld in \cref{fig:pHInSchema}.
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{signaalblokjes/pHInSchema.pdf}
+    \includegraphics[width=0.95\textwidth]{signaalverwerking_pH.pdf}
     \caption{Het onderdeel van \cref{fig:analogeBewerkingsFunctie} waar dit hoofdstuk over gaat.}
     \label{fig:pHInSchema}
+\end{figure}
+
+De pH sensor heeft als ingang een oplossing met een pH waarde van pH 2 tot pH 10. De uitgang is een spanning tussen de \qty{1.8}{\volt} en \qty{2.2}{\volt} \cite{isfet}, die lineair afhankelijk is van de pH waarde. Dit is te zien in \cref{fig:uitleesBlok}.
+
+\begin{figure}[!htbp]
+    \centering
+    \def\svgwidth{0.4\textwidth}
+    \input{img/uitleesBlok.pdf_tex}
+    \caption{De in- en uitgangen van de uitleesschakeling.}
+    \label{fig:uitleesBlok}
 \end{figure}
 
 % TODO: Bronnen

@@ -49,3 +49,5 @@
     Zet vinkjes bij blokken die je al gehad hebt
 ??:??
     Zoom zo in dat de temperatuursensor lijn wegvalt
+??:??
+[x] Captions van figuren lijken op paragrafen dat is dom doe dat niet hehe 

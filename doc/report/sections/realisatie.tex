@@ -142,7 +142,7 @@ Met de specificaties in \cref{tab:specsAAfilter} is met \cref{eq:minOrderOfAAfil
 \end{table}
 \Cref{tab:AA3dBspecs} laat zien dat het mogelijk een goede keuze kan zijn om een hogere orde dan de minimale zesde orde te kiezen. Een rede hiervoor kan zijn dat er rekening gehouden wordt met de onnauwkeurigheid van componenten. Het is te zien dat het ophogen van de filter orde invers proportioneel is aan de toename van de toegestane afwijking van de kantelfrequentie\footnote{Zie \cref{sec:DetermineAAorder}.}.
 
-\subsubsection{Filter implementeren}
+\subsubsection{Filter implementeren} \label{sec:filterFout}
 Tijdens het ontwerpen van het pH meetsysteem is er foutief aangenomen dat een eerste orde filter zou voldoen. Dit is de rede dat in de eerste versie van dit prototype een eerste orde laagdoorlaatfilter is gebruikt. Er is wel rekening gehouden met de ruis en vermogenseisen.
 
 Het eerste orde laagdoorlaatfilter bestaat uit een weerstand en een condensator die beiden van een waarde voorzien moeten worden. De minimale condensator waarde kan berekend worden op basis van de ruis van het voorgaande systeem met \cref{eq:filterCapMin}.
@@ -257,3 +257,7 @@ Beide PCB's hebben op elk belangrijk signaal een testpunt. Op deze manier kan er
     \caption{De gemaakte PCB's.}
     \label{fig:PCBs}
 \end{figure}
+
+
+\subsection{Temperatuursensor}
+Er is nog niks ontworpen voor het meten van de temperatuur van de te meten oplossing. De \mcu heeft echter wel een ingebouwde temperatuursensor. Deze kan gebruikt worden om te compenseren voor veranderingen in temperatuur, zolang de temperatuur van de \mcu niet te veel afwijkt van de temperatuur van de te meten oplossing.
