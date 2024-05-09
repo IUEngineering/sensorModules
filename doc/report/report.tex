@@ -3,7 +3,6 @@
 \usepackage[dutch]{babel}
 \usepackage{hvaTemplate}
 % \usepackage[hidelinks]{hyperref}
-\usepackage[nameinlink,noabbrev,dutch]{cleveref}
 \usepackage{csquotes}
 \usepackage[backend=biber, style=ieee]{biblatex}
 \usepackage{pgfplots}
@@ -14,6 +13,7 @@
 \usepackage{xspace}
 \usepackage{makecell}
 \usepackage[perpage]{footmisc}
+\usepackage[nameinlink,noabbrev,dutch]{cleveref}
 \sisetup{detect-all}
 
 
@@ -24,6 +24,9 @@
 \newcommand\SNR{\mbox{\textit{SNR}} }
 \newcommand{\mcu}{nRF52810\xspace}
 \newcommand\ph{\mathrm{pH}}
+
+% Zorg ervoor dat captions niet lijken op paragrafen
+\captionsetup{width=0.9\textwidth}
 
 
 \DeclareSIUnit{\belmilliwatt}{Bm}
