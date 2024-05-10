@@ -1,12 +1,5 @@
-\subsection{Spanningsreferentie}\label{sec:referenceVoltage}
-De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken. Deze spanningsreferentie is onderdeel van de uitleesschakeling van de pH sensor, en bevindt zich dus in hetzelfde blok als de uitleesschakeling zelf. Dit is te zien in \cref{fig:referenceInSchema}
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{signaalverwerking_pH.pdf}
-    \caption{Het onderdeel van \cref{fig:analogeBewerkingsFunctie} waar de spanningsreferentie zich in bevindt.}
-    \label{fig:referenceInSchema}
-\end{figure}
-
+\subsubsection{Spanningsreferentie}\label{sec:referenceVoltage}
+De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken.
 Hiervoor is als implementatie een spanningsdeler gekozen. De schakeling van deze spanningsdeler is te zien in \cref{fig:divider}.
 De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente storing in de voedingsspanning.
 
@@ -23,7 +16,7 @@ De overdracht van deze spanningsdeler is te vinden in \cref{eq:dividerTransfer}.
     H(s) = \frac{U_{ref}(s)}{U_{dd}(s)} = \frac{R_2}{R_1 + R_2 + R_2Cs}
 \end{equation}
 
-\subsubsection{Vermogen}
+\subsubsection{Vermogen van de spanningsreferentie}
 Het vermogen dat de spanningsdeler dissipeert, kan met \cref{eq:dividerPower} berekend worden.
 \begin{equation}\label{eq:dividerPower}
     P(s) = U_{dd}^2(s)\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
@@ -35,7 +28,7 @@ Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \cref{eq:
     \tagaddtext{[\si{\watt}]}
 \end{equation}
 
-\subsubsection{Ruis}
+\subsubsection{Ruis van de spanningsreferentie}
 Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \cref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
 
 \begin{figure}[!htbp]

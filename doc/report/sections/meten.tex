@@ -1,6 +1,6 @@
-\subsection{De drempelspanning van de ISFET uitlezen} \label{sec:ISFETLees}
+\subsection{De ISFET}
 
-De pH sensor is het onderdeel van het systeem die de pH waarde van de te meten oplossing uitleest. Dit onderdeel zit voor de versterker, zoals uitgebeeld in \cref{fig:pHInSchema}.
+Aan de ingang van de signaalverwerking van de pH waarde, zit de sensor die deze pH waarde uitleest, zoals te zien in \cref{fig:pHInSchema}. Deze sensor meet de pH waarde van de te meten oplossing. De sensor die wordt gebruikt is een ISFET halfgeleider.
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{signaalverwerking_pH.pdf}
@@ -18,11 +18,11 @@ De pH sensor heeft als ingang een oplossing met een pH waarde van pH 2 tot pH 10
     \label{fig:uitleesBlok}
 \end{figure}
 
-% TODO: Bronnen
-Om de pH waarde van de ISFET uit te lezen moet de drempelspanning gemeten worden. Deze is namelijk linear afhankelijk van de pH waarde \cite{iontjes}.
-Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gate-source spanning te variëren kunnen $U_{ds}$ en $I_{ds}$ van de ISFET constant gehouden worden.
 
-Er zijn meerdere mogelijke implementaties van een dergelijk regelsysteem. Twee hiervan zijn afgebeeld in \cref{fig:measureCircuits}.
+\subsubsection{De drempelspanning van de ISFET uitlezen} \label{sec:ISFETLees}
+Wanneer de ISFET in aanraking komt met een oplossing, verandert de gate-source drempelspanning op basis van de pH waarde van deze oplossing \cite{iontjes}. Om deze uit te lezen kan een regelsysteem gebruikt worden om de drain-source spanning en stroom van de ISFET mee in te stellen.
+
+Er zijn meerdere mogelijke implementaties mogelijk voor dit regelsysteem. Twee hiervan zijn afgebeeld in \cref{fig:measureCircuits}.
 Elk van deze schakelingen gebruikt een nullor om de drain-source spanning van de ISFET gelijk te houden. Ook gebruikt elk van deze schakelingen een referentiespanning. De implementatie van deze referentiespanning wordt verder besproken in \cref{sec:referenceVoltage}.
 
 De drain-source spanning $U_{ds}$ en drain-source stroom $I_{ds}$ zijn van te voren gedefinieerd. Deze zijn te vinden in de datasheet van de ISFET \cite{isfet}. Uit deze twee waardes kunnen de referentiespanningen en weerstandswaardes van de schakelingen gevonden worden.
@@ -78,7 +78,7 @@ Bij de schakeling in \cref{fig:measureResistor} zit de source van de ISFET direc
 
 De schakeling met een stroombron aan de source heeft de mogelijkheid om betere ruiseigenschappen te hebben. De stroombron kan ook een hogere impedantie hebben dan de weerstand. Het vermogensverbruik van de schakeling in \cref{fig:measureResistor} is echter duidelijk minder, dus is dit de schakeling die gebruikt zal worden.
 
-\subsubsection{Ruis}
+\subsubsection{Ruis van de ISFET uitleesschakeling}
 
 De meetschakeling heeft een aantal ruisbronnen. De nullor heeft een ingangsstroom- en spanninsruisbron. Daarnaast genereert de weerstand ook thermische ruis. Deze ruisbronnen zijn te zien in \cref{fig:measureNoise}.
 \begin{figure}[!htbp]
@@ -156,7 +156,7 @@ Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsr
     \tagaddtext{[\si{\volt}]}
 \end{equation}
 
-\subsubsection{Vermogen}
+\subsubsection{Vermogen van de ISFET uitleesschakeling}
 Het vermogensverbruik van deze schakeling is gedefinieerd in \cref{eq:measurePower}, waar $P_n$ het vermogensverbruik van de nullor implementatie is.
 \begin{equation}\label{eq:measurePower}
     P = P_n + U_{dd}I_{ds}

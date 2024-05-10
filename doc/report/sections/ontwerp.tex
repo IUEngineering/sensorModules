@@ -4,7 +4,7 @@ In \cref{fig:functional} is dit te zien in een systeemdiagram.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{toplevelDiagram}
+    \includegraphics{toplevelDiagram.pdf}
     \caption[short]{Een diagram van het volledige systeem.}
     \label{fig:functional}
 \end{figure}
@@ -13,7 +13,7 @@ Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te 
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{moduleDiagram}
+    \includegraphics[width=\textwidth]{moduleDiagram}
     \caption{Een systeemdiagram van de sensormodule.}
     \label{fig:moduleDiagram}
 \end{figure}
@@ -21,7 +21,11 @@ Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te 
 \subsection{Functionele decompositie}
 De sensormodule kan opgedeeld worden in 2 aparte systemen: de voeding, die verder wordt besproken in \cref{sec:voeding}, en de signaalverwerking.
 
-De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. In de komende paragrafen wordt elk van deze blokken apart besproken.
+De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. Het digitale gedeelte wordt gedaan in het `Digitale signaalbewerking' blok, die later besproken wordt in \cref{sec:digitaal}.
+
+In de komende paragrafen wordt elk van deze blokken apart besproken. Zoals te zien is in \cref{fig:analogeBewerkingsFunctie} heeft de signaalverwerking 2 paden: de signaalverwerking van de pH waarde (boven) en de signaalverwerking van de temperatuur (onder). De signaalverwerking van de pH waarde zal eerst besproken worden, beginnend bij de schakeling die de pH sensor uitleest. Aangezien de specificaties van het filter en de versterking gebaseerd zullen worden op de ADC, wordt hierna de ADC besproken. Vervolgens komen de versterking en het filter aan bod.
+
+Hierna zal er verder worden ingegaan op de digitale signaalverwerking en de temperatuurmeting. Tenslotte wordt de voeding van het volledige systeem besproken, die in \cref{fig:moduleDiagram} staat afgebeeld als het `Energie management systeem' blok.
 
 \begin{figure}[!htbp]
     \centering
@@ -30,29 +34,19 @@ De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelt
     \label{fig:analogeBewerkingsFunctie}
 \end{figure}
 
-
-Het digitale gedeelte bestaat uit een aantal berekeningen. Deze berekeningen zijn nodig om de gemeten spanning om te rekenen naar een pH waarde. Hiervoor zijn een aantal kalibratiewaardes nodig, zoals besproken in \cref{sec:werkingISFET}. Het digitale gedeelte heeft als ingang een temperatuursafhankelijke spanning $U_T$ en een pH-afhankelijke spanning $U_{pH}$. Dit is te zien in \cref{fig:digitaleBewerkingsFunctie}. Beide van deze spanningen zijn de ruwe ADC waardes die gemeten worden, en hebben dus de hoogst mogelijke resolutie, namelijk de resolutie van de ADC. Voor beide van deze waardes zal de eenheid `bit' gebruikt worden.
-
-Om op de uiteindelijk pH waarde te komen, wordt van de pH-afhankelijke spanning de pH-afhankelijke kalibratiespanning afgetrokken. Vervolgens wordt hier $\frac{pH_{kal}}{C_{pH}}$ bij opgeteld. Op deze manier kan er zo lang mogelijk met integers gewerkt worden die dezelfde resolutie hebben als de ingangs-ADC waarde. Het resultaat wordt vervolgens vermenigvuldigd met $C_{pH}$. Dit is de gevoeligheid van de sensor, in pH/bit.
-
-Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhankelijke spanning $U_T$ de temperatuursafhankelijke kalibratiespanning $U_{T,kal}$ afgetrokken. Vervolgens wordt dit vermenigvuldigt met constante $C_T$. $C_T$ is de temperatuursafhankelijkheid van de pH-sensor, in pH/bit. Deze waarde kan afgeleid worden met de temperatuursafhankelijkheid van de pH-sensor die in de datasheet gegeven wordt in mV/K \cite{isfet}.
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
-    \caption{Het digitale gedeelte van de signaalbewerking.}
-    \label{fig:digitaleBewerkingsFunctie}
-\end{figure}
-
-
+% ISFET
 \input{sections/meten}
 \input{sections/divider}
+
+% ADC
 \input{sections/adc}
+\input{sections/versterker}
 \input{sections/filter}
-\input{sections/rf}
+\input{sections/digitaal}
+\input{sections/temp}
 \input{sections/voedingOntwerp}
 \input{sections/energieBudget}
-\input{sections/temp}
+\input{sections/rf}
 
 
 
