@@ -23,7 +23,8 @@ De sensormodule kan opgedeeld worden in 2 aparte systemen: de voeding, die verde
 
 De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. Het digitale gedeelte wordt gedaan in het `Digitale signaalbewerking' blok, die later besproken wordt in \cref{sec:digitaal}.
 
-In de komende paragrafen wordt elk van deze blokken apart besproken. Zoals te zien is in \cref{fig:analogeBewerkingsFunctie} heeft de signaalverwerking 2 paden: de signaalverwerking van de pH waarde (boven) en de signaalverwerking van de temperatuur (onder). De signaalverwerking van de pH waarde zal eerst besproken worden, beginnend bij de schakeling die de pH sensor uitleest. Aangezien de specificaties van het filter en de versterking gebaseerd zullen worden op de ADC, wordt hierna de ADC besproken. Vervolgens komen de versterking en het filter aan bod.
+%TODO: doe dit beter
+In de komende paragrafen wordt elk van deze blokken apart besproken. Zoals te zien is in \cref{fig:analogeBewerkingsFunctie} heeft de signaalverwerking 2 paden: de signaalverwerking van de pH waarde (boven) en de signaalverwerking van de temperatuur (onder). Deze twee paden worden gecombineerd door een digitaal signaalbewerkingsblok, die als eerst besproken zal worden. De signaalverwerking van de pH waarde zal eerst besproken worden, beginnend bij de schakeling die de pH sensor uitleest. Aangezien de specificaties van het filter en de versterking gebaseerd zullen worden op de ADC, wordt hierna de ADC besproken. Vervolgens komen de versterking en het filter aan bod.
 
 Hierna zal er verder worden ingegaan op de digitale signaalverwerking en de temperatuurmeting. Tenslotte wordt de voeding van het volledige systeem besproken, die in \cref{fig:moduleDiagram} staat afgebeeld als het `Energie management systeem' blok.
 
@@ -34,21 +35,15 @@ Hierna zal er verder worden ingegaan op de digitale signaalverwerking en de temp
     \label{fig:analogeBewerkingsFunctie}
 \end{figure}
 
-% ISFET
-\input{sections/meten}
-\input{sections/divider}
-
-% ADC
+\input{sections/digitaal}
+\input{sections/meten} % ISFET uitleesschakeling
+\input{sections/divider} % Spanningsreferentie
 \input{sections/adc}
 \input{sections/versterker}
 \input{sections/filter}
-\input{sections/digitaal}
 \input{sections/temp}
-\input{sections/voedingOntwerp}
-\input{sections/energieBudget}
+\input{sections/energie}
 \input{sections/rf}
-
-
 
 
 

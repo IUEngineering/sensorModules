@@ -14,8 +14,13 @@
 11:35
 [x] Vernoem expliciet dat de pH waarde gelezen wordt door middel van een ISFET
 ## De drempelspanning van de ISFET uitlezen
-    Ga daar verder op in en begin dan met het hoofdstuk
-    Leg uit wat we nodig 
+[x] Ga daar verder op in en begin dan met het hoofdstuk
+
+33:00
+<!--!     dit is redelijk belangrijk doe dit pls    -->
+[ ] Introduceer de 2 routes beter met misschien blokschema erbij :(.
+[ ] Beschrijf de volgorde van dingen.
+<!--!     dit is redelijk belangrijk doe dit pls    -->
 
 13:04
 [x] Maak het zo:
@@ -38,10 +43,39 @@
 [x] Zet bij de pijlen wat het is en zo haha.
 
 21:00
-    Zet de specs bij de blok figuur dingen in een tabelletje.
+[ ] Zet de specs bij de blok figuur dingen in een tabelletje.
     Alleen dingen die je weet, dus bijvoorbeeld bij het filter weet je nog niet hoeveel je moet gaan dempen (denk ik?) dus zet je gewoon neer
     in: (specs van ingang)
     uit: gedempte ingang
+
+
+<!--Dit is een grote TODO, doe samen met Big T of Tenko-->
+## Voeding
+[ ] Gooi alles onder dezelfde paragraaf
+[ ] Doe dat ook voor #implementatie
+[ ] Denk even goed na over waar je dingen over de voeding neerzet
+[ ] Batterijkeuze beter onderbouwen
+
+## Digitaal
+[ ] Maak blokschema cirkel ding voor digitaal.
+[ ] Introduceer digitaal blok beter
+
+## Temperatuur
+[ ] Blokschema klopt niet
+[ ] Check of die afbeeldingen en tabellen niet meer zo raar staan
+
+## Versterker
+34:24 <-- Luister nog een keer
+
+
+
+# Implementatie
+38:58
+[ ] Zet de dingen in goeie volgorde
+[ ] Beschrijf 'totaalplaatje' in voorstukje
+
+## Spanningsreferentie
+[x] Zet fucking uhhh de schakeling nog ff een keertje naast tabel 6
 
 
 # Algemeen
@@ -53,3 +87,10 @@
 [x] Captions van figuren lijken op paragrafen dat is dom doe dat niet hehe 
 ??:??
 [x] Test resultaten duidelijker (even filteren of zo).
+23:40
+[ ] Kopjes minder bondig (Rf is 2 letters)
+[ ] Check de inhoudsopgave
+
+30:45
+[ ] Betere figuur captions (ook die die van de blokschema dingen want die beginnen met 'waar' en dat is 'raar').
+[ ] 

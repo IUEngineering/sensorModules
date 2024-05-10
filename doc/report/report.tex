@@ -15,6 +15,7 @@
 \usepackage[perpage]{footmisc}
 \usepackage[nameinlink,noabbrev,dutch]{cleveref}
 \usepackage{tikz-among-us}
+
 \sisetup{detect-all}
 
 
@@ -68,13 +69,14 @@
     \makeTitlepage
     \begin{tikzpicture}
         \amongUsI{yellow}{cyan}
+        \hspace{10cm}
+        \amongUsI{red}{cyan}
     \end{tikzpicture}
 
     \input{sections/samenvatting}
 
     \onecolumn
     \tableofcontents
-
 
 
     \newpage
@@ -95,7 +97,7 @@
 
     \newpage
 
-    \input{sections/realisatie}
+    \input{sections/implementatie}
 
     \newpage
 
