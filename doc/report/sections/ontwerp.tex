@@ -4,7 +4,7 @@ In \cref{fig:functional} is dit te zien in een systeemdiagram.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics{toplevelDiagram}
+    \includegraphics{toplevelDiagram.pdf}
     \caption[short]{Een diagram van het volledige systeem.}
     \label{fig:functional}
 \end{figure}
@@ -13,37 +13,36 @@ Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te 
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{moduleDiagram}
+    \includegraphics[width=\textwidth]{moduleDiagram}
     \caption{Een systeemdiagram van de sensormodule.}
     \label{fig:moduleDiagram}
 \end{figure}
 
-\subsection{Functionele decompositie} \label{sec:functioneleDecompositie}
-De sensormodule kan opgedeeld worden in 2 aparte systemen: de voeding, die verder wordt besproken in \cref{sec:voeding}, en de signaalverwerking.
-
-De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. In de komende paragrafen wordt elk van deze blokken apart besproken.
+\subsection{Functionele decompositie}
+De sensormodule kan opgedeeld worden in 3 aparte systemen: de voeding, de draadloze communicatie (RF), en de signaalverwerking. De voeding en RF worden later verder besproken, respectievelijk in \cref{sec:energy,sec:ontwerp:Rf}.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{analogeBewerkingsFunctie}
-    \caption{Het analoge gedeelte van de signaalbewerking.}
+    \includegraphics[width=0.95\textwidth]{signaalverwerking}
+    \caption{Het signaalverwerkingsblok uit \cref{fig:moduleDiagram}, samen met de pH sensor en temperatuursensor.}
     \label{fig:analogeBewerkingsFunctie}
 \end{figure}
+In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van het signaalverwerkingsblok, samen met de twee sensoren. Het digitale gedeelte van de signaalbewerking wordt gedaan in het `Digitale signaalbewerking' blok, die later besproken wordt in \cref{sec:digitaal}.
 
-
-Het digitale gedeelte bestaat uit een aantal berekeningen. Deze berekeningen zijn nodig om de gemeten spanning om te rekenen naar een pH waarde. Hiervoor zijn een aantal kalibratiewaardes nodig, zoals besproken in \cref{sec:werkingISFET}. Het digitale gedeelte heeft als ingang een temperatuursafhankelijke spanning $U_T$ en een pH-afhankelijke spanning $U_{pH}$. Dit is te zien in \cref{fig:digitaleBewerkingsFunctie}. Beide van deze spanningen zijn de ruwe ADC waardes die gemeten worden, en hebben dus de hoogst mogelijke resolutie, namelijk de resolutie van de ADC. Voor beide van deze waardes zal de eenheid `bit' gebruikt worden.
-
-Om op de uiteindelijk pH waarde te komen, wordt van de pH-afhankelijke spanning de pH-afhankelijke kalibratiespanning afgetrokken. Vervolgens wordt hier $\frac{pH_{kal}}{C_{pH}}$ bij opgeteld. Op deze manier kan er zo lang mogelijk met integers gewerkt worden die dezelfde resolutie hebben als de ingangs-ADC waarde. Het resultaat wordt vervolgens vermenigvuldigd met $C_{pH}$. Dit is de gevoeligheid van de sensor, in pH/bit.
-
-Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhankelijke spanning $U_T$ de temperatuursafhankelijke kalibratiespanning $U_{T,kal}$ afgetrokken. Vervolgens wordt dit vermenigvuldigt met constante $C_T$. $C_T$ is de temperatuursafhankelijkheid van de pH-sensor, in pH/bit. Deze waarde kan afgeleid worden met de temperatuursafhankelijkheid van de pH-sensor die in de datasheet gegeven wordt in mV/K \cite{isfet}.
+Dit verslag gaat met name in op de signaalbewerking van de pH waarde. Dit is het bovenste pad in \cref{fig:analogeBewerkingsFunctie}.
+Het onderste pad, die van de temperatuursensor, is vanwege tijdsgebrek niet behandeld, en heeft dus geen ontwerphoofdstuk in dit verslag. De temperatuurmeting zal in een volgende ontwerpiteratie beter behandeld moeten worden. Dit resulteert in het blokschema in \cref{fig:signaalverwerking_phOnly}.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
-    \caption{Het digitale gedeelte van de signaalbewerking.}
-    \label{fig:digitaleBewerkingsFunctie}
+    \includegraphics[width=0.95\textwidth]{signaalverwerking_phOnly}
+    \caption{Het pH gedeelte van de signaalverwerking uit \cref{fig:analogeBewerkingsFunctie}.}
+    \label{fig:signaalverwerking_phOnly}
 \end{figure}
 
+De signaalverwerking zal in de komende hoofdstukken in de volgende volgorde besproken worden: de digitale signaalbewerking, de pH Sensor, de ADC, de versterking en ten slotte het filter. Het filter en de versterking worden pas n\'a % <- hehe jep dat werkt
+de ADC besproken, omdat de specificaties daarvan afhangen van die van de ADC.
+
+Na de signaalverwerking zullen de voeding en het draadloze communicatiesysteem besproken worden.
 
 \subsection{Ruisverdeling}
 In \cref{sec:systemSpecifications} is er een ruisspecificatie voor de uitgang van dit systeem gegeven. Daarna is in \cref{sec:functioneleDecompositie} gekeken naar welke basissignaalbewerkingsfuncties er moeten worden geïmplementeerd. Een overzicht van de te implementeren basissignaalbewerkingsfuncties is te zien in \cref{fig:analogeBewerkingsFunctie,fig:digitaleBewerkingsFunctie}. Bij de verdeling van het ruisbudget is ook onderscheid gemaakt tussen de analogesignaalbewerkingsfuncties en de digitalesignaalbewerkingsfuncties.
@@ -56,16 +55,16 @@ Wanneer de digitalesignaalbewerkingsfuncties gezamelijk een ruisgetal van \qty{1
 
 Deze verdeling van ruis betekent dat het signaal dat uit de sensor komt minimaal een \SNR van \qty{43}{\decibel} moet hebben.
 
-\input{sections/meten}
-\input{sections/divider}
+\input{sections/digitaal}
+\input{sections/meten} % ISFET uitleesschakeling
+\input{sections/divider} % Spanningsreferentie
+
 \input{sections/adc}
+\input{sections/versterker}
 \input{sections/filter}
+% \input{sections/temp}
+\input{sections/energie}
 \input{sections/rf}
-\input{sections/voedingOntwerp}
-\input{sections/energieBudget}
-
-
-
 
 
 

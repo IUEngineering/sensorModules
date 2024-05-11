@@ -35,7 +35,7 @@ Om de test uit te voeren wordt de uitlees PCB verbonden met de voeding PCB, zoda
 \subsubsection{Resultaten} \label{sec:stabilityTestResults}
 
 De eerste test resulteerde in een oscillerend signaal. De uitgang van de opamp gaf een signaal dat elke \qty{6.8}{\milli\second} pulseerde. Dit is te zien in \cref{fig:resultUgsUds}.
-Wanneer de opamp uitgang laag is, waardoor de gate-source spanning op de ISFET 0 V wordt, komt de drain-source spanning van de ISFET erg langzaam omhoog. Wanneer deze spanning boven de referentiespanning komt, gaat de uitgang van de opamp omhoog, waarna de drain-source spanning van de ISFET erg snel begint te dalen. Echter, wanneer de drain-source spanning vervolgens de referentiespanning bereikt, reageert de opamp hier merkwaardig genoeg niet direct op. Dit zorgt voor een oscillerende werking. Ditzelfde resultaat kwam uit dezelfde test met een andere opmamp (de MCP6002).
+Wanneer de opamp uitgang laag is, waardoor de gate-source spanning op de ISFET \qty{0}{\volt} wordt, komt de drain-source spanning van de ISFET erg langzaam omhoog. Wanneer deze spanning boven de referentiespanning komt, gaat de uitgang van de opamp omhoog, waarna de drain-source spanning van de ISFET erg snel begint te dalen. Echter, wanneer de drain-source spanning vervolgens de referentiespanning bereikt, reageert de opamp hier merkwaardig genoeg niet direct op. Dit zorgt voor een oscillerende werking. Ditzelfde resultaat kwam uit dezelfde test met een andere opmamp (de MCP6002).
 
 Op de drain-source spanning is ook een tweede oscillatie met een hogere frequentie zichtbaar.
 
@@ -49,8 +49,8 @@ Op de drain-source spanning is ook een tweede oscillatie met een hogere frequent
 \begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.75\textwidth}
-    \includegraphics[width=0.8\textwidth]{testUgsUds.png}
-    \caption{Het resultaat van de stabiliteitstest. Kanaal 1 (geel) is $U_{gs}$, kanaal 2 (lichtblauw) is $U_{ds}$.}
+    \includegraphics[width=\textwidth]{testUgsUds.png}
+    \caption{Het resultaat van de stabiliteitstest. De x-as is tijd, de y-as is spanning. Kanaal 1 (geel) is $U_{gs}$, kanaal 2 (lichtblauw) is $U_{ds}$.}
     \label{fig:resultUgsUds}
 \end{figure}
 
@@ -74,22 +74,20 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
 
 \begin{figure}[!htbp]
     \centering
-    \begin{subfigure}[b]{0.75\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \def\svgwidth{\textwidth}
         \includegraphics[width=\textwidth]{testpH7.png}
         \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH 7.}
         \label{fig:resultpH7}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.75\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \def\svgwidth{\textwidth}
         \includegraphics[width=\textwidth]{testpH4.png}
         \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH 4.}
         \label{fig:resultpH4}
     \end{subfigure}
-    \caption{De uitgang van de meetschakeling op pH 4 en pH 7. Beide metingen hebben dezelfde schaal.}
+    \caption{De uitgang van de meetschakeling op pH 4 en pH 7. Beide metingen hebben dezelfde schaal. De x-assen zijn tijd, de y-assen zijn spanning.}
     \label{fig:resultspHMeasure}
 \end{figure}
 

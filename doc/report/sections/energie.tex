@@ -1,19 +1,26 @@
-\subsection{Batterij} \label{sec:battery}
+% # Ontwerp
+% ## ...
+% ##
+
+
+\subsection{De oplaadbare voeding van het systeem} \label{sec:energy}
+%TODO: FUCK DOE ER IETS TUSSEN ANDERS 4!!!
+\subsubsection{Accu} \label{sec:batterijOntwerp}
 In onderzoek \cite{BatteryComparison} is te zien dat Lithium-Polymeer batterijen (LiPo) een hoge energiedichtheid hebben in vergelijking met andere soorten batterijen. Er zijn anderen die hogere energie densiteit hebben, maar daarvan zijn de kosten hoog, of zijn er andere nadelige effecten\cite{BatteryComparison}. Dit heeft ervoor gezorgd dat voor de sensor module ontwerp een LiPo gekozen is als batterij. Spanning van een cel LiPo (1s) is maximaal 4.2 V en minimaal veilige spanning is 2.7 V\cite{BatteryComparison}.
 
-\subsection{Energy Harvesting}
+\subsubsection{Energy Harvesting}
 
 Vanuit de opdrachtdefinitie is er gekozen voor een piëzo element. Deze piëzo kan mechanische trillingen omzetten naar elekrsiche spanning. Deze spanning kan gebruikt worden om de accu op te laden of de vermogen gebruik van de module te verminderen. De peizo element kan beide indoor en outdoor gebruikt worden.
 
 
-\subsection{Voeding} \label{sec:voeding}
+\subsubsection{Voeding} \label{sec:voeding}
 
 %!! TODO: energy harvesting, spanning, batterij laden, beveiliging, stroom.
 
 De voedingsspanning is gekozen vanuit de maximale spanning die nodig is voor de ISFET sensor\cite{isfet}. Hieruit volgt een maximale systeemspanning van 3.3 V.
 
 
-Zoals te lezen in \cref{sec:battery} is er gekozen voor LiPo batterij technologie. De batterij heeft een beveiliging voor beide op- en ontladen nodig. De celspanning moet omgezet worden naar systeemspanning van 3.3 V. Dit wordt op 2 manieren gedaan, met een DC-DC buck-boost converter en een low dropout regelaar(LDO). De buck-boost is efficiënter dan de LDO. Een voordeel van de LDO is dat de spanningsrimpel veel lager is dan bij een buck-boost. Daarom wordt de LDO gebruikt voor het voeden van de analoge uitleesschakeling. De buck-boost gaat naar het digitale deel. Als een microcontroller goed ontkoppeld is dan maakt het spanningsrimpel niet uit voor de werking van de microcontroller. Daardoor is de hogere rimpel spanning van de buck-boost niet een probleem voor de microcontroller. De voeding is schematisch te zien in \cref{fig:voedingSchematisch}.
+Zoals te lezen in \cref{sec:batterijOntwerp} is er gekozen voor LiPo batterij technologie. De batterij heeft een beveiliging voor beide op- en ontladen nodig. De celspanning moet omgezet worden naar systeemspanning van \qty{3.3}{\volt}. Dit wordt op 2 manieren gedaan, met een DC-DC buck-boost converter en een low dropout regelaar (LDO). De buck-boost is efficiënter dan de LDO. Een voordeel van de LDO is dat de spanningsrimpel veel lager is dan bij een buck-boost. Daarom wordt de LDO gebruikt voor het voeden van de analoge uitleesschakeling. De buck-boost gaat naar het digitale deel. Als een microcontroller goed ontkoppeld is dan maakt het spanningsrimpel niet uit voor de werking van de microcontroller. Daardoor is de hogere rimpel spanning van de buck-boost niet een probleem voor de microcontroller. De voeding is schematisch te zien in \cref{fig:voedingSchematisch}.
 
 Voor energy harvesting is er een piezo element gekozen. Een piezo element kan gezien worden als een AC bron. Deze AC bron moet omgezet worden naar DC die door het systeem gebruikt kan worden om de batterij mee op te laden. De AC bron wordt met een gelijkrichter naar DC omgezet. Deze DC spanning is niet hetzelfde als de systeemspanning dus die moet omgezet worden naar een spanning die de batterij in gaat, zodat de batterij kan opladen.
 
@@ -26,8 +33,8 @@ Voor energy harvesting is er een piezo element gekozen. Een piezo element kan ge
 
 
 
-\subsection{Energie budget}\label{sec:energyBudgets}
-Voor het energiebudget zijn de waardes uit \cref{tab:energieBudgetEstimatie} gekozen. De waardes in \cref{tab:energieBudgetEstimatie} zijn boven de theoretisch berekend minium gebruik voor het systeem bepaald maar onder de 10 mW.
+\subsubsection{Energie budget}\label{sec:energyBudgets}
+Voor het energiebudget zijn de waardes in \cref{tab:energieBudgetEstimatie} gekozen. Elk van deze waardes ligt boven het theoretisch berekende minimum van het respectievelijke systeemonderdeel. De som van de vermogens is \qty{9}{\milli\watt}, wat onder het maximale toegestane vermogensverbruik van \qty{10}{\milli\watt} ligt.
 
 
 \begin{table}[!htbp]

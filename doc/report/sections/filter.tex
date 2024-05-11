@@ -1,21 +1,20 @@
 \subsection{Filter}
-
+Zoals te zien is in \cref{fig:filterInSchema} zit er tussen de versterking van het signaal en de ADC een filter. Zoals te zien is in \cref{fig:filterBlok}, neemt het filter een pH-afhankelijke spanning als ingang. De uitgang is een gefilterde pH-afhankelijke spanning, waarin de signalen die voor aliasing kunnen zorgen voldoende gedempt zijn. Voldoende dempen houdt in dat het stoorsignaal de zelfde ordegrootte heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.6\textwidth]{signaalblokjes/filterInSchema.pdf}
-    \caption{Waar het filter zich bevind in het signaalverwerkingsblok van \cref{fig:analogeBewerkingsFunctie}.}
+    \includegraphics[width=0.95\textwidth]{signaalverwerking_filter.pdf}
+    \caption{Het blokschema van de signaalverwerking, met het filter omcirkeld.}
     \label{fig:filterInSchema}
 \end{figure}
+
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.4\textwidth]{signaalblokjes/aaFilterBlock}
-    \caption{Het filter blok.}
-    \label{fig:filterBlock}
+    \def\svgwidth{0.4\textwidth}
+    \input{img/filterBlok.pdf_tex}
+    \caption{Het filterblok.}
+    \label{fig:filterBlok}
 \end{figure}
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter; zie \cref{fig:filterInSchema,fig:filterBlock}. Dit filter zorgt ervoor dat alle frequenties buiten de bandbreedte weggefilterd worden. Er is gekozen om hiervoor een eerste orde laagdoorlaatfilter te gebruiken.
-De schakeling van dit filter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie van het filter ligt aan de waardes van $C$ en $R$, volgens \cref{eq:cutoffFreq}.
 
-Tussen de ADC en de uitleesschakeling van de sensor zit een filter. Dit filter moet de signalen die voor aliasing kunnen zorgen voldoende dempen. Voldoende dempen houdt in dat het stoorsignaal de zelfde orde grote heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
 
 \subsubsection{Orde bepalen} \label{sec:DetermineAAorder}
 De orde van het filter en de kantelfrequentie bepalen hoeveel demping er op een zekere frequentie plaatsvindt. De demping van een nde orde Butterworth filter op frequentie $f_s$ en met het kantel punt op $f_c$ kan met \cref{eq:dampingOfTheFilter} berekend worden \cite{electronicFilterDesignHandbook}.
@@ -114,7 +113,7 @@ Het vermogensverbruik van het filter is te berekenen met \cref{eq:filterPowerLap
 \end{equation}
 Omdat volgens \cref{eq:cutoffFreq} $R$ te definiëren is in $\omega_c$ en $C$, volgt hieruit \cref{eq:filterPower}.
 \begin{equation} \label{eq:filterPower}
-    P = \frac{1}{\sqrt{2}}\omega_cCU_{in,max}^2
+    P = \frac{1}{2}\omega_cCU_{in,max}^2
     \tagaddtext{[\si{\watt}]}
 \end{equation}
 In deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijke condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \cref{eq:filterCapMin}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de RMS ruisspanning aan de ingang van het filter.

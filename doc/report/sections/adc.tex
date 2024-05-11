@@ -1,7 +1,25 @@
 \subsection{ADC}
+Om de versterking en het filter te ontwerpen, zijn eerst de specificaties van de ADC nodig. Daarom wordt eerst de ADC besproken. De ADC ligt tussen het filter en de digitale signaalverwerking, zoals te zien is in \cref{fig:ADCInSchema}. Dit blok converteert een analoge ingangsspanning naar een digitaal uitgangssignaal.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{signaalverwerking_ADC}
+    \caption{Het onderdeel van \cref{fig:analogeBewerkingsFunctie} waar de spanningsreferentie zich in bevindt.}
+    \label{fig:ADCInSchema}
+\end{figure}
+
+Het ADC blok, te zien in \cref{fig:ADCBlok}, heeft een gefilterde pH-afhankelijke spanning als ingang. De uitgang is een pH-afhankelijke digitale waarde.
+
+\begin{figure}[!htbp]
+    \centering
+    \def\svgwidth{0.4\textwidth}
+    \input{img/ADCBlok.pdf_tex}
+    \caption{Het ADC blok.}
+    \label{fig:ADCBlok}
+\end{figure}
 
 % min bits
-Een ADC zet analoge signaal om in digitale signalen. Hierbij heeft een ADC een zekere resolutie. Als deze resolutie niet hoog genoeg is, kan dit fouten introduceren. De resolutie is afhankelijk van het aantal bits dat de ADC heeft. Een andere oorzaak van fouten die bij een ADC kunnen optreden is de sample frequentie. Als deze niet hoog genoeg is zal dit ook een fout creëren.
+Voor het omzetten van een analoog naar een digitaal signaal, heeft een ADC een zekere resolutie. Als deze resolutie niet hoog genoeg is, kan dit fouten introduceren. De resolutie is afhankelijk van het aantal bits dat de ADC heeft. Een andere oorzaak van fouten die bij een ADC kunnen optreden is de sample frequentie. Als deze niet hoog genoeg is zal dit ook een fout creëren.
 
 \subsubsection{Aantal bits} \label{sec:ADC:numBits}
 De resolutie van een ADC kan uitgerekend worden met \cref{eq:adcRes}, waarbij $n$ het aantal bits van de ADC is.
@@ -10,7 +28,7 @@ De resolutie van een ADC kan uitgerekend worden met \cref{eq:adcRes}, waarbij $n
 \end{equation}
 
 Met \cref{eq:meanSquareErrorADC} is de fout die ontstaat door de eindige resolutie van de ADC te berekenen \cite{MJHcalcADC}. Wanneer er uit specificaties een maximale $\overline{e_{eff}^2}$ kan worden gehaald kan met \cref{eq:calcNeededQ}, kan de minimale benodigde resolutie worden berekend.
-\begin{equation}\label{eq:meanSquareErrorADC} 
+\begin{equation}\label{eq:meanSquareErrorADC}
     \overline{e_{eff}^2}=\frac{Q^2}{12}
 \end{equation}
 \begin{equation}\label{eq:calcNeededQ}

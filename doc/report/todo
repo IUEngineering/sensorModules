@@ -1,0 +1,16 @@
+vermeld dat er geen verdstrerker is 
+
+aanbevelingen:
+    Test ADC beter
+    Filter
+    werkende uitlezer
+    meer tests
+    Meet SNR wanneer het werkt
+
+conclusie
+schrijf meer over sim bij filter H5
+refereer naar t
+
+5.6 vermeld waarom XMega bordje een kut optie is eigenlijk
+    (ADC, RF is cringe, vermogensverbruik van bordje, vermogensverbruik van nRF24, nRF24 heeft geen BLE)
+    Vermeld andere nrf52
