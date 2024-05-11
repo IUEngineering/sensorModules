@@ -1,7 +1,7 @@
 \subsection{De drempelspanning van de ISFET uitlezen} \label{sec:ISFETLees}
 
 % TODO: Bronnen
-Om de pH waarde van de ISFET uit te lezen moet de drempelspanning gemeten worden. Deze is namelijk linear afhankelijk van de pH waarde \cite{iontjes}.
+Om de pH waarde van de ISFET uit te lezen moet de drempelspanning gemeten worden. Deze is namelijk linear afhankelijk van de pH waarde \cite{isfetAsAnElectronicDevice}.
 Om de drempelspanning te meten kan een regelsysteem gebruikt worden. Door de gate-source spanning te variëren kunnen $U_{ds}$ en $I_{ds}$ van de ISFET constant gehouden worden.
 
 Er zijn meerdere mogelijke implementaties van een dergelijk regelsysteem. Twee hiervan zijn afgebeeld in \cref{fig:measureCircuits}.
@@ -25,7 +25,7 @@ Voor de waarde van de weerstand in \cref{fig:measureResistor} kan \cref{eq:measu
 \end{equation}
 
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -63,7 +63,7 @@ De schakeling met een stroombron aan de source heeft de mogelijkheid om betere r
 \subsubsection{Ruis}
 
 De meetschakeling heeft een aantal ruisbronnen. De nullor heeft een ingangsstroom- en spanninsruisbron. Daarnaast genereert de weerstand ook thermische ruis. Deze ruisbronnen zijn te zien in \cref{fig:measureNoise}.
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.6\textwidth}
     \input{img/ISFETCircuitBestNoise.pdf_tex}
@@ -88,11 +88,11 @@ Vervolgens kan deze, samen met de spanningsruisbronnen $u_{n,ref}$ en $u_{n,n}$ 
 
 De definities van deze ruisbronnen zijn te vinden in \cref{tab:measureNoiseValues}.
 
-\begin{table}[ht]
+\begin{table}[!htbp]
     \centering
     \begin{tabular}{c|l}
         Ruisbron & Waarde \\
-        \hline 
+        \hline
         $S_{u_{{n,ref}}}$ & Zie \cref{sec:referenceVoltage} \\
         $S_{u_{{n,n}}}$   & Implementatie nullor \\
         $S_{i_{{n,n}}}$   & Implementatie nullor \\
@@ -104,7 +104,7 @@ De definities van deze ruisbronnen zijn te vinden in \cref{tab:measureNoiseValue
     \label{tab:measureNoiseValues}
 \end{table}
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.6\textwidth}
     \input{img/ISFETCircuitBestNoiseMoved.pdf_tex}
@@ -139,8 +139,8 @@ Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsr
 \end{equation}
 
 \subsubsection{Vermogen}
-Het vermogensverbruik van deze schakeling is gedefinieerd in \cref{eq:measurePower}, waar $P_n$ het vermogensverbruik van de nullor implementatie is. 
+Het vermogensverbruik van deze schakeling is gedefinieerd in \cref{eq:measurePower}, waar $P_n$ het vermogensverbruik van de nullor implementatie is.
 \begin{equation}\label{eq:measurePower}
-    P = P_n + U_{dd}I{ds}
+    P = P_n + U_{dd}I_{ds}
 \end{equation}
 

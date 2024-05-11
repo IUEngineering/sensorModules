@@ -5,7 +5,7 @@ De ISFET uitleesschakeling heeft een spanningsreferentie nodig om te werken.
 Hiervoor is als implementatie een spanningsdeler gekozen. De schakeling van deze spanningsdeler is te zien in \cref{fig:divider}.
 De condensator wordt gebruikt om ruis te verminderen op hogere frequenties, en dient ook als filter voor hoogfrequente storing in de voedingsspanning.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.5\textwidth}
     \input{img/divider.pdf_tex}
@@ -33,7 +33,7 @@ Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \cref{eq:
 \subsubsection{Ruis}
 Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \cref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \def\svgwidth{0.35\textwidth}
     \input{img/dividerNoise.pdf_tex}
@@ -63,7 +63,3 @@ Aangezien de inverse tangens $\frac{\pi}{2}$ nadert, komt dit limiet uit op \cre
     \tagaddtext{[\si{\volt\squared}]}
 \end{equation}
 Omdat een oneindige bandbreedte gebruikt is om op \cref{eq:dividerNoise} te komen, berekend deze de ruis in het ergste geval. De weerstandswaardes van $R_1$ en $R_2$ zijn hierbij irrelevant. Hierdoor is ruis geen bepalende factor meer tijdens het kiezen van de weerstandswaardes van de spanningsdeler, en kunnen deze volledig gebaseerd worden op vermogensverbruik. Volgens \cref{eq:dividerPowerSimple} is het vermogen omgekeerd evenredig met de som van de weerstandswaardes. Daarbij zit de uitgang van de spanningsdeler direct verbonden met de ingang van een nullor. Er hoeft dus geen rekening gehouden te worden met de uitgangsimpedantie van de spanningsbron. Hierdoor is het voor het vermogensverbruik voordelig om de weerstandswaardes zo hoog mogelijk te kiezen.
-
-
-
-% [WELKE SPECS??]

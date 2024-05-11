@@ -1,0 +1,86 @@
+% Order is mijn favoriete kat
+\definecolor{IMBBlue}{HTML}{648FFF}
+\definecolor{IMBPurple}{HTML}{785EF0}
+\definecolor{IMBPink}{HTML}{DC267F}
+\definecolor{IMBOrange}{HTML}{FE6100}
+\definecolor{IMBYellow}{HTML}{FFB000}
+
+\begin{tikzpicture}
+    \tikzset{
+        small dot/.style={fill=black,circle,scale=0.3},
+    }
+    \newcommand\constFH{10}
+    \newcommand\constDH{3}
+    \newcommand\constFD{22.5}
+    \newcommand\constDD{40}
+
+    \newcommand\funcError {
+        ((
+            \constFD / (
+                (10 ^ (\constDD / 10) - 1) ^ (1 / (2*x))
+            )
+            - \constFH /
+            (
+                (10 ^ (\constDH / 10) - 1) ^ (1 / (2*x))
+            )
+        ) / 2)
+    }
+    \newcommand\funcFreq {
+        ((
+            \constFH / (
+                (10 ^ (\constDH / 10) - 1) ^ (1 / (2*x))
+            )
+            + \constFD /
+            (
+                (10 ^ (\constDD / 10) - 1) ^ (1 / (2*x))
+            )
+        ) / 2)
+    }
+
+    \begin{axis}[
+        scale only axis,
+        xmin=0, xmax=18,
+        ymin=-16, ymax=16,
+        axis y line*=left,
+        grid=major,
+        xlabel=Orde,
+        ylabel style = {align=left},
+        ylabel={\ref{plt:order:orange} Kantelfrequentie [\unit{\hertz}] \\ \ref{plt:order:blue} Toegestane afwijking [\unit{\hertz}]},
+    ]
+        \addplot [
+            mark=none,
+            line width=0.5mm,
+            domain=0:18,
+            samples=201,
+            IMBBlue
+        ] {\funcError}; \label{plt:order:blue}
+        \addplot [
+            mark=none,
+            line width=0.5mm,
+            domain=0:18,
+            samples=201,
+            IMBOrange
+        ] {\funcFreq}; \label{plt:order:orange}
+    \end{axis}
+
+    \begin{axis}[
+        scale only axis,
+        xmin=0, xmax=18,
+        ymin=-112, ymax=112,
+        ytick = {-105,-70,-35,0,35,70,105},
+        axis y line*=right,
+        axis x line=none,
+        ylabel style = {align=right},
+        ylabel={\ref{plt:order:yellow} Toegestane procentuele afwijking [\%]},
+    ]
+        \addplot [
+            mark=none,
+            line width=0.5mm,
+            domain=0.05:18,
+            samples=201,
+            IMBYellow
+        ] {100 * \funcError / \funcFreq}; \label{plt:order:yellow}
+
+        % \node [small dot,pin=0:{kantelpunt}] at (0.18714337, -19.391) {};
+    \end{axis}
+\end{tikzpicture}

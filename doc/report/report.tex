@@ -22,6 +22,7 @@
 \DeclareMathOperator\erfc{erfc}
 \DeclareMathOperator\inverfc{inverfc}
 \newcommand\SNR{\mbox{\textit{SNR}} }
+\newcommand\SNRout{33}
 \newcommand{\mcu}{nRF52810\xspace}
 \newcommand\ph{\mathrm{pH}}
 
@@ -36,9 +37,9 @@
     \begin{table}[h!]
         \centering
         \begin{tabular}{ll}
-            Jochem Leijenhorst  & (500855372)\\ 
-            Tycho Jöbsis        & (500845792)\\ 
-            Illya Ustenko       & (500845492)        
+            Jochem Leijenhorst  & (500855372)\\
+            Tycho Jöbsis        & (500845792)\\
+            Illya Ustenko       & (500845492)
         \end{tabular}
     \end{table}
 }
@@ -54,12 +55,12 @@
 \makeatletter
 \providecommand\add@text{}
 \newcommand\tagaddtext[1]{%
-\gdef\add@text{#1\gdef\add@text{}}}% 
+\gdef\add@text{#1\gdef\add@text{}}}%
 \renewcommand\tagform@[1]{%
   \maketag@@@{\llap{\add@text\quad}(\ignorespaces#1\unskip\@@italiccorr)}%
 }
 \makeatother
-  
+
 \begin{document}
     \makeTitlepage
 
@@ -67,6 +68,8 @@
 
     \onecolumn
     \tableofcontents
+
+
 
     \newpage
 
@@ -92,12 +95,12 @@
 
     \input{sections/bepalenTesplan}
 
-    
+
     % \newpage
     % \input{sections/uitvoeringTestplan}
-    
+
     \newpage
-    
+
     \input{sections/disconcluvelingen}
 
     \newpage
@@ -112,7 +115,7 @@
     \newpage
     \appendix
     \newpage
-    \input{sections/pathloss.tex}
-    
+    \input{appendix/pathloss}
+
 \end{document}
 

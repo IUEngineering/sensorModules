@@ -2,7 +2,7 @@
 Het systeem bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule meet de pH waarde van een oplossing, en verzend deze naar het basisstation. Het basisstation ontvangt de informatie en slaat deze informatie op.
 In \cref{fig:functional} is dit te zien in een systeemdiagram.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics{toplevelDiagram}
     \caption[short]{Een diagram van het volledige systeem.}
@@ -11,22 +11,22 @@ In \cref{fig:functional} is dit te zien in een systeemdiagram.
 
 Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te zien in \cref{fig:moduleDiagram}.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.75\textwidth]{moduleDiagram}
-    \caption{Een systeemdiagram van de sensormodule.} 
+    \caption{Een systeemdiagram van de sensormodule.}
     \label{fig:moduleDiagram}
 \end{figure}
 
-\subsection{Functionele decompositie}
+\subsection{Functionele decompositie} \label{sec:functioneleDecompositie}
 De sensormodule kan opgedeeld worden in 2 aparte systemen: de voeding, die verder wordt besproken in \cref{sec:voeding}, en de signaalverwerking.
 
 De signaalverwerking bestaat zelf ook weer uit 2 onderdelen: het analoge gedeelte en het digitale gedeelte. In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van de signaalbewerkingsfuncties die toegepast worden in het analoge gedeelte. In de komende paragrafen wordt elk van deze blokken apart besproken.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{analogeBewerkingsFunctie}
-    \caption{Het analoge gedeelte van de signaalbewerking.} 
+    \caption{Het analoge gedeelte van de signaalbewerking.}
     \label{fig:analogeBewerkingsFunctie}
 \end{figure}
 
@@ -37,13 +37,24 @@ Om op de uiteindelijk pH waarde te komen, wordt van de pH-afhankelijke spanning 
 
 Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhankelijke spanning $U_T$ de temperatuursafhankelijke kalibratiespanning $U_{T,kal}$ afgetrokken. Vervolgens wordt dit vermenigvuldigt met constante $C_T$. $C_T$ is de temperatuursafhankelijkheid van de pH-sensor, in pH/bit. Deze waarde kan afgeleid worden met de temperatuursafhankelijkheid van de pH-sensor die in de datasheet gegeven wordt in mV/K \cite{isfet}.
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
-    \caption{Het digitale gedeelte van de signaalbewerking.} 
+    \caption{Het digitale gedeelte van de signaalbewerking.}
     \label{fig:digitaleBewerkingsFunctie}
 \end{figure}
 
+
+\subsection{Ruisverdeling}
+In \cref{sec:systemSpecifications} is er een ruisspecificatie voor de uitgang van dit systeem gegeven. Daarna is in \cref{sec:functioneleDecompositie} gekeken naar welke basissignaalbewerkingsfuncties er moeten worden geïmplementeerd. Een overzicht van de te implementeren basissignaalbewerkingsfuncties is te zien in \cref{fig:analogeBewerkingsFunctie,fig:digitaleBewerkingsFunctie}. Bij de verdeling van het ruisbudget is ook onderscheid gemaakt tussen de analogesignaalbewerkingsfuncties en de digitalesignaalbewerkingsfuncties.
+
+In digitale systemen is er geen last van ruis. Wel zorgt de eindige resolutie voor fouten. Wanneer signalen met meer bits worden weergegeven kan de fout ten gevolge van de eindige resolutie van een digitaal systeem worden geminimaliseerd. Wanneer een constante met een signaal wordt opgeteld zorgt de eindige resolutie voor een mogelijke constante offset fout, afhankelijk van de toepassing is dit wel of niet acceptabel. Wanneer de offset niet acceptabel is moeten de signalen en constanten met een hoger aantal bits worden gerepresenteerd. Als twee signalen met elkaar worden opgeteld moet de kwantisatie fout van beide signalen bij elkaar worden opgeteld. Dit zorgt in tegenstelling tot het optellen met een constante niet voor een offset omdat de fouten van de twee signalen continue (kunnen) veranderen. Om hier rekening mee te houden moeten de `ruis'sprectra van de twee signalen bij elkaar worden opgeteld.
+
+In \cref{fig:digitaleBewerkingsFunctie} is te zien dat voor de digitalesignaalbewerkingsfuncties er maar op één plek twee signalen bij elkaar worden opgeteld. Dit is de optelling van de signalen uitgangen van $C_{pH}$ en $C_T$. Voor de eerste verdeling wordt gekozen dat het ruisgetal van het totale digitale systeem en dus van deze optelling \qty{1}{\decibel} is.
+
+Wanneer de digitalesignaalbewerkingsfuncties gezamelijk een ruisgetal van \qty{1}{\decibel} hebben moet de \SNR van het signaal na de ADC minimaal \qty{34}{\decibel} zijn. In de specificaties van het systeem is namelijk aangegeven dat de \SNR aan de uitgang van het systeem minimaal \qty{\SNRout}{\decibel} moet zijn. Voor de overgebleven analogesignaalbewerkingsfuncties uit \cref{fig:analogeBewerkingsFunctie}, is er een ruisgetal van \qty{3}{\decibel} gekozen. Dit houdt in dat elk van deze analogesignaalbewerkingsfuncties zelf evenveel ingangsgerelateerde ruis mogen produceren als het voorgaande systeem aan uitgangsgerelateerde ruis produceert.
+
+Deze verdeling van ruis betekent dat het signaal dat uit de sensor komt minimaal een \SNR van \qty{43}{\decibel} moet hebben.
 
 \input{sections/meten}
 \input{sections/divider}
@@ -58,10 +69,10 @@ Om de temperatuursafwijking te berekenen, wordt eerst van de temperatuursafhanke
 
 
 
-% \begin{table}[ht]
+% \begin{table}[!htbp]
 %     \centering
 %     \begin{tabular}{|l|r|}
-%         \hline     
+%         \hline
 %         Ingangen    & Oplossing met een pH waarde tussen de 2 en 10 \\
 %                     & Een temperatuur tussen de fliep en floep $^\circ$C \\
 %         \hline
