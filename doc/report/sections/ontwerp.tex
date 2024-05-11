@@ -43,15 +43,22 @@ De signaalverwerking zal in de komende hoofdstukken in de volgende volgorde besp
 de ADC besproken, omdat de specificaties daarvan afhangen van die van de ADC.
 
 Na de signaalverwerking zullen de voeding en het draadloze communicatiesysteem besproken worden.
-%TODO: doe dit beter
-% In de komende paragrafen wordt elk van deze blokken apart besproken. Zoals te zien is in \cref{fig:analogeBewerkingsFunctie} heeft de signaalverwerking 2 paden: de signaalverwerking van de pH waarde (boven) en de signaalverwerking van de temperatuur (onder). Deze twee paden worden gecombineerd door een digitaal signaalbewerkingsblok, die als eerst besproken zal worden. De signaalverwerking van de pH waarde zal eerst besproken worden, beginnend bij de schakeling die de pH sensor uitleest. Aangezien de specificaties van het filter en de versterking gebaseerd zullen worden op de ADC, wordt hierna de ADC besproken. Vervolgens komen de versterking en het filter aan bod.
-%
-% Hierna zal er verder worden ingegaan op de digitale signaalverwerking en de temperatuurmeting. Tenslotte wordt de voeding van het volledige systeem besproken, die in \cref{fig:moduleDiagram} staat afgebeeld als het `Energie management systeem' blok.
 
+\subsection{Ruisverdeling}
+In \cref{sec:systemSpecifications} is er een ruisspecificatie voor de uitgang van dit systeem gegeven. Daarna is in \cref{sec:functioneleDecompositie} gekeken naar welke basissignaalbewerkingsfuncties er moeten worden geïmplementeerd. Een overzicht van de te implementeren basissignaalbewerkingsfuncties is te zien in \cref{fig:analogeBewerkingsFunctie,fig:digitaleBewerkingsFunctie}. Bij de verdeling van het ruisbudget is ook onderscheid gemaakt tussen de analogesignaalbewerkingsfuncties en de digitalesignaalbewerkingsfuncties.
+
+In digitale systemen is er geen last van ruis. Wel zorgt de eindige resolutie voor fouten. Wanneer signalen met meer bits worden weergegeven kan de fout ten gevolge van de eindige resolutie van een digitaal systeem worden geminimaliseerd. Wanneer een constante met een signaal wordt opgeteld zorgt de eindige resolutie voor een mogelijke constante offset fout, afhankelijk van de toepassing is dit wel of niet acceptabel. Wanneer de offset niet acceptabel is moeten de signalen en constanten met een hoger aantal bits worden gerepresenteerd. Als twee signalen met elkaar worden opgeteld moet de kwantisatie fout van beide signalen bij elkaar worden opgeteld. Dit zorgt in tegenstelling tot het optellen met een constante niet voor een offset omdat de fouten van de twee signalen continue (kunnen) veranderen. Om hier rekening mee te houden moeten de `ruis'sprectra van de twee signalen bij elkaar worden opgeteld.
+
+In \cref{fig:digitaleBewerkingsFunctie} is te zien dat voor de digitalesignaalbewerkingsfuncties er maar op één plek twee signalen bij elkaar worden opgeteld. Dit is de optelling van de signalen uitgangen van $C_{pH}$ en $C_T$. Voor de eerste verdeling wordt gekozen dat het ruisgetal van het totale digitale systeem en dus van deze optelling \qty{1}{\decibel} is.
+
+Wanneer de digitalesignaalbewerkingsfuncties gezamelijk een ruisgetal van \qty{1}{\decibel} hebben moet de \SNR van het signaal na de ADC minimaal \qty{34}{\decibel} zijn. In de specificaties van het systeem is namelijk aangegeven dat de \SNR aan de uitgang van het systeem minimaal \qty{\SNRout}{\decibel} moet zijn. Voor de overgebleven analogesignaalbewerkingsfuncties uit \cref{fig:analogeBewerkingsFunctie}, is er een ruisgetal van \qty{3}{\decibel} gekozen. Dit houdt in dat elk van deze analogesignaalbewerkingsfuncties zelf evenveel ingangsgerelateerde ruis mogen produceren als het voorgaande systeem aan uitgangsgerelateerde ruis produceert.
+
+Deze verdeling van ruis betekent dat het signaal dat uit de sensor komt minimaal een \SNR van \qty{43}{\decibel} moet hebben.
 
 \input{sections/digitaal}
 \input{sections/meten} % ISFET uitleesschakeling
 \input{sections/divider} % Spanningsreferentie
+
 \input{sections/adc}
 \input{sections/versterker}
 \input{sections/filter}

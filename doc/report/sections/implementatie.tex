@@ -112,7 +112,7 @@ Bij het berekenen van deze specificaties is er van uit gegaan dat het totale noi
     \label{tab:specADC}
 \end{table}
 
-Het blijkt het geval te zijn dat de ingebouwde ADC die in de \mcu  zit, voldoet aan de specificaties die in \cref{tab:specADC,tab:systemSpecADC} staan \cite{nrf52810}. Dit zorgt er voor dat het niet nodig is om een externe ADC te gebruiken.
+% Het blijkt het geval te zijn dat de ingebouwde ADC die in de \mcu  zit, voldoet aan de specificaties die in \cref{tab:specADC,tab:systemSpecADC} staan \cite{nrf52810}. Dit zorgt er voor dat het niet nodig is om een externe ADC te gebruiken.
 
 \subsection{Filter}
 Het laagdoorlaatfilter dat voor de ADC zit, heeft als functie om aliasing te voorkomen. Aliasing treedt op vanaf de helft van de sample frequentie van de ADC. In \cref{sec:selectingADCandReqs} is uitgerekend dat de minimale sample frequentie 45 Hz is. Hieruit volgt dat er vanaf 22.5 Hz aliasing optreedt. In \cref{sec:energyBudgets} is aangegeven dat de te verwachten ingangssignaal ruis verhouding 40 dB is. Om de aliasing tot een acceptabel niveau te onderdrukken moeten signalen vanaf 22.5 Hz met minimaal 40 dB worden gedempt. Als laatste mag de implementatie van het filter niet meer dan 200 $\si{\micro\watt}$ verbruiken. In \cref{tab:specsAAfilter} staan alle specificaties voor het anti aliasing filter samengevat.
