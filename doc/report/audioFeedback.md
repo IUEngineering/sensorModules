@@ -1,7 +1,7 @@
 # Onderzoek
 ## Energy Harvesting
     04:50
-    Schrijf over welke van die opties we gaan gebruiken. Leg uit waarom piezo????
+[x] Schrijf over welke van die opties we gaan gebruiken. Leg uit waarom piezo????
 
 # Specs
 
@@ -18,8 +18,8 @@
 
 33:00
 <!--!     dit is redelijk belangrijk doe dit pls    -->
-[ ] Introduceer de 2 routes beter met misschien blokschema erbij :(.
-[ ] Beschrijf de volgorde van dingen.
+[x] Introduceer de 2 routes beter met misschien blokschema erbij :(.
+[x] Beschrijf de volgorde van dingen.
 <!--!     dit is redelijk belangrijk doe dit pls    -->
 
 13:04
@@ -57,12 +57,13 @@
 [ ] Batterijkeuze beter onderbouwen
 
 ## Digitaal
-[ ] Maak blokschema cirkel ding voor digitaal.
-[ ] Introduceer digitaal blok beter
+[x] Maak blokschema cirkel ding voor digitaal.
+[x] Introduceer digitaal blok beter
 
 ## Temperatuur
-[ ] Blokschema klopt niet
-[ ] Check of die afbeeldingen en tabellen niet meer zo raar staan
+<!--? niet gefixt maar gewoon weggehaald lol -->
+[e] Blokschema klopt niet
+[e] Check of die afbeeldingen en tabellen niet meer zo raar staan
 
 ## Versterker
 34:24 <-- Luister nog een keer
@@ -71,11 +72,19 @@
 
 # Implementatie
 38:58
+<!--todo: even met big T bespreken -->
 [ ] Zet de dingen in goeie volgorde
 [ ] Beschrijf 'totaalplaatje' in voorstukje
 
 ## Spanningsreferentie
 [x] Zet fucking uhhh de schakeling nog ff een keertje naast tabel 6
+
+
+# Discussie/conclussie/aanbevelingen
+[ ] Geef voor elk subonderdeel een discussie.
+[ ] Geef voor elk subonderdeel een conclusie.
+[ ] Geef voor elk subonderdeel een aanbeveling.
+
 
 
 # Algemeen
