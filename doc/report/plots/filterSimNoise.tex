@@ -9,8 +9,7 @@
     \addplot [
         mark=none,
         line width=0.5mm,
-        y filter/.code={\pgfmathparse{#1*1e9}\pgfmathresult}
-    ] table[x=freq,y=noise] {sim/filterSimNoise.dat};
+    ] table[x=freq,y expr=\thisrow{noise}] {sim/filterSimNoise.dat};
     \end{axis}
 \end{tikzpicture}
 
