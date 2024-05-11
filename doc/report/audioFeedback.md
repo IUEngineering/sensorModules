@@ -51,10 +51,16 @@
 
 <!--Dit is een grote TODO, doe samen met Big T of Tenko-->
 ## Voeding
-[ ] Gooi alles onder dezelfde paragraaf
+[ ] Intro: beschrijving van wat het systeem inhoudt met blokschema erbij.
+[ ] Normaal opladen erbij zetten
+[ ] Geen load-balancing is goed argument voor 1 cell batterij
+[ ] De topologie van LDO en BB moet uitgelegd worden. (Implementatie)
+[x] Gooi alles onder dezelfde paragraaf
 [ ] Doe dat ook voor #implementatie
 [ ] Denk even goed na over waar je dingen over de voeding neerzet
+    [ ] Geen componenten kiezen in Ontwerp
 [ ] Batterijkeuze beter onderbouwen
+
 
 ## Digitaal
 [x] Maak blokschema cirkel ding voor digitaal.
@@ -72,12 +78,22 @@
 
 # Implementatie
 38:58
-<!--todo: even met big T bespreken -->
+<!--! even met big T bespreken -->
 [ ] Zet de dingen in goeie volgorde
+<!--! even met big T bespreken -->
+
 [ ] Beschrijf 'totaalplaatje' in voorstukje
+
 
 ## Spanningsreferentie
 [x] Zet fucking uhhh de schakeling nog ff een keertje naast tabel 6
+[ ] Haal dat 'hier mag tycho nog iets over vertellen' weg en laat tycho er nog iets over vertellen
+[ ] Maak het lijntje bij de simulaties duidelijker
+[ ] Maak duidelijk of het resultaat van de transient acceptabel is. 
+[ ] Maak misschien bij elke grafiek duidelijk waar hij voor dient hehe
+
+## Nullor implementatie
+[ ] Schrijf iets over de simulatie die hierbij staat (fig:readoutSimTrans)
 
 
 # Discussie/conclussie/aanbevelingen
