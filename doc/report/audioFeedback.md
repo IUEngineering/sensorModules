@@ -118,7 +118,9 @@
 # Testen
 54:30
 [ ] Zet materiaal tabel bij elke test.
-[ ] 
+[ ] Testen moeten 'praktisch' beschreven zijn.
+[ ] Zet erbij wat je had verwacht.
+    Misschien tabellen met beoogde resultaten.
 
 
 # Algemeen
