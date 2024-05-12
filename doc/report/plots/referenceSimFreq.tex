@@ -1,6 +1,6 @@
 \begin{tikzpicture}
     \tikzset{
-        small dot/.style={fill=black,circle,scale=0.3},
+        small dot/.style={fill=black,circle,scale=0.4,thick},
     }
 
     \begin{axis}[
@@ -18,7 +18,7 @@
         %     red,
         %     mark=*
         % ] coordinates {(0.18714337, -19.391)};
-        \node [small dot,pin=0:{kantelpunt}] at (0.18714337, -19.391) {};
+        \node [small dot,pin={[pin edge={line width=0.3mm,black}]0:kantelpunt}] at (0.18714337, -19.391) {};
     \end{axis}
 \end{tikzpicture}
 

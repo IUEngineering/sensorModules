@@ -44,7 +44,7 @@ In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hi
     \label{fig:referenceSimFreq}
 \end{figure}
 
-In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te zien. Deze simulatie laat zien dat het 5 seconden duurt voordat de spanningsreferentie de gewenste spanning van \qty{0.15}{\volt} bereikt.
+In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te zien. Deze simulatie laat zien dat het zo'n 5 seconden duurt voordat de spanningsreferentie de gewenste spanning van \qty{0.15}{\volt} bereikt. Dit is een zeer acceptabele opstarttijd, aangezien de sensormodule maar één keer aangezet wordt aan het begin van de bedrijfsduur.
 \begin{figure}[!htbp]
     \centering
     \pgfplotsset{width=0.7\textwidth}
@@ -175,7 +175,7 @@ Voor de implementatie van het RC laagdoorlaatfilter is gekozen voor een capacite
         $P$         & 32.84   & $\si{\micro\watt}$ \\
         $\sqrt{\overline{u_{n,out}}}$ & 19.44   & $\si{\micro\volt}$ \\
         $\overline{u_{n,out}}$ & 378 & $\si{\pico\volt^2}$\\
-        NF          & 0.00048  & $\si{\decibel}$   \\
+        NF          & 480  & µdB \\
     \end{tabular}
     \caption{De gekozen waardes van het filter, en de resulterende vermogens- en ruiseigenschappen.}
     \label{tab:filterValues}
