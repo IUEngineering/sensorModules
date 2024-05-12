@@ -17,7 +17,7 @@ In \cref{eq:IdMosfetUnsaturated,eq:IdMosfetSaturated} hebben de symbolen de volg
 \begin{itemize}
     \item $I_d$ is de drain stroom van een MOSFET in [\si{\ampere}]
     \item $\mu$ is de ladingsdragers effectieve mobiliteit van een MOSFET in [\si{\volt^{-1}\,\second^{-1}}]
-    \item $C_{ox}$ is de gate oxide capaciteit per oppervlakte van een MOSFET in [\si{\farad\,\meter^{-2}}]
+    \item $C_{ox}$ is de gate oxide capaciteit per opppervlakte van een MOSFET in [\si{\farad\,\meter^{-2}}]
     \item $W$ is de breedte van een MOSFET in [\si{\meter}]
     \item $L$ is de lengte van een MOSFET in [\si{\meter}]
     \item $U_{ds}$ is de drain source spanning van een MOSFET in [\si{\volt}]
@@ -55,7 +55,7 @@ De parameter van de ISFET die gevoelig is voor \si{\pH} is de drempelspanning \c
     \tagaddtext{[\si{\volt}]}
 \end{equation}
 
-$\psi_0$ kan met \cref{eq:psi0} worden berekend. Hierbij is $k$ de constante van boltzmann, $T$ de temperatuur in kelvin, $\beta$ de chemische gevoeligheid van de oxide buiten laag, $\si{\pH}_{pzc}$ is de \si{\pH} van nul lading en \si{\pH} is de \si{\pH} van de oplossing \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}.
+$\psi_0$ kan met \cref{eq:psi0} worden berekend. Hierbij is $k$ de constante van Boltzmann, $T$ de temperatuur in kelvin, $\beta$ de chemische gevoeligheid van de oxide buiten laag, $\si{\pH}_{pzc}$ is de \si{\pH} van nul lading en \si{\pH} is de \si{\pH} van de oplossing \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}.
 \begin{equation}\label{eq:psi0}
     \psi_0\left(\ph\right)=2.303\frac{kT}{q}\left(\frac{\beta}{1+\beta}\right)\left(\ph_{pzc}-\ph\right)
     \tagaddtext{[\si{\volt}]}
@@ -69,7 +69,7 @@ $\beta$ is afhankelijk van het type materiaal dat wordt gebruikt inplaats van de
 \subsubsection{De temperatuurafhankelijkheid van een ISFET}
 De temperatuurgevoeligheidsanalyse valt buiten de omvang van dit project. De geïnteresseerde lezer wordt verwezen naar \cite{isfetAsAnElectronicDevice}. Hieruit volgt dat de uitgang van een ISFET een temperatuurafwijking heeft van \qty{-1.39}{\milli\volt\,\kelvin^{-1}}.
 
-% De ISFET is temperatuursafhankelijk \cite{isfet,isfetAsAnElectronicDevice}. Volgens de datasheet is de temperatuursafhankelijkheid gemiddeld $\qty{-0.2}{\milli\volt\per\kelvin}$\cite{Microsens-MSFET}. Om hiervoor te compenseren moet tijdens het meten ook de temperatuur gemeten worden. Ook zal bij het kalibreren de kalibratietemperatuur opgeslagen moeten worden. Wanneer er vervolgens gemeten wordt, zal de gemeten gate-source spanning door middel van het temperatuurverschil gecompenseerd moeten worden. Deze compensatie kan gedaan worden door middel van \cref{eq:tempComp}.
+% De ISFET is temperatuurafhankelijk \cite{isfet,isfetAsAnElectronicDevice}. Volgens de datasheet is de temperatuurafhankelijkheid gemiddeld $\qty{-0.2}{\milli\volt\per\kelvin}$\cite{Microsens-MSFET}. Om hiervoor te compenseren moet tijdens het meten ook de temperatuur gemeten worden. Ook zal bij het kalibreren de kalibratietemperatuur opgeslagen moeten worden. Wanneer er vervolgens gemeten wordt, zal de gemeten gate-source spanning door middel van het temperatuurverschil gecompenseerd moeten worden. Deze compensatie kan gedaan worden door middel van \cref{eq:tempComp}.
 
 % \begin{equation}\label{eq:tempComp}
 %     U_r = U_m + C_T(T_{meting} - T_{kalibratie})
