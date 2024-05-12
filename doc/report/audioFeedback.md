@@ -62,6 +62,8 @@
 [ ] Batterijkeuze beter onderbouwen
 
 
+
+
 ## Digitaal
 [x] Maak blokschema cirkel ding voor digitaal.
 [x] Introduceer digitaal blok beter
@@ -88,12 +90,23 @@
 ## Spanningsreferentie
 [x] Zet fucking uhhh de schakeling nog ff een keertje naast tabel 6
 [ ] Haal dat 'hier mag tycho nog iets over vertellen' weg en laat tycho er nog iets over vertellen
-[ ] Maak het lijntje bij de simulaties duidelijker
+[x] Maak het lijntje bij de simulaties duidelijker
 [ ] Maak duidelijk of het resultaat van de transient acceptabel is. 
 [ ] Maak misschien bij elke grafiek duidelijk waar hij voor dient hehe
 
 ## Nullor implementatie
 [ ] Schrijf iets over de simulatie die hierbij staat (fig:readoutSimTrans)
+43:00
+[ ] Sprong tussen de laatste 2 alineas is te groot.
+    Misschien nog een concluderende zin met "daarom hebben we voor de LTC2064 gekozen".
+
+## PCBs
+48:23
+[ ] Schrijf meer shit over de PCB layouts.
+[ ] Beter onderschrift bij afbeeldingen.
+
+## Temp sensor
+[ ] Verbeter dit hoofdstuk of voeg het toe aan het microcontroller hoofdstuk.
 
 
 # Discussie/conclussie/aanbevelingen
@@ -101,6 +114,11 @@
 [ ] Geef voor elk subonderdeel een conclusie.
 [ ] Geef voor elk subonderdeel een aanbeveling.
 
+
+# Testen
+54:30
+[ ] Zet materiaal tabel bij elke test.
+[ ] 
 
 
 # Algemeen
