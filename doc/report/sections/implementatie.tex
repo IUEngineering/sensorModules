@@ -1,10 +1,16 @@
 \section{Implementatie}
+In \cref{sec:ontwerp} is voor alle onderdeel van het \si{\pH} meetsysteem besproken wat de eisen zijn.
+Nu zal uitgewerkt worden hoe deze losse systeemonderdelen geïmplementeerd worden.
+Als eerste zal ingegaan worden op het ontwerp van de ISFET uitleesschakeling, daarna zullen de benodigde ADC specificaties worden bepaalt waarmee vervolgens een anti aliasing filter ontworpen kan worden. Vervolgens zal er kort op de benodigde temperatuursensor worden ingegaan. Naast de signaal verwerking moet het systeem ook draadloos kunnen communiceren en zal er ingegaan worden op hoe de draadloze communicatie is geïmplementeerd. Uit de hiervoor benoemde paragrafen komen een aantal specificaties voor de microcontroller die in dit systeem worden genoemd. De laatste paragraaf zal ingaan op hoe het systeem wordt gevoed en hoe de energie harvesting is geïmplementeerd.
+% Hierbij wordt de zelfde volgorde aan gehouden van \cref{sec:ontwerp}.
+
+%  van dat onderdeel. Dit hoofdstuk gaat in op de implementatie van elk van deze systeemonderdelen.
 
 \input{sections/isfet.tex}
 \input{sections/adcImplementatie.tex}
 \input{sections/filterImplementatie.tex}
-\input{sections/rfImplementatie.tex}
 \input{sections/temperatuurImplementatie.tex}
+\input{sections/rfImplementatie.tex}
 \input{sections/ucImplementatie.tex}
 \input{sections/voedingImplementatie.tex}
 \input{sections/hardware.tex}
