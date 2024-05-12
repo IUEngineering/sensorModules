@@ -100,6 +100,9 @@
 [ ] Sprong tussen de laatste 2 alineas is te groot.
     Misschien nog een concluderende zin met "daarom hebben we voor de LTC2064 gekozen".
 
+## Voeding
+[ ] Deel van de batterij bescherming is nodig en shit moet bij ontwerp.
+
 ## PCBs
 48:23
 [ ] Schrijf meer shit over de PCB layouts.
@@ -121,7 +124,10 @@
 [ ] Testen moeten 'praktisch' beschreven zijn.
 [ ] Zet erbij wat je had verwacht.
     Misschien tabellen met beoogde resultaten.
-
+[ ] Zet naam van test bij discussie en resultaten.
+[ ] Tekeningetje bij de tests van haha hoe heb je hem aangesloten.
+1:02:00
+[ ] 'Lange termijn' wat is lange termijn??
 
 # Algemeen
 ??:??
