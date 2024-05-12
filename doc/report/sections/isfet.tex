@@ -1,8 +1,13 @@
 \subsection{De ISFET uitlezen}
+Om een ISFET uit te kunnen lezen moet er een ISFET worden gekozen. Voor dit project moet \si{\pH} tot op \qty{0.05}{\pH} worden gemeten\footnote{Zie de specificaties in \cref{sec:systemSpecifications}.}. Om dit te kunnen doen is er een ISFET met een hoge chemische gevoeligheid nodig. Om hieraan te voldoen is er een ISFET nodig die is gebaseerd op $\mathrm{Ta_2O_5}$. De MSFET 3330-2 ISFET van MICROSENS is gebaseerd op $\mathrm{Ta_2O_5}$ en heeft dus een hoge chemische gevoeligheid \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors,isfet}.
 
+De MSFET 3330-2 heeft een gevoeligheid van \qty{-55}{\milli\volt\pH^{-1}} \cite{isfet}. Een verandering van \qty{0.05}{\pH} geeft een spanningsverandering van \qty{2.75}{\milli\volt}. Wanneer de \SNR voor dit kleinste signaal minimale \qty{40}{\decibel} moet zijn, mag de ruisvloer niet hoger zijn dan \qty{27.5}{\micro\volt}. Volgens \cref{eq:measureNoiseFull} is de ruisvloer van de uitleesschakeling opgebouwd uit verschillende ruisbronnen. \Cref{eq:measureNoiseFull2} is een herhaling van \cref{eq:measureNoiseFull}.
+\begin{equation}\label{eq:measureNoiseFull2}
+    S_{u_{{n,out}}} = \left(S_{u_{{n,ref}}} + S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2\right) \cdot \left(\frac{U_{o,max}}{U_{ref}}\right)^2
+    \tagaddtext{[\si{\volt\squared\per\hertz}]}
+\end{equation}
 
-
-\subsection{Spanningsreferentie}
+\subsubsection{Spanningsreferentie}
 Zoals besproken in \cref{sec:referenceVoltage} kunnen de weerstandswaardes van de spanningsreferentie erg hoog gekozen worden. Met een $R_1$ van \qty{5.6}{\mega\ohm} gebruikt de spanningsdeler \qty{1.65}{\micro\watt}.
 
 Volgens \cref{eq:dividerNoise} heeft de condensatorwaarde wel effect op de ruis. Met een condensator van \qty{1}{\micro\farad} produceert de spanningsreferentie \qty{64.4}{\nano\volt} aan ruis. Dit zorgt voor een signaal-ruis verhouding van \qty{138}{\decibel}, wat meer dan genoeg is.
@@ -33,7 +38,7 @@ Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{ta
     \label{fig:dividerForContext}
 \end{figure}
 
-\subsubsection{Simulatie}
+% \paragraph{Simulatie}
 Om te verifiëren dat de spanningsreferentie goed werkt, is er een aantal simulaties uitgevoerd.
 In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hier is $H(f)$ de overdracht van de voeding naar de uitgang van de spanningsdeler. De overdracht begint op \qty{-16.4}{\decibel}, aangezien dat de overdracht van de schakeling is op \qty{0}{\hertz}.
 
@@ -65,7 +70,7 @@ In \cref{fig:referenceSimNoise} is het resultaat van een ruissimulatie te zien. 
 \end{figure}
 
 
-\subsection{Nullor implementatie}
+\subsubsection{Nullor implementatie}
 Voor de nullor die gebruikt wordt om de ISFET uit te lezen in \cref{sec:ISFETLees} moet een implementatie gekozen worden. De uitleesschakeling mag volgens de specificaties maximaal \qty{200}{\micro\watt}  gebruiken. De constante stroom die door de weerstand en ISFET in \cref{fig:measureResistor} heen loopt, zorgt voor een constant vermogensverbruik van \qty{165}{\micro\watt}. Hierdoor mag de nullor implementatie maximaal \qty{35}{\micro\watt} gebruiken. Het maximale dynamische vermogen dat deze nullor implementatie aan de uitgang zal moeten kunnen leveren, is gelijk aan het maximale vermogen dat het filter kan dissiperen. Er blijft dan afgerond nog \qty{34}{\micro\watt} aan statisch vermogen over. Dit resulteert in een maximale quiescent stroom van \qty{10.3}{\micro\ampere}.
 
 De uitleesschakeling moet een minimale SNR hebben van 40 dB. De maximale ruisspanning en stroom die de nullor mag genereren aan de ingang zijn te berekenen met \cref{eq:nullorImplementNoise}. Deze vergelijking is afgeleid uit \Cref{eq:measureNoiseFull}.
