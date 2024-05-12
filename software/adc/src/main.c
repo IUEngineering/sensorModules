@@ -3,7 +3,7 @@
 #include <zephyr/drivers/adc.h>
 
 /* 1000 msec = 1 sec */
-#define SLEEP_TIME_MS   1000
+#define SLEEP_TIME_MS   100
 
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_ALIAS(led0)
@@ -18,7 +18,7 @@ static const struct device *adc_dev = DEVICE_DT_GET(ADC_NODE);
 #define ADC_CHANNEL 	0										// Channel 0 of the ADC
 #define ADC_PORT 		SAADC_CH_PSELP_PSELP_AnalogInput0		// AIN0
 #define ADC_REFERENCE	ADC_REF_INTERNAL			     		// Internal ref
-#define ADC_GAIN		ADC_GAIN_1						 		// Gain 1x
+#define ADC_GAIN		ADC_GAIN_1_6						 		// Gain 1x
 
 struct adc_channel_cfg chl0_cfg = {
 	.gain = ADC_GAIN,
@@ -76,7 +76,7 @@ int main(void) {
 
 		int32_t mv_value = sample_buffer[0];
 	
-		printk("ADC Value: %d\n", mv_value);
+		printk("ADC Value:   %d\n", mv_value);
 		int32_t adc_vref = adc_ref_internal(adc_dev);
 		adc_raw_to_millivolts(adc_vref, ADC_GAIN, ADC_RESOLOUTION, &mv_value);
 		printk("ADC Voltage: %d mV\n", mv_value);
