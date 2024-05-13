@@ -67,7 +67,6 @@ De gekozen waardes voor $R_1$, $R_2$ en $C$ met de resulterende eigenschappen va
 % \paragraph{Simulatie}
 Om te verifiëren dat de spanningsreferentie goed werkt, is er een aantal simulaties uitgevoerd.
 In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hier is $H(f)$ de overdracht van de voeding naar de uitgang van de spanningsdeler. De overdracht begint op \qty{-16.4}{\decibel}, dit kan verklaard worden doordat de spanningsdeler frequentie onafhankelijk de voedingsspanning door 6.6 deelt. Dit komt overeen met een versterking van \qty{-16.4}{\decibel}.
-
 \begin{figure}[!htbp]
     \centering
     \pgfplotsset{width=0.7\textwidth}
@@ -75,6 +74,11 @@ In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hi
     \caption{Het resultaat van een AC simulatie van de spanningsreferentie.}
     \label{fig:referenceSimFreq}
 \end{figure}
+
+De ontkoppel condensator voegt ook een pool toe op \qty{-187}{\milli.\hertz}. Deze pool zorgt er voor dat veranderingen in de voedingsspanning boven de \qty{187}{\milli.\hertz} relatief weinig invloed hebben. Dit heet power supply rejection en kan als een ratio van ingang (voeding) verandering gedeeld door uitgangsverandering worden opgeschreven. \cref{eq:psrrSpanningsdeler} geeft de formule om de power supply rejection ratio (PSRR) van de spanningsreferentie te berekenen.
+\begin{equation}\label{eq:psrrSpanningsdeler}
+    \mathrm{PSRR}_{U_{ref}}\left(f\right)=\left(2\pi fC\frac{R_1R_2}{R_1+R_2}+1\right)\left(\frac{R_1}{R_2}+1\right)
+\end{equation}
 
 In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te zien. Deze simulatie laat zien dat het 5 seconden duurt voordat de spanningsreferentie de gewenste spanning van \qty{500}{\milli\volt} bereikt. Dit is een zeer acceptabele opstarttijd, aangezien de sensormodule maar één keer aangezet wordt aan het begin van de bedrijfsduur.
 \begin{figure}[!htbp]
@@ -86,7 +90,8 @@ In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te 
     % \label{fig:referenceSimCis}
 \end{figure}
 
-In \cref{fig:referenceSimNoise} is het resultaat van een ruissimulatie te zien. Hier mag tycho iets over vertellen veel plezier tycho!%TODO: dat
+In \cref{fig:referenceSimNoise} is het resultaat van een ruissimulatie te zien. Het effect van de ontkoppel condensator op de ruis van de spanningsreferentie is goed te zien. In het geval er geen ontkoppel condensator zou zijn gebruikt zou de spectrale ruisdichtheid niet veranderen over frequentie. Wanneer de ruis uit \cref{fig:referenceSimNoise} van o tot \qty{10}{\hertz} wordt geïntegreerd volgt dat de ruis bijdrage van de spanningsreferentie \qty{4.1}{\femto.\volt^2} is. Dit komt overeen met de berekening die is gedaan om de hoeveelheid spanningsruis in \cref{tab:divider} mee te berekenen. Met deze simulatie is het nu aannemelijk dat de spanningsreferentie inderdaad veel minder ruis produceert dan dat er in het ruisbudget gegeven is voor de spanningsreferentie.
+% Hier mag tycho iets over vertellen veel plezier tycho!%TODO: dat
 \begin{figure}[!htbp]
     \centering
     \pgfplotsset{width=0.7\textwidth}
