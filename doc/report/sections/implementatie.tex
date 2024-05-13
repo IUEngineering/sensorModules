@@ -218,7 +218,7 @@ Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een 
 
 \subsection{Batterij en bescherming}
 
-Voor de gekozen LiPO batterij technologie is er bescherming nodig. De celspanning mag niet boven de 4.2 V of onder de 2.7 V komen. Dit kan op meerdere manieren gedaan worden. In de implementatie van de sensor module is er gekozen voor een LTC4071 batterij beschermings IC. Wanneer de spanning van de batterij boven de 4.2 V komt, gebruikt de LTC4071 een 50mA shunt om de ingang stroom naar hitte om te zetten. Wanneer de batterijspanning onder de 2.7 V komt, zet de IC de uitgang uit, om te voorkomen dat de batterijspanning verder daalt.
+Voor de gekozen LiPO batterij technologie is er bescherming nodig. De celspanning mag niet boven de 4.2 V of onder de 2.7 V komen. Dit kan op meerdere manieren gedaan worden. In de implementatie van de sensormodule is er gekozen voor een LTC4071 batterij beschermings IC. Wanneer de spanning van de batterij boven de 4.2 V komt, gebruikt de LTC4071 een 50mA shunt om de ingang stroom naar hitte om te zetten. Wanneer de batterijspanning onder de 2.7 V komt, zet de IC de uitgang uit, om te voorkomen dat de batterijspanning verder daalt.
 
 \subsection{Voeding}
 Voor de voeding is er gekozen voor een LTC3330 van Analog Devices. Dit is een zogenaamde `power management integrated circuit' (PMIC). Deze PMIC voldoet aan de specs van \cref{tab:systemSpecs}, en heeft een aantal nuttige eigenschappen:
