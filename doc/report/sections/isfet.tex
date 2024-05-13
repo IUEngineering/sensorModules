@@ -7,6 +7,20 @@ De MSFET 3330-2 heeft een gevoeligheid van \qty{-55}{\milli\volt\pH^{-1}} \cite{
     \tagaddtext{[\si{\volt\squared\per\hertz}]}
 \end{equation}
 
+In de datasheet van de MSFET 3330-2 is aangeraden om de ISFET uit te lezen met een drainstroom van \qty{100}{\micro\ampere} en een drain source spanning van \qty{500}{\milli\volt} \cite{isfet}. Het is dan ook mogelijk om de drain source impedantie te berekenen. $Z_{fet}$ komt dan uit op \qty{5}{\kilo\ohm}.
+\begin{figure}[!htbp]
+    \centering
+    \def\svgwidth{0.4\textwidth}
+    \input{img/ISFETCircuitBest.pdf_tex}
+    \caption{De schakeling die gebruikt zal worden om de ISFET mee uit te lezen.}
+    \label{fig:measureResistorImplementatie}
+\end{figure}
+De weerstand $R$ in \cref{fig:measureResistorImplementatie} wordt gebruikt om de drainstroom in te stellen. Met een voedingsspanning van \qty{3.3}{\volt} moet $R$ \qty{28}{\kilo\ohm} gekozen worden om een drainstroom van \qty{100}{\micro\ampere} te krijgen. Door \cref{eq:measureNoiseFull2} te gebruiken kan berekend worden dat de spanningsreferentie en de nullor implementatie elk niet meer dan \qty{1.3}{\pico\volt^2\hertz^{-1}} aan ruis mogen genereren.
+
+In \cref{sec:energyBudgets} is gespecificeerd dat de ISFET uitleesschakeling niet meer dan \qty{600}{\micro\watt} mag verbruiken. Omdat de drainstroom is ingesteld op \qty{100}{\micro\ampere} en de voedingsspanning \qty{3.3}{\volt} is zal de uitleesschakeling minimaal \qty{330}{\micro\watt} verbruiken. Hierdoor mogen de spanningsreferentie en de nullor implementatie elk maximaal \qty{135}{\micro\watt} verbruiken.
+
+In de aankomende twee subparagrafen zal ingegaan worden op de implementatie van de spanningsreferentie en de implementatie van de nullor. Hierbij zal rekening worden gehouden met de ruis en vermogens eisen die in deze paragraaf aanbod zijn gekomen.
+
 \subsubsection{Spanningsreferentie}
 Zoals besproken in \cref{sec:referenceVoltage} kunnen de weerstandswaardes van de spanningsreferentie erg hoog gekozen worden. Met een $R_1$ van \qty{5.6}{\mega\ohm} gebruikt de spanningsdeler \qty{1.65}{\micro\watt}.
 
