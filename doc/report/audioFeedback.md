@@ -112,22 +112,28 @@
 [ ] Verbeter dit hoofdstuk of voeg het toe aan het microcontroller hoofdstuk.
 
 
-# Discussie/conclussie/aanbevelingen
-[ ] Geef voor elk subonderdeel een discussie.
-[ ] Geef voor elk subonderdeel een conclusie.
-[ ] Geef voor elk subonderdeel een aanbeveling.
-
-
 # Testen
 54:30
-[ ] Zet materiaal tabel bij elke test.
+[x] Zet materiaal tabel bij elke test.
 [ ] Testen moeten 'praktisch' beschreven zijn.
 [ ] Zet erbij wat je had verwacht.
     Misschien tabellen met beoogde resultaten.
-[ ] Zet naam van test bij discussie en resultaten.
-[ ] Tekeningetje bij de tests van haha hoe heb je hem aangesloten.
+[x] Zet naam van test bij discussie en resultaten.
+[x] Tekeningetje bij de tests van haha hoe heb je hem aangesloten.
 1:02:00
-[ ] 'Lange termijn' wat is lange termijn??
+[x] 'Lange termijn' wat is lange termijn??
+
+
+# Discussie
+[ ] Zet totaalplaatje erbij??? (moduleDiagram)
+[ ] Per deelsysteem
+
+# Conclusie
+[ ] Per deelsysteem
+
+# Aanbevelingen
+[ ] Per deelsysteem
+
 
 # Algemeen
 ??:??
