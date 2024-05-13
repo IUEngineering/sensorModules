@@ -114,14 +114,14 @@
 
 # Testen
 54:30
-[ ] Zet materiaal tabel bij elke test.
+[x] Zet materiaal tabel bij elke test.
 [ ] Testen moeten 'praktisch' beschreven zijn.
 [ ] Zet erbij wat je had verwacht.
     Misschien tabellen met beoogde resultaten.
 [x] Zet naam van test bij discussie en resultaten.
-[ ] Tekeningetje bij de tests van haha hoe heb je hem aangesloten.
+[x] Tekeningetje bij de tests van haha hoe heb je hem aangesloten.
 1:02:00
-[ ] 'Lange termijn' wat is lange termijn??
+[x] 'Lange termijn' wat is lange termijn??
 
 
 # Discussie

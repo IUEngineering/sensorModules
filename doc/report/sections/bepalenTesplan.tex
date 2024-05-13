@@ -90,14 +90,14 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
 
 \begin{figure}[!htbp]
     \centering
-    \begin{subfigure}[b]{0.48\textwidth}
+    \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{testpH7.pdf}
         \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH 7.}
         \label{fig:resultpH7}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
+    \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{testpH4.pdf}
         \caption{De uitgang van de opamp (lichtblauw) en ingang van de ADC (geel) op pH 4.}
@@ -136,24 +136,24 @@ De opstelling staat uitgebeeld in \cref{fig:vermogenMetingOpstelling}. Eén van 
 
 \begin{figure}[!htbp]
     \centering
-    \def\svgwidth{0.5\textwidth}
+    \def\svgwidth{0.6\textwidth}
     \input{img/vermogenTest.pdf_tex}
     \caption{Vermogen meting van systeem}
     \label{fig:vermogenMetingOpstelling}
 \end{figure}
 
 \subsubsection{Resultaten van de vermogen test}
-De gemeten batterijspanning was 3.82 V, tijdens de loop van de test was deze constant. Het stroomverbruik is tijdens het normaal functioneren van het systeem gemeten tussen 1.3 mA en 2.5 mA. De gemeten stroomwaardes zijn vermenigvuldigd met 3.82V en vervolgens geplot. Deze plot is te zien in \cref{fig:vermogenMeting}. Daarnaast is er een gemiddelde genomen van alle samples om het gemiddelde vermogen te kunnen berekenen. Het gemiddelde vermogen is uitgekomen op 6.81 mW.
+De gemeten batterijspanning was \qty{3.82}{\volt}, tijdens de loop van de test was deze constant. Het stroomverbruik is tijdens het normaal functioneren van het systeem gemeten tussen \qty{1.3}{\milli\ampere} en \qty{2.5}{\milli\ampere}. De gemeten stroomwaardes zijn vermenigvuldigd met \qty{3.82}{\volt} en vervolgens geplot. Deze plot is te zien in \cref{fig:vermogenMeting}. Door het gemiddelde te nemen van alle samples is er een gemiddeld vermogen uitgerekend, die uitkwam op \qty{6.81}{\milli\watt}.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{img/vermogensMeting.pdf}
+    \includegraphics[width=.85\textwidth]{img/vermogensMeting.pdf}
     \caption{Vermogen meting van systeem}
     \label{fig:vermogenMeting}
 \end{figure}
 
 \subsubsection{Discussie van de vermogen test}
-Uit de metingen is duidelijk te zien dat het hele systeem minder vermogen verbruikt dan de maximale 10 mW die genoemd is in de \cref{sec:systemSpecifications}.
+Uit de metingen is duidelijk te zien dat het hele systeem minder vermogen verbruikt dan de maximale \qty{10}{\milli\watt} die genoemd is in de \cref{sec:systemSpecifications}. Het energiebudget is dus behaald.
 
 
 \subsection{Energy harvesting test}
@@ -172,6 +172,7 @@ Deze test is bedoelt om te meten of het energy harvesting systeem daadwerkelijk 
     \caption{De materialen die zijn gebruikt voor de energy harvesting test.}
     \label{tab:testMaterialen4}
 \end{table}
+
 De twee Keithley multimeters zijn aangesloten op dezelfde manier als in \cref{sec:vermogenTest}. Het piëzo element is door middel van een magneet een boormachine kop vastgemaakt. Dit zorgt ervoor dat het piëzo-element trilt bij het draaien van de boormachine. Het piëzo element is vervolgens aangesloten op de voeding PCB, zodat deze energie kan leveren aan het systeem en de accu. Bij deze test is alleen de voeding PCB aanwezig en is de uitlees PCB niet aangesloten. Dit is gedaan zodat er precies gemeten kan worden hoeveel energie het energy harvesting systeem oplevert, zonder dat er energie verbruikt wordt door andere systeemonderdelen.
 
 \subsubsection{Resultaten van de energy harvesting test}
@@ -185,4 +186,4 @@ De meting is geëxporteerd en omgezet naar mW, door de gemeten stroom te vermeni
 \end{figure}
 
 \subsubsection{Discussie van de energy harvesting test}
-In \cref{fig:vermogenPlot} is te zien dat het energieverbruik van de accu naar 0 mW gaat zodra het piëzo-element genoeg vibreert. Dit toont aan dat de energy harvesting werkt en op lange termijn de levensduur van de sensormodule zal verlengen.
+In \cref{fig:vermogenPlot} is te zien dat het energieverbruik van de accu naar \qty{0}{\milli\watt} gaat zodra het piëzo element genoeg vibreert. Dit toont aan dat de energy harvesting werkt en de levensduur van de sensormodule zal verlengen.
