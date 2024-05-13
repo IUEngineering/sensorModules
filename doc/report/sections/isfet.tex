@@ -22,28 +22,18 @@ In \cref{sec:energyBudgets} is gespecificeerd dat de ISFET uitleesschakeling nie
 In de aankomende twee subparagrafen zal ingegaan worden op de implementatie van de spanningsreferentie en de implementatie van de nullor. Hierbij zal rekening worden gehouden met de ruis en vermogens eisen die in deze paragraaf aanbod zijn gekomen.
 
 \subsubsection{Spanningsreferentie}
-Zoals besproken in \cref{sec:referenceVoltage} kunnen de weerstandswaardes van de spanningsreferentie erg hoog gekozen worden. Met een $R_1$ van \qty{5.6}{\mega\ohm} gebruikt de spanningsdeler \qty{1.65}{\micro\watt}.
-
-Volgens \cref{eq:dividerNoise} heeft de condensatorwaarde wel effect op de ruis. Met een condensator van \qty{1}{\micro\farad} produceert de spanningsreferentie \qty{64.4}{\nano\volt} aan ruis. Dit zorgt voor een signaal-ruis verhouding van \qty{138}{\decibel}, wat meer dan genoeg is.
-
-Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{tab:divider}.
-
+De spanningsreferentie die nodig is voor het uitlezen van de ISFET moet aan de specificaties uit \cref{tab:specsSpanningsreferentie} voldoen. Om deze spanningsreferentie te implementeren zal er gebruik gemaakt worden van een ontkoppelde weerstandsdeler. Deze schakeling is weergegeven in \cref{fig:dividerForContext}. Een van de voordelen van een ontkoppelde spanningsdeler ten opzichte van een niet ontkoppelde spanningsdeler is dat de ruis en vermogens eisen los van elkaar kunnen worden geoptimaliseerd\footnote{Zie \cref{sec:Pspanningsreferentie,sec:ruisSpanningsreferentie} waarom dit het geval is.}.
 \begin{table}[!htbp]
     \centering
-    \begin{tabular}{l|l|l}
-        Symbool & Waarde & Eenheid \\
-        \hline
-        $R_1$       & 5.6  & $\si{\mega\ohm}$   \\
-        $R_2$       & 1.0  & $\si{\mega\ohm}$   \\
-        $C$         & 1.0  & $\si{\micro\farad}$\\
-        $P$         & 1.65 & $\si{\micro\watt}$ \\
-        $u_{n,out}$ & 64.4 & $\si{\nano\volt}$  \\
-        SNR         & 138  & $\si{\decibel}$
+    \begin{tabular}{l|c|c}
+        Specificatie & Waarde & Eenheid  \\\hline
+        $P_{max}$ & 135 & \si{\micro\watt}\\
+        $\overline{U_{n,out}^2}$ & 13 & \si{\pico\volt^2}\\
+        $U_{out}$ & 500 & \si{\milli\volt}\\
     \end{tabular}
-    \caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
-    \label{tab:divider}
+    \caption{De specificaties waaraan de spanningsreferentie moet voldoen.}
+    \label{tab:specsSpanningsreferentie}
 \end{table}
-
 \begin{figure}[!htbp]
     \centering
     \def\svgwidth{7cm}
@@ -52,9 +42,31 @@ Deze gekozen waardes en de resulterende eigenschappen zijn te vinden in \cref{ta
     \label{fig:dividerForContext}
 \end{figure}
 
+Zoals besproken in \cref{sec:referenceVoltage} kunnen de weerstandswaardes van de spanningsreferentie erg hoog gekozen worden. Met een $R_1$ van \qty{5.6}{\mega\ohm} gebruikt de spanningsdeler \qty{1.65}{\micro\watt}. Dit ligt ver onder het maximale vermogen van \qty{135}{\micro\watt}.
+
+Volgens \cref{eq:dividerNoise} heeft de condensatorwaarde wel effect op de ruis. Met een condensator van \qty{1}{\micro\farad} produceert de spanningsreferentie \qty{4.1}{\femto\volt^2} aan ruis. Dit is ver onder de maximale ruisbijdrage van \qty{13}{\pico\volt^2}.
+
+De gekozen waardes voor $R_1$, $R_2$ en $C$ met de resulterende eigenschappen van de ontkoppelde spanningsdeler zijn te vinden in \cref{tab:divider}.
+
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|l|l}
+        Symbool & Waarde & Eenheid \\
+        \hline
+        $R_1$       & 5.6  & \si{\mega.\ohm}   \\
+        $R_2$       & 1.0  & \si{\mega.\ohm}   \\
+        $C$         & 1.0  & \si{\micro.\farad}\\\hline
+        $U_{out}$   & 500  & \si{\milli.\volt} \\
+        $P$         & 1.65 & \si{\micro.\watt} \\
+        $u_{n,out}$ & 4.1  & \si{\femto.\volt^2}
+    \end{tabular}
+    \caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
+    \label{tab:divider}
+\end{table}
+
 % \paragraph{Simulatie}
 Om te verifiëren dat de spanningsreferentie goed werkt, is er een aantal simulaties uitgevoerd.
-In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hier is $H(f)$ de overdracht van de voeding naar de uitgang van de spanningsdeler. De overdracht begint op \qty{-16.4}{\decibel}, aangezien dat de overdracht van de schakeling is op \qty{0}{\hertz}.
+In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hier is $H(f)$ de overdracht van de voeding naar de uitgang van de spanningsdeler. De overdracht begint op \qty{-16.4}{\decibel}, dit kan verklaard worden doordat de spanningsdeler frequentie onafhankelijk de voedingsspanning door 6.6 deelt. Dit komt overeen met een versterking van \qty{-16.4}{\decibel}.
 
 \begin{figure}[!htbp]
     \centering
@@ -64,7 +76,7 @@ In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hi
     \label{fig:referenceSimFreq}
 \end{figure}
 
-In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te zien. Deze simulatie laat zien dat het 5 seconden duurt voordat de spanningsreferentie de gewenste spanning van \qty{0.15}{\volt} bereikt.
+In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te zien. Deze simulatie laat zien dat het 5 seconden duurt voordat de spanningsreferentie de gewenste spanning van \qty{500}{\milli\volt} bereikt. Dit is een zeer acceptabele opstarttijd, aangezien de sensormodule maar één keer aangezet wordt aan het begin van de bedrijfsduur.
 \begin{figure}[!htbp]
     \centering
     \pgfplotsset{width=0.7\textwidth}
