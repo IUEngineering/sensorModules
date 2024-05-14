@@ -24,11 +24,11 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="5.850773"
-     inkscape:cx="15.809877"
-     inkscape:cy="0.25637638"
-     inkscape:window-width="2560"
-     inkscape:window-height="1367"
+     inkscape:zoom="8.4334729"
+     inkscape:cx="58.45753"
+     inkscape:cy="21.877108"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -188,9 +188,9 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.66929px;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect10);shape-padding:0;shape-margin:0;inline-size:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke-width:0.800001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
          x="10.891515"
          y="0"><tspan
-           x="63.193239"
+           x="56.373758"
            y="11.765993"
-           id="tspan2">Scope 1</tspan></text>
+           id="tspan3">Multimeter 1</tspan></text>
     </g>
     <text
        xml:space="preserve"
@@ -202,7 +202,7 @@
          sodipodi:role="line"
          id="tspan11"
          x="65.798073"
-         y="36.377953">Scope 2</tspan></text>
+         y="36.377953">Multimeter 2</tspan></text>
     <path
        style="fill:none;stroke:#020000;stroke-width:0.15;stroke-dasharray:none;stroke-opacity:1"
        d="m 80.999992,89.000007 v 3"
@@ -217,7 +217,7 @@
        x="96.850388"
        y="34.48819"
        id="text12"
-       transform="matrix(0.26458333,0,0,0.26458333,63.738763,78.328254)"><tspan
+       transform="matrix(0.26458333,0,0,0.26458333,65.243719,78.328254)"><tspan
          sodipodi:role="line"
          id="tspan12"
          x="96.850388"

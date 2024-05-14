@@ -1,4 +1,4 @@
-\section{Testen}
+\section{Testen}\label{sec:test}
 
 Het is belangrijk dat bepaalde eigenschappen van de gemaakte sensormodule goed getest worden. In dit hoofdstuk worden vier tests beschreven die zijn gedaan om te bepalen of de sensormodule goed functioneert. Bij elke test staat een tabel met materialen die gebruikt zijn. Na de beschrijving van elke test worden de resultaten getoond, gevolgd door een discussie over deze resultaten.
 
@@ -65,7 +65,7 @@ Een andere mogelijke oplossing is een RC-filter te plaatsen tussen de drain van 
 Er zal een aantal tests gedaan moeten worden om te vinden hoe de ISFET precies reageert op een verandering van de gate-source spanning, en hoe dit verschilt van een reguliere MOSFET. Zo kan een beter model opgesteld worden van de ISFET, waar dan vervolgens een betere uitleesschakeling mee ontworpen kan worden.
 
 
-\subsection{pH waarde test}
+\subsection{pH waarde test} \label{sec:phTest}
 Deze test is bedoelt om te testen of het uitgangssignaal verandert op basis van de pH waarde. Voor deze test zijn de materialen uit \cref{tab:testMaterialen2} gebruikt.
 \begin{table}[!htbp]
     \centering
@@ -122,16 +122,17 @@ Deze test is bedoelt om te controleren of het volledige systeem minder dan 10 mW
         \hline
         MSREF1           & 23/RS03     & Referentie elektrode       \\
         MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
-        Uitlees PCB      & 1           & ISFET uitlees schakeling   \\
-        Voeding PCB      & 1           & BMS en energy harvester    \\
+        Uitlees PCB      &             & ISFET uitlees schakeling   \\
+        Voeding PCB      &             & BMS en energy harvester    \\
         Keithley DMM6500 & 04458071    & Multimeter spanningsmeting \\
         Keithley DMM6500 & 04458625    & Multimeter stroommeting    \\
+        nRF52810 basisstation &        & Data ontvanger \\
         \hline
     \end{tabular}
     \caption{De materialen die zijn gebruikt voor de vermogen test.}
     \label{tab:testMaterialen3}
 \end{table}
-De opstelling staat uitgebeeld in \cref{fig:vermogenMetingOpstelling}. Eén van de twee Keithley multimeters, Scope 1 in \cref{fig:vermogenMetingOpstelling}, meet de stroom die vanuit de batterij het systeem ingaat. De andere Keit hley multimeter meet de spanning over de accu.
+De opstelling staat uitgebeeld in \cref{fig:vermogenMetingOpstelling}. Eén van de twee Keithley multimeters, Scope 1 in \cref{fig:vermogenMetingOpstelling}, meet de stroom die vanuit de batterij het systeem ingaat. De andere Keithley multimeter meet de spanning over de accu. De sensormodule verzendt tijdens deze test elke \qty{100}{\milli\second} de gemeten pH waarde naar het basisstation, zodat het vermogensverbruik van het draadloze communicatiesysteem ook meegenomen wordt in de meting. Het basisstation ligt op een afstand van \qty{10}{\meter}.
 
 
 \begin{figure}[!htbp]
@@ -142,8 +143,11 @@ De opstelling staat uitgebeeld in \cref{fig:vermogenMetingOpstelling}. Eén van 
     \label{fig:vermogenMetingOpstelling}
 \end{figure}
 
-\subsubsection{Resultaten van de vermogen test}
+\subsubsection{Resultaten van de vermogen test} \label{sec:vermogenTestResults}
 De gemeten batterijspanning was \qty{3.82}{\volt}, tijdens de loop van de test was deze constant. Het stroomverbruik is tijdens het normaal functioneren van het systeem gemeten tussen \qty{1.3}{\milli\ampere} en \qty{2.5}{\milli\ampere}. De gemeten stroomwaardes zijn vermenigvuldigd met \qty{3.82}{\volt} en vervolgens geplot. Deze plot is te zien in \cref{fig:vermogenMeting}. Door het gemiddelde te nemen van alle samples is er een gemiddeld vermogen uitgerekend, die uitkwam op \qty{6.81}{\milli\watt}.
+
+Het basisstation heeft alle verzonden samples ontvangen.
+
 
 \begin{figure}[!htbp]
     \centering

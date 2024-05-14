@@ -81,23 +81,23 @@
 # Implementatie
 38:58
 <!--! even met big T bespreken -->
-[ ] Zet de dingen in goeie volgorde
+[x] Zet de dingen in goeie volgorde
 <!--! even met big T bespreken -->
 
-[ ] Beschrijf 'totaalplaatje' in voorstukje
+[x] Beschrijf 'totaalplaatje' in voorstukje
 
 
 ## Spanningsreferentie
 [x] Zet fucking uhhh de schakeling nog ff een keertje naast tabel 6
-[ ] Haal dat 'hier mag tycho nog iets over vertellen' weg en laat tycho er nog iets over vertellen
+[x] Haal dat 'hier mag tycho nog iets over vertellen' weg en laat tycho er nog iets over vertellen
 [x] Maak het lijntje bij de simulaties duidelijker
-[ ] Maak duidelijk of het resultaat van de transient acceptabel is. 
-[ ] Maak misschien bij elke grafiek duidelijk waar hij voor dient hehe
+[x] Maak duidelijk of het resultaat van de transient acceptabel is. 
+[x] Maak misschien bij elke grafiek duidelijk waar hij voor dient hehe
 
 ## Nullor implementatie
-[ ] Schrijf iets over de simulatie die hierbij staat (fig:readoutSimTrans)
+[x] Schrijf iets over de simulatie die hierbij staat (fig:readoutSimTrans)
 43:00
-[ ] Sprong tussen de laatste 2 alineas is te groot.
+[x] Sprong tussen de laatste 2 alineas is te groot.
     Misschien nog een concluderende zin met "daarom hebben we voor de LTC2064 gekozen".
 
 ## Voeding
@@ -132,7 +132,7 @@
 [ ] Per deelsysteem
 
 # Aanbevelingen
-[ ] Per deelsysteem
+[x] Per deelsysteem
 
 
 # Algemeen

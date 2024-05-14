@@ -59,10 +59,10 @@
     \put(0.36889469,0.18785959){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}$U$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{vermogenTest.pdf}}%
     \put(0.45179235,0.32049587){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}$I$\end{tabular}}}}%
-    \put(0.45244807,0.3887691){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}Scope 1\end{tabular}}}}%
-    \put(0.41947119,0.18981465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Scope 2\end{tabular}}}}%
+    \put(0.45164662,0.38765595){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}Multimeter 1\end{tabular}}}}%
+    \put(0.41947119,0.18981465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Multimeter 2\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{vermogenTest.pdf}}%
-    \put(0.64622949,0.22122915){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rest van\\het systeem\end{tabular}}}}%
+    \put(0.67928826,0.22122915){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rest van\\het systeem\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{vermogenTest.pdf}}%
   \end{picture}%
 \endgroup%

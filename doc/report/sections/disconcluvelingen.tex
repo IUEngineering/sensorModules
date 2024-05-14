@@ -1,19 +1,29 @@
 \section{Discussie}
 % Globaal
+De tests die gedaan zijn hebben meerdere resultaten opgeleverd, die in dit hoofdstuk per onderdeel besproken zullen worden.
 
+\subsubsection*{ISFET uitleesschakeling}
+De uitgang van de uitleesschakeling is op dit moment een oscillerend signaal, zoals besproken in \cref{sec:stabilityTestResults}. De ADC meet echter wel een spanning die proportioneel lijkt te zijn aan de pH waarde van de oplossing.
+In de resultaten van de pH-waarde test (\cref{sec:phTest}) lijken de maximumwaardes van de pieken ook te veranderen op basis van pH. Hiermee is het echter niet mogelijk om de pH nauwkeurig genoeg te bepalen om aan de specificaties uit \cref{tab:systemSpecs} te voldoen.
 
-De uitgang van de uitleesschakeling is op dit moment een oscillerend signaal, zoals besproken in \cref{sec:stabilityTestResults}. De ADC geeft echter wel een waarde die proportioneel lijkt te zijn met de pH waarde van de oplossing die gemeten wordt.
-De maximumwaardes van de pieken lijken te veranderen op basis van pH. Hiermee is het echter niet mogelijk om de pH nauwkeurig genoeg te bepalen om aan de specificaties uit \cref{tab:systemSpecs} te voldoen.
+Doordat het uitgangssignaal van de schakeling niet stabiel is, is het niet mogelijk om te meten of de SNR specificatie is behaald. Dit is omdat op dit moment het signaal zich anders gedraagt dan in de modellen.
+Ook is het hierdoor niet mogelijk om te meten of de gespecificeerde pH-afwijking en het gespecificeerde pH-bereik zijn gehaald.
 
-Het energie verzamelende piëzo-element produceert op dit moment aanzienlijk minder energie dan in de datasheet gespecificeerd staat. Dit zou kunnen liggen aan de gebruikte testopstelling.
+\subsubsection*{Energie}
+Het gemiddelde energieverbruik van het systeem (\qty{6.81}{\milli\watt}) ligt ver onder het maximum van \qty{10}{\milli\watt}. Dit is beter dan de verwachting, en komt waarschijnlijk door de grote marges die zijn opgesteld.
+Het energie verzamelende piëzo-element kan energie produceren; de hoeveelheid energie is op dit moment echter aanzienlijk minder dan was verwacht op basis van de datasheet van het piëzo-element.
 
-Het totale gemiddelde vermogen dat het systeem gebruikt voldoet aan de \qty{10}{\milli\watt} eis uit \cref{tab:systemSpecs}.
+\subsubsection*{Draadloos}
+De sensormodule lijkt goed te communiceren met het basisstation; bij de vermogenstest in \cref{sec:vermogenTest} zijn alle verzonden samples ontvangen.
+
 
 \newpage
 \section{Conclusie}
-De sensormodule voldoet nog niet aan de opgestelde specificaties. Dit komt mede door het feit dat het uitgangssignaal van de uitleesschakeling niet stabiel is. Hierdoor kan de SNR van het signaal niet gemeten worden, aangezien er geen stabiel signaal is om met het ruisniveau te vergelijken. Ook kunnen hierdoor de afwijking, het bereik en de bandbreedte niet gemeten worden.
-Het energie budget is echter wel behaald; de sensormodule gebruikt gemiddeld \qty{6.84}{\milli\watt}, wat onder het maximum van \qty{10}{\milli\watt} ligt.
+Er is een sensormodule ontworpen die voldoet aan een deel van de specificaties die zijn opgesteld in \cref{sec:systemSpecifications}. De sensormodule wordt gevoed door een batterij, en gebruikt hierbij gemiddeld minder energie (\qty{6.81}{\milli\watt}) dan het specificeerde maximum van \qty{10}{\milli\watt}. Het energieverbruik kan verminderd worden door het piëzo-element van de sensormodule te laten vibreren. De opgewekte energie lijkt in tests echter in pulsen te komen, die weinig tot geen energie terug leveren naar de accu.
 
+Het gemiddelde van de gemeten pH-waarde verandert proportioneel met de pH waarde. De uitgang van de uitleesschakeling is echter niet stabiel, waardoor de pH waarde niet gemeten kan worden volgens de specificaties die zijn opgesteld.
+
+De sensormodule kan de gemeten waarde wel draadloos communiceren naar het basisstation.
 
 % Nog vermelden:
 % snr kan niet want geen goeie uitgang
@@ -26,10 +36,10 @@ Dit hoofdstuk beschrijft voor een aantal systeemonderdelen wat er aan verbeterd 
 \subsubsection*{ISFET uitleesschakeling}
 Zoals de test in \cref{sec:stabiliteitstest} heeft getoond produceert de ISFET uitleesschakeling op het moment nog een oscillerende uitgang. Dit kan opgelost worden door verder onderzoek te doen naar de oorzaak hiervan. Een aantal mogelijke oorzaken en oplossingen staan beschreven in \cref{sec:stabilityTestDiscuss}.
 
-Hiernaast kan voor de ISFET uitleesschakeling een betere ruisberekening gedaan worden. De 1/f ruis die de ISFET produceert wordt op dit moment namelijk niet meegenomen in de berekeningen, terwijl deze wel bijdraagt aan het ruisniveau van het uitgangssignaal.
+Hiernaast kan voor de ISFET uitleesschakeling een betere ruisberekening gedaan worden. De 1/f wordt op dit moment namelijk niet meegenomen in de berekeningen. Dit terwijl de 1/f ruis hoogst waarschijnlijk een significante hoeveelheid ruis produceert op de lagere frequenties waarmee de sensormodule werkt \cite{verhoeven2007structured}.
 
 \subsubsection*{ADC en versterking}
-Er kan nog verder gekeken worden naar het gebruik van een versterker op het signaal dat uit de ISFET uitleesschakeling komt. Het signaal gebruikt op het moment een klein gedeelte van het spanningsbereik van de ADC. Dit signaal kan naar beneden verschoven en versterkt worden, zodat het volledige ingangsbereik van de ADC gebruikt wordt. Op deze manier zou de resolutie van het signaal vergroot kunnen worden.
+Er kan nog verder gekeken worden naar het gebruik van een versterker op het signaal dat uit de ISFET uitleesschakeling komt. Het signaal gebruikt op het moment een klein gedeelte van het spanningsbereik van de ADC. Dit signaal kan naar beneden verschoven en versterkt worden, zodat het volledige ingangsbereik van de ADC gebruikt wordt. Op deze manier zou de resolutie van het signaal vergroot kunnen worden. Vervolgens zou de hoeveelheid bits van de ADC verminderd kunnen worden, wat kan leiden tot een lager energieverbruik.
 Hiervoor kan eerst uitgerekend worden hoe groot de verbetering precies is, ten opzichte van de ruis die deze aanpassing zou toevoegen aan het signaal.
 
 \subsubsection*{Filter}
@@ -39,7 +49,10 @@ Een ander onderdeel dat verbetert kan worden is het filter. Zoals beschreven in 
 Verder moet er een temperatuursensor toegevoegd worden aan het systeem, die de temperatuur van de te meten oplossing kan bijhouden. Zo kan er beter gecompenseerd worden op de temperatuurafhankelijkheid van de ISFET.
 
 \subsubsection*{Energy harvesting}
-De energy harvesting bron moet beter onderzocht worden. Op het moment produceert deze bij een energy harvesting test (\cref{sec:harvestTest}) alleen kleine pulsen aan energie. Een mogelijke oplossing is een betere methode om het piëzo-element te laten vibreren. Onderzoek zal gedaan moeten worden naar de optimale opstelling hiervoor.
+De energy harvesting bron moet beter onderzocht worden. Op het moment produceert deze bij een energy harvesting test (\cref{sec:harvestTest}) alleen kleine pulsen aan energie. Een mogelijke oplossing is een betere methode om het piëzo-element te laten vibreren. Er zal onderzocht moeten worden of er een betere opstelling waarmee meer energie uit het piëzo-element gewonnen kan worden.
+
+\subsubsection*{Communicatie}
+Op het moment ontbreekt er nog een goede communicatietest. De communicatie is deels getest tijdens de vermogen test in \cref{sec:vermogenTest}; met deze test kan echter nog niet aangetoond worden dat er aan de BER specificatie wordt voldaan.
 
 % zet misschien nog iets over energiezuiniger maken.
 % Noem energie waarde uit illya test.
