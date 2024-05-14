@@ -16,7 +16,7 @@ De overdracht van deze spanningsdeler is te vinden in \cref{eq:dividerTransfer}.
     H(s) = \frac{U_{ref}(s)}{U_{dd}(s)} = \frac{R_2}{R_1 + R_2 + R_2Cs}
 \end{equation}
 
-\subsubsection{Vermogen van de spanningsreferentie}
+\subsubsection{Vermogen van de spanningsreferentie} \label{sec:Pspanningsreferentie}
 Het vermogen dat de spanningsdeler dissipeert, kan met \cref{eq:dividerPower} berekend worden.
 \begin{equation}\label{eq:dividerPower}
     P(s) = U_{dd}^2(s)\frac{1+R_2Cs}{R_1 + R_2 + R_1R_2Cs}
@@ -28,7 +28,7 @@ Met een constante DC ingangsspanning kan dit vereenvoudigd worden naar \cref{eq:
     \tagaddtext{[\si{\watt}]}
 \end{equation}
 
-\subsubsection{Ruis van de spanningsreferentie}
+\subsubsection{Ruis van de spanningsreferentie} \label{sec:ruisSpanningsreferentie}
 Om de ruis van deze schakeling te berekenen moet een aantal stappen genomen worden. Aangezien de ingangsbron $U_{dd}$ een spanningsbron is, kan deze als kortsluiting genomen worden. Op deze manier kunnen de twee weerstanden parallel genomen worden, en verandert de schakeling in een simpel RC filter. In \cref{fig:dividerNoise} is deze omgebouwde schakeling te zien.
 
 \begin{figure}[!htbp]
