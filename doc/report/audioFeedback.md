@@ -100,6 +100,9 @@
 [ ] Sprong tussen de laatste 2 alineas is te groot.
     Misschien nog een concluderende zin met "daarom hebben we voor de LTC2064 gekozen".
 
+## Voeding
+[ ] Deel van de batterij bescherming is nodig en shit moet bij ontwerp.
+
 ## PCBs
 48:23
 [ ] Schrijf meer shit over de PCB layouts.
@@ -109,18 +112,27 @@
 [ ] Verbeter dit hoofdstuk of voeg het toe aan het microcontroller hoofdstuk.
 
 
-# Discussie/conclussie/aanbevelingen
-[ ] Geef voor elk subonderdeel een discussie.
-[ ] Geef voor elk subonderdeel een conclusie.
-[ ] Geef voor elk subonderdeel een aanbeveling.
-
-
 # Testen
 54:30
-[ ] Zet materiaal tabel bij elke test.
+[x] Zet materiaal tabel bij elke test.
 [ ] Testen moeten 'praktisch' beschreven zijn.
 [ ] Zet erbij wat je had verwacht.
     Misschien tabellen met beoogde resultaten.
+[x] Zet naam van test bij discussie en resultaten.
+[x] Tekeningetje bij de tests van haha hoe heb je hem aangesloten.
+1:02:00
+[x] 'Lange termijn' wat is lange termijn??
+
+
+# Discussie
+[ ] Zet totaalplaatje erbij??? (moduleDiagram)
+[ ] Per deelsysteem
+
+# Conclusie
+[ ] Per deelsysteem
+
+# Aanbevelingen
+[ ] Per deelsysteem
 
 
 # Algemeen
