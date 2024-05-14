@@ -3,15 +3,15 @@
 Het signaalverwerkingsblok maakt een nuttig signaal van de te meten grootheid. Een uitbreiding van dit blok is te zien in \cref{fig:signaalverwerking}.
 Van links naar rechts zijn de functies van de blokken als volgt:
 \begin{enumerate}
-    \item De grootheid, de pH waarde, wordt gemeten. Dit wordt gedaan door de gate-source spanning $U_{GS}$ van de ISFET te meten.
+    \item De grootheid, de pH-waarde, wordt gemeten. Dit wordt gedaan door de gate-source spanning $U_{GS}$ van de ISFET te meten.
     \item Het signaal wordt gefilterd om de bandbreedte te limiteren.
-    \item Er wordt voor de kruisgevoeligheid van de pH sensor gecompenseerd d.m.v. een temperatuursensor.
-    \item De waarde van $U_{GS}$ wordt omgerekend naar de pH waarde.
+    \item Er wordt voor de kruisgevoeligheid van de pH-sensor gecompenseerd d.m.v. een temperatuursensor.
+    \item De waarde van $U_{GS}$ wordt omgerekend naar de pH-waarde.
     \item Deze waarde wordt draadloos opgestuurd naar de ontvanger.
 \end{enumerate}
 Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het systeem te activeren en te deactiveren. Op deze manier hoeft het systeem alleen maar aan te staan wanneer het nodig is, en wordt er minder energie verbruikt.
 
-% \begin{figure}[!htbp]
+% \begin{figure}[!htb]
 %     \centering
 %     \includegraphics[width=\textwidth]{meetGedeelte.pdf}
 %     \caption{Het signaalverwerkende onderdeel van het systeem, onderverdeeld naar het analoge en digitale domein.}
@@ -20,7 +20,7 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
 
 
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{analogeBewerkingsFunctie}
     \caption{Het analoge gedeelte van de signaalbewerking.}
@@ -28,7 +28,7 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
 \end{figure}
 
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{digitaleBewerkingsFunctie}
     \caption{Het digitale gedeelte van de signaalbewerking.}
@@ -42,7 +42,7 @@ Het `enable' blok wordt gebruikt om het signaalverwerkingsonderdeel van het syst
 Voor spanningsregeling zijn er meerdere componenten nodig, zoals te zien in \cref{fig:spanningsregeling}. De energy harvesting produceert een spanning, die omgezet moet worden naar iets de rest van het systeem iets mee kan. Deze omgevormde spanning kan dan zowel gebruikt worden voor het opladen van de batterij, als het voeden van de rest van het systeem.
 Om de batterij op te laden is een batterijregelingssysteem (BMS) nodig. De BMS kan via een beveiliging de batterij opladen. De beveiliging limiteert de batterijspanning en -stroom. De tweede beveiliging zit tussen de batterij en de rest van het systeem. Deze beveiliging zorgt ervoor dat er niet te veel stroom uit de batterij getrokken wordt, waardoor deze kapot kan gaan. De spanningsregelaar zet de spanning die uit de batterij komt om naar een spanning die gebruikt kan worden door de rest van het systeem.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.7\textwidth]{spanningsRegeling3.drawio.pdf}
     \caption{Het Spanningsregeling van het systeem.}

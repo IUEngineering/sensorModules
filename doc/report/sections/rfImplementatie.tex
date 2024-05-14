@@ -1,6 +1,6 @@
 \subsection{Het RF systeem}
-In \cref{sec:ontwerp:Rf} is ingegaan op wat het minimum zendvermogen is dat nodig is om een BER van $1\times 10^{-5}$ te behalen wanneer de \si{\pH} sensormodule \qty{10}{\meter} van het basis station is verwijderd.
-\begin{table}[!htbp]
+In \cref{sec:ontwerp:RF} is ingegaan op wat het minimum zendvermogen is dat nodig is om een BER van $1\times 10^{-5}$ te behalen wanneer de \si{\pH} sensormodule \qty{10}{\meter} van het basis station is verwijderd.
+\begin{table}[!htb]
     \centering
     \begin{tabular}{l|c|c}
         Specificatie    & Waarde    & Eenheid \\\hline
@@ -8,17 +8,17 @@ In \cref{sec:ontwerp:Rf} is ingegaan op wat het minimum zendvermogen is dat nodi
         $B$             & 2         & \si{\mega\hertz}  \\
         Modulatie       & GSK/BLE   &                   \\
     \end{tabular}
-    \caption{De specificaties waaraan de rf zend implementatie moet voldoen.}
+    \caption{De specificaties waaraan de RF zend implementatie moet voldoen.}
     \label{tab:specRfsending}
 \end{table}
-% In \cref{sec:ontwerp:Rf} is ingegaan op het minimum zendvermogen dat nodig is. Dit minimum vermogen is \qty{7.1}{\micro\watt}. Het is belangrijk om op te merken dat dit enkel het minimum vermogen is dat in het rf signaal zit. Het genereren van dit rf signaal kan mogelijk meer energie kosten. Bij het kiezen van de microcontroller is de \mcu gekozen, onder andere omdat er een \qty{2.4}{\giga\hertz} transceiver in zit. Uit de datasheet van de \mcu is te halen dat deze transceiver \qty{4.6}{\milli\ampere} aan stroom trekt, indien er draadloos wordt gezonden met \qty{0}{\deci\belmilliwatt} en een datasnelheid van \qty{1}{\mega\hertz} \cite{nrf52810}. Door \cref{eq:calcPperPacket,eq:calcRfAvaragePower} te gebruiken is een gemiddeld rf vermogen van \qty{45}{\micro\watt} te berekenen. \qty{45}{\micro\watt} zit onder het energie budget dat beschikbaar is voor het draadloos zenden.
+% In \cref{sec:ontwerp:RF} is ingegaan op het minimum zendvermogen dat nodig is. Dit minimum vermogen is \qty{7.1}{\micro\watt}. Het is belangrijk om op te merken dat dit enkel het minimum vermogen is dat in het RF signaal zit. Het genereren van dit RF signaal kan mogelijk meer energie kosten. Bij het kiezen van de microcontroller is de \mcu gekozen, onder andere omdat er een \qty{2.4}{\giga\hertz} transceiver in zit. Uit de datasheet van de \mcu is te halen dat deze transceiver \qty{4.6}{\milli\ampere} aan stroom trekt, indien er draadloos wordt gezonden met \qty{0}{\deci\belmilliwatt} en een datasnelheid van \qty{1}{\mega\hertz} \cite{nrf52810}. Door \cref{eq:calcPperPacket,eq:calcRfAvaragePower} te gebruiken is een gemiddeld RF vermogen van \qty{45}{\micro\watt} te berekenen. \qty{45}{\micro\watt} zit onder het energie budget dat beschikbaar is voor het draadloos zenden.
 
-Er zijn meerdere manieren om een rf zender te implementeren.
+Er zijn meerdere manieren om een RF zender te implementeren.
 \begin{itemize}
-    \item Zelf met discrete componenten een rf zender implementeren,
-    \item Een losse rf zend IC gebruiken,
-    \item Een MCU gebruiken met een geïntegreerde rf transceiver.
+    \item Zelf met discrete componenten een RF zender implementeren,
+    \item Een losse RF zend IC gebruiken,
+    \item Een MCU gebruiken met een geïntegreerde RF transceiver.
 \end{itemize}
-Omdat de complexiteit van een rf zender op basis van discrete componenten te groot is zal dit niet gedaan worden. De overblijvende twee opties zijn een losse rf zend IC en een MCU met geïntegreerde rf transceiver. In eerste instantie zal er gekeken worden of er een MCU gekozen kan worden die een rf transceiver heeft die aan de eisen uit \cref{tab:specRfsending} voldoet.
+Omdat de complexiteit van een RF zender op basis van discrete componenten te groot is zal dit niet gedaan worden. De overblijvende twee opties zijn een losse RF zend IC en een MCU met geïntegreerde RF transceiver. In eerste instantie zal er gekeken worden of er een MCU gekozen kan worden die een RF transceiver heeft die aan de eisen uit \cref{tab:specRfsending} voldoet.
 
-Bij de implementatie van het rf zenden, is het belangrijk om de rf uitgangsimpedantie van de zender te matchen met de antenne impedantie. Dit is belangrijk om een zo klein mogelijke hoeveelheid aan energie te verspillen aan reflecties \cite{FundamentalsofAppliedElectromagnetics}. In de meeste datasheets van zenders staat beschreven hoe de rf uitgang gematcht kan worden aan \qty{50}{\ohm}.
+Bij de implementatie van het RF zenden, is het belangrijk om de RF uitgangsimpedantie van de zender te matchen met de antenne impedantie. Dit is belangrijk om een zo klein mogelijke hoeveelheid aan energie te verspillen aan reflecties \cite{FundamentalsofAppliedElectromagnetics}. In de meeste datasheets van zenders staat beschreven hoe de RF uitgang gematcht kan worden aan \qty{50}{\ohm}.

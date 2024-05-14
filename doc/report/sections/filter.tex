@@ -1,13 +1,13 @@
 \subsection{Filter}
 Zoals te zien is in \cref{fig:filterInSchema} zit er tussen de versterking van het signaal en de ADC een filter. Zoals te zien is in \cref{fig:filterBlok}, neemt het filter een pH-afhankelijke spanning als ingang. De uitgang is een gefilterde pH-afhankelijke spanning, waarin de signalen die voor aliasing kunnen zorgen voldoende gedempt zijn. Voldoende dempen houdt in dat het stoorsignaal de zelfde ordegrootte heeft als de ruisvloer \cite{energieZuinigeSystemenOntwerpen}. Ook moet er voor worden gezorgd dat de signalen van interesse niet te veel worden gedempt.
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{signaalverwerking_filter.pdf}
     \caption{Het blokschema van de signaalverwerking, met het filter omcirkeld.}
     \label{fig:filterInSchema}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.4\textwidth}
     \input{img/filterBlok.pdf_tex}
@@ -45,7 +45,7 @@ Omdat de minimale orde van het filter berekend kan worden, kan uitgerekend worde
     \tagaddtext{[\si{\hertz}]}
 \end{equation}
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \input{plots/filterorder.tex}
     \caption{Eigenschappen van de kantelfrequentie ten gevolge van de orde van het filter.}
@@ -71,7 +71,7 @@ De maximale afwijking van de kantelfrequentie van een filter is ook afhankelijk 
 \subsubsection{Eerste orde}
 Wanneer er een eerste orde passief laagdoorlaatfilter wordt gebruikt is het mogelijk om een aantal eigenschappen verder uit te werken.
 De schakeling van een eerste orde passief laagdoorlaatfilter is te zien in \cref{fig:filterCircuit}. De kantelfrequentie van een eerste orde passief laagdoorlaatfilter afhankelijk van de $C$ en $R$, volgens \cref{eq:cutoffFreq}.
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.3\textwidth}
     \input{img/filter.pdf_tex}
@@ -106,7 +106,7 @@ De spectrale ruisdichtheid aan de uitgang van het filter is hetzelfde als die va
 % \end{equation}
 
 \subsubsection{Vermogen}
-Het vermogensverbruik van het filter is te berekenen met \cref{eq:filterPowerLaplace}.
+Het energieverbruik van het filter is te berekenen met \cref{eq:filterPowerLaplace}.
 \begin{equation} \label{eq:filterPowerLaplace}
     P = \frac{U_{in,max}^2}{\left|R + \frac{1}{sC}\right|}
     \tagaddtext{[\si{\watt}]}
@@ -116,7 +116,7 @@ Omdat volgens \cref{eq:cutoffFreq} $R$ te definiëren is in $\omega_c$ en $C$, v
     P = \frac{1}{2}\omega_cCU_{in,max}^2
     \tagaddtext{[\si{\watt}]}
 \end{equation}
-In deze formule is te zien dat het vermogensverbruik lineair evenredig is met de condensatorwaarde. Om het vermogensverbruik te minimaliseren moet dus een zo klein mogelijke condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \cref{eq:filterCapMin}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de RMS ruisspanning aan de ingang van het filter.
+In deze formule is te zien dat het energieverbruik lineair evenredig is met de condensatorwaarde. Om het energieverbruik te minimaliseren moet dus een zo klein mogelijke condensatorwaarde gekozen worden. Aangezien de noise-figure van dit filter maximaal 3dB mag zijn, mag dit filter maximaal evenveel spanningsruis genereren als het systeem ervoor. Hieruit volgt \cref{eq:filterCapMin}, waarmee de minimale condensatorwaarde te berekenen is. Hierbij is $u_{n,in}$ de RMS ruisspanning aan de ingang van het filter.
 \begin{equation} \label{eq:filterCapMin}
     C_{min} = \frac{kT}{u_{n,in}^2\left(10^{NF/10}-1\right)}
     \tagaddtext{[\si{\farad}]}
@@ -135,7 +135,7 @@ In de voorgaande paragrafen is in gegaan op hoe specificaties voor discriminatie
 \end{itemize}
 
 De eisen die aan het filter worden gesteld kunnen gehaald worden uit de systeemspecificaties in combinatie met het systeemdiagram. In \cref{tab:prelimenarySpecsAAfilter} staan de resulterende specificaties voor het anti aliasing laagdoorlaatfilter.
-\begin{table}[!htbp]
+\begin{table}[!htb]
     \centering
     \begin{tabular}{c|c|c}
         Specificatie & Waarde & Eenheid \\\hline

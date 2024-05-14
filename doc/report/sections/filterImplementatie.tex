@@ -19,7 +19,7 @@ Het laagdoorlaatfilter dat voor de ADC zit, heeft als functie om aliasing te voo
 
 \subsubsection{Filter orde berekenen}
 Met de specificaties in \cref{tab:specsAAfilter} is met \cref{eq:minOrderOfAAfilter} uit te rekenen dat er minimaal een zesde orde antialiasing filter nodig is. In \cref{tab:AA3dBspecs} staan voor filter ordes zes tot en met tien de acceptabele verschuiving van de kantelfrequentie.
-\begin{table}[!htbp]
+\begin{table}[!htb]
     \centering
     \begin{tabular}{c|c|c|c}
         orde & $f_c\,[\si{\hertz}]$ & $\epsilon_{f_c}\,[\si{\hertz}]$ & $\epsilon_{f_c}\,[\%]$ \\\hline
@@ -48,7 +48,7 @@ Hieruit volgt dat de condensator minimaal \qty{11}{\pico\farad} moet zijn. De be
 
 Voor de implementatie van het RC laagdoorlaatfilter is gekozen voor een capaciteit van \qty{100}{\nano\farad}. In \cref{tab:filterValues} staan de daaruit volgende eigenschappen van het RC filter.
 
-\begin{table}[!htbp]
+\begin{table}[!htb]
     \centering
     \begin{tabular}{l|l|l}
         Symbool & Waarde & Eenheid \\
@@ -71,7 +71,7 @@ Nu de waardes van het filter bekend zijn moet gecontroleerd worden of de ADC nog
 \subsubsection{Simulatie}
 Het filter is op meerdere manieren gesimuleerd. \Cref{fig:filterSimFreq} toont een AC simulatie van het filter. Hierin is te zien dat het kantelpunt inderdaad op ongeveer \qty{10.8}{\hertz} ligt
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \pgfplotsset{width=0.7\textwidth}
     \input{plots/filterSimFreq}
@@ -79,7 +79,7 @@ Het filter is op meerdere manieren gesimuleerd. \Cref{fig:filterSimFreq} toont e
     \label{fig:filterSimFreq}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \pgfplotsset{width=0.7\textwidth}
     \input{plots/filterSimNoise}

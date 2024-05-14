@@ -4,7 +4,7 @@
 % Show what the fitting coefficient is after calculation.
 
 In \cref{fig:pathLossMesurment:pathloss} is het te zien dat de hoeveelheid path loss die optreed niet afhankelijk lijkt te zijn van het signaal vermogen. Dit komt ook overeen met de verschillende modellen die in \cref{sec:introduction} zijn behandeld. Om een beter beeld te krijgen van het signaalverlies is in \cref{fig:pathLossMesurment:avaragePathloss} de gemiddelde path loss getoond en in \cref{fig:pathLossMesurment:medianPathloss} de  mediane path loss.
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
 \begin{tikzpicture}
     \begin{axis}[
@@ -30,7 +30,7 @@ In \cref{fig:pathLossMesurment:pathloss} is het te zien dat de hoeveelheid path 
 \label{fig:pathLossMesurment:avaragePathloss}
 
 \end{figure}
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
 \begin{tikzpicture}
     \begin{axis}[
@@ -58,7 +58,7 @@ In \cref{fig:pathLossMesurment:pathloss} is het te zien dat de hoeveelheid path 
 \end{figure}
 
 Om te controleren of de gemeten data overeen komt met de modellen uit \cref{sec:introduction}, is in \cref{fig:modelPredictions} de verwachting van verschillende modellen geplot. Hierbij is voor $\epsilon_r$ een waarde van 3.4 gebruikt. Deze $\epsilon_r$ komt overeen met de $\epsilon_r$ van beton bestaande uit kleine korrels \cite{zhekov2020dielectric}.
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.8\textwidth]{twoRayModelPlot}
     \caption{Verwachte path loss van verschillende modellen}
@@ -69,7 +69,7 @@ Om uit de meetdata informatie te halen over de fittingscoëfficiënt wordt \cref
 \begin{equation} \label{eq:calcfittingsCoef}
     l_f=\frac{PL-PL_{FS}-PL_{TR}}{\log\left(50d\right)}
 \end{equation}
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
 \begin{tikzpicture}
     \begin{axis}[

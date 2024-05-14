@@ -7,7 +7,7 @@
 
 De sensormodule heeft energie nodig om te functioneren. Deze energie moet geleverd worden door een energie management systeem in de vorm van een constante spanning. Het voedingsblok ligt buiten het signaalverwerkingspad, zoals te zien is in \cref{fig:moduleDiagram_energie}.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=.7\textwidth]{moduleDiagram_energie}
     \caption{De locatie van het energie management systeem in het blokschema van de sensormodule.}
@@ -18,24 +18,24 @@ Het energie management systeem moet energie kunnen opnemen uit de omgeving, en d
 
 \subsubsection{Energy Harvesting} \label{sec:harvesting}
 
-Vanuit de opdrachtdefinitie is er gekozen voor een piëzo-element. Deze piëzo kan mechanische trillingen omzetten naar elektrische energie. Deze energie kan gebruikt worden om de accu op te laden of het vermogensverbruik van de module te verminderen.
+Vanuit de opdrachtdefinitie is er gekozen voor een piëzo-element. Deze piëzo kan mechanische trillingen omzetten naar elektrische energie. Deze energie kan gebruikt worden om de accu op te laden of het energieverbruik van de module te verminderen.
 
 Een piëzo-element produceert energie in de vorm van wisselspanning. Deze spanningen kunnen oplopen tot spanningen boven de \qty{20}{\volt}.% TODO: bron????
 Hierdoor zal er, naast een gelijkrichter en een spanningsregelaar, ook een beveiliging tussen het piëzo-element en de rest van het systeem geplaatst moeten worden.
 
 
 \subsubsection{Accu} \label{sec:batterijOntwerp}
-Er zijn veel verschillende soorten soorten oplaadbare batterijen die gebruikt kunnen worden bij een sensor module. 
-Voor de type sensor module waar dit verslag over gaat is gekeken naar 4 verschillende oplaadbare accu opties\cite{battery_comparison}:
+Er zijn veel verschillende soorten soorten oplaadbare batterijen die gebruikt kunnen worden bij een sensor module.
+Voor de type sensor module waar dit verslag over gaat is gekeken naar 4 verschillende oplaadbare accu opties\cite{battery-comparison}:
 
 \begin{enumerate}
     \item Lithium-Ion (Li-Ion)
     \item Lithium Polymeer (Li-Po)
-    \item Zebra (Zout nickel) 
+    \item Zebra (Zout nickel)
     \item Nickel-Cadmium (Ni-Cd)
 \end{enumerate}
 
-In onderzoek \cite{battery_comparison} is het duidelijk aangetoond dat Li-Po het hoogste energiedichtheid heeft. Dit zou een praktische overweging zijn om de sensor module compact te houden. Dit heeft ervoor gezorgd dat voor de sensor module ontwerp een LiPo gekozen is als batterij. Spanning van een cel (1s) LiPo is maximaal 4.2 V en minimaal veilige spanning is 2.7 V\cite{BatteryComparison}. Dit is een van de specificaties van de batterij management systeem. 
+In onderzoek \cite{battery-comparison} is het duidelijk aangetoond dat Li-Po het hoogste energiedichtheid heeft. Dit zou een praktische overweging zijn om de sensor module compact te houden. Dit heeft ervoor gezorgd dat voor de sensor module ontwerp een LiPo gekozen is als batterij. Spanning van een cel (1s) LiPo is maximaal \qty{4.2}{\volt} en minimaal veilige spanning is \qty{2.7}{\volt}\cite{BatteryComparison}. Dit is een van de specificaties van de batterij management systeem.
 
 
 \subsubsection{Voeding} \label{sec:voeding}
@@ -48,7 +48,7 @@ Zoals beschreven in \cref{sec:harvesting} moet de uitgang van het piëzo-element
 
 Voor energy harvesting is er een piëzo-element gekozen. Een piëzo-element kan gezien worden als een AC bron. Deze AC bron moet omgezet worden naar DC die door het systeem gebruikt kan worden om de batterij mee op te laden. De AC bron wordt met een gelijkrichter naar DC omgezet. Deze DC spanning is niet hetzelfde als de systeemspanning dus die moet omgezet worden naar een spanning die de batterij in gaat, zodat de batterij kan opladen.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics{voedingSchematisch.pdf}
     \caption{Voeding schematisch}
@@ -58,10 +58,10 @@ Voor energy harvesting is er een piëzo-element gekozen. Een piëzo-element kan 
 
 
 \subsubsection{Energie budget}\label{sec:energyBudgets}
-Voor het energiebudget zijn de waardes in \cref{tab:energieBudgetEstimatie} gekozen. Elk van deze waardes ligt boven het theoretisch berekende minimum van het respectievelijke systeemonderdeel. De som van de vermogens is \qty{9}{\milli\watt}, wat onder het maximale toegestane vermogensverbruik van \qty{10}{\milli\watt} ligt.
+Voor het energiebudget zijn de waardes in \cref{tab:energieBudgetEstimatie} gekozen. Elk van deze waardes ligt boven het theoretisch berekende minimum van het respectievelijke systeemonderdeel. De som van de vermogens is \qty{9}{\milli\watt}, wat onder het maximale toegestane energieverbruik van \qty{10}{\milli\watt} ligt.
 
 
-\begin{table}[!htbp]
+\begin{table}[!htb]
     \centering
     \begin{tabular}{l|l}
         Func. blok          & Vermogen [mW] \\

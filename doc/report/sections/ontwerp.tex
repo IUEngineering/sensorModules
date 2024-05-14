@@ -1,17 +1,18 @@
 \section{Ontwerp}\label[chapter]{sec:ontwerp}
-Het systeem bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule meet de pH waarde van een oplossing, en verzend deze naar het basisstation. Het basisstation ontvangt de informatie en slaat deze informatie op.
+Het systeem bestaat uit 2 hoofdonderdelen: de sensormodule en een basisstation. De sensormodule meet de pH-waarde van een oplossing, en verzendt deze naar het basisstation. Het basisstation ontvangt de informatie en slaat deze informatie op.
 In \cref{fig:functional} is dit te zien in een systeemdiagram.
-
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics{toplevelDiagram.pdf}
     \caption[short]{Een diagram van het volledige systeem.}
     \label{fig:functional}
 \end{figure}
 
+\noindent
 Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te zien in \cref{fig:moduleDiagram}.
 
-\begin{figure}[!htbp]
+
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{moduleDiagram}
     \caption{Een systeemdiagram van de sensormodule.}
@@ -19,27 +20,27 @@ Het sensormodule blok kan wederom opgedeeld worden in aparte blokken. Dit is te 
 \end{figure}
 
 \subsection{Functionele decompositie} \label{sec:functioneleDecompositie}
-De sensormodule kan opgedeeld worden in 3 aparte systemen: de voeding, de draadloze communicatie (RF), en de signaalverwerking. De voeding en RF worden later verder besproken, respectievelijk in \cref{sec:energy,sec:ontwerp:Rf}.
+De sensormodule kan opgedeeld worden in 3 aparte systemen: de voeding, de draadloze communicatie (RF), en de signaalverwerking. De voeding en RF worden later verder besproken, respectievelijk in \cref{sec:energy,sec:ontwerp:RF}.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{signaalverwerking}
-    \caption{Het signaalverwerkingsblok uit \cref{fig:moduleDiagram}, samen met de pH sensor en temperatuursensor.}
+    \caption{Het signaalverwerkingsblok uit \cref{fig:moduleDiagram}, samen met de pH-sensor en temperatuursensor.}
     \label{fig:analogeBewerkingsFunctie}
 \end{figure}
 In \cref{fig:analogeBewerkingsFunctie} is een decompositie te zien van het signaalverwerkingsblok, samen met de twee sensoren. Het digitale gedeelte van de signaalbewerking wordt gedaan in het `Digitale signaalbewerking' blok, die later besproken wordt in \cref{sec:digitaal}.
 
-Dit verslag gaat met name in op de signaalbewerking van de pH waarde. Dit is het bovenste pad in \cref{fig:analogeBewerkingsFunctie}.
-Het onderste pad, die van de temperatuursensor, is vanwege tijdsgebrek niet behandeld, en heeft dus geen ontwerphoofdstuk in dit verslag. De temperatuurmeting zal in een volgende ontwerpiteratie beter behandeld moeten worden. Dit resulteert in het blokschema in \cref{fig:signaalverwerking_phOnly}.
+Dit verslag gaat met name in op de signaalbewerking van de pH-waarde. Dit is het bovenste pad in \cref{fig:analogeBewerkingsFunctie}.
+Het onderste pad, die van de temperatuursensor, is vanwege tijdsgebrek niet behandeld. De temperatuursensor heeft dan ook geen ontwerphoofdstuk in dit verslag. De temperatuurmeting zal in een volgende ontwerpiteratie beter behandeld moeten worden. Het weglaten van de signaalverwerking van de temperatuursensor resulteert in het blokschema in \cref{fig:signaalverwerking_phOnly}.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{signaalverwerking_phOnly}
     \caption{Het pH gedeelte van de signaalverwerking uit \cref{fig:analogeBewerkingsFunctie}.}
     \label{fig:signaalverwerking_phOnly}
 \end{figure}
 
-De signaalverwerking zal in de komende hoofdstukken in de volgende volgorde besproken worden: de digitale signaalbewerking, de pH Sensor, de ADC, de versterking en ten slotte het filter. Het filter en de versterking worden pas n\'a % <- hehe jep dat werkt
+De signaalverwerking zal in de komende hoofdstukken in de volgende volgorde besproken worden: de digitale signaalbewerking, de pH-sensor, de ADC, de versterking en ten slotte het filter. Het filter en de versterking worden pas n\'a % <- hehe jep dat werkt
 de ADC besproken, omdat de specificaties daarvan afhangen van die van de ADC.
 
 Na de signaalverwerking zullen de voeding en het draadloze communicatiesysteem besproken worden.
@@ -68,16 +69,16 @@ Deze verdeling van ruis betekent dat het signaal dat uit de sensor komt minimaal
 
 
 
-% \begin{table}[!htbp]
+% \begin{table}[!htb]
 %     \centering
 %     \begin{tabular}{|l|r|}
 %         \hline
-%         Ingangen    & Oplossing met een pH waarde tussen de 2 en 10 \\
+%         Ingangen    & Oplossing met een pH-waarde tussen de 2 en 10 \\
 %                     & Een temperatuur tussen de fliep en floep $^\circ$C \\
 %         \hline
 %         Uitgangen   & Een BLE RF signaal \\
 %         \hline
-%         Functie     & Meet de pH waarde van een oplossing en stuurt deze op naar een basisstation.  \\
+%         Functie     & Meet de pH-waarde van een oplossing en stuurt deze op naar een basisstation.  \\
 %         \hline
 %     \end{tabular}
 %     \caption{Specificaties van }

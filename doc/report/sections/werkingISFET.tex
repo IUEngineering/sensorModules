@@ -1,11 +1,11 @@
-Een ISFET (Ion-Sensitive Field-Effect Transistor) is een FET die gevoelig is voor ionen \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Hierdoor is het mogelijk om met een ISFET pH-waardes te meten \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Een ISFET is in principe een MOSFET zonder gate, die zich gedraagt als een \si{\pH} afhankelijke MOSFET
+Een ISFET (Ion-Sensitive Field-Effect Transistor) is een FET die gevoelig is voor ionen \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Hierdoor is het mogelijk om met een ISFET pH-waardes te meten \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Een ISFET is in principe een MOSFET zonder gate, die zich gedraagt als een \si{\pH}-afhankelijke MOSFET
 \cite{isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
 %     ^^ je bent gestoord
 % Er wordt een referentie-elektrode aan de te meten oplossing toegevoegd om de pH-waarde te kunnen meten. Deze referentie-elektrode kan gebruikt worden als de gate van de MOSFET \cite{van1987isfet,isfetAsAnElectronicDevice}. De drempelspanning van deze transistor is een functie van de pH-waarde van de gemeten oplossing. Een hogere pH-waarde geeft een lagere drempelspanning \cite{isfet,isfetAsAnElectronicDevice}.
 
 \subsubsection{Werking van een MOSFET}
 Om de werking van een ISFET te kunnen begrijpen moet er eerst worden gekeken naar hoe een MOSFET werkt.
-MOSFETs kunnen in twee werkgebieden worden gebruikt: verzadigd en onverzadigd. Wanneer $U_{ds}<U_{gs}-U_{th}$ van toepassing is bevindt een MOSFET zich in het onverzadigde gebied \cite{bergveld1985impactOfMosfetBasedSensors,inleidingInDeElektronicaWissenburgh}. Wanneer deze ongelijkheid niet van toepassing is bevindt een MOSFET zich in het verzadigde gebied. \Cref{eq:IdMosfetUnsaturated} kan gebruikt worden om de drain stroom van een MOSFET in het onverzadigde gebied mee te berekenen. Wanneer een MOSFET zich echter in het verzadigde gebied bevindt kan \cref{eq:IdMosfetSaturated} gebruikt worden om de drainstroom van de MOSFET te berekenen \cite{elbasfun,inleidingInDeElektronicaWissenburgh,bergveld1985impactOfMosfetBasedSensors,isfetAsAnElectronicDevice,DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}. % Volledig getikt
+MOSFETs kunnen in twee werkgebieden worden gebruikt: verzadigd en onverzadigd. Wanneer $U_{ds}<U_{gs}-U_{th}$ van toepassing is bevindt een MOSFET zich in het onverzadigde gebied \cite{bergveld1985impactOfMosfetBasedSensors,inleidingInDeElektronicaWissenburgh}. Wanneer deze ongelijkheid niet van toepassing is bevindt een MOSFET zich in het verzadigde gebied. \Cref{eq:IdMosfetUnsaturated} kan worden gebruikt om de drain stroom van een MOSFET in het onverzadigde gebied mee te berekenen. Wanneer een MOSFET zich echter in het verzadigde gebied bevindt kan \cref{eq:IdMosfetSaturated} gebruikt worden om de drainstroom van de MOSFET te berekenen \cite{elbasfun,inleidingInDeElektronicaWissenburgh,bergveld1985impactOfMosfetBasedSensors,isfetAsAnElectronicDevice,DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}. % Volledig getikt
 \begin{align}
     I_d{}&={}\mu C_{ox}\frac{W}{L}U_{ds}\left[\left(U_{gs}-U_{th}\right)-\frac{U_{ds}}{2}\right]
     \tagaddtext{[\si{\ampere}]} \label{eq:IdMosfetUnsaturated}\\
@@ -44,7 +44,7 @@ De drempelspanning van een MOSFET is erg belangrijk om rekening mee te houden ti
     U_{FB}=\frac{\Phi_M}{q}-\frac{\Phi_{si}}{q}-\frac{Q_{it}+Q_f}{C_{ox}}
     \tagaddtext{[\si{\volt}]}
 \end{equation}
-In \Cref{eq:mosfetFB} is $q$ de lading van het electron, zijn $Q_{it}$ en $Q_f$ de lading van de interface traps en de gefixeerde oxide lading. Beide zijn per oppervlakte \cite{bergveld1985impactOfMosfetBasedSensors}. Daarnaast is $\Phi_M$ metaal werkfunctie en is $\Phi_{si}$ de silicium werkfunctie \cite{bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
+In \Cref{eq:mosfetFB} is $q$ de lading van het electron, zijn $Q_{it}$ en $Q_f$ de lading van de interface traps en de gefixeerde oxide lading. Beide hebben de eenheid \unit{\coulomb\per\square\meter} \cite{bergveld1985impactOfMosfetBasedSensors}. Daarnaast is $\Phi_M$ de metaal werkfunctie en is $\Phi_{si}$ de silicium werkfunctie \cite{bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
 
 \subsubsection{De drempelspanning van een ISFET}
 Zoals in \cref{sec:werkingISFET} staat is de ISFET een MOSFET met een losse gate die gevoelig is voor \si{\pH} \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. De gate (die als elektrode fungeert) en de ISFET moeten zich in dezelfde oplossing bevinden om de \si{\pH} waarde ervan te kunnen meten \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
@@ -83,4 +83,4 @@ De temperatuurgevoeligheidsanalyse valt buiten de omvang van dit project. De ge�
 %     \ph = C_{pH}(U_r - U_k) + \ph_k
 %     \tagaddtext{[pH]}
 % \end{equation}
-% Hierbij is $a$ de richtingscoëfficiënt van de ISFET in pH/V, $U_r$ de op temperatuur gecompenseerde ingangsspanning, $\ph_k$ de pH waarde tijdens de kalibratie en $U_k$ de gemeten kalibratiespanning.
+% Hierbij is $a$ de richtingscoëfficiënt van de ISFET in pH/V, $U_r$ de op temperatuur gecompenseerde ingangsspanning, $\ph_k$ de pH-waarde tijdens de kalibratie en $U_k$ de gemeten kalibratiespanning.

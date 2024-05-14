@@ -4,12 +4,12 @@ Nu dat alle schakelingen zijn ontworpen moeten deze ook nog fysiek in elkaar gez
 Er zal een twee tal connectoren op beide PCB's worden geplaatst zodat de ISFET uitlees en communicatie PCB uiteindelijk gevoed kan worden door de voeding PCB. Een van de twee connectoren zal enkel gebruikt worden om te voeden en de tweede connector kan gebruikt worden voor communicatie tussen de twee PCB's.
 
 Er zal eerst ingegaan worden op het ontwerp van de ISFET uitlees en communicatie PCB. Dit wordt opgevolgd door het ontwerp van de voeding PCB.
-% De schakelingen voor de voeding en voor het uitlezen van de ISFET zijn opgedeeld in twee verschillende printplaten. Dit is gedaan zodat beide schakelingen apart van elkaar getest kunnen worden. De uitlees PCB is te zien in \cref{fig:sensorPCB}. Deze PCB bevat de ISFET uitleesschakeling en de \mcu, die de gemeten pH waarde naar het basisstation opstuurt. De voeding printplaat is te zien in \cref{fig:powerPCB}. Deze PCB regelt de energy harvesting, samen met het veilig opladen en het ontladen van de batterij. De twee printplaten zijn met elkaar verbonden door middel van pin headers. Beide schakelingen zijn te zien \cref{fig:PCBs}.
+% De schakelingen voor de voeding en voor het uitlezen van de ISFET zijn opgedeeld in twee verschillende printplaten. Dit is gedaan zodat beide schakelingen apart van elkaar getest kunnen worden. De uitlees PCB is te zien in \cref{fig:sensorPCB}. Deze PCB bevat de ISFET uitleesschakeling en de \mcu, die de gemeten pH-waarde naar het basisstation opstuurt. De voeding printplaat is te zien in \cref{fig:powerPCB}. Deze PCB regelt de energy harvesting, samen met het veilig opladen en het ontladen van de batterij. De twee printplaten zijn met elkaar verbonden door middel van pin headers. Beide schakelingen zijn te zien \cref{fig:PCBs}.
 
 % Beide PCB's hebben op elk belangrijk signaal een testpunt. Op deze manier kan er eenvoudig gemeten worden.
 
 
-% \begin{figure}[!htbp]
+% \begin{figure}[!htb]
 %     \centering
 %     \begin{subfigure}[b]{0.48\textwidth}
 %         \centering
@@ -29,8 +29,8 @@ Er zal eerst ingegaan worden op het ontwerp van de ISFET uitlees en communicatie
 % \end{figure}
 
 \subsubsection{ISFET uitlees en communicatie PCB}
-Om de kosten van de ISFET en communicatie PCB's laag te houden is er voor gekozen om het PCB 40 bij \qty{50}{\milli\meter} te ontwerpen. Om er voor te zorgen dat de digitale elektronica niet onnodig inkoppelt in het analoge signaalpad is de PCB in twee delen gesplitst, een analoog en digitaal deel. Er is gebruik gemaakt van via's om de inkoppeling van de digitale elektronica PCB helft in de analoge PCB helft te verminderen. In \cref{fig:sensorPCB} wordt de ISFET uitlees en communicatie PCB getoond. Hierbij is ook te zien dat er ook via's zijn gebruikt om de interferentie van de rf zender op het PCB te minimaliseren.
-\begin{figure}[!htbp]
+Om de kosten van de ISFET en communicatie PCB's laag te houden is er voor gekozen om het PCB 40 bij \qty{50}{\milli\meter} te ontwerpen. Om er voor te zorgen dat de digitale elektronica niet onnodig inkoppelt in het analoge signaalpad is de PCB in twee delen gesplitst, een analoog en digitaal deel. Er is gebruik gemaakt van via's om de inkoppeling van de digitale elektronica PCB helft in de analoge PCB helft te verminderen. In \cref{fig:sensorPCB} wordt de ISFET uitlees en communicatie PCB getoond. Hierbij is ook te zien dat er ook via's zijn gebruikt om de interferentie van de RF zender op het PCB te minimaliseren.
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{sensorBord}
     \caption{De ISFET uitlees en communicatie PCB layout. De analoge helft bevindt zich aan de linker kant van de PCB. De digitale sectie bevindt zich aan de rechter kant van de PCB.}

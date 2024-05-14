@@ -6,13 +6,13 @@ Het is belangrijk dat bepaalde eigenschappen van de gemaakte sensormodule goed g
 \subsection{Stabiliteitstest}\label{sec:stabiliteitstest}
 De eerste test is bedoelt om te controleren of de uitgang van de opamp stabiel is. Dit is een belangrijke test om uit te voeren; als de uitgang niet stabiel is, zal de spanning die de ADC uitleest niet goed overeen komen met de drempelspanning van de ISFET.
 Bij deze test zijn de materialen uit \cref{tab:testMaterialen1} gebruikt.
-\begin{table}[!htbp]
+\begin{table}[!htb]
     \centering
     \begin{tabular}{l|l|l}
         Apparaat         & Serienummer & Beschrijving \\
         \hline
         MSREF1           & 23/RS03     & Referentie elektrode       \\
-        MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
+        MSFET 3330-2     & 23/205      & ISFET pH-sensor            \\
         Tektronix MSO 46 & C019070     & Oscilloscoop               \\
         Uitlees PCB      & 1           & ISFET uitlees schakeling   \\
         Voeding PCB      & 1           & BMS en energy harvester    \\
@@ -24,7 +24,7 @@ Bij deze test zijn de materialen uit \cref{tab:testMaterialen1} gebruikt.
 
 Om de test uit te voeren wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling een voeding heeft. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de uitgang van de opamp. De probe van kanaal 2 wordt verbonden met de drain van de ISFET. De ISFET wordt samen met de referentieelektrode in een pH 7 bufferoplossing gestopt. De opstelling is in \cref{fig:test ISFET circuit best} schematisch te zien.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.75\textwidth}
     \input{img/ISFETCircuitBestTest.pdf_tex}
@@ -47,7 +47,7 @@ Op de drain-source spanning is ook een tweede oscillatie met een hogere frequent
 
 % Dit wordt waarschijnlijk veroorzaakt door de interne chopping van de gekozen opamp.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.75\textwidth}
     \includegraphics[width=\textwidth]{testUgsUds.pdf}
@@ -65,30 +65,30 @@ Een andere mogelijke oplossing is een RC-filter te plaatsen tussen de drain van 
 Er zal een aantal tests gedaan moeten worden om te vinden hoe de ISFET precies reageert op een verandering van de gate-source spanning, en hoe dit verschilt van een reguliere MOSFET. Zo kan een beter model opgesteld worden van de ISFET, waar dan vervolgens een betere uitleesschakeling mee ontworpen kan worden.
 
 
-\subsection{pH waarde test} \label{sec:phTest}
-Deze test is bedoelt om te testen of het uitgangssignaal verandert op basis van de pH waarde. Voor deze test zijn de materialen uit \cref{tab:testMaterialen2} gebruikt.
-\begin{table}[!htbp]
+\subsection{pH-waarde test} \label{sec:phTest}
+Deze test is bedoelt om te testen of het uitgangssignaal verandert op basis van de pH-waarde. Voor deze test zijn de materialen uit \cref{tab:testMaterialen2} gebruikt.
+\begin{table}[!htb]
     \centering
     \begin{tabular}{l|l|l}
         Apparaat         & Serienummer & Beschrijving \\
         \hline
         MSREF1           & 23/RS03     & Referentie elektrode       \\
-        MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
+        MSFET 3330-2     & 23/205      & ISFET pH-sensor            \\
         Tektronix MSO 46 & C019070     & Oscilloscoop               \\
         Uitlees PCB      & 1           & ISFET uitlees schakeling   \\
         Voeding PCB      & 1           & BMS en energy harvester    \\
         \hline
     \end{tabular}
-    \caption{De materialen die zijn gebruikt voor de pH waarde test.}
+    \caption{De materialen die zijn gebruikt voor de pH-waarde test.}
     \label{tab:testMaterialen2}
 \end{table}
 
 Om te beginnen wordt de uitlees PCB verbonden met de voeding PCB, zodat de uitleesschakeling gevoed wordt. De probe van kanaal 1 van de oscilloscoop wordt verbonden met de ingang van de ADC. De probe van kanaal 2 wordt verbonden met de uitgang van de opamp. Vervolgens worden de ISFET en referentieelektrode in een pH 7 bufferoplossing gestopt. De golfvorm die de oscilloscoop geeft kan nu worden opgeslagen. De meting wordt herhaalt met de ISFET en referentieelektrode in een pH 4 bufferoplossing.
 
-\subsubsection{Resultaten van de pH waarde test}
+\subsubsection{Resultaten van de pH-waarde test}
 De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duidelijk is de amplitude van de uitgang van de opamp hoger op pH 7 vergeleken met pH 4.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -107,21 +107,21 @@ De resultaten van deze test zijn te zien in \cref{fig:resultspHMeasure}. Duideli
     \label{fig:resultspHMeasure}
 \end{figure}
 
-\subsubsection{Discussie van de pH waarde test}
-Een verandering van pH waarde heeft duidelijk een effect op het uitgangssignaal. Er kan echter nog weinig gezegd worden over de lineariteit van de uitgang op basis van de pH waarde. Hiervoor zou de uitgang eerst stabiel gemaakt moeten worden.
+\subsubsection{Discussie van de pH-waarde test}
+Een verandering van pH-waarde heeft duidelijk een effect op het uitgangssignaal. Er kan echter nog weinig gezegd worden over de lineariteit van de uitgang op basis van de pH-waarde. Hiervoor zou de uitgang eerst stabiel gemaakt moeten worden.
 
 
 
 
 \subsection{Vermogen test} \label{sec:vermogenTest}
-Deze test is bedoelt om te controleren of het volledige systeem minder dan 10 mW aan vermogen gebruikt. Dit is gedaan door te de batterijspanning en -stroom te meten terwijl het systeem de pH waarde van een oplossing meet en opstuurt. De materialen die voor deze test zijn gebruikt zijn te vinden in \cref{tab:testMaterialen3}.
-\begin{table}[!htbp]
+Deze test is bedoelt om te controleren of het volledige systeem minder dan 10 mW aan vermogen gebruikt. Dit is gedaan door te de batterijspanning en -stroom te meten terwijl het systeem de pH-waarde van een oplossing meet en opstuurt. De materialen die voor deze test zijn gebruikt zijn te vinden in \cref{tab:testMaterialen3}.
+\begin{table}[!htb]
     \centering
     \begin{tabular}{l|l|l}
         Apparaat         & Serienummer & Beschrijving \\
         \hline
         MSREF1           & 23/RS03     & Referentie elektrode       \\
-        MSFET 3330-2     & 23/205      & ISFET pH sensor            \\
+        MSFET 3330-2     & 23/205      & ISFET pH-sensor            \\
         Uitlees PCB      &             & ISFET uitlees schakeling   \\
         Voeding PCB      &             & BMS en energy harvester    \\
         Keithley DMM6500 & 04458071    & Multimeter spanningsmeting \\
@@ -132,10 +132,10 @@ Deze test is bedoelt om te controleren of het volledige systeem minder dan 10 mW
     \caption{De materialen die zijn gebruikt voor de vermogen test.}
     \label{tab:testMaterialen3}
 \end{table}
-De opstelling staat uitgebeeld in \cref{fig:vermogenMetingOpstelling}. Eén van de twee Keithley multimeters, Scope 1 in \cref{fig:vermogenMetingOpstelling}, meet de stroom die vanuit de batterij het systeem ingaat. De andere Keithley multimeter meet de spanning over de accu. De sensormodule verzendt tijdens deze test elke \qty{100}{\milli\second} de gemeten pH waarde naar het basisstation, zodat het vermogensverbruik van het draadloze communicatiesysteem ook meegenomen wordt in de meting. Het basisstation ligt op een afstand van \qty{10}{\meter}.
+De opstelling staat uitgebeeld in \cref{fig:vermogenMetingOpstelling}. Eén van de twee Keithley multimeters, Scope 1 in \cref{fig:vermogenMetingOpstelling}, meet de stroom die vanuit de batterij het systeem ingaat. De andere Keithley multimeter meet de spanning over de accu. De sensormodule verzendt tijdens deze test elke \qty{100}{\milli\second} de gemeten pH-waarde naar het basisstation, zodat het energieverbruik van het draadloze communicatiesysteem ook meegenomen wordt in de meting. Het basisstation ligt op een afstand van \qty{10}{\meter}.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.6\textwidth}
     \input{img/vermogenTest.pdf_tex}
@@ -149,7 +149,7 @@ De gemeten batterijspanning was \qty{3.82}{\volt}, tijdens de loop van de test w
 Het basisstation heeft alle verzonden samples ontvangen.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=.85\textwidth]{img/vermogensMeting.pdf}
     \caption{Vermogen meting van systeem}
@@ -163,7 +163,7 @@ Uit de metingen is duidelijk te zien dat het hele systeem minder vermogen verbru
 \subsection{Energy harvesting test}\label{sec:harvestTest}
 Deze test is bedoelt om te meten of het energy harvesting systeem daadwerkelijk energie kan opwekken. Deze test gebruikt de materialen uit \cref{tab:testMaterialen4}.
 
-\begin{table}[!htbp]
+\begin{table}[!htb]
     \centering
     \begin{tabular}{l|l|l}
         Apparaat         & Serienummer & Beschrijving \\
@@ -182,7 +182,7 @@ De twee Keithley multimeters zijn aangesloten op dezelfde manier als in \cref{se
 \subsubsection{Resultaten van de energy harvesting test}
 De meting is geëxporteerd en omgezet naar mW, door de gemeten stroom te vermenigvuldigen met de batterijspanning. Dit is zien in \cref{fig:vermogenPlot}.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{vermogen_tijd_plot.pdf}
     \caption{Vermogen meting energy harvesting}

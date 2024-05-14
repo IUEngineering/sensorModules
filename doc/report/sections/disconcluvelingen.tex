@@ -1,9 +1,9 @@
-\section{Discussie}
+\section{Algemene discussie}
 % Globaal
 De tests die gedaan zijn hebben meerdere resultaten opgeleverd, die in dit hoofdstuk per onderdeel besproken zullen worden.
 
 \subsubsection*{ISFET uitleesschakeling}
-De uitgang van de uitleesschakeling is op dit moment een oscillerend signaal, zoals besproken in \cref{sec:stabilityTestResults}. De ADC meet echter wel een spanning die proportioneel lijkt te zijn aan de pH waarde van de oplossing.
+De uitgang van de uitleesschakeling is op dit moment een oscillerend signaal, zoals besproken in \cref{sec:stabilityTestResults}. De ADC meet echter wel een spanning die proportioneel lijkt te zijn aan de pH-waarde van de oplossing.
 In de resultaten van de pH-waarde test (\cref{sec:phTest}) lijken de maximumwaardes van de pieken ook te veranderen op basis van pH. Hiermee is het echter niet mogelijk om de pH nauwkeurig genoeg te bepalen om aan de specificaties uit \cref{tab:systemSpecs} te voldoen.
 
 Doordat het uitgangssignaal van de schakeling niet stabiel is, is het niet mogelijk om te meten of de SNR specificatie is behaald. Dit is omdat op dit moment het signaal zich anders gedraagt dan in de modellen.
@@ -21,7 +21,7 @@ De sensormodule lijkt goed te communiceren met het basisstation; bij de vermogen
 \section{Conclusie}
 Er is een sensormodule ontworpen die voldoet aan een deel van de specificaties die zijn opgesteld in \cref{sec:systemSpecifications}. De sensormodule wordt gevoed door een batterij, en gebruikt hierbij gemiddeld minder energie (\qty{6.81}{\milli\watt}) dan het specificeerde maximum van \qty{10}{\milli\watt}. Het energieverbruik kan verminderd worden door het piëzo-element van de sensormodule te laten vibreren. De opgewekte energie lijkt in tests echter in pulsen te komen, die weinig tot geen energie terug leveren naar de accu.
 
-Het gemiddelde van de gemeten pH-waarde verandert proportioneel met de pH waarde. De uitgang van de uitleesschakeling is echter niet stabiel, waardoor de pH waarde niet gemeten kan worden volgens de specificaties die zijn opgesteld.
+Het gemiddelde van de gemeten pH-waarde verandert proportioneel met de pH-waarde. De uitgang van de uitleesschakeling is echter niet stabiel, waardoor de pH-waarde niet gemeten kan worden volgens de specificaties die zijn opgesteld.
 
 De sensormodule kan de gemeten waarde wel draadloos communiceren naar het basisstation.
 

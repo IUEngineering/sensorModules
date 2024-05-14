@@ -1,16 +1,16 @@
 \subsection{De ISFET}
 
-Aan de ingang van de signaalverwerking van de pH waarde, zit de sensor die deze pH waarde uitleest, zoals te zien in \cref{fig:pHInSchema}. Deze sensor meet de pH waarde van de te meten oplossing. De sensor die wordt gebruikt is een ISFET halfgeleider.
-\begin{figure}[!htbp]
+Aan de ingang van de signaalverwerking van de pH-waarde, zit de sensor die deze pH-waarde uitleest, zoals te zien in \cref{fig:pHInSchema}. Deze sensor meet de pH-waarde van de te meten oplossing. De sensor die wordt gebruikt is een ISFET halfgeleider.
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{signaalverwerking_pH.pdf}
     \caption{Het onderdeel van \cref{fig:analogeBewerkingsFunctie} waar dit hoofdstuk over gaat.}
     \label{fig:pHInSchema}
 \end{figure}
 
-De pH sensor heeft als ingang een oplossing met een pH waarde van pH 2 tot pH 10. De uitgang is een spanning tussen de \qty{1.8}{\volt} en \qty{2.2}{\volt} \cite{isfet}, die lineair afhankelijk is van de pH waarde. Dit is te zien in \cref{fig:uitleesBlok}.
+De pH-sensor heeft als ingang een oplossing met een pH-waarde van pH 2 tot pH 10. De uitgang is een spanning tussen de \qty{1.8}{\volt} en \qty{2.2}{\volt} \cite{isfet}, die lineair afhankelijk is van de pH-waarde. Dit is te zien in \cref{fig:uitleesBlok}.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.4\textwidth}
     \input{img/uitleesBlok.pdf_tex}
@@ -20,7 +20,7 @@ De pH sensor heeft als ingang een oplossing met een pH waarde van pH 2 tot pH 10
 
 
 \subsubsection{De drempelspanning van de ISFET uitlezen} \label{sec:ISFETLees}
-Wanneer de ISFET in aanraking komt met een oplossing, verandert de gate-source drempelspanning op basis van de pH waarde van deze oplossing \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. Om deze uit te lezen kan een regelsysteem gebruikt worden om de drain-source spanning en stroom van de ISFET mee in te stellen.
+Wanneer de ISFET in aanraking komt met een oplossing, verandert de gate-source drempelspanning op basis van de pH-waarde van deze oplossing \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. Om deze uit te lezen kan een regelsysteem gebruikt worden om de drain-source spanning en stroom van de ISFET mee in te stellen.
 
 Er zijn meerdere mogelijke implementaties mogelijk voor dit regelsysteem. Twee hiervan zijn afgebeeld in \cref{fig:measureCircuits}.
 Elk van deze schakelingen gebruikt een nullor om de drain-source spanning van de ISFET gelijk te houden. Ook gebruikt elk van deze schakelingen een referentiespanning. De implementatie van deze referentiespanning wordt verder besproken in \cref{sec:referenceVoltage}.
@@ -43,7 +43,7 @@ Voor de waarde van de weerstand in \cref{fig:measureResistor} kan \cref{eq:measu
 \end{equation}
 
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -76,12 +76,12 @@ Bij de schakeling in \cref{fig:measureResistor} zit de source van de ISFET direc
     \tagaddtext{[\si{\volt}]}
 \end{equation}
 
-De schakeling met een stroombron aan de source heeft de mogelijkheid om betere ruiseigenschappen te hebben. De stroombron kan ook een hogere impedantie hebben dan de weerstand. Het vermogensverbruik van de schakeling in \cref{fig:measureResistor} is echter duidelijk minder, dus is dit de schakeling die gebruikt zal worden.
+De schakeling met een stroombron aan de source heeft de mogelijkheid om betere ruiseigenschappen te hebben. De stroombron kan ook een hogere impedantie hebben dan de weerstand. Het energieverbruik van de schakeling in \cref{fig:measureResistor} is echter duidelijk minder, dus is dit de schakeling die gebruikt zal worden.
 
 \subsubsection{Ruis van de ISFET uitleesschakeling}
 
 De meetschakeling heeft een aantal ruisbronnen. De nullor heeft een ingangsstroom- en spanningsruisbron. Daarnaast genereert de weerstand ook thermische ruis. Deze ruisbronnen zijn te zien in \cref{fig:measureNoise}.
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.6\textwidth}
     \input{img/ISFETCircuitBestNoise.pdf_tex}
@@ -106,7 +106,7 @@ Vervolgens kan deze, samen met de spanningsruisbronnen $u_{n,ref}$ en $u_{n,n}$ 
 
 De definities van deze ruisbronnen zijn te vinden in \cref{tab:measureNoiseValues}.
 
-\begin{table}[!htbp]
+\begin{table}[!htb]
     \centering
     \begin{tabular}{c|l}
         Ruisbron & Waarde \\
@@ -122,7 +122,7 @@ De definities van deze ruisbronnen zijn te vinden in \cref{tab:measureNoiseValue
     \label{tab:measureNoiseValues}
 \end{table}
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
     \def\svgwidth{0.6\textwidth}
     \input{img/ISFETCircuitBestNoiseMoved.pdf_tex}
@@ -130,9 +130,9 @@ De definities van deze ruisbronnen zijn te vinden in \cref{tab:measureNoiseValue
     \label{fig:measureNoiseMoved}
 \end{figure}
 
-De overdracht van deze schakeling is gelijk aan de uitgangsspanning gedeeld door de ingangsspanning van de nullor. Door de werking van de schakeling blijft de ingangsspanning altijd gelijk en is de uitgangsspanning lineair afhankelijk van de pH waarde. Hierdoor is de overdracht $H(\ph)$ een functie van de gemeten pH waarde.
+De overdracht van deze schakeling is gelijk aan de uitgangsspanning gedeeld door de ingangsspanning van de nullor. Door de werking van de schakeling blijft de ingangsspanning altijd gelijk en is de uitgangsspanning lineair afhankelijk van de pH-waarde. Hierdoor is de overdracht $H(\ph)$ een functie van de gemeten pH-waarde.
 
-Deze overdrachtsfunctie is gedefinieerd in \cref{eq:measureTransfer}, en is een functie van de uitgangsspanning. De uitgangsspanning is een functie van de pH waarde, en is te vinden in \cref{eq:measureOutVoltage}. Hierin is $C_{pH}$ de gevoeligheid van de sensor, die gegeven wordt in $\si{\milli\volt\per\ph}$, en is $U_7$ de uitgangsspanning op pH 7.
+Deze overdrachtsfunctie is gedefinieerd in \cref{eq:measureTransfer}, en is een functie van de uitgangsspanning. De uitgangsspanning is een functie van de pH-waarde, en is te vinden in \cref{eq:measureOutVoltage}. Hierin is $C_{pH}$ de gevoeligheid van de sensor, die gegeven wordt in $\si{\milli\volt\per\ph}$, en is $U_7$ de uitgangsspanning op pH 7.
 
 \begin{equation}
     H(\ph) = \frac{U_o(\ph)}{U_{ref}}
@@ -157,12 +157,12 @@ Aangezien er geen frequentieafhankelijkheden voorkomen kan de uitgangsspanningsr
 \end{equation}
 
 \subsubsection{Vermogen van de ISFET uitleesschakeling}
-Het vermogensverbruik van deze schakeling is gedefinieerd in \cref{eq:measurePower}, waar $P_n$ het vermogensverbruik van de nullor implementatie is.
+Het energieverbruik van deze schakeling is gedefinieerd in \cref{eq:measurePower}, waar $P_n$ het energieverbruik van de nullor implementatie is.
 \begin{equation}\label{eq:measurePower}
     P = P_n + U_{dd}I_{ds}
 \end{equation}
 
 
 % \subsubsection{Versterker}
-% Aangezien de uitgang van de ISFET een meetbare spanning produceert (\qty{1.8}{\volt} tot \qty{2.2}{\volt} volgens \cite{isfet}) zal er geen versterker nodig zijn om de pH waarde te kunnen meten. Wel zou een level-shifter gebruikt kunnen worden in combinatie met een versterker om zo het volledige bereik van de ADC te gebruiken. Dit voegt echter meer ruis en complexiteit toe aan het systeem, waardoor er in deze iteratie voor is gekozen om dit niet te doen.
+% Aangezien de uitgang van de ISFET een meetbare spanning produceert (\qty{1.8}{\volt} tot \qty{2.2}{\volt} volgens \cite{isfet}) zal er geen versterker nodig zijn om de pH-waarde te kunnen meten. Wel zou een level-shifter gebruikt kunnen worden in combinatie met een versterker om zo het volledige bereik van de ADC te gebruiken. Dit voegt echter meer ruis en complexiteit toe aan het systeem, waardoor er in deze iteratie voor is gekozen om dit niet te doen.
 %TODO: dit^^
