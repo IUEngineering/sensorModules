@@ -29,7 +29,13 @@ Er zal eerst ingegaan worden op het ontwerp van de ISFET uitlees en communicatie
 % \end{figure}
 
 \subsubsection{ISFET uitlees en communicatie PCB}
-Om de kosten van de ISFET en communicatie PCB's laag te houden is er voor gekozen om het PCB 40 bij \qty{50}{\milli\meter} te ontwerpen. Om er voor te zorgen dat
+Om de kosten van de ISFET en communicatie PCB's laag te houden is er voor gekozen om het PCB 40 bij \qty{50}{\milli\meter} te ontwerpen. Om er voor te zorgen dat de digitale elektronica niet onnodig inkoppelt in het analoge signaalpad is de PCB in twee delen gesplitst, een analoog en digitaal deel. Er is gebruik gemaakt van via's om de inkoppeling van de digitale elektronica PCB helft in de analoge PCB helft te verminderen. In \cref{fig:sensorPCB} wordt de ISFET uitlees en communicatie PCB getoond. Hierbij is ook te zien dat er ook via's zijn gebruikt om de interferentie van de rf zender op het PCB te minimaliseren.
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{sensorBord}
+    \caption{De ISFET uitlees en communicatie PCB layout. De analoge helft bevindt zich aan de linker kant van de PCB. De digitale sectie bevindt zich aan de rechter kant van de PCB.}
+    \label{fig:sensorPCB}
+\end{figure}
 
 \subsubsection{Voedings PCB}
 
