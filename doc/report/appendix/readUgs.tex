@@ -1,0 +1,25 @@
+\section{Spice netlist voor testen ISFET uitleesschakeling}
+In \cref{ver:UgsOverUth} wordt een netlist getoond die gebruikt kan worden om de response van de ISFET uitleesschakeling op een veranderende drempelspanning te simuleren. Hierbij is gebruik gemaakt van een versterkend element met oneindig veel versterking. Dit om een zo goed mogelijke benadering te krijgen van de nullor.
+
+\begin{lstlisting}[caption=Spice netlist om de gate source spanningsresponse op een verandering in de drempelspannng te simuleren., captionpos=b, label=ver:UgsOverUth]
+M1 D G 0 0 isfet
+R1 Vdd D 28k
+V1 ref 0 500m
+V2 Vdd 0 3.3
+E1 N002 0 ref D -1
+E2 G 0 G N002 1
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\users\{USER}\AppData\Local\LTspice\lib\cmp\standard.mos
+;.noise V(G) V2 dec 1k 1 10
+.model isfet NMOS vto={thresholdVoltage} kp=1
+.step param thresholdVoltage 1.8 2.2 1m
+.tran 0 1 0 1m
+* Nullor
+* +in
+* -in
+* +out
+* - out
+.backanno
+.end
+\end{lstlisting}
