@@ -1,9 +1,11 @@
-Een ISFET (Ion-Sensitive Field-Effect Transistor) is een FET die gevoelig is voor ionen \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Hierdoor is het mogelijk om met een ISFET pH-waardes te meten \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Een ISFET is in principe een MOSFET zonder gate. De ISFET gedraagt zich als een \si{\pH} afhankelijke MOSFET \cite{isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
+Een ISFET (Ion-Sensitive Field-Effect Transistor) is een FET die gevoelig is voor ionen \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Hierdoor is het mogelijk om met een ISFET pH-waardes te meten \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Een ISFET is in principe een MOSFET zonder gate, die zich gedraagt als een \si{\pH} afhankelijke MOSFET
+\cite{isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
+%     ^^ je bent gestoord
 % Er wordt een referentie-elektrode aan de te meten oplossing toegevoegd om de pH-waarde te kunnen meten. Deze referentie-elektrode kan gebruikt worden als de gate van de MOSFET \cite{van1987isfet,isfetAsAnElectronicDevice}. De drempelspanning van deze transistor is een functie van de pH-waarde van de gemeten oplossing. Een hogere pH-waarde geeft een lagere drempelspanning \cite{isfet,isfetAsAnElectronicDevice}.
 
 \subsubsection{Werking van een MOSFET}
 Om de werking van een ISFET te kunnen begrijpen moet er eerst worden gekeken naar hoe een MOSFET werkt.
-MOSFETs kunnen in twee werkgebieden worden gebruikt: verzadigd en onverzadigd. Wanneer $U_{ds}<U_{gs}-U_{th}$ klopt bevindt een MOSFET zich in het onverzadigde gebied \cite{bergveld1985impactOfMosfetBasedSensors,inleidingInDeElektronicaWissenburgh}. Wanneer deze ongelijkheid niet klopt bevindt een MOSFET zich in het verzadigde gebied. \Cref{eq:IdMosfetUnsaturated} kan gebruikt worden om de drain stroom van een MOSFET in het onverzadigde gebied mee te berekenen. Wanneer een MOSFET zich echter in het verzadigde gebied bevindt kan \cref{eq:IdMosfetSaturated} gebruikt worden om de drainstroom van de MOSFET te berekenen \cite{elbasfun,inleidingInDeElektronicaWissenburgh,bergveld1985impactOfMosfetBasedSensors,isfetAsAnElectronicDevice,DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}.
+MOSFETs kunnen in twee werkgebieden worden gebruikt: verzadigd en onverzadigd. Wanneer $U_{ds}<U_{gs}-U_{th}$ van toepassing is bevindt een MOSFET zich in het onverzadigde gebied \cite{bergveld1985impactOfMosfetBasedSensors,inleidingInDeElektronicaWissenburgh}. Wanneer deze ongelijkheid niet van toepassing is bevindt een MOSFET zich in het verzadigde gebied. \Cref{eq:IdMosfetUnsaturated} kan gebruikt worden om de drain stroom van een MOSFET in het onverzadigde gebied mee te berekenen. Wanneer een MOSFET zich echter in het verzadigde gebied bevindt kan \cref{eq:IdMosfetSaturated} gebruikt worden om de drainstroom van de MOSFET te berekenen \cite{elbasfun,inleidingInDeElektronicaWissenburgh,bergveld1985impactOfMosfetBasedSensors,isfetAsAnElectronicDevice,DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}. % Volledig getikt
 \begin{align}
     I_d{}&={}\mu C_{ox}\frac{W}{L}U_{ds}\left[\left(U_{gs}-U_{th}\right)-\frac{U_{ds}}{2}\right]
     \tagaddtext{[\si{\ampere}]} \label{eq:IdMosfetUnsaturated}\\
@@ -11,10 +13,11 @@ MOSFETs kunnen in twee werkgebieden worden gebruikt: verzadigd en onverzadigd. W
     I_d{}&={}\mu C_{ox}\frac{1}{2}\frac{W}{L}\left(U_{gs}-U_{th}\right)^2
     \tagaddtext{[\si{\ampere}]} \label{eq:IdMosfetSaturated}
 \end{align}
+In \cref{eq:IdMosfetUnsaturated,eq:IdMosfetSaturated} hebben de symbolen de volgende betekenissen:
 \begin{itemize}
     \item $I_d$ is de drain stroom van een MOSFET in [\si{\ampere}]
     \item $\mu$ is de ladingsdragers effectieve mobiliteit van een MOSFET in [\si{\volt^{-1}\,\second^{-1}}]
-    \item $C_{ox}$ is de gate oxide capaciteit per oppervlakte van een MOSFET in [\si{\farad\,\meter^{-2}}]
+    \item $C_{ox}$ is de gate oxide capaciteit per opppervlakte van een MOSFET in [\si{\farad\,\meter^{-2}}]
     \item $W$ is de breedte van een MOSFET in [\si{\meter}]
     \item $L$ is de lengte van een MOSFET in [\si{\meter}]
     \item $U_{ds}$ is de drain source spanning van een MOSFET in [\si{\volt}]
@@ -22,7 +25,7 @@ MOSFETs kunnen in twee werkgebieden worden gebruikt: verzadigd en onverzadigd. W
     \item $U_{th}$ is de drempelspanning\footnote{In het Engels heet de drempelspanning threshold voltage.} van een MOSFET in [\si{\volt}]
 \end{itemize}
 
-De gate van een MOSFET kan gezien worden als een condensator die op en ontladen moet worden \cite{DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}. De waarde van een capaciteit kan met \cref{eq:calcCapacitance} worden berekend. In \cref{eq:calcCapacitance} is $\epsilon_0$ is de permittiviteit in vacuüm, $\epsilon_r$ is de relatieve permittiviteit en is afhankelijk van het materiaal tussen de twee platen van de condensator, $A$ het oppervlakte van de condensator en is $d$ de afstand tussen de twee condensator platen. \Cref{eq:calcCox} om $C_{ox}$ mee te berekenen is in essentie een gedifferentieerde versie van \cref{eq:calcCapacitance} over het oppervlakte van de condensator waarbij $t_{ox}$ de dikte van de gate oxide laag is \cite{DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}.
+De gate van een MOSFET kan gezien worden als een condensator die op en ontladen moet worden \cite{DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}. De waarde van deze capaciteit kan met \cref{eq:calcCapacitance} worden berekend. Hierin is $\epsilon_0$ de permittiviteit in een vacuüm, $\epsilon_r$ de relatieve permittiviteit die afhankelijk is van het materiaal tussen de twee platen van de condensator, $A$ het oppervlakte van de condensator en $d$ de afstand tussen de twee condensator platen. \Cref{eq:calcCox} is in essentie \cref{eq:calcCapacitance}, gedifferentieerd over het oppervlakte van de condensator, waarbij $t_{ox}$ de dikte van de gate oxide laag is \cite{DonaldNeamenSemiconductorPhysicsAndDevicesBasicPrinciples}.
 \begin{equation} \label{eq:calcCapacitance}
     C=\frac{\epsilon_0\epsilon_rA}{d}
     \tagaddtext{[\si{\farad}]}
@@ -44,9 +47,9 @@ De drempelspanning van een MOSFET is erg belangrijk om rekening mee te houden ti
 In \Cref{eq:mosfetFB} is $q$ de lading van het electron, zijn $Q_{it}$ en $Q_f$ de lading van de interface traps en de gefixeerde oxide lading. Beide zijn per oppervlakte \cite{bergveld1985impactOfMosfetBasedSensors}. Daarnaast is $\Phi_M$ metaal werkfunctie en is $\Phi_{si}$ de silicium werkfunctie \cite{bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
 
 \subsubsection{De drempelspanning van een ISFET}
-Zoals in \cref{sec:werkingISFET} staat is de ISFET een MOSFET die gevoelig is voor \si{\pH} \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Het grootste verschil tussen een `normale' MOSFET en een ISFET, is dat de ISFET een MOSFET is met een losse gate. Zowel de gate (als elektrode) als de ISFET moeten in de zelfde vloeistof zijn om een \si{\pH} waarde te meten \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
+Zoals in \cref{sec:werkingISFET} staat is de ISFET een MOSFET met een losse gate die gevoelig is voor \si{\pH} \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. De gate (die als elektrode fungeert) en de ISFET moeten zich in dezelfde oplossing bevinden om de \si{\pH} waarde ervan te kunnen meten \cite{modeling,isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
 
-De parameter van de ISFET die gevoelig is voor \si{\pH} is de drempelspanning \cite{isfetAsAnElectronicDevice,bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. De drempelspanning bestaat uit drie onderdelen zoals te zien is in \cref{eq:mosfetUth}. Hierbij is de flatband spanning afhankelijk van \si{\pH} \cite{isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Met \cref{eq:isfetUfb} kan voor een bepaalde \si{\pH} de flatband spanning worden berekend. In \cref{eq:isfetUfb} is $\chi^{sol}$ het oppervlakte dipole moment van de oplossing, $E_{ref}$ is het potentiaal van de referentie elektrode relatief aan het potentiaal van vacuüm. De term $E_{ref}$ bevat ook de metaalwerk functie $\Phi_M/q$ \cite{isfetAsAnElectronicDevice,bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. $\psi_0$ is een \si{\pH} afhankelijke variable \cite{isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
+De parameter van de ISFET die gevoelig is voor \si{\pH} is de drempelspanning \cite{isfetAsAnElectronicDevice,bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. De drempelspanning bestaat uit drie onderdelen zoals te zien is in \cref{eq:mosfetUth}. Hierbij is de flatband spanning ($U_{FB}$) afhankelijk van \si{\pH} \cite{isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}. Met \cref{eq:isfetUfb} kan voor een bepaalde \si{\pH} de flatband spanning worden berekend. In \cref{eq:isfetUfb} is $\chi^{sol}$ het oppervlakte dipool moment van de oplossing en $E_{ref}$ het potentiaal van de referentie elektrode relatief aan het potentiaal van een vacuüm. De term $E_{ref}$ bevat ook de metaalwerk functie $\Phi_M/q$ \cite{isfetAsAnElectronicDevice,bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. $\psi_0$ is een \si{\pH} afhankelijke variable \cite{isfetAsAnElectronicDevice,bergveld1985impactOfMosfetBasedSensors,bergveld2003thirtyYearsISFET}.
 \begin{equation}\label{eq:isfetUfb}
     U_{FB}\left(\ph\right)=E_{ref}-\psi_0\left(\ph\right)+\chi^{sol}-\frac{\Phi_{si}}{q}-\frac{Q_{it}+Q_f}{C_{ox}}
     \tagaddtext{[\si{\volt}]}
@@ -57,14 +60,14 @@ $\psi_0$ kan met \cref{eq:psi0} worden berekend. Hierbij is $k$ de constante van
     \psi_0\left(\ph\right)=2.303\frac{kT}{q}\left(\frac{\beta}{1+\beta}\right)\left(\ph_{pzc}-\ph\right)
     \tagaddtext{[\si{\volt}]}
 \end{equation}
-$\beta$ is afhankelijk van het type materiaal dat wordt gebruikt in plaats van de gate \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. Het is gebleken dat ISFET's die gebruik maken van $\mathrm{Al_{2}O_3}$ en $\mathrm{Ta_2O_5}$ een hogere $\beta$ hebben en daarmee dan ook gevoeliger voor veranderingen in \si{\pH} \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}.
+$\beta$ is afhankelijk van het type materiaal dat wordt gebruikt inplaats van de gate \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}. Het is gebleken dat ISFET's die gebruik maken van $\mathrm{Al_{2}O_3}$ en $\mathrm{Ta_2O_5}$ een hogere $\beta$ hebben en daarmee dan ook gevoeliger zijn voor veranderingen in \si{\pH} \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors}.
 
 % \begin{equation}\label{eq:pHbeta}
 %     \beta=2\frac{q}{kT}\frac{qN_s\sqrt{K_aK_b}}{C_{DL}}
 % \end{equation}
 
-\subsubsection{temperatuursafhankelijkheid van een ISFET}
-De temperatuur gevoeligheidsanalyse valt buiten de scope van dit project. De geïnteresseerde lezer wordt verwezen naar \cite{isfetAsAnElectronicDevice}. Uit \cite{isfetAsAnElectronicDevice} volgt dat een ISFET een temperatuurafwijking heeft van \qty{-1.39}{\milli\volt\,\kelvin^{-1}}.
+\subsubsection{De temperatuurafhankelijkheid van een ISFET}
+De temperatuurgevoeligheidsanalyse valt buiten de omvang van dit project. De geïnteresseerde lezer wordt verwezen naar \cite{isfetAsAnElectronicDevice}. Hieruit volgt dat de uitgang van een ISFET een temperatuurafwijking heeft van \qty{-1.39}{\milli\volt\,\kelvin^{-1}}.
 
 % De ISFET is temperatuurafhankelijk \cite{isfet,isfetAsAnElectronicDevice}. Volgens de datasheet is de temperatuurafhankelijkheid gemiddeld $\qty{-0.2}{\milli\volt\per\kelvin}$\cite{Microsens-MSFET}. Om hiervoor te compenseren moet tijdens het meten ook de temperatuur gemeten worden. Ook zal bij het kalibreren de kalibratietemperatuur opgeslagen moeten worden. Wanneer er vervolgens gemeten wordt, zal de gemeten gate-source spanning door middel van het temperatuurverschil gecompenseerd moeten worden. Deze compensatie kan gedaan worden door middel van \cref{eq:tempComp}.
 

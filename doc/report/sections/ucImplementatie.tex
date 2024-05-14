@@ -1,0 +1,31 @@
+\subsection{Microcontroller}
+De microcontroller moet de digitale signaalverwerking uitvoeren maar moet ook beschikken over een ADC en rf transceiver. In \cref{tab:specMCU} staan alle specificaties waaraan de microcontroller moet voldoen onder elkaar.
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|c|c}
+        Specificatie    & Waarde    & Eenheid \\\hline
+        $P_{zend,min}$  & 7.1       & \si{\micro\watt}  \\
+        $B$             & 2         & \si{\mega\hertz}  \\
+        Modulatie       & GSK/BLE   &                   \\\hline
+        $f_s$           & 45        & \si{\hertz}       \\
+        $n$             & 14        & bits              \\
+        ADC ingangen    & 2         &                   \\\hline
+        $P_{max}$       & 6         & \si{\milli\watt}
+    \end{tabular}
+    \caption{De specificaties waaraan de microcontroller van het \si{\pH} meetsysteem moet voldoen.}
+    \label{tab:specMCU}
+\end{table}
+Het maximale vermogen dat de microcontroller mag verbruiken is samengesteld uit de maximale vermogens van de ADC en de rf zender. In \cref{sec:energyBudgets} is te zien hoe de \qty{6}{\milli\watt} over de ADC en de rf zender is verdeeld.
+
+% Het digitale gedeelte van de implementatie kan opgedeeld worden in 3 onderdelen: de ADC, de digitale signaalverwerking (\cref{fig:digitaleBewerkingsFunctie}) en het draadloos versturen van data. Het is mogelijk om elk van deze onderdelen met aparte componenten te implementeren. Er zijn echter ook componenten beschikbaar die al over elk van deze functionaliteiten beschikken.
+
+Een microcontroller die voldoet aan de eisen van \cref{tab:specMCU} is de \mcu. De \mcu beschikt over 8 14 bit ADC kanalen\footnote{De ADC kanalen zijn alleen 14 bit met oversampling \cite{nrf52810}.} die op maximaal \qty{200}{\kilo\hertz} kunnen samplen. Daarnaast heeft de \mcu ook een ingebouwde 2.4GHz Bluetooth transceiver \cite{nrf52810}.
+
+Wanneer de ADC van de \mcu op \qty{16}{\hertz} sampled trekt de ADC ongeveer \qty{1.1}{\milli\ampere}. Deze samplefrequentie ligt aanzienlijk hoger dan de \qty{45}{\hertz} waarop dit systeem moet gaan samplen. Hierdoor zal het vermogen dat verbruikt wordt wanneer de ADC actief is ongeveer rond de \qty{3.1}{\micro\ampere} liggen.
+
+% Een voorbeeld van een dergelijk component is de nRF52810. Deze microcontroller beschikt over meerdere 14 bit ADC kanalen\footnote{De ADC kanalen zijn alleen 14 bit met oversampling.} en een ingebouwde 2.4GHz Bluetooth transceiver.
+De \mcu trekt \qty{4.6}{\milli\ampere} aan stroom, indien er draadloos wordt gezonden met \qty{0}{\deci\belmilliwatt} en een datasnelheid van \qty{1}{\mega\hertz} \cite{nrf52810}. Door \cref{eq:calcPperPacket,eq:calcRfAvaragePower} te gebruiken is een gemiddeld rf vermogen van \qty{45}{\micro\watt} te berekenen.
+
+Ook heeft de microcontroller een slaapstand die onderbroken kan worden door een ingebouwde RTC, wat nuttig is voor het periodiek samplen en versturen van pH waardes. In deze slaapstand wordt er zo'n \qty{1.5}{\micro\ampere} gebruikt. Met een voedingsspanning van \qty{3.3}{\volt} komt dit uit op een vermogensverbruik van \qty{4.95}{\micro\watt}. Daarbij heeft de microcontroller ook de mogelijkheid om onderdelen van het geheugen uit te zetten, wat tot meer energiebesparing kan leiden \cite{nrf52810}.
+
+Aangezien de \mcu niet constant hoeft te zenden zal er niet constant met de rf transceiver worden gezonden. Aangezien de rf transceiver het meeste vermogen trekt lijkt het daarmee er op dat de \mcu gebruikt kan worden als microcontroller voor het \si{\pH} meetsysteem.

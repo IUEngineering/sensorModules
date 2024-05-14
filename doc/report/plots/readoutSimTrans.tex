@@ -4,15 +4,23 @@
     }
 
     \begin{axis}[
-        ylabel={$U_{out}$ [\unit{\volt}]},
-        xlabel={$U_{t}$ [\unit{\milli\volt}] - \qty{1.8}{\volt}},
+        ylabel={$U_{gs}$ [\unit{\volt}]},
+        xlabel={$U_{th}$ [\unit{\milli\volt}]},
         grid=major,
         height=6cm,
     ]
+        % \addplot [
+        %     mark=none,
+        %     line width=0.5mm,
+        % ] table[x=thresh,y=out] {sim/readoutSimTrans.dat};
         \addplot [
             mark=none,
             line width=0.5mm,
-        ] table[x=thresh,y=out] {sim/readoutSimTrans.dat};
+        ] table [
+            x=thresh,
+            y=voltage,
+            col sep=comma
+        ] {sim/ugsWithVarUth.csv};
         % \node [small dot,pin=0:{Voeding wordt geactiveerd}] at (1,0) {};
     \end{axis}
 \end{tikzpicture}

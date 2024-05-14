@@ -6,16 +6,14 @@
     \begin{axis}[
         xlabel={$t$ [\unit{\second}]},
         ylabel={$U_{ref}$ [\unit{\volt}]},
-        ytick       ={0,0.05,0.1,0.15},
-        yticklabels ={0,0.05,0.1,0.15},
         grid=major,
-        height=6cm,
+        height=7cm,
     ]
         \addplot [
             mark=none,
             line width=0.5mm
         ] table[x=time,y=out] {sim/referenceSimTrans.dat};
-        \node [small dot,pin=0:{Voeding wordt geactiveerd}] at (1,0) {};
+        \node [small dot,pin={[pin edge={line width=0.3mm,black}]0:Voeding wordt geactiveerd}] at (1,0) {};
     \end{axis}
 
 

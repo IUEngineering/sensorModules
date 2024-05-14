@@ -14,7 +14,7 @@
 \usepackage{makecell}
 \usepackage[perpage]{footmisc}
 \usepackage[nameinlink,noabbrev,dutch]{cleveref}
-\usepackage{tikz-among-us}
+% \usepackage{tikz-among-us}
 
 \sisetup{detect-all}
 
@@ -29,10 +29,11 @@
 \newcommand\ph{\mathrm{pH}}
 
 % Zorg ervoor dat captions niet lijken op paragrafen
-\captionsetup{width=0.9\textwidth}
+\captionsetup{width=0.85\textwidth}
 
 
 \DeclareSIUnit{\belmilliwatt}{Bm}
+\DeclareSIUnit[scientific-notation = false]{\decibel}{\deci\bel}
 
 \addbibresource{references.bib}
 
@@ -68,11 +69,11 @@
 
 \begin{document}
     \makeTitlepage
-    \begin{tikzpicture}
-        \amongUsI{yellow}{cyan}
-        \hspace{10cm}
-        \amongUsI{red}{cyan}
-    \end{tikzpicture}
+    % \begin{tikzpicture}
+    %     \amongUsI{yellow}{cyan}
+    %     \hspace{10cm}
+    %     \amongUsI{red}{cyan}
+    % \end{tikzpicture}
 
     \input{sections/samenvatting}
 
@@ -125,6 +126,8 @@
     \appendix
     \newpage
     \input{appendix/pathloss}
+    \newpage
+    \input{appendix/readUgs}
 
 \end{document}
 

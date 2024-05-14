@@ -1,4 +1,7 @@
 \section{Discussie}
+% Globaal
+
+
 De uitgang van de uitleesschakeling is op dit moment een oscillerend signaal, zoals besproken in \cref{sec:stabilityTestResults}. De ADC geeft echter wel een waarde die proportioneel lijkt te zijn met de pH waarde van de oplossing die gemeten wordt.
 De maximumwaardes van de pieken lijken te veranderen op basis van pH. Hiermee is het echter niet mogelijk om de pH nauwkeurig genoeg te bepalen om aan de specificaties uit \cref{tab:systemSpecs} te voldoen.
 
@@ -8,8 +11,8 @@ Het totale gemiddelde vermogen dat het systeem gebruikt voldoet aan de \qty{10}{
 
 \newpage
 \section{Conclusie}
-De sensor module voldoet nog niet aan de opgestelde specificaties. Dit komt mede door het feit dat het uitgangssignaal van de uitleesschakeling niet stabiel is. Hierdoor kan de SNR van het signaal niet gemeten worden, aangezien er geen stabiel signaal is om met het ruisniveau te vergelijken. Ook kunnen hierdoor de afwijking, het bereik en de bandbreedte niet gemeten worden.
-Het energie budget is echter wel behaald; de sensor module gebruikt gemiddeld \qty{6.84}{\milli\watt}, wat onder het maximum van \qty{10}{\milli\watt} ligt.
+De sensormodule voldoet nog niet aan de opgestelde specificaties. Dit komt mede door het feit dat het uitgangssignaal van de uitleesschakeling niet stabiel is. Hierdoor kan de SNR van het signaal niet gemeten worden, aangezien er geen stabiel signaal is om met het ruisniveau te vergelijken. Ook kunnen hierdoor de afwijking, het bereik en de bandbreedte niet gemeten worden.
+Het energie budget is echter wel behaald; de sensormodule gebruikt gemiddeld \qty{6.84}{\milli\watt}, wat onder het maximum van \qty{10}{\milli\watt} ligt.
 
 
 % Nog vermelden:
@@ -18,11 +21,17 @@ Het energie budget is echter wel behaald; de sensor module gebruikt gemiddeld \q
 
 \newpage
 \section{Aanbevelingen}
-Er kunnen meerdere verbeteringen toegepast moeten worden op het systeem. Aangezien de sensor module op dit moment nog niet goed de pH waarde kan uitlezen, zal dit eerst opgelost moeten worden. Dit kan gedaan worden door het probleem met de stabiliteit, beschreven in \cref{sec:stabilityTestResults}, verder te onderzoeken en vervolgens te verhelpen.
+Dit hoofdstuk beschrijft voor elk systeemonderdeel wat er aan verbeterd kan worden om het (beter) te laten functioneren.
+
+\subsubsection*{ISFET uitleesschakeling}
+Zoals de test in \cref{sec:stabiliteitstest} heeft getoond produceert de ISFET uitleesschakeling op het moment nog een oscillerende uitgang. Dit kan opgelost worden door verder onderzoek te doen naar de oorzaak hiervan.
+
+
+Er kunnen meerdere verbeteringen toegepast moeten worden op het systeem. Aangezien de sensormodule op dit moment nog niet goed de pH waarde kan uitlezen, zal dit eerst opgelost moeten worden. Dit kan gedaan worden door het probleem met de stabiliteit, beschreven in \cref{sec:stabilityTestResults}, verder te onderzoeken en vervolgens te verhelpen.
 
 Een ander onderdeel dat verbetert kan worden is het filter. Zoals beschreven in \cref{sec:filterFout} is de orde van het geïmplementeerde filter te laag. Door dit filter te vervangen door een filter met een orde van zes of hoger kan de signaalkwaliteit verbeterd worden.
 
-Verder moet er een temperatuursensor toegevoegd worden aan het systeem, die de temperatuur van de te meten oplossing kan bijhouden. Zo kan er beter gecompenseerd worden op de temperatuursafhankelijkheid van de ISFET.
+Verder moet er een temperatuursensor toegevoegd worden aan het systeem, die de temperatuur van de te meten oplossing kan bijhouden. Zo kan er beter gecompenseerd worden op de temperatuurafhankelijkheid van de ISFET.
 
 % zet misschien nog iets over energiezuiniger maken.
 % Noem energie waarde uit illya test.

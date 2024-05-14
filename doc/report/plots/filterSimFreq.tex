@@ -5,7 +5,7 @@
     \begin{axis}[
         xmode=log,
         xlabel={$f$ [\unit{\hertz}]},
-        ylabel={$\sqrt{S_{u,n}} \,\,\,\, \left[\unit{\nano\volt}/\sqrt{\unit{\hertz}}\right]$},
+        ylabel={$\left|H\left(f\right)\right| \,\,\,\, \left[\unit{\decibel}\right]$},
         grid=major,
         height=6cm
     ]
@@ -13,9 +13,7 @@
         mark=none,
         line width=0.5mm,
     ] table[x=freq,y=out] {sim/filterSimFreq.dat};
-
-    \node [small dot,pin=0:{kantelpunt}] at (10.80152, -3) {};
-
+    \node [small dot,pin={[pin edge={line width=0.3mm,black}]0:kantelpunt}] at (10.80152, -3) {};
     \end{axis}
 \end{tikzpicture}
 

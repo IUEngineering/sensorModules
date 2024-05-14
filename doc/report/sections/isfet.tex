@@ -1,0 +1,175 @@
+\subsection{De ISFET uitlezen}
+Om een ISFET uit te kunnen lezen moet er een ISFET worden gekozen. Voor dit project moet \si{\pH} tot op \qty{0.05}{\pH} worden gemeten\footnote{Zie de specificaties in \cref{sec:systemSpecifications}.}. Om dit te kunnen doen is er een ISFET met een hoge chemische gevoeligheid nodig. Om hieraan te voldoen is er een ISFET nodig die is gebaseerd op $\mathrm{Ta_2O_5}$. De MSFET 3330-2 ISFET van MICROSENS is gebaseerd op $\mathrm{Ta_2O_5}$ en heeft dus een hoge chemische gevoeligheid \cite{bergveld2003thirtyYearsISFET,bergveld1985impactOfMosfetBasedSensors,isfet}.
+
+De MSFET 3330-2 heeft een gevoeligheid van \qty{-55}{\milli\volt\pH^{-1}} \cite{isfet}. Een verandering van \qty{0.05}{\pH} geeft een spanningsverandering van \qty{2.75}{\milli\volt}. Wanneer de \SNR voor dit kleinste signaal minimale \qty{40}{\decibel} moet zijn, mag de ruisvloer niet hoger zijn dan \qty{27.5}{\micro\volt}. Volgens \cref{eq:measureNoiseFull} is de ruisvloer van de uitleesschakeling opgebouwd uit verschillende ruisbronnen. \Cref{eq:measureNoiseFull2} is een herhaling van \cref{eq:measureNoiseFull}.
+\begin{equation}\label{eq:measureNoiseFull2}
+    S_{u_{{n,out}}} = \left(S_{u_{{n,ref}}} + S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2\right) \cdot \left(\frac{U_{o,max}}{U_{ref}}\right)^2
+    \tagaddtext{[\si{\volt\squared\per\hertz}]}
+\end{equation}
+
+In de datasheet van de MSFET 3330-2 is aangeraden om de ISFET uit te lezen met een drainstroom van \qty{100}{\micro\ampere} en een drain source spanning van \qty{500}{\milli\volt} \cite{isfet}. Het is dan ook mogelijk om de drain source impedantie te berekenen. $Z_{fet}$ komt dan uit op \qty{5}{\kilo\ohm}.
+\begin{figure}[!htbp]
+    \centering
+    \def\svgwidth{0.4\textwidth}
+    \input{img/ISFETCircuitBest.pdf_tex}
+    \caption{De schakeling die gebruikt zal worden om de ISFET mee uit te lezen.}
+    \label{fig:measureResistorImplementatie}
+\end{figure}
+De weerstand $R$ in \cref{fig:measureResistorImplementatie} wordt gebruikt om de drainstroom in te stellen. Met een voedingsspanning van \qty{3.3}{\volt} moet $R$ \qty{28}{\kilo\ohm} gekozen worden om een drainstroom van \qty{100}{\micro\ampere} te krijgen. Door \cref{eq:measureNoiseFull2} te gebruiken kan berekend worden dat de spanningsreferentie en de nullor implementatie elk niet meer dan \qty{1.3}{\pico\volt^2\hertz^{-1}} aan ruis mogen genereren.
+
+In \cref{sec:energyBudgets} is gespecificeerd dat de ISFET uitleesschakeling niet meer dan \qty{600}{\micro\watt} mag verbruiken. Omdat de drainstroom is ingesteld op \qty{100}{\micro\ampere} en de voedingsspanning \qty{3.3}{\volt} is zal de uitleesschakeling minimaal \qty{330}{\micro\watt} verbruiken. Hierdoor mogen de spanningsreferentie en de nullor implementatie elk maximaal \qty{135}{\micro\watt} verbruiken.
+
+In de aankomende twee subparagrafen zal ingegaan worden op de implementatie van de spanningsreferentie en de implementatie van de nullor. Hierbij zal rekening worden gehouden met de ruis en vermogens eisen die in deze paragraaf aanbod zijn gekomen.
+
+\subsubsection{Spanningsreferentie}
+De spanningsreferentie die nodig is voor het uitlezen van de ISFET moet aan de specificaties uit \cref{tab:specsSpanningsreferentie} voldoen. Om deze spanningsreferentie te implementeren zal er gebruik gemaakt worden van een ontkoppelde weerstandsdeler. Deze schakeling is weergegeven in \cref{fig:dividerForContext}. Een van de voordelen van een ontkoppelde spanningsdeler ten opzichte van een niet ontkoppelde spanningsdeler is dat de ruis en vermogens eisen los van elkaar kunnen worden geoptimaliseerd\footnote{Zie \cref{sec:Pspanningsreferentie,sec:ruisSpanningsreferentie} waarom dit het geval is.}.
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|c|c}
+        Specificatie & Waarde & Eenheid  \\\hline
+        $P_{max}$ & 135 & \si{\micro\watt}\\
+        $\overline{U_{n,out}^2}$ & 13 & \si{\pico\volt^2}\\
+        $U_{out}$ & 500 & \si{\milli\volt}\\
+    \end{tabular}
+    \caption{De specificaties waaraan de spanningsreferentie moet voldoen.}
+    \label{tab:specsSpanningsreferentie}
+\end{table}
+\begin{figure}[!htbp]
+    \centering
+    \def\svgwidth{7cm}
+    \input{img/divider.pdf_tex}
+    \caption{De spanningsreferentie schakeling, ook te vinden in \cref{fig:divider}.}
+    \label{fig:dividerForContext}
+\end{figure}
+
+Zoals besproken in \cref{sec:referenceVoltage} kunnen de weerstandswaardes van de spanningsreferentie erg hoog gekozen worden. Met een $R_1$ van \qty{5.6}{\mega\ohm} gebruikt de spanningsdeler \qty{1.65}{\micro\watt}. Dit ligt ver onder het maximale vermogen van \qty{135}{\micro\watt}.
+
+Volgens \cref{eq:dividerNoise} heeft de condensatorwaarde wel effect op de ruis. Met een condensator van \qty{1}{\micro\farad} produceert de spanningsreferentie \qty{4.1}{\femto\volt^2} aan ruis. Dit is ver onder de maximale ruisbijdrage van \qty{13}{\pico\volt^2}.
+
+De gekozen waardes voor $R_1$, $R_2$ en $C$ met de resulterende eigenschappen van de ontkoppelde spanningsdeler zijn te vinden in \cref{tab:divider}.
+
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|l|l}
+        Symbool & Waarde & Eenheid \\
+        \hline
+        $R_1$       & 5.6  & \si{\mega.\ohm}   \\
+        $R_2$       & 1.0  & \si{\mega.\ohm}   \\
+        $C$         & 1.0  & \si{\micro.\farad}\\\hline
+        $U_{out}$   & 500  & \si{\milli.\volt} \\
+        $P$         & 1.65 & \si{\micro.\watt} \\
+        $u_{n,out}$ & 4.1  & \si{\femto.\volt^2}
+    \end{tabular}
+    \caption{De gekozen waardes van de spanningsdeler, met het resulterende vermogensverbruik en de ruiseigenschappen.}
+    \label{tab:divider}
+\end{table}
+
+% \paragraph{Simulatie}
+Om te verifiëren dat de spanningsreferentie goed werkt, is er een aantal simulaties uitgevoerd.
+In \cref{fig:referenceSimFreq} is het resultaat van een AC simulatie te zien. Hier is $H(f)$ de overdracht van de voeding naar de uitgang van de spanningsdeler. De overdracht begint op \qty{-16.4}{\decibel}, dit kan verklaard worden doordat de spanningsdeler frequentie onafhankelijk de voedingsspanning door 6.6 deelt. Dit komt overeen met een versterking van \qty{-16.4}{\decibel}.
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimFreq.tex}
+    \caption{Het resultaat van een AC simulatie van de spanningsreferentie.}
+    \label{fig:referenceSimFreq}
+\end{figure}
+
+De ontkoppel condensator voegt ook een pool toe op \qty{-187}{\milli.\hertz}. Deze pool zorgt er voor dat veranderingen in de voedingsspanning boven de \qty{187}{\milli.\hertz} relatief weinig invloed hebben. Dit heet power supply rejection en kan als een ratio van ingang (voeding) verandering gedeeld door uitgangsverandering worden opgeschreven. \cref{eq:psrrSpanningsdeler} geeft de formule om de power supply rejection ratio (PSRR) van de spanningsreferentie te berekenen.
+\begin{equation}\label{eq:psrrSpanningsdeler}
+    \mathrm{PSRR}_{U_{ref}}\left(f\right)=\left(2\pi fC\frac{R_1R_2}{R_1+R_2}+1\right)\left(\frac{R_1}{R_2}+1\right)
+\end{equation}
+
+In \cref{fig:referenceSimTrans} is het resultaat van een transient simulatie te zien. Deze simulatie laat zien dat het 5 seconden duurt voordat de spanningsreferentie de gewenste spanning van \qty{500}{\milli\volt} bereikt. Dit is een zeer acceptabele opstarttijd, aangezien de sensormodule maar één keer aangezet wordt aan het begin van de bedrijfsduur.
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimTrans.tex}
+    \caption{Het resultaat van een transient simulatie van de spanningsreferentie.}
+    \label{fig:referenceSimTrans}
+    % \label{fig:referenceSimCis}
+\end{figure}
+
+In \cref{fig:referenceSimNoise} is het resultaat van een ruissimulatie te zien. Het effect van de ontkoppel condensator op de ruis van de spanningsreferentie is goed te zien. In het geval er geen ontkoppel condensator zou zijn gebruikt zou de spectrale ruisdichtheid niet veranderen over frequentie. Wanneer de ruis uit \cref{fig:referenceSimNoise} van o tot \qty{10}{\hertz} wordt geïntegreerd volgt dat de ruis bijdrage van de spanningsreferentie \qty{4.1}{\femto.\volt^2} is. Dit komt overeen met de berekening die is gedaan om de hoeveelheid spanningsruis in \cref{tab:divider} mee te berekenen. Met deze simulatie is het nu aannemelijk dat de spanningsreferentie inderdaad veel minder ruis produceert dan dat er in het ruisbudget gegeven is voor de spanningsreferentie.
+% Hier mag tycho iets over vertellen veel plezier tycho!%TODO: dat
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/referenceSimNoise.tex}
+    \caption{Het resultaat van een ruissimulatie van de spanningsreferentie.}
+    \label{fig:referenceSimNoise}
+\end{figure}
+
+
+\subsubsection{Nullor implementatie}
+De nullor implementatie voor de uitleesschakeling van de ISFET moet aan de specificaties van \cref{tab:nullorImplementSpecs} voldoen. Voor de implementatie van de nullor zal een opamp worden gebruikt. Bij het kiezen van de opamp zal er aandacht worden besteed aan de ruisbijdrage van de opamp. Tevens zal er naar het statische vermogensverbruik van de opamp implementatie worden gekeken.
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|c|c}
+        Specificatie & Waarde & Eenheid \\\hline
+        $P_{max}$ & 135 & \si{\micro\watt}\\
+        $\overline{U_{n,nullor}^2}$ & 13 & \si{\pico\volt^2}
+    \end{tabular}
+    \caption{Eisen waaraan de nullor implementatie van de ISFET uitleesschakeling moet voldoen.}
+    \label{tab:nullorImplementSpecs}
+\end{table}
+
+Het vermogensverbruik van de opamp kan in twee delen worden gedeeld: $P_{dyn}$ en $P_{stat}$. $P_{dyn}$ staat voor het dynamisch vermogen dat de nullor implementatie als signaalvermogen moet kunnen leveren \cite{energieZuinigeSystemenOntwerpen}. $P_{stat}$ is het vermogen dat door de nullor implementatie wordt verbruikt om de transistoren in te stellen die het gedrag van de nullor benaderen \cite{energieZuinigeSystemenOntwerpen}. Voor een opamp staat dit vermogen vast zodra de voedingsspanning van de nullor implementatie is gekozen. Met \cref{eq:nullorDynP} kan het dynamische signaalvermogen dat de nullor moet kunnen leveren worden berekend \cite{energieZuinigeSystemenOntwerpen}. Het is te zien in \cref{eq:nullorDynP} dat het dynamisch vermogen groter wordt wanneer $U_{uit,pp}$ kleiner wordt. Om het maximale dynamische vermogen te berekenen zal dus het kleinste uit te sturen signaal moeten worden gebruikt. Op basis van de ISFET en de specificaties uit \cref{sec:systemSpecifications} blijkt dat de kleinste $U_{uit,pp}$ die dit systeem moet kunnen halen met een minimale \SNR van \qty{40}{\decibel} \qty{5.5}{\milli\volt}. Hiermee volgt een maximaal dynamisch vermogen van \qty{2}{\pico.\watt}.
+\begin{equation} \label{eq:nullorDynP}
+    P_{dyn}=\frac{U_{bron}}{U_{uit,pp}}8kTf10^{SNR_{dB}/10}
+    \tagaddtext{[\si{\watt}]}
+\end{equation}
+Het maximale statische vermogen kan berekend worden door het dynamische vermogen van het energie budget af te halen. Omdat het hele systeem met \qty{3.3}{\volt} wordt gevoed wordt er voor gekozen om ook de nullor implementatie met \qty{3.3}{\volt} te voeden. Hieruit volgt dat de maximale quiescent stroom van de opamp die de nullor implementeert \qty{40}{\micro\ampere} mag zijn.
+
+    De nullor implementatie mag maximaal \qty{13}{\pico.\volt^2} aan de totale $\overline{u_{in}^2}$ bijdragen. De bijdrage van de stroom en spanningsruisbronnen aan $\overline{u_{out}^2}$ kan met \cref{eq:nullorNoiseContrib} worden berekend. \Cref{eq:nullorNoiseContrib} volgt uit \cref{eq:measureNoiseFull2}. Wanneer er van wordt uitgegaan dat de spannings en stroomruisbronnen evenveel ruis mogen generen volgt dat de spanningsruisbron maximaal \qty{699}{\femto.\volt\squared\per\hertz} mag generen. De stroomruisbron mag vervolgens niet meer dan \qty{38.8}{\zepto.\ampere\squared\per\hertz}
+\begin{equation}\label{eq:nullorNoiseContrib}
+    \overline{u_{in,nullor}^2}=\int_Bu_{u,n}+i_{n,n}\left(\frac{Z_{fet}R}{Z_{fet}+R}\right)^2\,df
+    \tagaddtext{[\si{\volt\squared}]}
+\end{equation}
+In opamps wordt de spanningsruis en de stroomruis inplaats van in [\si{\volt\squared\per\hertz}] / [\si{\ampere\squared\per\hertz}] gegeven in [\si{\volt.\hertz^{-1/2}}] / [\si{\ampere.\hertz^{-1/2}}]. Dit houdt in dat er een opamp moet worden gezocht met een spanningsruis van ongeveer \qty{836}{\nano\volt.\hertz^{-1/2}} en een stroomruisbron van ongeveer \qty{197}{\femto.\ampere.\hertz^{-1/2}}.
+
+% Voor de nullor die gebruikt wordt om de ISFET uit te lezen in \cref{sec:ISFETLees} moet een implementatie gekozen worden. De uitleesschakeling mag volgens de specificaties maximaal \qty{200}{\micro\watt}  gebruiken. De constante stroom die door de weerstand en ISFET in \cref{fig:measureResistor} heen loopt, zorgt voor een constant vermogensverbruik van \qty{165}{\micro\watt}. Hierdoor mag de nullor implementatie maximaal \qty{35}{\micro\watt} gebruiken.
+% Het maximale dynamische vermogen dat deze nullor implementatie aan de uitgang zal moeten kunnen leveren, is gelijk aan het maximale vermogen dat het filter kan dissiperen. Er blijft dan afgerond nog \qty{34}{\micro\watt} aan statisch vermogen over. Dit resulteert in een maximale quiescent stroom van \qty{10.3}{\micro\ampere}.
+
+% De uitleesschakeling moet een minimale SNR hebben van 40 dB. De maximale ruisspanning en stroom die de nullor mag genereren aan de ingang zijn te berekenen met \cref{eq:nullorImplementNoise}. Deze vergelijking is afgeleid uit \Cref{eq:measureNoiseFull}.
+% \begin{equation} \label{eq:nullorImplementNoise}
+%     S_{u_{{n,n}}} + S_{i_{{n,in}}}\left(Z_{fet} // R\right)^2 = \frac{S_{u_{{n,out}}}}{H^2(\ph)} - S_{u_{{n,ref}}}
+% \end{equation}
+
+In \cref{tab:opampSpecs} staan de specificaties beschreven voor een opamp die kan worden gebruikt om de nullor in de ISFET uitleesschakeling te implementeren. Een opamp die aan deze specificaties voldoet is de LTC2064. De specificaties van de LTC2064 die overeen komen met de eisen van de nullor implementatie die in \cref{tab:opampSpecs} staan worden getoond in \cref{tab:LTC2064Specs}. Het is duidelijk dat de specificaties van de LTC2064 duidelijk voldoen aan de eisen die gesteld worden aan de nullor implementatie voor de ISFET uitleesschakeling. Het is echter van belang om aan te geven dat in de ruis analyse voor het kiezen van een opamp een belangrijke bron van ruis voor dit systeem is weg gelaten. Deze bron van ruis heet 1/f ruis en is van belang voor dit systeem omdat er op erg lage frequenties wordt gemeten \cite{verhoeven2007structured}. Dit is de rede dat er voor is gekozen om een opamp te zoeken die ruim onder de ruis eisen zit van de nullor implementatie voor de ISFET uitleesschakeling.
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|c|c}
+        Specificatie    & Waarde    & Eenheid                           \\\hline
+        $U_{supply}$    & 3.3       & \si{\volt}                        \\
+        $I_{Q}$         & $<40$     & \si{\micro\ampere}                \\
+        $u_{n}$         & 836       & \si{\nano.\volt.\hertz^{-1/2}}    \\
+        $i_n$           & 197       & \si{\femto.\ampere.\hertz^{-1/2}}
+    \end{tabular}
+    \caption{Specificaties waaraan een opamp moet voldoen die gebruikt kan worden om de nullor van de ISFET uitleesschakeling mee te implementeren.}
+    \label{tab:opampSpecs}
+\end{table}
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|c|c|c}
+        Specificatie    & gemiddeld & max & Eenheid                           \\\hline
+        $U_{supply}$    &           & 5.5 & \si{\volt}                        \\
+        $I_{Q}$         &           & 2   & \si{\micro\ampere}                \\
+        $u_{n}$         & 220       &     & \si{\nano.\volt.\hertz^{-1/2}}    \\
+        $i_n$           & 12        &     & \si{\femto.\ampere.\hertz^{-1/2}}
+    \end{tabular}
+    \caption{Specificaties van de LTC2064 die relevant zijn om te kijken of de LTC2064 als nullor implementatie voor de ISFET uitleesschakeling gebruikt kan worden.}
+    \label{tab:LTC2064Specs}
+\end{table}
+% De LTC2064 opamp heeft (buiten shutdown) een quiescent stroom van \qty{2.5}{\micro\ampere}, wat op \qty{3.3}{\volt} resulteert in een vermogen van \qty{8.25}{\micro\watt}. Daarbij heeft deze een spectrale ruisdichtheid van \qty{12}{\femto\ampere\hertz^{-0.5}} en $\qty{220}{\nano\volt\hertz^{-0.5}}$\cite{LTC2064}. Dit zit volgens \cref{eq:nullorImplementNoise} ver onder het maximum. Daarnaast is zowel de ingangsafwijking als de 1/f ruis van deze opamp erg laag. Hierdoor is deze opamp gekozen voor het ontwerp.
+
+Om te kjken of de ISFET uitleesschakeling lijkt te werken is er een spice simulatie gedaan waarbij voor een fet met veranderende threshold spanning gekeken is wat de uitgangsspanning van de ISFET uitleesschakeling is. Het resultaat van deze simulatie is te zien in \cref{fig:readoutSimTrans}. Het is te zien dat de uitleesschakeling de gate spanning van de FET zo aanpast dat deze linear verandert met de drempelspanning van de FET. Aangezien de drempelspanning van de ISFET op basis van \si{\pH} zich aanpast is dit ook het gedrag dat wordt verwacht van de ISFET uitleesschakeling. De spice netlist die is gebruikt voor de simulatie staat in \cref{sec:netlistUgsOverUth}.
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/readoutSimTrans}
+    \caption{Het resultaat van meerdere transient simulaties op de uitleesschakeling. De uitgangsspanning van de schakeling is geplot op basis van de ingestelde drempelspanning van de FET.}
+    \label{fig:readoutSimTrans}
+\end{figure}
+
+In deze paragraaf is de ISFET uitleesschakeling geïmplementeerd en is er gekeken met een simulatie of de schakeling zich naar verwachting gedraagt.
