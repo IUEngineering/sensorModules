@@ -1,4 +1,24 @@
 \subsection{Het RF systeem}
-In \cref{sec:ontwerp:Rf} is ingegaan op het minimum zendvermogen dat nodig is. Dit minimum vermogen is \qty{7.1}{\micro\watt}. Het is belangrijk om op te merken dat dit enkel het minimum vermogen is dat in het rf signaal zit. Het genereren van dit rf signaal kan mogelijk meer energie kosten. Bij het kiezen van de microcontroller is de \mcu gekozen, onder andere omdat er een \qty{2.4}{\giga\hertz} transceiver in zit. Uit de datasheet van de \mcu is te halen dat deze transceiver \qty{4.6}{\milli\ampere} aan stroom trekt, indien er draadloos wordt gezonden met \qty{0}{\deci\belmilliwatt} en een datasnelheid van \qty{1}{\mega\hertz} \cite{nrf52810}. Door \cref{eq:calcPperPacket,eq:calcRfAvaragePower} te gebruiken is een gemiddeld rf vermogen van \qty{45}{\micro\watt} te berekenen. \qty{45}{\micro\watt} zit onder het energie budget dat beschikbaar is voor het draadloos zenden.
+In \cref{sec:ontwerp:Rf} is ingegaan op wat het minimum zendvermogen is dat nodig is om een BER van $1\times 10^{-5}$ te behalen wanneer de \si{\pH} sensormodule \qty{10}{\meter} van het basis station is verwijderd.
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|c|c}
+        Specificatie    & Waarde    & Eenheid \\\hline
+        $P_{zend,min}$  & 7.1       & \si{\micro\watt}  \\
+        $B$             & 2         & \si{\mega\hertz}  \\
+        Modulatie       & GSK/BLE   &                   \\
+    \end{tabular}
+    \caption{De specificaties waaraan de rf zend implementatie moet voldoen.}
+    \label{tab:specRfsending}
+\end{table}
+% In \cref{sec:ontwerp:Rf} is ingegaan op het minimum zendvermogen dat nodig is. Dit minimum vermogen is \qty{7.1}{\micro\watt}. Het is belangrijk om op te merken dat dit enkel het minimum vermogen is dat in het rf signaal zit. Het genereren van dit rf signaal kan mogelijk meer energie kosten. Bij het kiezen van de microcontroller is de \mcu gekozen, onder andere omdat er een \qty{2.4}{\giga\hertz} transceiver in zit. Uit de datasheet van de \mcu is te halen dat deze transceiver \qty{4.6}{\milli\ampere} aan stroom trekt, indien er draadloos wordt gezonden met \qty{0}{\deci\belmilliwatt} en een datasnelheid van \qty{1}{\mega\hertz} \cite{nrf52810}. Door \cref{eq:calcPperPacket,eq:calcRfAvaragePower} te gebruiken is een gemiddeld rf vermogen van \qty{45}{\micro\watt} te berekenen. \qty{45}{\micro\watt} zit onder het energie budget dat beschikbaar is voor het draadloos zenden.
 
-Bij de implementatie van het rf zenden, is het belangrijk om de rf uitgangsimpedantie van de \mcu te matchen met de antenne impedantie. Dit is belangrijk om een zo klein mogelijke hoeveelheid aan energie te verspillen aan reflecties \cite{FundamentalsofAppliedElectromagnetics}. In de datasheet van de \mcu staat al beschreven hoe de rf uitgang gematcht kan worden aan \qty{50}{\ohm} \cite{nrf52810}. Deze impedantie matching wordt gedaan op basis van een L-type matching netwerk. Hierbij staat er een spoel in serie met de antenne en een condensator parallel aan de rf uitgang van de \mcu \cite{nrf52810}.
+Er zijn meerdere manieren om een rf zender te implementeren.
+\begin{itemize}
+    \item Zelf met discrete componenten een rf zender implementeren,
+    \item Een losse rf zend IC gebruiken,
+    \item Een MCU gebruiken met een geïntegreerde rf transceiver.
+\end{itemize}
+Omdat de complexiteit van een rf zender op basis van discrete componenten te groot is zal dit niet gedaan worden. De overblijvende twee opties zijn een losse rf zend IC en een MCU met geïntegreerde rf transceiver. In eerste instantie zal er gekeken worden of er een MCU gekozen kan worden die een rf transceiver heeft die aan de eisen uit \cref{tab:specRfsending} voldoet.
+
+Bij de implementatie van het rf zenden, is het belangrijk om de rf uitgangsimpedantie van de zender te matchen met de antenne impedantie. Dit is belangrijk om een zo klein mogelijke hoeveelheid aan energie te verspillen aan reflecties \cite{FundamentalsofAppliedElectromagnetics}. In de meeste datasheets van zenders staat beschreven hoe de rf uitgang gematcht kan worden aan \qty{50}{\ohm}.

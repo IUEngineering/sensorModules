@@ -1,8 +1,20 @@
-\subsection{Batterij en bescherming}
-
-Voor de gekozen LiPO batterij technologie is er bescherming nodig. De celspanning mag niet boven de 4.2 V of onder de 2.7 V komen. Dit kan op meerdere manieren gedaan worden. In de implementatie van de sensor module is er gekozen voor een LTC4071 batterij beschermings IC. Wanneer de spanning van de batterij boven de 4.2 V komt, gebruikt de LTC4071 een 50mA shunt om de ingang stroom naar hitte om te zetten. Wanneer de batterijspanning onder de 2.7 V komt, zet de IC de uitgang uit, om te voorkomen dat de batterijspanning verder daalt.
-
 \subsection{Voeding}
+De voeding voor het \si{\pH} meetsysteem moet een aantal dingen kunnen doen. Deze verschillende eisen voor de voeding worden hieronder kort benoemd.
+\begin{itemize}
+    \item De analoge ISFET uitleesschakeling voeden op een vaste spanning (rond \qty{3.3}{\volt})
+    \item De digitale schakeling voeden \qty{3.3}{\volt}
+    \item De batterij opladen via een usb-c kabel
+    \item De batterij opladen via een piëzo element
+    \item De batterij beschermen
+    \item Minder dan \qty{2}{\milli\watt} verbruiken
+\end{itemize}
+In deze paragraaf zal in gegaan worden op de implementatie van de voeding.
+
+\subsubsection{Batterij en bescherming}
+
+Voor de gekozen LiPO batterij technologie is er bescherming nodig. De celspanning mag niet boven de \qty{4.2}{\volt} of onder de \qty{2.7}{\volt} komen. Dit kan op meerdere manieren gedaan worden. In de implementatie van de sensor module is er gekozen voor een LTC4071 batterij beschermings IC. Wanneer de spanning van de batterij boven de \qty{4.2}{\volt} komt, gebruikt de LTC4071 een \qty{50}{\milli\ampere} shunt om de ingang stroom naar hitte om te zetten. Wanneer de batterijspanning onder de \qty{2.7}{\volt} komt, zet de IC de uitgang uit, om te voorkomen dat de batterijspanning verder daalt.
+
+\subsubsection{Voeding}
 Voor de voeding is er gekozen voor een LTC3330 van Analog Devices. Dit is een zogenaamde `power management integrated circuit' (PMIC). Deze PMIC voldoet aan de specs van \cref{tab:systemSpecs}, en heeft een aantal nuttige eigenschappen:
 \begin{itemize}
     \item Ingebouwde ideale diodes voor AC-DC omzetting
@@ -13,9 +25,3 @@ Voor de voeding is er gekozen voor een LTC3330 van Analog Devices. Dit is een zo
 \end{itemize}
 
 De gekozen PMIC is een IC die is ontworpen voor energy harvesting en low power modules. De uitgang van de energy harvesting wordt als eerste gelijkgericht door een ideale diode gelijkrichter. Dit zorgt voor minimaal energie verlies. Hierna bepaalt de LTC3330 of de rest van het systeem de stroom nodig heeft of dat de energie opgeslagen moet worden in de accu. De PMIC heeft 2 spanning omzet methodes ingebouwd. Een buck-boost converter en een LDO die aan en uit kan. De LDO wordt gevoed door de buck-boost.
-
-\begin{figure}
-    \centering
-
-    \label{}
-\end{figure}

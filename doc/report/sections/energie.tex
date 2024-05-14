@@ -4,6 +4,7 @@
 
 
 \subsection{De oplaadbare voeding van het systeem} \label{sec:energy}
+
 De sensormodule heeft energie nodig om te functioneren. Deze energie moet geleverd worden door een energie management systeem in de vorm van een constante spanning. Het voedingsblok ligt buiten het signaalverwerkingspad, zoals te zien is in \cref{fig:moduleDiagram_energie}.
 
 \begin{figure}[!htbp]
@@ -24,13 +25,21 @@ Hierdoor zal er, naast een gelijkrichter en een spanningsregelaar, ook een bevei
 
 
 \subsubsection{Accu} \label{sec:batterijOntwerp}
-In onderzoek \cite{BatteryComparison} is te zien dat Lithium-Polymeer batterijen (LiPo) een hoge energiedichtheid hebben in vergelijking met andere soorten batterijen. Er zijn anderen die hogere energie densiteit hebben, maar daarvan zijn de kosten hoog, of zijn er andere nadelige effecten\cite{BatteryComparison}. Dit heeft ervoor gezorgd dat voor de sensormodule ontwerp een LiPo gekozen is als batterij. Spanning van een cel LiPo (1s) is maximaal 4.2 V en minimaal veilige spanning is 2.7 V\cite{BatteryComparison}.
+Er zijn veel verschillende soorten soorten oplaadbare batterijen die gebruikt kunnen worden bij een sensor module. 
+Voor de type sensor module waar dit verslag over gaat is gekeken naar 4 verschillende oplaadbare accu opties\cite{battery_comparison}:
+
+\begin{enumerate}
+    \item Lithium-Ion (Li-Ion)
+    \item Lithium Polymeer (Li-Po)
+    \item Zebra (Zout nickel) 
+    \item Nickel-Cadmium (Ni-Cd)
+\end{enumerate}
+
+In onderzoek \cite{battery_comparison} is het duidelijk aangetoond dat Li-Po het hoogste energiedichtheid heeft. Dit zou een praktische overweging zijn om de sensor module compact te houden. Dit heeft ervoor gezorgd dat voor de sensor module ontwerp een LiPo gekozen is als batterij. Spanning van een cel (1s) LiPo is maximaal 4.2 V en minimaal veilige spanning is 2.7 V\cite{BatteryComparison}. Dit is een van de specificaties van de batterij management systeem. 
 
 
 \subsubsection{Voeding} \label{sec:voeding}
-
 De voedingsspanning is gekozen vanuit de maximale spanning die nodig is voor de ISFET sensor\cite{isfet}. Hieruit volgt een maximale systeemspanning van \qty{3.3}{\volt}.
-
 
 Zoals te lezen in \cref{sec:batterijOntwerp} is er gekozen voor LiPo batterij technologie. De batterij heeft een beveiliging voor beide op- en ontladen nodig. De celspanning moet omgezet worden naar systeemspanning van \qty{3.3}{\volt}. Dit kan op meerdere manieren gedaan worden. Twee hiervan zijn een DC-DC buck-boost converter en een low dropout regelaar (LDO). De buck-boost converter is efficiënter dan de LDO, maar heeft een minder stabiele uitgang. Hierdoor is ervoor gekozen om beide soorten regelaar te gebruiken. Dit is te zien in \cref{fig:voedingSchematisch}. Het digitale gedeelte van het systeem wordt gevoed door een buck-boost converter; de spanningsrimpel van de buck-boost converter maakt minder uit voor een goed ontkoppelde microcontroller.
 De uitgang van de buck-boost converter wordt vervolgens gestabiliseerd door een LDO, die het analoge gedeelte van het systeem voedt. De uitgangsspanning van de LDO zal iets lager zijn dan de uitgang van de buck-boost converter, wat geen problemen zal vormen zolang het verschil minimaal is.
