@@ -1,0 +1,88 @@
+\subsection{Filter}
+Het laagdoorlaatfilter dat voor de ADC zit, heeft als functie om aliasing te voorkomen. Aliasing treedt op vanaf de helft van de sample frequentie van de ADC. In \cref{sec:selectingADCandReqs} is uitgerekend dat de minimale sample frequentie 45 Hz is. Hieruit volgt dat er vanaf 22.5 Hz aliasing optreedt. In \cref{sec:energyBudgets} is aangegeven dat de te verwachten ingangssignaal ruis verhouding 40 dB is. Om de aliasing tot een acceptabel niveau te onderdrukken moeten signalen vanaf 22.5 Hz met minimaal 40 dB worden gedempt. Als laatste mag de implementatie van het filter niet meer dan 200 $\si{\micro\watt}$ verbruiken. In \cref{tab:specsAAfilter} staan alle specificaties voor het anti aliasing filter samengevat.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        Specificatie & Waarde & Eenheid \\\hline
+        $f_h$       & 10   & $[\si{\hertz}]$ \\
+        $D_f$       & 3    & $[\mathrm{dB}]$ \\
+        $f_d$       & 22.5 & $[\si{\hertz}]$ \\
+        $D_D$       & 40   & $[\mathrm{dB}]$ \\
+        $NF$        & 3    & $[\mathrm{dB}]$ \\
+        $u_{in,min}$& 1.94 & $[\si{\milli\volt}]$  \\
+        $\overline{u_{n,in}}$ & 378 & $[\si{\pico\volt^2}]$\\
+        $P$         & 200  & $\si{\micro\watt}$ \\
+    \end{tabular}
+    \caption{De specificaties voor het anti aliasing laagdoorlaatfilter.}
+    \label{tab:specsAAfilter}
+\end{table}
+
+\subsubsection{Filter orde berekenen}
+Met de specificaties in \cref{tab:specsAAfilter} is met \cref{eq:minOrderOfAAfilter} uit te rekenen dat er minimaal een zesde orde antialiasing filter nodig is. In \cref{tab:AA3dBspecs} staan voor filter ordes zes tot en met tien de acceptabele verschuiving van de kantelfrequentie.
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        orde & $f_c\,[\si{\hertz}]$ & $\epsilon_{f_c}\,[\si{\hertz}]$ & $\epsilon_{f_c}\,[\%]$ \\\hline
+        6    & 10.53 & 0.53 & 5.03  \\
+        7    & 11.12 & 1.12 & 10.07 \\
+        8    & 11.61 & 1.60 & 13.82 \\
+        9    & 12.01 & 2.01 & 16.71 \\
+        10   & 12.35 & 2.35 & 19.00 \\
+    \end{tabular}
+    \caption{De specificaties voor de kantelfrequentie voor zesde tot en met tiende orde filters.}
+    \label{tab:AA3dBspecs}
+\end{table}
+\Cref{tab:AA3dBspecs} laat zien dat het mogelijk een goede keuze kan zijn om een hogere orde dan de minimale zesde orde te kiezen. Een rede hiervoor kan zijn dat er rekening gehouden wordt met de onnauwkeurigheid van componenten. Het is te zien dat het ophogen van de filter orde invers proportioneel is aan de toename van de toegestane afwijking van de kantelfrequentie\footnote{Zie \cref{sec:DetermineAAorder}.}.
+
+\subsubsection{Filter implementeren} \label{sec:filterFout}
+Tijdens het ontwerpen van het pH meetsysteem is er foutief aangenomen dat een eerste orde filter zou voldoen. Dit is de rede dat in de eerste versie van dit prototype een eerste orde laagdoorlaatfilter is gebruikt. Er is wel rekening gehouden met de ruis en vermogenseisen.
+
+Het eerste orde laagdoorlaatfilter bestaat uit een weerstand en een condensator die beiden van een waarde voorzien moeten worden. De minimale condensator waarde kan berekend worden op basis van de ruis van het voorgaande systeem met \cref{eq:filterCapMin}.
+% Met de ruis van het voorgaande systeem kan de minimale condensatorwaarde berekend worden door middel van \cref{eq:filterCapMin}.
+% Deze komt uit op ongeveer \qty{60}{\pico\farad}.
+Hieruit volgt dat de condensator minimaal \qty{11}{\pico\farad} moet zijn. De benodigde weerstandswaarde die uit deze condensatorwaarde volgt is \qty{1.3}{\giga\ohm}. Een weerstandswaarde van \qtylist{1.3}{\giga\ohm} is niet praktisch, omdat een kleine parallele capaciteit de effectieve weerstandswaarde snel doet dalen. Door nu met de vermogenseis een maximale capaciteit uit te rekenen kan er gekeken worden of er een lagere weerstandswaarde gekozen kan worden. \Cref{eq:filterPower} kan herschreven worden om op basis van vermogen een maximale capaciteit te berekenen, zie \cref{eq:maxCinRCforMaxP}. Met \cref{eq:maxCinRCforMaxP} blijkt dat de maximale capaciteit \qty{609}{\nano\farad} is.
+\begin{equation}\label{eq:maxCinRCforMaxP}
+    C_{max}=\frac{P_{max}}{u_i^2\omega_c}
+\end{equation}
+% Hiermee moet de weerstandswaarde echter \qty{270}{\mega\ohm} zijn, wat niet praktisch is. Met een condensator van \qty{10}{\nano\farad} kunnen de waardes in \cref{tab:filterValues} berekend worden. Deze waardes vallen binnen de specificaties.
+
+Voor de implementatie van het RC laagdoorlaatfilter is gekozen voor een capaciteit van \qty{100}{\nano\farad}. In \cref{tab:filterValues} staan de daaruit volgende eigenschappen van het RC filter.
+
+\begin{table}[!htbp]
+    \centering
+    \begin{tabular}{l|l|l}
+        Symbool & Waarde & Eenheid \\
+        \hline
+        $C$         & 100    & $\si{\nano\farad}$\\
+        $R$         & 147   & $\si{\kilo\ohm}$  \\
+        $f_c$       & 10.83  & $\si{\hertz}$     \\
+        $P$         & 32.84   & $\si{\micro\watt}$ \\
+        $\sqrt{\overline{u_{n,out}}}$ & 19.44   & $\si{\micro\volt}$ \\
+        $\overline{u_{n,out}}$ & 378 & $\si{\pico\volt^2}$\\
+        NF          & 0  & $\si{\decibel}$   \\
+    \end{tabular}
+    \caption{De gekozen waardes van het filter, en de resulterende vermogens- en ruiseigenschappen.}
+    \label{tab:filterValues}
+\end{table}
+
+Nu de waardes van het filter bekend zijn moet gecontroleerd worden of de ADC nog steeds aan de specificaties voldoet. Het is nodig om dit te controleren omdat het filter passief is geïmplementeerd. Door de passieve implementatie ontstaat er een spanningsdeler. Deze spanningsdeler wordt gevormd door de ingangsimpedantie van de ADC en de weerstandswaarde van het anti-aliasing filter. Uit \cref{eq:calcMinNumberADCbits} blijkt echter dat de eisen voor de ADC niet veranderen en dat de interne ADC van de \mcu nog steeds gebruikt kan worden.
+
+
+\subsubsection{Simulatie}
+Het filter is op meerdere manieren gesimuleerd. \Cref{fig:filterSimFreq} toont een AC simulatie van het filter. Hierin is te zien dat het kantelpunt inderdaad op ongeveer \qty{10.8}{\hertz} ligt
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/filterSimFreq}
+    \caption{Het resultaat van een AC simulatie van het filter.}
+    \label{fig:filterSimFreq}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \pgfplotsset{width=0.7\textwidth}
+    \input{plots/filterSimNoise}
+    \caption{Het resultaat van een ruis simulatie van het filter.}
+    \label{fig:filterSimNoise}
+\end{figure}
