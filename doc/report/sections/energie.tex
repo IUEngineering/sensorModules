@@ -17,10 +17,10 @@ Het energie management systeem moet energie kunnen opnemen uit de omgeving, en d
 
 \subsubsection{Energy Harvesting} \label{sec:harvesting}
 
-Vanuit de opdrachtdefinitie is er gekozen voor een piëzo element. Deze piëzo kan mechanische trillingen omzetten naar elektrische energie. Deze energie kan gebruikt worden om de accu op te laden of het vermogensverbruik van de module te verminderen.
+Vanuit de opdrachtdefinitie is er gekozen voor een piëzo-element. Deze piëzo kan mechanische trillingen omzetten naar elektrische energie. Deze energie kan gebruikt worden om de accu op te laden of het vermogensverbruik van de module te verminderen.
 
-Een piëzo element produceert energie in de vorm van wisselspanning. Deze spanningen kunnen oplopen tot spanningen boven de \qty{20}{\volt}.% TODO: bron????
-Hierdoor zal er, naast een gelijkrichter en een spanningsregelaar, ook een beveiliging tussen het piëzo element en de rest van het systeem geplaatst moeten worden.
+Een piëzo-element produceert energie in de vorm van wisselspanning. Deze spanningen kunnen oplopen tot spanningen boven de \qty{20}{\volt}.% TODO: bron????
+Hierdoor zal er, naast een gelijkrichter en een spanningsregelaar, ook een beveiliging tussen het piëzo-element en de rest van het systeem geplaatst moeten worden.
 
 
 \subsubsection{Accu} \label{sec:batterijOntwerp}
@@ -35,9 +35,9 @@ De voedingsspanning is gekozen vanuit de maximale spanning die nodig is voor de 
 Zoals te lezen in \cref{sec:batterijOntwerp} is er gekozen voor LiPo batterij technologie. De batterij heeft een beveiliging voor beide op- en ontladen nodig. De celspanning moet omgezet worden naar systeemspanning van \qty{3.3}{\volt}. Dit kan op meerdere manieren gedaan worden. Twee hiervan zijn een DC-DC buck-boost converter en een low dropout regelaar (LDO). De buck-boost converter is efficiënter dan de LDO, maar heeft een minder stabiele uitgang. Hierdoor is ervoor gekozen om beide soorten regelaar te gebruiken. Dit is te zien in \cref{fig:voedingSchematisch}. Het digitale gedeelte van het systeem wordt gevoed door een buck-boost converter; de spanningsrimpel van de buck-boost converter maakt minder uit voor een goed ontkoppelde microcontroller.
 De uitgang van de buck-boost converter wordt vervolgens gestabiliseerd door een LDO, die het analoge gedeelte van het systeem voedt. De uitgangsspanning van de LDO zal iets lager zijn dan de uitgang van de buck-boost converter, wat geen problemen zal vormen zolang het verschil minimaal is.
 
-Zoals beschreven in \cref{sec:harvesting} moet de uitgang van het piëzo element gelijk gericht en beschermt worden. In \cref{fig:voedingSchematisch} wordt het gelijkrichten gedaan door de AC-DC omvormer.
+Zoals beschreven in \cref{sec:harvesting} moet de uitgang van het piëzo-element gelijk gericht en beschermt worden. In \cref{fig:voedingSchematisch} wordt het gelijkrichten gedaan door de AC-DC omvormer.
 
-Voor energy harvesting is er een piëzo element gekozen. Een piëzo element kan gezien worden als een AC bron. Deze AC bron moet omgezet worden naar DC die door het systeem gebruikt kan worden om de batterij mee op te laden. De AC bron wordt met een gelijkrichter naar DC omgezet. Deze DC spanning is niet hetzelfde als de systeemspanning dus die moet omgezet worden naar een spanning die de batterij in gaat, zodat de batterij kan opladen.
+Voor energy harvesting is er een piëzo-element gekozen. Een piëzo-element kan gezien worden als een AC bron. Deze AC bron moet omgezet worden naar DC die door het systeem gebruikt kan worden om de batterij mee op te laden. De AC bron wordt met een gelijkrichter naar DC omgezet. Deze DC spanning is niet hetzelfde als de systeemspanning dus die moet omgezet worden naar een spanning die de batterij in gaat, zodat de batterij kan opladen.
 
 \begin{figure}[!htbp]
     \centering

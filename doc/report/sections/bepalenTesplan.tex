@@ -56,7 +56,7 @@ Op de drain-source spanning is ook een tweede oscillatie met een hogere frequent
 \end{figure}
 
 
-\subsubsection{Discussie van de stabiliteitstest}
+\subsubsection{Discussie van de stabiliteitstest} \label{sec:stabilityTestDiscuss}
 Er zijn meerdere mogelijke oplossingen voor de instabiliteit.
 Eén mogelijke oplossing is een integrator plaatsen tussen de uitgang van de opamp en de gate van de ISFET. Dit zou ervoor zorgen dat de ISFET genoeg tijd heeft om te reageren op de veranderde gate-source spanning, waardoor deze de opamp kan bijhouden.
 
@@ -156,7 +156,7 @@ De gemeten batterijspanning was \qty{3.82}{\volt}, tijdens de loop van de test w
 Uit de metingen is duidelijk te zien dat het hele systeem minder vermogen verbruikt dan de maximale \qty{10}{\milli\watt} die genoemd is in de \cref{sec:systemSpecifications}. Het energiebudget is dus behaald.
 
 
-\subsection{Energy harvesting test}
+\subsection{Energy harvesting test}\label{sec:harvestTest}
 Deze test is bedoelt om te meten of het energy harvesting systeem daadwerkelijk energie kan opwekken. Deze test gebruikt de materialen uit \cref{tab:testMaterialen4}.
 
 \begin{table}[!htbp]
@@ -173,7 +173,7 @@ Deze test is bedoelt om te meten of het energy harvesting systeem daadwerkelijk 
     \label{tab:testMaterialen4}
 \end{table}
 
-De twee Keithley multimeters zijn aangesloten op dezelfde manier als in \cref{sec:vermogenTest}. Het piëzo element is door middel van een magneet een boormachine kop vastgemaakt. Dit zorgt ervoor dat het piëzo-element trilt bij het draaien van de boormachine. Het piëzo element is vervolgens aangesloten op de voeding PCB, zodat deze energie kan leveren aan het systeem en de accu. Bij deze test is alleen de voeding PCB aanwezig en is de uitlees PCB niet aangesloten. Dit is gedaan zodat er precies gemeten kan worden hoeveel energie het energy harvesting systeem oplevert, zonder dat er energie verbruikt wordt door andere systeemonderdelen.
+De twee Keithley multimeters zijn aangesloten op dezelfde manier als in \cref{sec:vermogenTest}. Het piëzo-element is door middel van een magneet een boormachine kop vastgemaakt. Dit zorgt ervoor dat het piëzo-element trilt bij het draaien van de boormachine. Het piëzo-element is vervolgens aangesloten op de voeding PCB, zodat deze energie kan leveren aan het systeem en de accu. Bij deze test is alleen de voeding PCB aanwezig en is de uitlees PCB niet aangesloten. Dit is gedaan zodat er precies gemeten kan worden hoeveel energie het energy harvesting systeem oplevert, zonder dat er energie verbruikt wordt door andere systeemonderdelen.
 
 \subsubsection{Resultaten van de energy harvesting test}
 De meting is geëxporteerd en omgezet naar mW, door de gemeten stroom te vermenigvuldigen met de batterijspanning. Dit is zien in \cref{fig:vermogenPlot}.
@@ -186,4 +186,4 @@ De meting is geëxporteerd en omgezet naar mW, door de gemeten stroom te vermeni
 \end{figure}
 
 \subsubsection{Discussie van de energy harvesting test}
-In \cref{fig:vermogenPlot} is te zien dat het energieverbruik van de accu naar \qty{0}{\milli\watt} gaat zodra het piëzo element genoeg vibreert. Dit toont aan dat de energy harvesting werkt en de levensduur van de sensormodule zal verlengen.
+In \cref{fig:vermogenPlot} is te zien dat het energieverbruik van de accu naar \qty{0}{\milli\watt} gaat zodra het piëzo-element genoeg vibreert. Dit toont aan dat de energy harvesting energie opwekt. Het zijn echter enkel een aantal pieken, en er lijkt geen vermogen terug de accu in te gaan. Verwacht was dat, wanneer het piëzo-element genoeg trilt, er een duidelijke, oscillerende energiestroom geproduceerd zou worden. Het is onduidelijk waarom dit niet het geval is.

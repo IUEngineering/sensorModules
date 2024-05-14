@@ -21,17 +21,25 @@ Het energie budget is echter wel behaald; de sensormodule gebruikt gemiddeld \qt
 
 \newpage
 \section{Aanbevelingen}
-Dit hoofdstuk beschrijft voor elk systeemonderdeel wat er aan verbeterd kan worden om het (beter) te laten functioneren.
+Dit hoofdstuk beschrijft voor een aantal systeemonderdelen wat er aan verbeterd kan worden om het beter te laten functioneren.
 
 \subsubsection*{ISFET uitleesschakeling}
-Zoals de test in \cref{sec:stabiliteitstest} heeft getoond produceert de ISFET uitleesschakeling op het moment nog een oscillerende uitgang. Dit kan opgelost worden door verder onderzoek te doen naar de oorzaak hiervan.
+Zoals de test in \cref{sec:stabiliteitstest} heeft getoond produceert de ISFET uitleesschakeling op het moment nog een oscillerende uitgang. Dit kan opgelost worden door verder onderzoek te doen naar de oorzaak hiervan. Een aantal mogelijke oorzaken en oplossingen staan beschreven in \cref{sec:stabilityTestDiscuss}.
 
+Hiernaast kan voor de ISFET uitleesschakeling een betere ruisberekening gedaan worden. De 1/f ruis die de ISFET produceert wordt op dit moment namelijk niet meegenomen in de berekeningen, terwijl deze wel bijdraagt aan het ruisniveau van het uitgangssignaal.
 
-Er kunnen meerdere verbeteringen toegepast moeten worden op het systeem. Aangezien de sensormodule op dit moment nog niet goed de pH waarde kan uitlezen, zal dit eerst opgelost moeten worden. Dit kan gedaan worden door het probleem met de stabiliteit, beschreven in \cref{sec:stabilityTestResults}, verder te onderzoeken en vervolgens te verhelpen.
+\subsubsection*{ADC en versterking}
+Er kan nog verder gekeken worden naar het gebruik van een versterker op het signaal dat uit de ISFET uitleesschakeling komt. Het signaal gebruikt op het moment een klein gedeelte van het spanningsbereik van de ADC. Dit signaal kan naar beneden verschoven en versterkt worden, zodat het volledige ingangsbereik van de ADC gebruikt wordt. Op deze manier zou de resolutie van het signaal vergroot kunnen worden.
+Hiervoor kan eerst uitgerekend worden hoe groot de verbetering precies is, ten opzichte van de ruis die deze aanpassing zou toevoegen aan het signaal.
 
+\subsubsection*{Filter}
 Een ander onderdeel dat verbetert kan worden is het filter. Zoals beschreven in \cref{sec:filterFout} is de orde van het geïmplementeerde filter te laag. Door dit filter te vervangen door een filter met een orde van zes of hoger kan de signaalkwaliteit verbeterd worden.
 
+\subsubsection*{Temperatuursensor}
 Verder moet er een temperatuursensor toegevoegd worden aan het systeem, die de temperatuur van de te meten oplossing kan bijhouden. Zo kan er beter gecompenseerd worden op de temperatuurafhankelijkheid van de ISFET.
+
+\subsubsection*{Energy harvesting}
+De energy harvesting bron moet beter onderzocht worden. Op het moment produceert deze bij een energy harvesting test (\cref{sec:harvestTest}) alleen kleine pulsen aan energie. Een mogelijke oplossing is een betere methode om het piëzo-element te laten vibreren. Onderzoek zal gedaan moeten worden naar de optimale opstelling hiervoor.
 
 % zet misschien nog iets over energiezuiniger maken.
 % Noem energie waarde uit illya test.
